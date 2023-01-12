@@ -1,0 +1,163 @@
+<div [class.isScrollDown]="isScrollDown"
+     class="top-header"
+>
+  <div class="_logo-area">
+    <img  class="_logo" src="assets/top_img_shoplogo@2x.png" alt="shop-logo">
+    <span class="_name">Sample EC</span>
+  </div>
+  <div class="_search">
+    <div class="_button-area"
+      title="This is a button on the header to navigate the search page."
+      (click)="navigateToSearchHandler()"
+    >
+      <i class="fas fa-search"></i>
+      Search
+    </div>
+  </div>
+  <div (click)="navigateToMypageHandler()"
+      title="This is a munu icon on the header to navigate the my page."
+      class="_menu ga-click-hamburgerMenu">
+    <i class="fas fa-bars fa-lg"></i>
+  </div>
+</div>
+
+<!-- <div *ngIf="storeTopMessage.notice_available_flag" class="store-message-area">
+  <div class="_notice1 ga-caution-store-close">{{storeTopMessage.notice1}}</div>
+  <div class="_notice2">{{storeTopMessage.notice2}}</div>
+</div>
+
+<div class="delivery-message-area ga-caution-delibery-capaciy"
+     *ngIf="storeTopMessage.delivery_available_flag === 0">
+  店舗休業日または配送枠が予約でいっぱいの為
+  <br>ただいまご注文いただけません。
+  <br>お時間を空けて再度ご注文ください。
+</div> -->
+
+<!-- <ng-container *ngIf="storeTopMessage.delivery_available_flag" >
+  <app-message-accordion
+    *ngIf="isLoggedIn$ | async"
+    [storeTopMessage]="storeTopMessage"
+  ></app-message-accordion>
+
+  <app-message-accordion
+    *ngIf="isLoggedOut$ | async"
+    [storeTopMessage]="storeTopMessage"
+    [collapsed]="false"
+  ></app-message-accordion>
+</ng-container> -->
+
+<div class="shop-top">
+  <div class="_store"
+  >
+    <img src="./assets/store_image@2x.png" alt="store-top-image">
+    <button class="_search"
+      (click)="navigateToProductList()"
+    >
+      Search from the product list  <i class="fas fa-angle-right"></i>
+    </button>
+  </div>
+  <div class="recommend-area">
+    <div class="_ttl">
+      <span>Recommended products for you</span>
+      <!-- <span *ngIf="isLoggedIn$ | async">あなたにおすすめの品</span> -->
+      <!-- <span *ngIf="isLoggedOut$ | async">店舗スタッフおすすめの品</span> -->
+    </div>
+    <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
+      <ng-container *ngFor="let product of recommendedProductList$ | async; index as i" >
+        <app-product-card
+          [storeProduct]="product"
+          [productViewImageType]="1"
+          (clickPlusHandler)="clickPlusHandler($event)"
+          (clickMinusHandler)="clickMinusHandler($event)"
+        ></app-product-card>
+        <!-- <app-product-card
+          [storeProduct]="product"
+          [isLoggedIn]="isLoggedIn$ | async"
+          [productViewImageType]="1"
+          (clickPlusHandler)="clickPlusHandler($event)"
+          (clickMinusHandler)="clickMinusHandler($event)"
+        ></app-product-card> -->
+      </ng-container>
+
+    </div>
+    <!-- <div class="more-area">
+      <span (click)="clickMoreHandler()"
+            *ngIf="!isClickedMore"
+            class="_more ga-click-recommend-viewMore"
+      >もっとみる <i class="fas fa-angle-down fa-lg"></i>
+      </span>
+      <span (click)="clickMoreHandler()"
+            *ngIf="isClickedMore"
+            class="_more"
+      >閉じる <i class="fas fa-angle-up fa-lg"></i>
+      </span>
+    </div> -->
+  </div>
+  <div class="tab-btn-area">
+    <button mdbRipple rippleColor="dark" type="button" class="btn btn-outline"
+            title="This is a button to navigate the favorit page."
+            (click)="navigateToFavoriteHandler()"
+    >
+      <img src="assets/common_icon_heart@2x.png" alt="favorite-icon"> Favorites
+    </button>
+    <button mdbRipple rippleColor="dark" type="button" class="btn btn-outline"
+            title="This is a button to navigate the purchased items page."
+            (click)="navigateToPastitemHandler()"
+    >
+      <img src="assets/top_icon_history@2x.png" alt="purchase-icon"> Purchase History
+    </button>
+  </div>
+  <!-- <div class="category-area">カテゴリから探す</div>
+      <app-custom-category-list
+        [topPageInfo]="topPageInfo"
+      ></app-custom-category-list> -->
+
+  <div class="bottom-menu-area">
+    <ul class="list-group">
+      <li class="list-group-item"
+        title="This is a link to navigate the store information page."
+          (click)="navigateToShopHandler()"
+      >Store Information <i class="fas fa-chevron-right"></i></li>
+      <li class="list-group-item"
+        title="This is a link to navigate the compliance page."
+          (click)="navigateToComplianceHandler()"
+      >Compliance <i class="fas fa-chevron-right"></i></li>
+      <li class="list-group-item"
+        title="This is a link to navigate the privacy policy page."
+          (click)="navigateToPrivacyHandler()"
+      >Privacy Policy <i class="fas fa-chevron-right"></i></li>
+    </ul>
+  </div>
+  <!-- <div class="signup-area" *ngIf="isLoggedOut$ | async">
+    <div class="btn_group">
+      <button
+        class="btn btn-rounded submit"
+        routerLink="/signup">
+        新規会員登録
+      </button>
+      <div class="_login-area">既にアカウントをお持ちの方は
+        <span class="_login"
+              (click)="loginHandler()"
+        >ログイン</span>
+      </div>
+    </div>
+  </div> -->
+  <!-- <ng-container *ngIf="isLoggedIn$ | async">
+    <div class="cart-area" *ngIf="cartPriceInfo.numOfStoreProducts">
+
+      <div class="btn_group">
+        <button
+          class="btn btn-rounded submit"
+          data-test="top-cart-price-info-button"
+          (click)="cartBtnHandler()"
+        >
+          <img src="./assets/section/common_icon_cart@2x.png" alt="common_icon_cart">
+          <span class="_quantity">{{cartPriceInfo.numOfStoreProducts}}</span>
+          <span class="_ten">点</span>
+          <span class="_price">{{cartPriceInfo.totalProductPriceWithTax | currency : 'JPY': true}}</span>
+          <span class="_tax-in">(税込)</span>
+        </button>
+      </div>
+    </div>
+  </ng-container> -->
+</div>

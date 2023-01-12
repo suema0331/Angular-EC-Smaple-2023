@@ -1,0 +1,389 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+@import '@fortawesome/fontawesome-free/scss/regular.scss';
+@import '@fortawesome/fontawesome-free/scss/brands.scss';
+
+@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+// variables
+@import "variables";
+
+
+body {
+  color: $base_font_color;
+  font-family: $base_font;
+}
+
+@media screen and (min-width:600px) {
+  /*　画面サイズ 600 px以上　*/
+  html {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fcfcfc;
+  }
+}
+
+.modal-open {
+  padding: 0 !important;
+}
+
+.container-fluid{
+  padding: 0;
+}
+
+input{
+  border: initial!important;
+  &::placeholder{
+    color: #B7B7B7;
+    font-size: 16px;
+  }
+  /* IE */
+  &:-ms-input-placeholder {
+    color: #B7B7B7;
+    font-size: 16px;
+  }
+  /* Edge */
+  &::-ms-input-placeholder{
+    color: #B7B7B7;
+    font-size: 16px;
+  }
+}
+.form-outline .form-control ~ .form-notch div{
+  border: none;
+}
+
+
+/* checkbox */
+input[type=checkbox] {
+  width: 21px;
+  height:	21px;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  -o-appearance:none;;
+  outline: #D1D1D1 2px solid;
+  background: #FCFCFC;
+  border-radius: 6px;
+  margin: 5px;
+  & + span{
+    position: relative;
+  }
+  &:checked{
+    background: #00ABDE;
+  }
+  &:checked + span::before{
+    content: "";
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    width: 11px;
+    height: 7px;
+    margin-top: -8px;
+    top: 58%;
+    left: -23px;
+    transform: rotate(-45deg);
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+    border-color: #fff;
+
+    @media screen and (max-width: 360px) { // OMO3-2081
+      /* 360pxまでの幅の場合 */
+      top: 40%;
+    }
+  }
+}
+
+
+/* login & signup header */
+.header{
+  position: relative;
+  ._back{
+    position: absolute;
+    left: 24px;
+  }
+  ._skip{
+    color: #0080DE;
+    position: absolute;
+    right: 16px;
+    font-size: 14px;
+  }
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 16px;
+  margin-bottom: 32px;
+  border-bottom: #90867F1F 1px solid;
+  box-shadow: 0px 2px 6px #90867F1F;
+}
+
+
+/* input form */
+.form-group{
+  margin-bottom: 24px;
+  .form-label{
+    font-size: 14px;
+    font-weight: bold;
+    color: #2E2621;
+    margin-bottom:6px;
+  }
+  ._req{
+    background: #EB5545;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 2px;
+    margin-left: 6px;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  ._input-form {
+    position: relative;
+    input {
+      background-color: #EAEAEA;
+      border-radius: 8px;
+      padding: 12px 0  12px 16px;
+      margin-bottom: 8px;
+      &._inputFormError{
+        background: #FDECEF;
+        outline: #EB5545 1px solid;
+      }
+    }
+    ._display {
+      color: #0080DE;
+      font-size: 14px;
+      position: absolute;
+      right: 16px;
+      top: 13px;
+      border: none;
+      background: transparent;
+    }
+  }
+  ._hint{
+    color: #717171;
+    font-size: 14px;
+  }
+  ._forget{
+    color: #0080DE;
+    text-align: right;
+    font-size: 14px;
+  }
+  ._error{
+    font-size: 14px;
+    color: #E82212;
+  }
+}
+
+
+// Toast
+.errorToast{
+  font-size: 14px;
+  color: #E50721;
+  padding: 16px;
+  background: #FDECEF;
+  border-radius: 3px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+
+/* message-accordion */
+.accordion-button::after {
+  width: 1rem ;
+  height: 1rem ;
+  background-size: 1rem ;
+  //margin-right: 16px; // カテゴリ一覧画面のため
+}
+.accordion-item{
+  border: none;
+  //border-bottom: 0.5px solid #EAE5E2;
+}
+.accordion-item:first-of-type .accordion-button,
+.accordion-item:last-of-type{
+  border-radius: 0;
+}
+.accordion-button{
+  padding: 0;
+  background-color: #FCFCFC;
+}
+.accordion-header{
+  background-color: #FCFCFC;
+}
+.accordion-button:not(.collapsed){
+  //box-shadow: none; // OMO3-2225: カテゴリから探すのアコーディオンをライブラリ実装を廃止したらこのbox-shadow: none を消したい
+  background-color: #FCFCFC;
+}
+.accordion-body{
+  padding: 0;
+}
+
+
+/* select-with-check */
+.option{
+  font-size: 16px;
+  padding: 24px;
+  color: $base_font_color;
+  &:hover:not(.disabled) {
+    background-color: $select_background_color;
+  }
+  &.active {
+    background-color:$select_background_color;
+    .option-check-container {
+      visibility: visible;
+    }
+  }
+  &.selected.active {
+    background-color: $select_background_color;
+    .option-check-container {
+      visibility: visible;
+    }
+  }
+  &.selected.disabled {
+    background-color: $select_background_color;
+  }
+  &.selected {
+    background-color: $select_background_color;
+    font-weight: bold;
+    .option-check-container {
+      visibility: visible;
+    }
+  }
+  &.disabled {
+    background-color: $select_background_color;
+  }
+}
+
+.select-input.form-control[readonly]:not([disabled]){
+  background: #EAEAEA;
+  border-radius: 8px;
+  border: none;
+  &::placeholder{
+    color: #B7B7B7;
+  }
+}
+.select ~ .form-notch .form-notch-leading,
+.select ~ .form-notch .form-notch-trailing{
+  border: none;
+}
+
+mdb-select{
+  &.isError{
+    .select-input.form-control{
+      background: #FDECEF !important;
+      border: #EB5545 1px solid !important;
+    }
+  }
+}
+
+
+.form-control.select-input{
+  padding: 14px;
+}
+.select-arrow:before{
+  margin-right: 5px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 18px;
+  content: "\f078";
+  line-height: 2;
+}
+
+
+.custom-category-list{
+  padding: 0;
+
+  &.accordion-item {
+    border-radius: 0;
+    border: 1px solid #EAE5E2;
+  }
+  &.accordion-item:nth-child(even) {
+    border-left: 0;
+  }
+  .accordion-button{
+    padding: 16px;
+    //box-shadow: none; // OMO3-2225: カテゴリから探すのアコーディオンをライブラリ実装を廃止したらこのbox-shadow: none を消したい
+    transition: none !important;
+    &:not(.collapsed){
+      color: $base_font_color;
+      &:focus{
+        box-shadow: none;
+      }
+      &::after{
+        color: $base_font_color;
+        background-image: escape-svg($accordion-button-icon);
+      }
+    }
+  }
+  .accordion-body{
+    background: #F4F4F4;
+    position: relative;
+
+    &:nth-child(1){
+      border-top: 1px solid #EAE5E2;
+    }
+  }
+}
+
+
+/* stepper-modal */
+.stepper-horizontal-content-container{
+  padding: 0;
+}
+.stepper-mobile-head{
+  display: none;
+}
+.stepper-mobile-footer {
+  display: none;
+}
+.stepper.stepper-mobile {
+  bottom: 104px;
+  justify-content: space-evenly;
+  padding: 0 128px;
+}
+// current
+.stepper-active .stepper-head-icon {
+  background-color: $base_font_color;
+}
+// previous
+.stepper-completed .stepper-head-icon{
+  background-color: #D1D1D1;
+}
+// next
+.stepper-head-icon {
+  background-color: #D1D1D1;
+}
+.stepper-head:hover {
+  background-color: transparent;
+}
+
+.questionnaire {
+  .stepper.stepper-mobile {
+    display: none;
+  }
+}
+
+
+// app-product-card
+.card-products-area{
+  &.row > *{
+    padding: 0;
+  }
+}
+
+/* order/confirm.not.package.drop.page */
+.confirm-modal{
+  .accordion-button{
+    &.collapsed{
+      ._header{
+        margin-bottom: 0px;
+      }
+    }
+    color: #2E2621;
+    ._header{
+      margin-bottom: 8px;
+    }
+    background: #F4F4F4;
+    &::after {
+      margin: 0px 0 auto auto;
+    }
+  }
+
+}
