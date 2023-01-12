@@ -1,0 +1,58 @@
+import { AddressDto } from './address_dto';
+import { CouponCodeDto } from './coupon_code_dto';
+import { DeliveryNumberDto } from './delivery_number_dto';
+import { OmoDateDto } from './omo_date_dto';
+import { OmoTimeDto } from './omo_time_dto';
+import { OmoTimePeriodDto } from './omo_time_period_dto';
+import { OrderDetailExt } from './order_detail_ext';
+import { PostalDto } from './postal_dto';
+import { PriceSetDto } from './price_set_dto';
+import { ReceiptNumberDto } from './receipt_number_dto';
+import { TelDto } from './tel_dto';
+import { OrderDeliveryBoxReadResponse } from '../order_delivery_box/responses/order_delivery_box_read_response';
+import { OrderPickProductReadResponse } from '../order_pick_product/responses/order_pick_product_read_response';
+import { OrderStatusChangeHistoryReadResponse } from '../order_status_change_history/responses/order_status_change_history_read_response';
+import { PackageDropPlace } from '../../enums/package_drop_place';
+export interface OrderSummaryExt{
+
+  order_summary_id: string;
+  user_id: string;
+  user_name: string;
+  estimate_price_set: PriceSetDto;
+  settlement_price_set: PriceSetDto;
+  order_date_time: Date;
+  order_date: OmoDateDto;
+  receipt_date: OmoDateDto;
+  sales_recorded_date: OmoDateDto;
+  order_memo: string;
+  receiving_method: number;
+  delivery_type: number;
+  receipt_number: ReceiptNumberDto;
+  delivery_reservation_id: string;
+  postal: PostalDto;
+  address: AddressDto;
+  tel: TelDto;
+  price_calc_method: number;
+  tax_calc_method: number;
+  delivery_hours: OmoTimePeriodDto;
+  coupon_code: CouponCodeDto;
+  payment_type: number;
+  handle_type_for_shortage: number;
+  delivery_number: DeliveryNumberDto;
+  order_state: string;
+  order_details: OrderDetailExt[];
+  order_details_settled: OrderDetailExt[];
+  order_details_canceled: OrderDetailExt[];
+  picked_products: OrderPickProductReadResponse[];
+  order_delivery_box: OrderDeliveryBoxReadResponse[];
+  change_history: OrderStatusChangeHistoryReadResponse[];
+  pickup_time: OmoTimeDto;
+  delivery_memo: string;
+  prefer_drop_place: PackageDropPlace;
+  full_name_kana: string;
+  payment_flag: number;
+  receipt_date_time_desc: string;
+  tracking_id: string;
+  sbps_transaction_id: string;
+
+}

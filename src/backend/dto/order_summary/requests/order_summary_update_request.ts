@@ -1,0 +1,51 @@
+import { AddressDto } from '../../common/address_dto';
+import { CouponCodeDto } from '../../common/coupon_code_dto';
+import { DeliveryNumberDto } from '../../common/delivery_number_dto';
+import { OmoDateDto } from '../../common/omo_date_dto';
+import { OmoTimeDto } from '../../common/omo_time_dto';
+import { OmoTimePeriodDto } from '../../common/omo_time_period_dto';
+import { PostalDto } from '../../common/postal_dto';
+import { PriceSetDto } from '../../common/price_set_dto';
+import { ReceiptNumberDto } from '../../common/receipt_number_dto';
+import { TelDto } from '../../common/tel_dto';
+import { DeliveryType } from '../../../enums/delivery_type';
+import { HandleTypeForShortage } from '../../../enums/handle_type_for_shortage';
+import { PackageDropPlace } from '../../../enums/package_drop_place';
+import { PaymentFlag } from '../../../enums/payment_flag';
+import { PaymentType } from '../../../enums/payment_type';
+import { PriceCalcMethod } from '../../../enums/price_calc_method';
+import { ReceivingMethod } from '../../../enums/receiving_method';
+import { TaxCalcMethod } from '../../../enums/tax_calc_method';
+export interface OrderSummaryUpdateRequest{
+
+  order_summary_id: string;
+  user_id: string;
+  estimate_price_set: PriceSetDto;
+  settlement_price_set: PriceSetDto;
+  order_date_time: Date;
+  order_date: OmoDateDto;
+  receipt_date: OmoDateDto;
+  sales_recorded_date: OmoDateDto;
+  order_memo: string;
+  receiving_method: ReceivingMethod;
+  delivery_type: DeliveryType;
+  receipt_number: ReceiptNumberDto;
+  delivery_reservation_id: string;
+  postal: PostalDto;
+  address: AddressDto;
+  tel: TelDto;
+  price_calc_method: PriceCalcMethod;
+  tax_calc_method: TaxCalcMethod;
+  delivery_hours: OmoTimePeriodDto;
+  coupon_code: CouponCodeDto;
+  pickup_time: OmoTimeDto;
+  delivery_memo: string;
+  payment_flag: PaymentFlag;
+  prefer_drop_place: PackageDropPlace;
+  sps_transaction_id: string;
+  tracking_id: string;
+  payment_type: PaymentType;
+  handle_type_for_shortage: HandleTypeForShortage;
+  delivery_number: DeliveryNumberDto;
+
+}

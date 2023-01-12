@@ -1,0 +1,69 @@
+.btn-close {
+  position: absolute;
+  right: 17px;
+  top: 15px;
+}
+.modal-header {
+  padding: 2.5rem 1rem 0;
+  border: none;
+
+  .modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2E2621;
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -5px;
+      display: inline-block;
+      width: 140px;
+      height: 2px;
+      transform: translateX(-50%);
+      background-image: linear-gradient(to right, #D1D1D1, #D1D1D1 2px, transparent 1px, transparent 8px);
+      background-size: 5px 2px;
+      background-position: left bottom;
+      background-repeat: repeat-x;
+      border-radius: 2px;
+    }
+  }
+}
+
+.modal-body {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #2E2621;
+  padding: 28px;
+  ._message {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  ._img {
+    margin: 24px 28px;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.stepper_btn {
+  text-align: center;
+  margin: 38px 0px 28px;
+  button {
+    padding: 16px 100px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    background: -moz-linear-gradient(left, #393534 50%, #555555);
+    background: -webkit-linear-gradient(left, #393534 50%, #555555);
+    background: linear-gradient(to right, #393534 50%, #555555);
+  }
+}
+

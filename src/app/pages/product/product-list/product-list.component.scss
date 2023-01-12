@@ -1,0 +1,131 @@
+@import "variables";
+
+.section-header {
+  &.isScrollDown{
+    display: none;
+  }
+
+  @media screen and (min-width:600px) {
+    /*　画面サイズ 600 px以上　*/
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  vertical-align: center;
+  top: 0;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background: $shop_theme_color;
+  ._back{
+    margin: auto 0;
+    color: #EAEAEA;
+  }
+
+  ._search{
+    position: relative;
+    margin: auto;
+    ._button-area{
+      padding: 8px 80px 8px 12px;
+      border-radius: 18px;
+      background: #EAEAEA;
+      font-size: 14px;
+      color: #B7B7B7;
+      font-weight: normal;
+      i {
+        font-size: 15px;
+        margin-right: 4px;
+        color: #B7B7B7;
+      }
+    }
+  }
+  ._menu{
+    width: 28px;
+    margin-left: 8px;
+    margin: auto 0;
+    cursor: pointer;
+    color: #EAEAEA;
+  }
+}
+
+.section {
+  background: #F2F2F2;
+  padding-bottom: 134px;
+  margin-top: 57px;
+
+  .sub-category-area{
+    background: #FCFCFC;
+    margin-bottom: 12px;
+    padding: 16px 10px 12px;
+    ._ttl{
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .more-area {
+      padding: 12px 0 0;
+      ._more{
+        color: #0080DE;
+        font-size: 14px;
+        text-align: center;
+        cursor: pointer;
+        display: block;
+        i{
+          vertical-align: middle;
+        }
+      }
+    }
+
+  }
+  .cart-area {
+    position: fixed;
+    bottom: 0;
+    padding: 16px;
+    margin: 0px auto 0px;
+    width: 100%;
+    z-index: 100;
+
+    @media screen and (min-width:600px) {
+      /*　画面サイズ 600 px以上　*/
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .btn_group{
+      .submit {
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        color: #fff;
+        background: $shop_theme_color;
+        img{
+          height: 24px;
+          margin: auto 8px 8px 0;
+        }
+        ._quantity{
+          font-size: 20px;
+          font-weight: bold;
+          margin: auto 2px 4px;
+        }
+        ._ten{
+          font-size: 12px;
+          margin: auto 0 4px;
+        }
+        ._price{
+          font-size: 26px;
+          font-weight: bold;
+          margin: auto 2px auto auto;
+        }
+        ._tax-in{
+          font-size: 12px;
+          margin: auto 0 7px;
+        }
+      }
+    }
+  }
+}
+
+
