@@ -1,0 +1,11 @@
+<div class="header">
+  <div *ngIf="isBack"
+    class="_back"  (click)="handleBack()">
+    <i class="fas fa-chevron-left"></i>
+  </div>
+  {{headerTitle}}
+  <span *ngIf="isSkip"
+        class="_skip"
+        [routerLink]="skipRoutePath"
+  >skip</span>
+</div>

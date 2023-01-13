@@ -119,12 +119,16 @@
       font-size: 16px;
       font-weight: bold;
       padding: 16px 20px 16px 22px;
+      cursor: pointer;
 
       @media screen and (min-width:321px) {
         padding: 16px 35px 16px 44px;
       }
 
-      cursor: pointer;
+      @media screen and (min-width:425px) {
+        /*　画面サイズが540px以上　*/
+        left: 16%;
+      }
 
       @media screen and (min-width:540px) {
         /*　画面サイズが540px以上　*/
