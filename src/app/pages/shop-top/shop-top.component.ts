@@ -46,17 +46,28 @@ export class ShopTopComponent {
     private authService: AuthService,
   ) {
     // Get up to 6 products in order of registration
-    this.productCollection = afs.collection<StoreProductExt>('products', (ref) => ref.limit(6));
-    this.recommendedProductList$ = this.productCollection.snapshotChanges().pipe(
-      map((actions) =>
-        actions.map((a) => {
-          const data = a.payload.doc.data() as StoreProductExt;
-          const id = a.payload.doc.id;
+    this.productCollection = this.afs.collection<StoreProductExt>('products', (ref) => ref.limit(6));
 
-          return { id, ...data };
-        })
-      )
-    );
+    this.recommendedProductList$ = this.productCollection.valueChanges();
+
+    // this.recommendedProductList$ = this.productCollection.valueChanges().pipe(
+    //   map((actions) =>
+    //     actions.map((data) => {
+    //       return { ...data };
+    //     }
+    //     )
+    //   )
+    // );
+
+    // this.recommendedProductList$ = this.productCollection.snapshotChanges().pipe(
+    //   map((actions) =>
+    //     actions.map((a) => {
+    //       const data = a.payload.doc.data() as StoreProductExt;
+    //       const id = a.payload.doc.id;
+    //       return { id, ...data };
+    //     })
+    //   )
+    // );
 
     this.authService.getAuthState().subscribe((user) => {
       console.log(user)

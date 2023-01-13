@@ -143,18 +143,6 @@ export class ProductCardComponent {
     // return this.imageUrlService.getImageUrl(this.storeProduct.store_product_id, imgUrl, SizeType.small);
   }
 
-  navigateToProduct(productId: string): void{
-    this.logService.logDebug('navigateToProduct');
-
-    // if (this.activeSection.length === 3){
-    //   // tslint:disable-next-line:max-line-length
-    //   this.locationService.navigateTo(`/${PRODUCT_QUERY_KEY.key}?${PRODUCT_QUERY_KEY.value}=${productId}&${CATEGORY_LIST_QUERY_KEY.value}=${this.activeSection[0]}&${CATEGORY_LIST_QUERY_KEY.value2}=${this.activeSection[1]}&${CATEGORY_LIST_QUERY_KEY.value3}=${this.activeSection[2]}&${CATEGORY_LIST_QUERY_KEY.value4}=${this.isMoreClicked}`);
-    // } else {
-    //   this.locationService.navigateTo(`/${PRODUCT_QUERY_KEY.key}?${PRODUCT_QUERY_KEY.value}=${productId}`);
-    // }
-
-  }
-
   getProductDisplayLabel(producingArea: string, productName: string, brand: string): string{
     const displayLabel = (producingArea ? (producingArea + ' ') : '' ) + productName + ' ' + (brand ?  brand : '' );
     // return this.isMoreClicked ? displayLabel.substring(0, 21) : displayLabel.substring(0, 14);

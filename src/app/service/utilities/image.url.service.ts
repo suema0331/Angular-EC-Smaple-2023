@@ -3,7 +3,8 @@ import { environment } from 'src/environments/environment';
 
 export enum SizeType {
   small = 0,
-  medium = 1
+  medium = 1,
+  master = 2
 }
 
 @Injectable()

@@ -8,7 +8,7 @@
       >
         <div class="card_img"
              [class.stockout]="storeProduct.product_status === 2"
-             (click)="navigateToProduct(storeProduct.store_product_id)"
+             [routerLink]="['/products', storeProduct.store_product_id]"
         >
           <span *ngIf="storeProduct.tags[0]" class="_tag"
           >{{storeProduct.tags[0]}}
