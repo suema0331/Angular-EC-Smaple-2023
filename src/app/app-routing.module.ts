@@ -12,8 +12,11 @@ import { CheckoutComponent } from './pages/order/checkout/checkout.component';
 import { PastitemComponent } from './pages/mypage/pastitem/pastitem.component';
 import { SearchComponent } from './pages/shop-top/search/search.component';
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 
-const BASE_TITLE = 'ｸｲｰﾝｽﾞ伊勢丹ﾈｽﾊﾟ';
+const BASE_TITLE = 'Angular EC App';
 
 const routes: Routes = [
   //  When path matches,create new instance of component
@@ -30,6 +33,24 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/products', pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      title: BASE_TITLE + ' - Login Page',
+      description: 'This is a login page',
+      ogUrl: 'http://localhost:4200/#/login',
+    },
+  },
+    {
+    path: 'signup',
+    component: SignupComponent,
+    data: {
+      title: BASE_TITLE + ' - Signup Page',
+      description: 'This is a signup page',
+      ogUrl: 'http://localhost:4200/#/signup',
+    },
   },
   {
     path: 'search',
@@ -70,20 +91,20 @@ const routes: Routes = [
   {
     path: 'favorite',
     component: FavoriteComponent,
-    data: {
-      title: BASE_TITLE + ' - Favorite Page',
-      description: 'This is a favorite page',
-      ogUrl: 'http://localhost:4200/#/favorite',
-    }
+    // data: {
+    //   title: BASE_TITLE + ' - Favorite Page',
+    //   description: 'This is a favorite page',
+    //   ogUrl: 'http://localhost:4200/#/favorite',
+    // }
   },
   {
     path: 'pastitem',
     component: PastitemComponent,
-    data: {
-      title: BASE_TITLE + ' - Past Item Page',
-      description: 'This is a past item page',
-      ogUrl: 'http://localhost:4200/#/pastitem',
-    }
+    // data: {
+    //   title: BASE_TITLE + ' - Past Item Page',
+    //   description: 'This is a past item page',
+    //   ogUrl: 'http://localhost:4200/#/pastitem',
+    // }
   },
   {
     path: 'order-history',
@@ -100,6 +121,10 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
+  },
+  {
+    path: 'maintenance',
+    component: MaintenanceComponent,
   },
   {
     path: '**',

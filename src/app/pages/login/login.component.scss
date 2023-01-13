@@ -1,0 +1,55 @@
+.login{
+  margin: 0 16px;
+
+  .btn_group {
+    button {
+      width: 100%;
+      padding: 16px 0px;
+      font-size: 16px;
+    }
+    .submit {
+      font-weight: bold;
+      color: #fff;
+      background: -moz-linear-gradient(left, #393534 50%, #555555);
+      background: -webkit-linear-gradient(left, #393534 50%, #555555);
+      background: linear-gradient(to right, #393534 50%, #555555);
+      margin: 32px auto 32px;
+    }
+    ._signup-area{
+      text-align: center;
+      font-size: 14px;
+      ._signup{
+        color: #0080DE;
+      }
+    }
+  }
+}
+
+.form-group{
+  margin-bottom: 24px;
+ .form-label{
+   font-size: 14px;
+   font-weight: bold;
+   color: #2E2621;
+   margin-bottom:6px;
+ }
+  ._input-form {
+    position: relative;
+
+    ._display {
+      color: #0080DE;
+      font-size: 14px;
+      position: absolute;
+      right: 16px;
+      top: 13px;
+      border: none;
+      background: transparent;
+    }
+  }
+  ._forget{
+    color: #0080DE;
+    text-align: right;
+    font-size: 14px;
+  }
+}
+
