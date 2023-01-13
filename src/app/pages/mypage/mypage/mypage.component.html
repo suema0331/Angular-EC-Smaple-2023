@@ -1,1 +1,117 @@
-<p>mypage works!</p>
+<div class="mypage-cover">
+  <div class="mypage-header">
+    <div class="_ttl">
+      My Page
+    </div>
+    <!-- <div (click)="logoutHandler()" aria-label="LogOut" class="_logout">
+      logout
+    </div> -->
+    <div class="_right">
+      <div *ngIf="user$ | async" class="_logout" (click)="logoutHandler()" >
+        <div class="_button-area"
+          title="This is a logput button on the header."
+        >
+          logout
+        </div>
+      </div>
+      <button (click)="handleBack()" aria-label="Close" class="btn-close"
+              type="button"
+      ></button>
+  </div>
+  </div>
+
+  <div class="mypage">
+    <div *ngIf="user$ | async" class="account-area">
+      <div class="_left">
+        <div class="_icon">
+          <!-- <img alt="userIcon" src="assets/mypage/userIcon.png"> -->
+          <img alt="userIcon" [src]="(user$ | async)?.photoURL" >
+        </div>
+      </div>
+      <div class="_right">
+        <div class="_name">
+          <span>Welcome, <span class="_value">{{(user$ | async)?.displayName}}</span></span>
+        </div>
+        <div class="_info">
+          EmailVerified:
+          <span class="_value">{{(user$ | async)?.emailVerified}}
+          <span class="_note" *ngIf="!(user$ | async)?.emailVerified">*Please verify your email</span></span>
+        </div>
+        <div class="_info">
+          LastLogin:
+        <span class="_value">{{(user$ | async)?.metadata?.lastSignInTime ?? '' | date: 'dd/MM/yyyy hh:mm:ss'}}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!(user$ | async)" class="require-signup-area">
+      <div class="_message">
+        Please register your account!
+      </div>
+      <div class="_buttons">
+        <button (click)="this.locationService.navigateTo3_1()"
+                class="_signup"
+        >Register</button>
+        <button (click)="loginHandler()"
+                class="_login"
+        >Log In</button>
+      </div>
+    </div>
+
+    <!-- <div *ngIf="userId" class="menu-area">
+      <div class="_ttl">お客様情報</div>
+      <ul class="list-group">
+        <li (click)="clickEditAccountHandler()"
+            class="list-group-item"
+        >登録情報の変更　<i class="fas fa-chevron-right"></i></li>
+        <li
+        (click)="this.locationService.navigateTo6_3()"
+
+            class="list-group-item"
+        >注文履歴　<i class="fas fa-chevron-right"></i></li>
+      </ul>
+    </div> -->
+
+    <div class="menu-area">
+      <div class="_ttl">Search Products</div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          Categories <i class="fas fa-chevron-right"></i></li>
+        <li (click)="navigateToFavoriteHandler()" class="list-group-item">
+          Favorites <i class="fas fa-chevron-right"></i>
+        </li>
+        <li (click)="navigateToPastitemHandler()" class="list-group-item">
+          Purchase History <i class="fas fa-chevron-right"></i>
+        </li>
+      </ul>
+    </div>
+
+    <div class="menu-area">
+      <div class="_ttl">Others</div>
+      <ul class="list-group">
+        <li (click)="navigateToCampaignHandler()"
+            class="list-group-item"
+        >Campaigns <i class="fas fa-chevron-right"></i></li>
+        <li (click)="navigateToFaqHandler()"
+            class="list-group-item"
+        >FAQ <i class="fas fa-chevron-right"></i></li>
+        <li (click)="navigateToTermsHandler()"
+            class="list-group-item"
+        >Compliance <i class="fas fa-chevron-right"></i></li>
+        <li (click)="navigateToPolicyHandler()"
+            class="list-group-item"
+        >Privacy Policy <i class="fas fa-chevron-right"></i></li>
+      </ul>
+    </div>
+
+    <!-- <div *ngIf="user$" class="logout-area">
+      <button (click)="logoutHandler()">logout</button>
+    </div> -->
+
+    <!-- <div *ngIf="secondLastLogin && secondLastLogin !== '0'"
+         class="last-login-area">
+      前回ログイン日時{{createOrderDateLabel(secondLastLogin)}}
+    </div> -->
+  </div>
+
+
+</div>

@@ -9,6 +9,7 @@ import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { environment } from 'src/environments/environment';
 import { LogService } from 'src/shared/services/log.service';
 import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-shop-top',
@@ -32,12 +33,17 @@ export class ShopTopComponent {
   private productCollection: AngularFirestoreCollection<StoreProductExt>;
   recommendedProductList$: Observable<StoreProductExt[]>;
   // cartPriceInfo: CartPriceInfo = {totalProductPriceWithTax: 0, totalProductPriceWithoutTax: 0, numOfStoreProducts: 0 };
+
+  user$ = this.authService.user$
+  isLoggedIn = false;
+
   constructor(
     private locationService: LocationService,
     // private logService: LogService,
     private modalService: MdbModalService,
     private cartService: CartService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private authService: AuthService,
   ) {
     // Get up to 6 products in order of registration
     this.productCollection = afs.collection<StoreProductExt>('products', (ref) => ref.limit(6));
@@ -51,8 +57,20 @@ export class ShopTopComponent {
         })
       )
     );
-    // console.log(this.recommendedProductList$)
+
+    this.authService.getAuthState().subscribe((user) => {
+      console.log(user)
+      if (user) this.isLoggedIn = true;
+      else this.isLoggedIn = false;
+    });
   }
+
+  logoutHandler(): void{
+    this.authService.logout();
+    alert('Successfully logged out!');
+    this.locationService.navigateTo1_1();
+  }
+
   clickPlusHandler($event: StoreProductExt): void {
     this.cartService.incrementItem($event.store_product_id);
   }

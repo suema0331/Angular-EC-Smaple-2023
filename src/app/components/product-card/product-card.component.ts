@@ -139,7 +139,6 @@ export class ProductCardComponent {
   }
 
   getImageUrl(imgUrl: string): string {
-    console.log(imgUrl)
     return imgUrl
     // return this.imageUrlService.getImageUrl(this.storeProduct.store_product_id, imgUrl, SizeType.small);
   }

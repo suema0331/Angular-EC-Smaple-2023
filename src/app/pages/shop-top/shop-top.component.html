@@ -14,6 +14,13 @@
       Search
     </div>
   </div>
+  <div *ngIf="isLoggedIn" class="_logout" (click)="logoutHandler()" >
+    <div class="_button-area"
+      title="This is a logput button on the header."
+    >
+      logout
+    </div>
+  </div>
   <div (click)="navigateToMypageHandler()"
       title="This is a munu icon on the header to navigate the my page."
       class="_menu ga-click-hamburgerMenu">
@@ -58,9 +65,8 @@
   </div>
   <div class="recommend-area">
     <div class="_ttl">
-      <span>Recommended products for you</span>
-      <!-- <span *ngIf="isLoggedIn$ | async">あなたにおすすめの品</span> -->
-      <!-- <span *ngIf="isLoggedOut$ | async">店舗スタッフおすすめの品</span> -->
+      <span *ngIf="isLoggedIn">Recommended products for you</span>
+      <span *ngIf="!isLoggedIn">Recommended products from us</span>
     </div>
     <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
       <ng-container *ngFor="let product of recommendedProductList$ | async; index as i" >
@@ -70,28 +76,9 @@
           (clickPlusHandler)="clickPlusHandler($event)"
           (clickMinusHandler)="clickMinusHandler($event)"
         ></app-product-card>
-        <!-- <app-product-card
-          [storeProduct]="product"
-          [isLoggedIn]="isLoggedIn$ | async"
-          [productViewImageType]="1"
-          (clickPlusHandler)="clickPlusHandler($event)"
-          (clickMinusHandler)="clickMinusHandler($event)"
-        ></app-product-card> -->
       </ng-container>
 
     </div>
-    <!-- <div class="more-area">
-      <span (click)="clickMoreHandler()"
-            *ngIf="!isClickedMore"
-            class="_more ga-click-recommend-viewMore"
-      >もっとみる <i class="fas fa-angle-down fa-lg"></i>
-      </span>
-      <span (click)="clickMoreHandler()"
-            *ngIf="isClickedMore"
-            class="_more"
-      >閉じる <i class="fas fa-angle-up fa-lg"></i>
-      </span>
-    </div> -->
   </div>
   <div class="tab-btn-area">
     <button mdbRipple rippleColor="dark" type="button" class="btn btn-outline"
@@ -128,21 +115,21 @@
       >Privacy Policy <i class="fas fa-chevron-right"></i></li>
     </ul>
   </div>
-  <!-- <div class="signup-area" *ngIf="isLoggedOut$ | async">
+  <div class="signup-area" *ngIf="!isLoggedIn">
     <div class="btn_group">
       <button
         class="btn btn-rounded submit"
         routerLink="/signup">
-        新規会員登録
+        Register
       </button>
-      <div class="_login-area">既にアカウントをお持ちの方は
+      <div class="_login-area">Already have an account?
         <span class="_login"
               (click)="loginHandler()"
-        >ログイン</span>
+        >Log In</span>
       </div>
     </div>
-  </div> -->
-  <!-- <ng-container *ngIf="isLoggedIn$ | async">
+  </div>
+  <!-- <ng-container *ngIf="isLoggedIn$">
     <div class="cart-area" *ngIf="cartPriceInfo.numOfStoreProducts">
 
       <div class="btn_group">

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
@@ -18,6 +19,7 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { LoginComponent } from './pages/login/login.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { FavoriteComponent } from './pages/mypage/favorite/favorite.component';
@@ -39,14 +41,14 @@ import { SharedModule } from 'src/shared/shared.module';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ApplicationService } from './service/application.service';
 
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { FIREBASE_OPTIONS } from "@angular/fire/compat";
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 import { ImageUrlService } from './service/utilities/image.url.service';
 import { LocationService } from './service/utilities/location.service';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { PriceService } from './service/utilities/price-service.service';
-import { FIREBASE_OPTIONS } from "@angular/fire/compat";
 
 @NgModule({
   declarations: [
@@ -88,6 +90,8 @@ import { FIREBASE_OPTIONS } from "@angular/fire/compat";
     MdbTooltipModule,
     MdbValidationModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

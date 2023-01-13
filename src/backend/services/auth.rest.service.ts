@@ -1,7 +1,10 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthRestClient } from '../../shared/services/auth.rest.client';
 import { ChangeUserNameRequestParam } from '../dto/common/change_user_name_request_param';
 import { CheckPasswordRequest } from '../dto/common/check_password_request';
 import { CommonResponse } from '../dto/common/common_response';
-import { OpenIdUserCreateRequest } from '../dto/common/open_id_user_create_request';
+import { UserCreateRequest } from '../dto/common/user_create_request';
 import { OpenIdUserCreateResponse } from '../dto/common/open_id_user_create_response';
 import { PasswordOperationResponse } from '../dto/common/password_operation_response';
 import { RefreshTokenParam } from '../dto/common/refresh_token_param';
@@ -12,10 +15,6 @@ import { TokenInfoParam } from '../dto/common/token_info_param';
 import { TokenInfoResponse } from '../dto/common/token_info_response';
 import { TokenInfoResponseTS } from '../dto/common/token_info_response_t_s';
 import { UserInfoUpdateParam } from '../dto/common/user_info_update_param';
-import { AuthRestClient } from '../../shared/services/auth.rest.client';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthRestService{
@@ -24,17 +23,17 @@ export class AuthRestService{
     private httpClient: AuthRestClient
   ){}
 
-  createUser(request: OpenIdUserCreateRequest): Observable<OpenIdUserCreateResponse> {
+  createUser(request: UserCreateRequest): Observable<OpenIdUserCreateResponse> {
     const endpoint = `/api/auth/create_user`;
     return this.httpClient.post<OpenIdUserCreateResponse>(endpoint, request);
   }
 
-  createStaff(request: OpenIdUserCreateRequest): Observable<OpenIdUserCreateResponse> {
+  createStaff(request: UserCreateRequest): Observable<OpenIdUserCreateResponse> {
     const endpoint = `/api/auth/create_staff`;
     return this.httpClient.post<OpenIdUserCreateResponse>(endpoint, request);
   }
 
-  createAdmin(request: OpenIdUserCreateRequest): Observable<OpenIdUserCreateResponse> {
+  createAdmin(request: UserCreateRequest): Observable<OpenIdUserCreateResponse> {
     const endpoint = `/api/auth/create_admin`;
     return this.httpClient.post<OpenIdUserCreateResponse>(endpoint, request);
   }
