@@ -1,1 +1,165 @@
-<p>product-detail works!</p>
+<div class="product-detail" *ngIf="storeProduct.store_product_id">
+  <div class="header-area"
+       *ngIf="isScroll"
+  >
+    <div class="_inner">
+      <span class="_ttl">{{displayHeaderName}}</span>
+      <button
+        type="button" class="_close" aria-label="close"
+        (click)="handleBack()"
+      >
+        <img src="/assets/product/common_btn_close@2x.png" alt="close">
+      </button>
+    </div>
+  </div>
+  <div class="img-area">
+    <img src="/assets/product/common_ic_close2@2x.png"
+         class="_close ga-click-button-close"
+         alt="product-close"
+          (click)="handleBack()"
+    >
+    <img [src]="getImageUrl(topViewImage)"
+         alt="product-lg"
+         class="_top-img"
+         onerror="this.src='/assets/product/no_image.png'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
+         onload="this.removeAttribute('onerror'); this.removeAttribute('onload');">
+
+    <img *ngIf="storeProduct.product_status === 2"
+          src="/assets/product/productdetails_img_soldout@2x.png"
+          class="_top-img stockout ga-display-soldout-item"
+          alt="sold-out-image"
+    />
+        <span class="_note">*Pictures and prices may vary depending on the stocks.</span>
+        <img *ngIf="!storeProduct.favorite_flag"
+             (click)="clickFavHandler()"
+              src="/assets/product/common_btn_favorite@2x.png"
+              class="_fav ga-click-favorite"
+              alt="product-before-favorite-icon"
+        >
+        <img *ngIf="storeProduct.favorite_flag"
+             (click)="clickFavHandler()"
+              src="/assets/product/common_btn_afterFavorites@2x.png"
+              class="_fav"
+              alt="product-favrite-icon"
+        >
+      </div>
+      <div class="scroll-img-area">
+        <div class="_scroll-area">
+          <div class="_scroll-imgs">
+            <ng-container *ngFor="let img of storeProduct.product_view_image_list; index as i">
+              <img
+                  (click)="clickScrollImgHandler(i , img.master)"
+                  [class.selected]="isSelectedImg === i"
+                   [src]=" img.small ? getImageUrl(img.small) : '/assets/product/no-image-small.jpg'"
+                  onerror="this.src='/assets/product/no-image-small.jpg'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
+                  onload="this.removeAttribute('onerror'); this.removeAttribute('onload');"
+                   alt="product-sm" />
+            </ng-container>
+          </div>
+        </div>
+     </div>
+  <div class="info-area">
+    <div class="_name">{{ getProductDisplayLabel(storeProduct.producing_area, storeProduct.product_name, storeProduct.brand) }}</div>
+    <div class="_estimation">
+      <div class="_ttl">Estimated price</div>
+
+      <div *ngIf="storeProduct.standard_price>0 && storeProduct.store_price < storeProduct.standard_price"
+        class="_discount-tag ga-display-discount-item">
+        <span class="_tag">
+          {{calculateDiscountRate(storeProduct.standard_price, storeProduct.store_price)}}
+        </span>
+      </div>
+
+      <div class="_price">{{storeProduct.store_price | currency : 'JPY': true}}
+        <span class="_tax">{{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': true}}/with tax</span>
+      </div>
+    </div>
+    <div class="_tags" *ngIf="storeProduct.tags.length>0">
+      <ng-container *ngFor="let tag of storeProduct.tags; index as i">
+        <span class="_tag ga-display-item-label"
+        >
+          {{tag}}
+        </span>
+      </ng-container>
+    </div>
+  </div>
+  <div *ngIf="storeProduct.unit_range || storeProduct.internal_capacity || storeProduct.store_comment" class="detail-area">
+    <div class="_ttl">Product detail</div>
+    <div class="_detail">
+      <div *ngIf="storeProduct.unit_range || storeProduct.internal_capacity" class="_row">
+        <div class="_key" >Contents</div>
+        <div class="_value">{{getRangeLabel( storeProduct.internal_capacity, storeProduct.unit_range)}}</div>
+      </div>
+      <div class="_row">
+        <div class="_key">Unit price</div>
+        <div class="_value">{{100 | currency : 'JPY': true}}/100g</div>
+      </div>
+      <div class="_row" *ngIf="storeProduct.store_comment">
+        <div class="_key">Comments</div>
+        <div class="_value">{{storeProduct.store_comment}}</div>
+      </div>
+      <div class="_row">
+        <div class="_key">Note</div>
+        <div class="_value">We choose a product whose consumption date is relatively long in stocked products.</div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- TODO Reccomend Related Products  -->
+  <!-- <div *ngIf="searchRelatedStoreProductsResponses.length > 0" class="recommend-area">
+    <div class="_ttl">関連商品</div>
+    <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
+      <ng-container *ngFor="let searchProduct of searchRelatedStoreProductsResponses; index as i" >
+        <app-search-product-related
+          [searchRelatedStoreProductsDetails]="searchProduct"
+          [isLoggedIn]="isLoggedIn$ | async"
+          (clickPlusHandler)="clickPlusHandler($event)"
+          (clickMinusHandler)="clickMinusHandler($event)"
+        ></app-search-product-related>
+      </ng-container>
+    </div>
+  </div> -->
+  <div class="cart-area">
+    <div class="btn_group">
+      <div class="_cart">
+        <button class="_icon-btn"
+        >
+          <img src="/assets/product/common_icon_cart@2x.png" alt="cart">
+        </button>
+        <span class="badge rounded-pill badge-notification">5</span>
+      </div>
+
+      <div class="constraint-tooltip"
+           *ngIf="displayConstraintTooltip"
+           (click)="hideConstraintTooltip()"
+           #constraintTooltip
+      >
+        最大{{storeProduct.constraint_max}}点までしか<br>購入できません
+      </div>
+
+      <button *ngIf="false"
+        class="_add-cart ga-click-fixCart">
+        <i class="fas fa-plus"></i>
+        カートへ追加する
+      </button>
+
+      <button class="_add-cart isCartClicked"
+              [class.overConstraintMax]="isOverConstraintMax"
+      >
+
+        <i class="fas fa-minus ga-click-fixCart-minus"
+        ></i>
+        {{5}}
+        <i class="fas fa-plus ga-click-fixCart-plus"
+           [class.overConstraintMax]="isOverConstraintMax"
+        ></i>
+      </button>
+      <button class="_add-cart stockout" *ngIf="storeProduct.product_status === 2">
+        売り切れ中
+      </button>
+
+    </div>
+  </div>
+
+</div>
