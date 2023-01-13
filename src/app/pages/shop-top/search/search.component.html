@@ -1,1 +1,40 @@
-<p>search works!</p>
+<div class="search">
+  <ais-instantsearch [config]="config">
+      <div class="search-header">
+        <div class="_back"
+            (click)="backToTopHandler()"
+        >
+        <i class="fas fa-chevron-left fa-lg _back"></i>
+      </div>
+      <ais-search-box
+        placeholder="Search for products..."
+        submitTitle="Go"
+        resetTitle="Clear"
+        [showLoadingIndicator]="true"
+        showMoreLabel="See more"
+      ></ais-search-box>
+    </div>
+    <!-- <ais-refinement-list
+        attribute="brand"
+        [searchable]="true"
+        [sortBy]="['isRefined', 'name:asc']"
+        [autoHideContainer]="true"
+    ></ais-refinement-list> -->
+    <div class="search-result-area">
+      <div class="result-area">
+        <div class="_ttl">Results</div>
+        <ais-hits>
+          <ng-template let-hits="hits">
+              <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
+                <ng-container *ngFor="let hit of hits; index as i" >
+                  <app-product-card
+                    [storeProduct]="hit"
+                  ></app-product-card>
+                </ng-container>
+              </div>
+          </ng-template>
+        </ais-hits>
+      </div>
+    </div>
+  </ais-instantsearch>
+</div>

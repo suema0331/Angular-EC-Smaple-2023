@@ -8,13 +8,10 @@ import { LogService } from 'src/shared/services/log.service';
 })
 export class AppComponent {
   title = 'sample-angular-app-2023';
-  // 画面名
   screenName = 'AppComponent';
-  // 画面ID
   screenId = '0';
-  // authStateService: AuthStateService;
+
   constructor(
-    // private appService: ApplicationService,
     private logService: LogService
   ) { }
 

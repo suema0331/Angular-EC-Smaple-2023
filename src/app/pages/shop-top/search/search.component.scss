@@ -1,0 +1,190 @@
+// body { font-family: sans-serif; }
+// .ais-SearchBox { margin-bottom: 1em }
+
+@import "variables.scss";
+
+.search-header{
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 16px;
+  vertical-align: center;
+
+  background: $shop_theme_color;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+
+  @media screen and (min-width:600px) {
+    /*　画面サイズ 600 px以上　*/
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  ._back{
+    margin: auto 0;
+    color: #EAEAEA;
+  }
+  // form{
+  //   flex-grow: 1;
+  //   ._input-area{
+  //     position: relative;
+  //     input{
+  //       ::placeholder{
+  //         color: #B7B7B7;
+  //       }
+  //       padding: 8px 10px 8px 37px;
+  //       border-radius: 18px;
+  //       background: #EAEAEA;
+  //       font-size: 16px; // 16未満の場合safariがzoomしてしまうため
+  //       color: #2E2621;
+  //       font-weight: normal;
+  //       &._inputFormError{
+  //         background: #FDECEF;
+  //         outline: #EB5545 1px solid;
+  //       }
+  //     }
+  //     i {
+  //       position: absolute;
+  //       left: 14px;
+  //       top: 29%;
+  //       font-size: 17px;
+  //       margin-right: 4px;
+  //       color: #B7B7B7;
+  //     }
+  //     ._clear-btn{
+  //       position: absolute;
+  //       right: 16px;
+  //       top: 16%;
+  //       width: 20px;
+  //       img{
+  //         width: 100%;
+  //       }
+  //     }
+  //     ._error{
+  //       font-size: 14px;
+  //       color: #E82212;
+  //     }
+  //   }
+  // }
+
+  .btn-close{
+    margin: auto 4px auto 18px;
+    color: #2E2621;
+    cursor: pointer;
+  }
+}
+
+.search{
+  background: #F2F2F2;
+  padding: 88px 0;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+
+  @media screen and (min-width:600px) {
+    /*　画面サイズ 600 px以上　*/
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &._no-padding{
+    padding: 0 0 120px;
+  }
+  .no-search-result-area{
+    text-align: center;
+    padding: 88px 0 400px;
+
+    ._ttl{
+      font-size: 16px;
+      color: #717171;
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
+    ._image-area{
+      margin: 0px 131px 24px;
+
+      @media screen and (min-width:600px) {
+        /*　画面サイズ 600 px以上　*/
+        margin: 0px 205px 24px;
+      }
+
+      img{
+        width: 100%;
+      }
+    }
+    ._message{
+      color: #717171;
+    }
+  }
+
+  .search-result-area{
+    padding: 0px 0px 24px;
+    .result-area{
+      padding: 12px;
+      background: #FCFCFC;
+      margin-bottom: 24px;
+      ._ttl{
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0px 0 12px;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .cart-area {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 0 16px;
+      width: 100%;
+      z-index: 99;
+
+      .btn_group{
+        .submit {
+
+          @media screen and (min-width:600px) {
+            /*　画面サイズ 600 px以上　*/
+            max-width: 568px;
+            margin: 0 auto 16px;;
+          }
+
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          color: #fff;
+          background: $shop_theme_color;
+          margin: 0px auto 16px;
+          img{
+            height: 24px;
+            margin: auto 8px 8px 0;
+          }
+          ._quantity{
+            font-size: 20px;
+            font-weight: bold;
+            margin: auto 2px 4px;
+          }
+          ._ten{
+            font-size: 12px;
+            margin: auto 0 4px;
+          }
+          ._price{
+            font-size: 26px;
+            font-weight: bold;
+            margin: auto 2px auto auto;
+          }
+          ._tax-in{
+            font-size: 12px;
+            margin: auto 0 7px;
+          }
+        }
+      }
+    }
+  }
+}
+

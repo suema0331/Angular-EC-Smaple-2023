@@ -1,0 +1,266 @@
+.product-card {
+  background: #FCFCFC;
+  &._transparent{
+    background: transparent;
+  }
+  .col {
+    padding: 0 4px;
+  }
+
+  .card {
+    background: #FCFCFC;
+
+    .card_img {
+      &.stockout::after{
+
+        @media screen and (min-width:600px) {
+          /*　画面サイズ 600 px以上　*/
+          line-height: 11;
+        }
+        content: 'SOLD OUT';
+        font-weight: bold;
+        font-size: 16px;
+        color: #FFFFFF;
+        position: absolute;
+        text-align: center;
+        line-height: 7;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(46,38,33,0.4);
+        display:block;
+        z-index: 10;
+        border-radius: 0.5rem 0.5rem 0 0;
+      }
+      position: relative;
+      ._tag{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        font-size: 12px;
+        color: #FCFCFC;
+        background: rgba(235,38,38,.95);
+        padding: 2px;
+      }
+      ._discount-tag{
+        position: absolute;
+        top: 23px;
+        left: 0px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #DC1125;
+        background: rgba(255, 245, 0, 0.93);
+        padding: 0px 4px;
+      }
+
+
+      .constraint-tooltip{
+        color: #FFFFFF;
+        background: #2E2621;
+        top: 8px;
+        position: absolute;
+        left: -11px;
+        padding: 10px 0px 10px 8px;
+        line-height: 1.4;
+        font-size: 14px;
+        width: 129px;
+        z-index: 9999;
+        border-radius: 8px;
+        box-shadow: 0px 8px 24px #B5B5B580;
+
+        &:after{
+          z-index: 10000;
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: -12px;
+          left: 37px;
+          width: 0px;
+          height: 0px;
+          margin: auto;
+          border-style: solid;
+          border-color: #2E2621 transparent transparent transparent;
+          border-width: 13px 13px 0 13px;
+        }
+
+        -moz-animation: fadeOutAnimation 0s ease-in 1s forwards;
+        /* Firefox */
+        -webkit-animation: fadeOutAnimation 0s ease-in 1s forwards;
+        /* Safari and Chrome */
+        -o-animation: fadeOutAnimation 0s ease-in 1s forwards;
+        /* Opera */
+        animation: fadeOutAnimation 0s ease-in 1s forwards;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+      }
+
+      .add_cart_btn {
+        &.overConstraintMax{
+          flex-grow: 1;
+          .fa-plus{
+            opacity: 35%;
+            color: #717171;
+          }
+        }
+        &.isClicked{
+          width: 85%;
+          bottom: 4px;
+          right: 8px;
+          border-radius: 17px;
+          display: flex;
+          font-size: 18px;
+          font-weight: bold;
+          justify-content: center; // OMO3-2241
+
+          @media screen and (min-width:600px) {
+            /*　画面サイズ 600 px以上　*/
+            right: 14px;
+          }
+
+          i {
+            margin: auto 9px;
+          }
+        }
+        position: absolute;
+        bottom: 4px;
+        right: 4px;
+        color: #fff;
+        width: 27px;
+        height: 27px;
+        background: #2E2621;
+        border-radius: 50%;
+        background: rgba(46, 38, 33, 0.8);
+        text-align: center;
+        line-height: 27px;
+        cursor: pointer;
+        z-index: 5;
+
+        ._expand-cart-add-btn-area{
+          width: 40px;
+          height: 40px;
+          position: absolute;
+          bottom: -4px;
+          right: -4px;
+          z-index: 40;
+
+          i {
+            position: absolute;
+            bottom: 9px;
+            right: 10px;
+          }
+        }
+        ._expand-cart-minus-btn-area, ._expand-cart-plus-btn-area{
+          position: absolute;
+          z-index: 50;
+          width: 40px;
+          height: 40px;
+        }
+        ._expand-cart-plus-btn-area{
+          bottom: -4px;
+          right: -8px;
+           i {
+             position: absolute;
+             bottom: 8px;
+             right: 7px;
+            }
+        }
+        ._expand-cart-minus-btn-area{
+          bottom: -4px;
+          left: -10px;
+           i {
+             position: absolute;
+             bottom: 8px;
+             left: 9px;
+           }
+        }
+      }
+    }
+
+    .card-body {
+      padding: 2px 4px 4px 4px;
+
+      &._small{
+        padding: 2px 0px 4px 0px;
+      }
+      &.discount{
+        border-radius: 0 0 0.5rem 0.5rem;
+      }
+      .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        white-space: nowrap;
+        width: 100%;
+        margin-bottom: 2px;
+        &._small{
+          font-size: 17px;
+        }
+        &._no-wrap{
+          white-space: normal;
+        }
+        ._price{
+          &.discount{
+            color:#E50721;
+          }
+        }
+        ._tax-price {
+          &._small{
+            font-size: 11px;
+          }
+          font-size: 12px;
+          font-weight: normal;
+        }
+        ._tax-tag {
+          &._small{
+            transform: scale(0.8);
+          }
+          color: #717171;
+          font-size: 10px; // chromeはmax10px
+          display: inline-block;
+        }
+      }
+
+      .card-text {
+        &._name{
+          height: 37px;
+          line-height: 1.3;
+          color: #717171;
+          &._expandLabel{
+            height: 37px;
+            margin-bottom: 2px;
+          }
+        }
+        font-size: 14px;
+      }
+      ._expandLabel{
+        //height: 44px;
+        ._quantity{
+          margin-bottom: 0;
+        }
+        ._gram{
+          font-weight: bold;
+        }
+      }
+
+    }
+  }
+}
+
+@keyframes fadeOutAnimation {
+  to {
+    width:0;
+    height:0;
+    overflow:hidden;
+    display: none;
+    z-index: 0
+  }
+}
+@-webkit-keyframes fadeOutAnimation {
+  to {
+    width:0;
+    height:0;
+    visibility:hidden;
+    display: none;
+    z-index: 0;
+  }
+}

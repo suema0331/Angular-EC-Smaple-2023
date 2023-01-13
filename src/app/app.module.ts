@@ -49,6 +49,10 @@ import { environment } from '../environments/environment';
 import { ImageUrlService } from './service/utilities/image.url.service';
 import { LocationService } from './service/utilities/location.service';
 import { PriceService } from './service/utilities/price-service.service';
+import { CommonHeaderComponent } from './components/common-header/common-header.component';
+
+import { NgAisModule } from 'angular-instantsearch';
+import { ProductCardSearchComponent } from './components/product-card-search/product-card-search.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +74,8 @@ import { PriceService } from './service/utilities/price-service.service';
     ProductDetailComponent,
     SignupComponent,
     ProductCardComponent,
+    CommonHeaderComponent,
+    ProductCardSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,6 +98,7 @@ import { PriceService } from './service/utilities/price-service.service';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    NgAisModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

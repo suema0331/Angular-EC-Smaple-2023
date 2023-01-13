@@ -385,5 +385,31 @@ mdb-select{
       margin: 0px 0 auto auto;
     }
   }
-
 }
+.ais-SearchBox{
+  .ais-SearchBox-form{
+    .ais-SearchBox-input{
+      border: initial !important;
+      padding: 10px 95px 10px 10px;
+      border-radius: 20px;
+      flex-basis: 1;
+      flex-grow: 1;
+    }
+    .ais-SearchBox-reset{
+      display: none;
+    }
+    .ais-SearchBox-submit{
+      position: absolute;
+      right: 24px;
+      top: 6px;
+      border: none;
+      background: none;
+      width: 40px;
+      svg{
+        width: 100%;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
