@@ -13,7 +13,7 @@ export class LogService{
   // ログ情報出力 (自動生成)
   logDebug(msg: string | object): void {
     if (!environment.production) {
-      // console.log(`[DEBUG] ${msg}`);
+      console.log(`[DEBUG] ${msg}`);
     }
   }
 

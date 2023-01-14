@@ -34,7 +34,6 @@ export class LocationService{
   // navigate to the url inside the application
   navigateTo(url: string): void {
     // Always check maintenance mode status before navigation
-    console.log(url)
     this.navigateToMaintenanceIfMaintenanceMode(url)
   }
 
@@ -51,7 +50,6 @@ export class LocationService{
 
   navigateToMaintenanceIfMaintenanceMode(url: string): void {
     this.systemStatus$.subscribe(res => {
-      console.log(res[0])
       if (res[0] && res[0].user_app_run_status === 0) {
         this.logService.logDebug('navigation to the /maintenance !')
         this.router.navigateByUrl('/maintenance');

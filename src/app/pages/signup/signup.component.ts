@@ -70,7 +70,6 @@ export class SignupComponent {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private validationService: ValidationService,
-    // private notificationService: NotificationService
   ){}
 
   ngOnInit(): void {
@@ -137,7 +136,6 @@ export class SignupComponent {
     this.authService.signUp(trimmedEmail, trimmedPassword)
       .then((result) => {
         this.logService.logDebug('Signup succeeded');
-        console.log(result)
         this.locationService.navigateTo1_1();
       })
       .catch((error) => {
@@ -150,10 +148,6 @@ export class SignupComponent {
   }
 
   onDisabled() {
-    console.log('mail:' + this.validateMailError() + this.form_email)
-    console.log('pass:' +this.validatePasswordError()+ this.form_password)
-    console.log('pass:' +this.validatePasswordError()+ this.form_confirm_password)
-    console.log(this.validateMailError() || this.validatePasswordError() || this.validateConfirmPasswordError())
     this.isDisabled = this.validateMailError() || this.validatePasswordError() || this.validateConfirmPasswordError()
   }
 

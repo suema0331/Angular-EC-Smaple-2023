@@ -3,7 +3,6 @@ describe('The Login Page', () => {
   it('should fill the login form and redirect to shop top page', () => {
 
     cy.fixture('user.json').then(loginInfo => {
-      console.log(loginInfo);
       cy.login(loginInfo.username, loginInfo.password);
 
       // We should be redirected to the store top
@@ -12,7 +11,6 @@ describe('The Login Page', () => {
       // Our auth token should be present
       // cy.url().should('include', '/shop-top', () => {
       //   expect(localStorage.getItem('current_token')).to.be.a('string');
-      //   console.log(localStorage.getItem('current_token'));
       // });
 
       // UI should reflect this user being logged in

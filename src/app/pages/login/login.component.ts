@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private validationService: ValidationService,
-    // private notificationService: NotificationService
   ){}
 
   ngOnInit(): void {
@@ -100,7 +99,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(trimmedEmail, trimmedPassword)
       .then((result) => {
         this.logService.logDebug('login succeeded');
-        console.log(result)
 
         this.locationService.navigateTo(this.returnUrl);
       })
@@ -114,9 +112,6 @@ export class LoginComponent implements OnInit {
   }
 
   onDisabled() {
-    console.log('mail:' + this.validateMailError() + this.form_email)
-    console.log('pass:' +this.validatePasswordError()+ this.form_password)
-    console.log(this.validateMailError() || this.validatePasswordError())
     this.isDisabled = this.validateMailError() || this.validatePasswordError()
   }
 

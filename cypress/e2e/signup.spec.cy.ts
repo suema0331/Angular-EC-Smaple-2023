@@ -3,8 +3,6 @@ describe('The Signup Page', () => {
   it('should fill the signup form and redirect to shop top page', () => {
 
     cy.fixture('user.json').then(loginInfo => {
-      console.log(loginInfo);
-
       // Success
       cy.signup(loginInfo.username, loginInfo.password, loginInfo.password);
       // we should be redirected to the store top

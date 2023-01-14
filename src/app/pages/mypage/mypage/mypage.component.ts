@@ -23,7 +23,10 @@ export class MypageComponent {
     private authService: AuthService,
   ) {
     // user = this.authService.user.subscribe()
-    this.user$.subscribe(res => console.log(res))
+    this.user$.subscribe(res => {
+      console.log("🌟subscribed User data")
+      console.log(res)
+    })
   }
 
   logoutHandler(): void{

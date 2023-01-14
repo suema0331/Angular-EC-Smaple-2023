@@ -16,7 +16,6 @@ Cypress.Commands.add('loginByCsrf', (username, password) => {
 
 Cypress.Commands.add('login', (username, password) => {
   cy.visit('http://localhost:4200/login?return=%2Fshop-top');
-  console.log(cy.url());
   cy.get('input[id=form_email]').clear().type(username)
     .should('have.value', username);
   cy.get('input[id=form_password]').clear().type(password)
@@ -27,7 +26,6 @@ Cypress.Commands.add('login', (username, password) => {
 
 Cypress.Commands.add('signup', (username, password, confirmPassword) => {
   cy.visit('http://localhost:4200/signup');
-  console.log(cy.url());
   cy.get('input[id=form_email]').clear().type(username)
     .should('have.value', username);
   cy.get('input[id=form_password]').clear().type(password)
@@ -42,7 +40,6 @@ Cypress.Commands.add('signup', (username, password, confirmPassword) => {
 
 Cypress.Commands.add('validateSignupForm', (username, password, confirmPassword) => {
   cy.visit('http://localhost:4200/signup');
-  console.log(cy.url());
   cy.get('input[id=form_email]').clear().type(username)
     .should('have.value', username);
   cy.get('input[id=form_password]').clear().type(password)
