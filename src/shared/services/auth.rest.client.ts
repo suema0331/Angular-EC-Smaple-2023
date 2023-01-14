@@ -4,7 +4,6 @@ import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/c
 import {Injectable} from '@angular/core';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-// import { NotificationService } from './notification.service';
 
 type RestOption = {
   headers?: HttpHeaders | { [header: string]: string | string[]; };

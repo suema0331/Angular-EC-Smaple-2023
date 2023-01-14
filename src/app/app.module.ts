@@ -52,6 +52,7 @@ import { PriceService } from './service/utilities/price-service.service';
 import { CommonHeaderComponent } from './components/common-header/common-header.component';
 
 import { NgAisModule } from 'angular-instantsearch';
+import { ValidationService } from './service/utilities/validation.service';
 
 @NgModule({
   declarations: [
@@ -104,12 +105,10 @@ import { NgAisModule } from 'angular-instantsearch';
   providers: [
     ApplicationService,
     LocationService,
-    // ValidationService,
+    ValidationService,
     ImageUrlService,
     PriceService,
     // CartService,
-    // PaymentService,
-    // NotificationService,
     // SEOService,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
   ],

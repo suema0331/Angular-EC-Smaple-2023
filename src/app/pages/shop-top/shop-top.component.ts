@@ -77,7 +77,6 @@ export class ShopTopComponent {
     // );
 
     this.authService.getAuthState().subscribe((user) => {
-      console.log(user)
       if (user) this.isLoggedIn = true;
       else this.isLoggedIn = false;
     });

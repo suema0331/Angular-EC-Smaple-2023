@@ -84,7 +84,7 @@ export class ProductDetailComponent implements OnInit {
         })
       )
     ).subscribe(data => {
-          console.log("subscribed data")
+          console.log("🌟subscribed Product data")
           console.log(data)
 
           if (!data[0] || !data[0].store_product_id){
@@ -148,7 +148,6 @@ export class ProductDetailComponent implements OnInit {
 
     if (this.storeProduct.product_view_image_list?.length > 0){
       this.topViewImage = this.storeProduct.product_view_image_list[0].master;
-      console.log(this.topViewImage)
     } else {
       this.topViewImage = '/assets/product/no-image-small.jpg';
     }
