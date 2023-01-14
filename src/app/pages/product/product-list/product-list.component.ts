@@ -43,7 +43,6 @@ export class ProductListComponent {
     );
   }
 
-
   backToTopHandler(): void{
     this.locationService.navigateTo1_1();
   }
