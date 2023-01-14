@@ -30,7 +30,7 @@ export class ProductListComponent {
     private cartService: CartService,
     private afs: AngularFirestore,
   ) {
-    this.productCollection = afs.collection<StoreProductExt>('products');
+    this.productCollection = this.afs.collection<StoreProductExt>('products');
     this.productList$ = this.productCollection.snapshotChanges().pipe(
       map((actions) =>
         actions.map((a) => {
