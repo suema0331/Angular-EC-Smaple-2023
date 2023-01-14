@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://angular-ec-2023/shop-top</loc>
+  </url>
+  <url>
+    <loc>https://angular-ec-2023/signup</loc>
+  </url>
+  <url>
+    <loc>https://angular-ec-2023/login</loc>
+  </url>
+  <url>
+    <loc>https://angular-ec-2023/search</loc>
+  </url>
+  <url>
+    <loc>https://angular-ec-2023/products</loc>
+  </url>
+  <url>
+    <loc>https://angular-ec-2023/mypage</loc>
+  </url>
+  <url>
+    <loc>https://angular-ec-2023/favorite</loc>
+  </url>
+</urlset>

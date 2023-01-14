@@ -86,7 +86,7 @@ input[type=checkbox] {
     border-left: 2px solid;
     border-color: #fff;
 
-    @media screen and (max-width: 360px) { // OMO3-2081
+    @media screen and (max-width: 360px) {
       /* 360pxまでの幅の場合 */
       top: 40%;
     }
@@ -208,7 +208,6 @@ input[type=checkbox] {
   background-color: #FCFCFC;
 }
 .accordion-button:not(.collapsed){
-  //box-shadow: none; // OMO3-2225: カテゴリから探すのアコーディオンをライブラリ実装を廃止したらこのbox-shadow: none を消したい
   background-color: #FCFCFC;
 }
 .accordion-body{
@@ -299,7 +298,6 @@ mdb-select{
   }
   .accordion-button{
     padding: 16px;
-    //box-shadow: none; // OMO3-2225: カテゴリから探すのアコーディオンをライブラリ実装を廃止したらこのbox-shadow: none を消したい
     transition: none !important;
     &:not(.collapsed){
       color: $base_font_color;

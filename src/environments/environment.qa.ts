@@ -2,6 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// TODO Connect to firebase for QA
 export const environment = {
   firebase: {
     projectId: 'my-ec-2023',
@@ -9,16 +10,15 @@ export const environment = {
     storageBucket: 'my-ec-2023.appspot.com',
     apiKey: 'AIzaSyCVmuRmHUGT2j0w6XxtsP5aAyvIi2ilSa0',
     authDomain: 'my-ec-2023.firebaseapp.com',
-    databaseURL: "https://my-ec-2023-default-rtdb.asia-southeast1.firebasedatabase.app",
     messagingSenderId: '995863562978',
     measurementId: 'G-NT4TSNGS8E',
   },
-  production: false,
-  remote: false,
+  production: true,
+  remote: true,
   API_URL: 'http://localhost:8080',
   API_AUTH_URL: 'http://localhost:8080',
   // IMAGE_DL_FROM_S3 : false,
-  // S3_URL : 'http://localhost:9090/local-image-contents',
+  // S3_URL : 'https://image.qa-angular-ec-2023.com',
 };
 
 

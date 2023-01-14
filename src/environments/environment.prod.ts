@@ -17,6 +17,8 @@ export const environment = {
   remote: true,
   API_URL: 'http://localhost:8080',
   API_AUTH_URL: 'http://localhost:8080',
+  // IMAGE_DL_FROM_S3 : false,
+  // S3_URL : 'https://image.angular-ec-2023.com',
 };
 
 
