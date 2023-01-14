@@ -1,5 +1,8 @@
 <!-- FavoritePageComponent の HTMLファイル -->
-<app-common-header headerTitle="Favorite Products"></app-common-header>
+<app-common-header
+  headerTitle="Favorite Products"
+  backUrl="/shop-top"
+  ></app-common-header>
 
 <div class="favorite">
   <div *ngIf="(productList$ | async)?.length===0; else showFavoriteList" class="not-found-area">

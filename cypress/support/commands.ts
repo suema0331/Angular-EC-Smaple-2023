@@ -15,7 +15,7 @@ Cypress.Commands.add('loginByCsrf', (username, password) => {
 });
 
 Cypress.Commands.add('login', (username, password) => {
-  cy.visit('http://localhost:4200/login?return=%2Fshop-top');
+  cy.visit('http://localhost:4200/login');
   cy.get('input[id=form_email]').clear().type(username)
     .should('have.value', username);
   cy.get('input[id=form_password]').clear().type(password)

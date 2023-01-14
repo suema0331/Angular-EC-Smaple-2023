@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { FIREBASE_OPTIONS } from "@angular/fire/compat";
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgAisModule } from 'angular-instantsearch';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
@@ -17,9 +21,12 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { SharedModule } from 'src/shared/shared.module';
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { CommonHeaderComponent } from './components/common-header/common-header.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { FavoriteComponent } from './pages/mypage/favorite/favorite.component';
@@ -36,24 +43,12 @@ import { ShopGuideComponent } from './pages/shop-guide/shop-guide.component';
 import { SearchComponent } from './pages/shop-top/search/search.component';
 import { ShopTopComponent } from './pages/shop-top/shop-top.component';
 import { SignupComponent } from './pages/signup/signup.component';
-
-import { SharedModule } from 'src/shared/shared.module';
-import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ApplicationService } from './service/application.service';
-
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getAuth, provideAuth } from '@angular/fire/auth';
-import { FIREBASE_OPTIONS } from "@angular/fire/compat";
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
 import { ImageUrlService } from './service/utilities/image.url.service';
 import { LocationService } from './service/utilities/location.service';
 import { PriceService } from './service/utilities/price-service.service';
-import { CommonHeaderComponent } from './components/common-header/common-header.component';
-
-import { NgAisModule } from 'angular-instantsearch';
-import { ValidationService } from './service/utilities/validation.service';
 import { SEOService } from './service/utilities/seo.service';
+import { ValidationService } from './service/utilities/validation.service';
 
 @NgModule({
   declarations: [

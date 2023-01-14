@@ -1,6 +1,5 @@
 import { SystemStatusResponse } from '../dto/common/system_status_response';
 import { RestClient } from '../../shared/services/rest.client';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -13,7 +12,7 @@ export class SystemStatusRestUserServiceExt{
     private httpClient: RestClient
   ){}
 
-  // システムステータスの取得
+  // Get the status of the entire system, including multiple applications, such as the user application, admin application.
   getSystemStatus(): Observable<SystemStatusResponse> {
     const endpoint = `/api/user/system_configurations_ext/system_status_ext`;
     return this.httpClient.get<SystemStatusResponse>(endpoint);

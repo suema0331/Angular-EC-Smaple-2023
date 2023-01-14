@@ -2,10 +2,10 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs';
-import { AuthService } from 'src/app/service/auth.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { ValidationService } from 'src/app/service/utilities/validation.service';
 import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/shared/services/auth.service';
 import { LogService } from 'src/shared/services/log.service';
 import { StorageService } from 'src/shared/services/storage.service';
 

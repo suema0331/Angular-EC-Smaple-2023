@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
-import { AuthService } from 'src/app/service/auth.service';
 import { CartPriceInfo, CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
+import { AuthService } from 'src/shared/services/auth.service';
 import { LogService } from 'src/shared/services/log.service';
 
 @Component({
@@ -25,11 +25,14 @@ export class FavoriteComponent implements OnInit{
   constructor(
     private locationService: LocationService,
     private cartService: CartService,
-    private authService: AuthService,
     private afs: AngularFirestore,
   ) {
     const favoriteProductCollection = this.afs.collection<StoreProductExt>('products', ref =>
-      ref.where('favorite_flag', '==', 1));
+      ref
+        .where('favorite_flag', '==', 1)
+        .orderBy('product_status', 'desc'));
+    // If another field is used in the operation and orderby used in the where condition, a composite index is required.
+    // https://cloud.google.com/firestore/docs/query-data/indexing
 
     this.productList$ = favoriteProductCollection.snapshotChanges().pipe(
       map((actions) =>

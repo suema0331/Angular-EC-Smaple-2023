@@ -2,7 +2,7 @@ import { Injectable, Optional } from '@angular/core';
 import { Auth, User, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signOut, updateProfile, user } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { authState } from 'rxfire/auth';
-import { LocationService } from './utilities/location.service';
+import { LocationService } from 'src/app/service/utilities/location.service';
 import { UserCreateRequest } from 'src/backend/dto/common/user_create_request';
 
 @Injectable({
@@ -17,7 +17,20 @@ export class AuthService {
     @Optional() private auth: Auth,
     private afs: AngularFirestore,
     private locationService: LocationService,
-  ) { }
+  ) {
+
+    // Setting logged in user in localstorage else null
+    authState(this.auth).subscribe((user) => {
+      console.log(user)
+      if (user) {
+        localStorage.setItem('user', JSON.stringify(user));
+        JSON.parse(localStorage.getItem('user')!);
+      } else {
+        localStorage.setItem('user', 'null');
+        JSON.parse(localStorage.getItem('user')!);
+      }
+    });
+  }
 
   login(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password)
@@ -34,6 +47,7 @@ export class AuthService {
   logout() {
     return signOut(this.auth).then(() => {
       // localStorage.removeItem('user');
+      localStorage.removeItem('user');
       this.locationService.navigateTo1_1()
     });
   }
@@ -86,25 +100,19 @@ export class AuthService {
     });
   }
 
-
   get user() {
     return user(this.auth);
+  }
+
+  // Returns true when user is looged in and email is verified
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    console.log('isLoggedin')
+    console.log( user ? true : false)
+    return user ? true : false;
   }
 
   getAuthState() {
     return authState(this.auth);
   }
-  // login(email: string, password: string) {
-  //   const res = await signInAnonymously(this.auth);
-  //   this.db.doc(`users/${res.user.uid}`).set({
-  //     uid: res.user.uid,
-  //   });
-  //   // return signInWithEmailAndPassword(this.auth, email, password);
-  // }
-
-  // logout(uid: string) {
-  //   this.db.doc(`users/${uid}`).delete();
-  //   return signOut(this.auth);
-  // }
-
 }

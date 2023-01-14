@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/service/auth.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/shared/services/auth.service';
 import { LogService } from 'src/shared/services/log.service';
 import { StorageService } from 'src/shared/services/storage.service';
 
@@ -18,8 +18,6 @@ export class MypageComponent {
 
   constructor(
     public locationService: LocationService,
-    private logService: LogService,
-    private storageService: StorageService,
     private authService: AuthService,
   ) {
     // user = this.authService.user.subscribe()
@@ -41,9 +39,8 @@ export class MypageComponent {
   }
 
   loginHandler(): void{
-    this.locationService.navigateTo('/login?return=/mypage');
+    this.locationService.navigateTo1_4();
   }
-
 
   navigateToFavoriteHandler(): void{
     this.locationService.navigateTo3_2();

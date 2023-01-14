@@ -5,6 +5,7 @@ import { LogService } from './services/log.service';
 import { RestClient } from './services/rest.client';
 import { StorageService } from './services/storage.service';
 import { UtilService } from './services/util.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [],
@@ -13,6 +14,7 @@ import { UtilService } from './services/util.service';
   ],
   providers: [
     AuthRestClient,
+    AuthService,
     LogService,
     RestClient,
     StorageService,
