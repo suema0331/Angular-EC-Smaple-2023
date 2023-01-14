@@ -1,1 +1,45 @@
-<p>favorite works!</p>
+<!-- FavoritePageComponent の HTMLファイル -->
+<app-common-header headerTitle="Favorite Products"></app-common-header>
+
+<div class="favorite">
+  <div *ngIf="(productList$ | async)?.length===0; else showFavoriteList" class="not-found-area">
+    <div class="_ttl">You have no favorite products.</div>
+    <div class="_img-area">
+      <img src="/assets/mypage/favorite_img_heart@2x.png" alt="not-found">
+    </div>
+    <div>Register a product as a favorite and you will be able to view it here.</div>
+  </div>
+  <ng-template  class="sub-category-area" #showFavoriteList>
+    <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
+      <ng-container *ngFor="let product of productList$ | async; index as i" >
+        <app-product-card
+          [storeProduct]="product"
+          [isMoreClicked]="false"
+          [isLoggedIn]="isLoggedIn$ | async"
+          [productViewImageType]="1"
+          [isBackgroundTransparent]="true"
+          (clickPlusHandler)="clickPlusHandler($event)"
+          (clickMinusHandler)="clickMinusHandler($event)"
+        ></app-product-card>
+      </ng-container>
+    </div>
+
+  </ng-template>
+  <ng-container *ngIf="isLoggedIn$ | async">
+    <div class="cart-area" *ngIf="cartPriceInfo.numOfStoreProducts">
+
+      <div class="btn_group">
+        <button
+          class="btn btn-rounded submit"
+          (click)="cartBtnHandler()"
+        >
+          <img src="./assets/section/common_icon_cart@2x.png" alt="common_icon_cart">
+          <span class="_quantity">{{cartPriceInfo.numOfStoreProducts}}</span>
+          <span class="_ten">quantity</span>
+          <span class="_price">{{cartPriceInfo.totalProductPriceWithTax | currency : 'JPY': true}}</span>
+          <span class="_tax-in">/with tax</span>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div>
