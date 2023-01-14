@@ -1,0 +1,87 @@
+@import "variables";
+
+.pastitem{
+  background: #F2F2F2;
+  padding: 16px 12px 550px;
+  position: absolute;
+  top: 59px;
+  width: 100%;
+  height: 100%;
+
+  @media screen and (min-width:600px) {
+    /*　画面サイズ 600 px以上　*/
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .not-found-area{
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: #717171;
+    ._ttl{
+      margin: 32px 0 24px;
+      font-weight: bold;
+    }
+    ._img-area{
+      padding: 0 120px;
+      margin-bottom: 24px;
+
+      @media screen and (min-width:600px) {
+        /*　画面サイズ 600 px以上　*/
+        padding: 0px 190px 32px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .cart-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    .btn_group{
+      margin: auto 16px;
+
+      @media screen and (min-width:600px) {
+        /*　画面サイズ 600 px以上　*/
+        max-width: 568px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      .submit {
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        color: #fff;
+        background: $shop_theme_color;
+        margin: 0px auto 16px;
+        img{
+          height: 24px;
+          margin: auto 8px 8px 0;
+        }
+        ._quantity{
+          font-size: 20px;
+          font-weight: bold;
+          margin: auto 2px 4px;
+        }
+        ._ten{
+          font-size: 12px;
+          margin: auto 0 4px;
+        }
+        ._price{
+          font-size: 26px;
+          font-weight: bold;
+          margin: auto 2px auto auto;
+        }
+        ._tax-in{
+          font-size: 12px;
+          margin: auto 0 7px;
+        }
+      }
+    }
+  }
+}

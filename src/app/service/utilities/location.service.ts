@@ -31,13 +31,13 @@ export class LocationService{
     );
   }
 
-  // navigate to the url inside the application
+  // Navigate to the url inside the application
   navigateTo(url: string): void {
     // Always check maintenance mode status before navigation
     this.navigateToMaintenanceIfMaintenanceMode(url)
   }
 
-    // クエリパラメータを取得
+  // Get query parameters
   getQueryParam(name: string): string | null {
     const url = location.href;
     let value = null;
@@ -48,6 +48,7 @@ export class LocationService{
     return value;
   }
 
+  // Checks if the system is in system maintenance mode during all transitions
   navigateToMaintenanceIfMaintenanceMode(url: string): void {
     this.systemStatus$.subscribe(res => {
       if (res[0] && res[0].user_app_run_status === 0) {
@@ -60,6 +61,7 @@ export class LocationService{
     })
   }
 
+  // Defines which page the back button returns to and to which page
   navigateBack(url: string): void{
     if (url.startsWith('/mypage')){
       // TOPに遷移
@@ -77,27 +79,42 @@ export class LocationService{
     //   return;
     // }
   }
-  // If we have a backend server, I will send a request to the backend
-  // navigateToMaintenanceIfMaintenanceMode(url: string): void{
-  //   this.systemStatusRestUserServiceExt.getSystemStatus()
-  //     .subscribe((res) => {
-  //       // maintenance mode
-  //       if (res.user_app_run_status === 0) {
-  //         this.logService.logDebug('navigation to the /maintenance !')
-  //         this.router.navigateByUrl('/maintenance');
+
+  /**
+   * If we have a backend server, I will send a request to the backend like below
+   */
+  // navigateToMaintenanceIfMaintenanceMode(url: string): void {
+  //   const storeStatus = this.systemStatusRestUserServiceExt.getSystemStatus();
+  //   storeStatus.subscribe((value) => {
+  //     if (value.user_app_run_status === 0) {
+  //       this.router.navigateByUrl('/maintenance');
+  //     } else {
+  //       // Members-only pages that require a login or sign-up dialog
+  //       if (this.isMembersOnlyPage(url) && this.authService.isLoggedOut()){
+  //         this.modalService.open(SignupDialogPageComponent, {
+  //           data: { returnURL: url},
+  //           modalClass: 'modal-dialog-centered'
+  //         });
   //       } else {
-  //         // TODO Imprement GUARD
-  //         this.logService.logDebug(`navigation to the ${url} !`);
   //         this.router.navigateByUrl(url);
   //       }
-  //     })
+  //     }
+  //   });
+  // }
+  // isMembersOnlyPage(url: string): boolean {
+  //   return url.startsWith('/favorite') ||
+  //     url.startsWith('/pastitem') ||
+  //     url.startsWith('/mypage/order-history') ||
+  //     url.startsWith('/cart');
   // }
 
 
 
-  // Assuming screen IDs are managed centrally(in requirement definition documents, etc.),
-  // navigations are also managed in one place based on screen IDs, so that the same method is not written many pages.
-
+  /**
+   * Assuming screen IDs are managed centrally(in requirement definition documents, etc.),
+   *  Navigations and page paths are also managed in one place based on screen IDs in this LocationService, so that
+   * to be resistant to page path changes, eliminating the need to re-implement all pages when the path is changed
+   */
   // navigate to ShopTopComponent
   navigateTo1_1(): void {
     this.navigateTo(`/shop-top`);
@@ -113,6 +130,15 @@ export class LocationService{
     this.navigateTo(`/maintenence`);
   }
 
+  // navigate to MaintenenceComponent
+  navigateTo1_4(): void {
+    this.navigateTo(`/login`);
+  }
+
+  // navigate to MaintenenceComponent
+  navigateTo1_5(): void {
+    this.navigateTo(`/signup`);
+  }
   // navigate to ProductListComponent
   navigateTo2_1(): void {
     this.navigateTo(`/products`);

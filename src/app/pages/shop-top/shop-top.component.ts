@@ -9,10 +9,10 @@ import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { environment } from 'src/environments/environment';
 import { LogService } from 'src/shared/services/log.service';
 import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
-import { AuthService } from 'src/app/service/auth.service';
 import { UserTopPageInfo } from 'src/backend/dto/common/user_top_page_info';
 import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
 import { AvailableFlag } from 'src/backend/enums/available_flag';
+import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
   selector: 'app-shop-top',
@@ -78,10 +78,12 @@ export class ShopTopComponent {
     //   )
     // );
 
-    this.authService.getAuthState().subscribe((user) => {
-      if (user) this.isLoggedIn = true;
-      else this.isLoggedIn = false;
-    });
+    // this.authService.getAuthState().subscribe((user) => {
+    //   if (user) this.isLoggedIn = true;
+    //   else this.isLoggedIn = false;
+    // });
+
+    this.isLoggedIn = this.authService.isLoggedIn
   }
 
   ngOnDestroy(): void {
@@ -146,7 +148,8 @@ export class ShopTopComponent {
 
 
   loginHandler(): void{
-    this.locationService.navigateTo('/login?return=/shop-top');
+    this.locationService.navigateTo('/login');
+    // this.locationService.navigateTo('/login?return=/shop-top');
   }
 
   navigateToShopHandler(): void{

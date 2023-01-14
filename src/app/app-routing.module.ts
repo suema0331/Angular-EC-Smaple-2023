@@ -15,12 +15,13 @@ import { ProductDetailComponent } from './pages/product/product-detail/product-d
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
+import { AuthGuard } from 'src/shared/services/auth.guard';
+import { VIPPageGuard } from 'src/shared/services/vip-page.guard';
 
 const BASE_TITLE = 'Angular EC App';
 
 const routes: Routes = [
   //  When path matches,create new instance of component
-  // Category id parameter The component can read this later and show products for this category
   {
     path: 'shop-top',
     component: ShopTopComponent,
@@ -91,6 +92,7 @@ const routes: Routes = [
   {
     path: 'favorite',
     component: FavoriteComponent,
+    canActivate: [AuthGuard],
     data: {
       title: BASE_TITLE + ' - Favorite Page',
       description: 'This is a favorite page.',
@@ -100,11 +102,12 @@ const routes: Routes = [
   {
     path: 'pastitem',
     component: PastitemComponent,
-    // data: {
-    //   title: BASE_TITLE + ' - Past Item Page',
-    //   description: 'This is a past item page',
-    //   ogUrl: 'http://localhost:4200/pastitem',
-    // }
+    canActivate: [VIPPageGuard],
+    data: {
+      title: BASE_TITLE + ' - Past Item Page',
+      description: 'This is a past item page',
+      ogUrl: 'http://localhost:4200/pastitem',
+    }
   },
   {
     path: 'order-history',

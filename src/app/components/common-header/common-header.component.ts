@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
+import { LocationService } from 'src/app/service/utilities/location.service';
 
 @Component({
   selector: 'app-common-header',
@@ -9,12 +10,16 @@ import { Location } from '@angular/common';
 export class CommonHeaderComponent {
   @Input() headerTitle = '';
   @Input() isBack = true;
+  @Input() backUrl = '';
   @Input() isSkip = false;
   @Input() skipRoutePath = '/';
 
-  constructor(private location: Location) { }
+  constructor(
+    private location: Location,
+    public locationService: LocationService,
+  ) { }
 
   handleBack(): void {
-    this.location.back();
+    this.backUrl ?  this.locationService.navigateTo(this.backUrl) : this.location.back();
   }
 }

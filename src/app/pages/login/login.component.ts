@@ -5,8 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { LogService } from 'src/shared/services/log.service';
 import { StorageService } from 'src/shared/services/storage.service';
-import { AuthService } from 'src/app/service/auth.service';
 import { ValidationService } from 'src/app/service/utilities/validation.service';
+import { AuthService } from 'src/shared/services/auth.service';
 @Component({
   selector: 'login-form',
   templateUrl: './login.component.html',
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   passwordErrorMessage = '';
   isPasswordError = false;
 
-  returnUrl = '/';
+  returnUrl = 'shop-top';
 
   constructor(
     private fb: FormBuilder,
