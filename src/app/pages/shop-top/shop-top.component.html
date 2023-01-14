@@ -28,30 +28,18 @@
   </div>
 </div>
 
-<!-- <div *ngIf="storeTopMessage.notice_available_flag" class="store-message-area">
-  <div class="_notice1 ga-caution-store-close">{{storeTopMessage.notice1}}</div>
-  <div class="_notice2">{{storeTopMessage.notice2}}</div>
+<div *ngIf="storeMessage.notice_available_flag"
+  class="store-message-area">
+  <div class="_notice1 ga-caution-store-close">
+    {{storeMessage.notice1}}
+  </div>
+  <div class="_notice2">{{storeMessage.notice2}}</div>
 </div>
 
-<div class="delivery-message-area ga-caution-delibery-capaciy"
-     *ngIf="storeTopMessage.delivery_available_flag === 0">
-  店舗休業日または配送枠が予約でいっぱいの為
-  <br>ただいまご注文いただけません。
-  <br>お時間を空けて再度ご注文ください。
-</div> -->
-
-<!-- <ng-container *ngIf="storeTopMessage.delivery_available_flag" >
-  <app-message-accordion
-    *ngIf="isLoggedIn$ | async"
-    [storeTopMessage]="storeTopMessage"
-  ></app-message-accordion>
-
-  <app-message-accordion
-    *ngIf="isLoggedOut$ | async"
-    [storeTopMessage]="storeTopMessage"
-    [collapsed]="false"
-  ></app-message-accordion>
-</ng-container> -->
+<div *ngIf="storeMessage.store_available_flag === 0"
+  class="delivery-message-area ga-caution-delibery-capaciy">
+  {{storeMessage.operation_message}}
+</div>
 
 <div class="shop-top">
   <div class="_store"

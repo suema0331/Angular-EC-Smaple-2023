@@ -10,6 +10,9 @@ import { environment } from 'src/environments/environment';
 import { LogService } from 'src/shared/services/log.service';
 import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
 import { AuthService } from 'src/app/service/auth.service';
+import { UserTopPageInfo } from 'src/backend/dto/common/user_top_page_info';
+import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
+import { AvailableFlag } from 'src/backend/enums/available_flag';
 
 @Component({
   selector: 'app-shop-top',
@@ -27,11 +30,8 @@ export class ShopTopComponent {
   isScrollDown = false;
   currentPageYOffset = 0;
 
-  // topPageInfo: UserTopPageInfo = {
-  //   categories: []
-  // };
-  private productCollection: AngularFirestoreCollection<StoreProductExt>;
   recommendedProductList$: Observable<StoreProductExt[]>;
+  storeMessage = {} as StoreTopMessage;
   // cartPriceInfo: CartPriceInfo = {totalProductPriceWithTax: 0, totalProductPriceWithoutTax: 0, numOfStoreProducts: 0 };
 
   user$ = this.authService.user$
@@ -46,9 +46,16 @@ export class ShopTopComponent {
     private authService: AuthService,
   ) {
     // Get up to 6 products in order of registration
-    this.productCollection = this.afs.collection<StoreProductExt>('products', (ref) => ref.limit(6));
+    const productCollection = this.afs.collection<StoreProductExt>('products', (ref) => ref.limit(6));
+    this.recommendedProductList$ = productCollection.valueChanges();
 
-    this.recommendedProductList$ = this.productCollection.valueChanges();
+    // Get messages from the store that can be written by the store staff.
+    const storeMessageCollection = this.afs.collection<StoreTopMessage>('store-messages', (ref) => ref.limit(1));
+    storeMessageCollection.valueChanges().subscribe(message => {
+      if (message[0]) {
+        this.storeMessage = message[0]
+      }
+    });
 
     // this.recommendedProductList$ = this.productCollection.valueChanges().pipe(
     //   map((actions) =>
