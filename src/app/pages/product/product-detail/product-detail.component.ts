@@ -14,8 +14,9 @@ import { ProductStatus } from 'src/backend/enums/product_status';
 import { LogService } from 'src/shared/services/log.service';
 import { StorageService } from 'src/shared/services/storage.service';
 import {Location} from '@angular/common';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, map, take } from 'rxjs';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -39,7 +40,7 @@ export class ProductDetailComponent implements OnInit {
   // カートへ追加クリックView用
   // isCartClicked = false;
 
-    isOverConstraintMax = false;
+  isOverConstraintMax = false;
 
   @ViewChild('constraintTooltip') constraintTooltip!: ElementRef | undefined;
   displayConstraintTooltip = false;
@@ -48,34 +49,9 @@ export class ProductDetailComponent implements OnInit {
   isScrollDown = false;
   currentPageYOffset = 0;
   displayHeaderName = '';
-  // 商品情報
-  // storeProduct: StoreProductExt = {
-  //   store_product_id: '',
-  //   product_name: '',
-  //   standard_price: -1,
-  //   store_price: -1,
-  //   constraint_max: -1,
-  //   producing_area: '',
-  //   brand: '',
-  //   internal_capacity: '',
-  //   unit_range: '',
-  //   store_comment: '',
-  //   tags: [],
-  //   product_images: [{
-  //     sort_order: -1,
-  //     master: '',
-  //     medium: '',
-  //     small: '',
-  //   }],
-  //   purchased_flag: 0,
-  //   favorite_flag:  0,
-  //   product_status: 0,
-  //   cart_quantity: 0,
-  //   product_view_image_list: new Array<ProductImageExt>(),
-  // };
 
-  // storeProduct$: Observable<StoreProductExt[]>;
   storeProduct = {} as StoreProductExt;
+  productDocumentId = '';
 
   constructor(
     private appService: ApplicationService,
@@ -95,63 +71,79 @@ export class ProductDetailComponent implements OnInit {
   ) {
     // Get ID from the URL path query
     this.activatedRoute.params.subscribe(params => this.productId = params['productId'])
-    console.log(this.productId)
 
-    // this.storeProduct$ =
-    //   this.afs.collection<StoreProductExt>('products', (ref) =>
-    //     ref.where('store_product_id', '==', this.productId))
-    //     .valueChanges();
-
-
+    // Get A document from tha productId
     this.afs.collection<StoreProductExt>('products', (ref) =>
-        ref.where('store_product_id', '==', this.productId))
-      .valueChanges()
-      .subscribe(res => {
-        console.log(res)
-        console.log(res[0])
-        console.log(res[0].tags)
+      ref.where('store_product_id', '==', this.productId))
+      .snapshotChanges().pipe(
+      map((actions) =>
+        actions.map((a) => {
+          const data = a.payload.doc.data() as StoreProductExt;
+          const id = a.payload.doc.id;
+          return { docmentId: id, ...data };
+        })
+      )
+    ).subscribe(data => {
+          console.log("subscribed data")
+          console.log(data)
 
-        if (!res[0] || !res[0].store_product_id){
-          alert('Product does not exist');
-          this.locationService.navigateTo2_1();
-        }
-        if (res[0].product_status === ProductStatus.disContinued) {
-          alert('Access to this page is currently unavailable due to suspension of publication, etc.');
-          this.locationService.navigateTo2_1();
-        }
-        else {
-          this.storeProduct = res[0]
-          this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
-        if (this.storeProduct.product_view_image_list?.length > 0){
-          this.topViewImage = this.storeProduct.product_view_image_list[0].master;
-          console.log(this.topViewImage)
-    } else {
-      this.topViewImage = '/assets/product/no-image-small.jpg';
-    }
+          if (!data[0] || !data[0].store_product_id){
+            alert('Product does not exist');
+            this.locationService.navigateTo2_1();
+          }
+          // 商品の販売状況を確認
+          if (data[0].product_status === ProductStatus.disContinued) {
+            alert('Access to this page is currently unavailable due to suspension of publication, etc.');
+            this.locationService.navigateTo2_1();
 
-        }
-    })
-    // productRef.get()
-    //   .subscribe(snapshot => {
-    //     snapshot.forEach(doc => {
-    //       console.log(`${doc.id}: ${doc.data()}`);
-    //       return doc.data() as StoreProductExt;
-    //     })
-    //   })
+          // 商品が販売中のステータスのため、画面に表示
+          } else {
+            this.storeProduct = data[0]
+            this.productDocumentId = data[0].docmentId
+            this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
+          }
 
-    console.log(this.storeProduct)
+          if (this.storeProduct.product_view_image_list?.length > 0) {
+            this.topViewImage = this.storeProduct.product_view_image_list[0].master;
+          } else {
+            this.topViewImage = '/assets/product/no-image-small.jpg';
+          }
+    });
 
-  //   this.storeProduct$ = productRef.get().then(snapshot => {
-  // snapshot.forEach(doc => {
-  //   console.log(`${doc.id}: ${doc.data().userName}`);
-  // })
-// })
+
+    // this.afs.collection<StoreProductExt>('products', (ref) =>
+    //     ref.where('store_product_id', '==', this.productId))
+    //   .valueChanges()
+    //   .subscribe(res => {
+    //     console.log(res)
+    //     console.log(res[0])
+    //     console.log(res[0].tags)
+
+    //     if (!res[0] || !res[0].store_product_id){
+    //       alert('Product does not exist');
+    //       this.locationService.navigateTo2_1();
+    //     }
+    //     if (res[0].product_status === ProductStatus.disContinued) {
+    //       alert('Access to this page is currently unavailable due to suspension of publication, etc.');
+    //       this.locationService.navigateTo2_1();
+    //     }
+    //     else {
+    //       this.storeProduct = res[0]
+    //       this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
+    //       if (this.storeProduct.product_view_image_list?.length > 0){
+    //         this.topViewImage = this.storeProduct.product_view_image_list[0].master;
+    //         console.log(this.topViewImage)
+    //       } else {
+    //         this.topViewImage = '/assets/product/no-image-small.jpg';
+    //       }
+
+    //     }
+    // })
   }
 
   ngOnInit() {
-    console.log("ngOninit")
-    console.log(this.storeProduct)
-      // this.seoService.updateTitle( 'Sample Angular EC -  Product Detail Page - ' + this.storeProduct.product_name);
+    // TODO for SEO
+    // this.seoService.updateTitle( 'Sample Angular EC -  Product Detail Page - ' + this.storeProduct.product_name);
     this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
 
     if (this.storeProduct.product_view_image_list?.length > 0){
@@ -227,8 +219,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getImageUrl(imgUrl: string): string {
-    console.log(imgUrl)
     return imgUrl;
+    // TODO  本来ならImageServerを使用して backend もしくは S3 から画像を取得
     // return this.imageUrlService.getImageUrl(this.storeProduct.store_product_id, imgUrl, SizeType.master);
   }
 
@@ -241,26 +233,14 @@ export class ProductDetailComponent implements OnInit {
   }
 
   clickFavHandler(): void{
-    if (!this.userId) {
-      // this.openSignUpDialog();
-      return;
-    } else if (this.storeProduct.favorite_flag === 0) {
-      // this.appService.createUserFavorite( this.userId, this.productId ).subscribe(
-      //   (res) => {
-      //     // 追加成功したら、色付きのハートに変更
-      //     if (res.status_code === 0){
-      //       this.storeProduct.favorite_flag = 1;
-      //     }
-      //   });
-    } else if (this.storeProduct.favorite_flag === 1) {
-      // this.appService.deleteUserFavorite( this.userId, this.productId ).subscribe(
-      //   (res) => {
-      //     // 削除成功したら、色無しのハートに変更
-      //     if (res.status_code === 0){
-      //       this.storeProduct.favorite_flag = 0;
-      //     }
-      //   });
-    }
+    const docRef = this.afs.collection<StoreProductExt>('products')
+
+    docRef.doc(this.productDocumentId).set({
+        ...this.storeProduct,
+        favorite_flag: (this.storeProduct.favorite_flag ===  1 ? 0 : 1)
+    },
+      { merge: true }
+    );
   }
 
   clickScrollImgHandler(i: number, img: string): void{
