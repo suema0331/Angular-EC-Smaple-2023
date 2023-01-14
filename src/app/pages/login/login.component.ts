@@ -1,13 +1,12 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {filter} from 'rxjs/operators';
-import {throwError} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { LocationService } from 'src/app/service/utilities/location.service';
-import { environment } from 'src/environments/environment';
 import { LogService } from 'src/shared/services/log.service';
 import { StorageService } from 'src/shared/services/storage.service';
 import { AuthService } from 'src/app/service/auth.service';
+import { ValidationService } from 'src/app/service/utilities/validation.service';
 @Component({
   selector: 'login-form',
   templateUrl: './login.component.html',
@@ -27,13 +26,13 @@ export class LoginComponent implements OnInit {
   formEmail = this.form.get('form_email');
   formPassword = this.form.get('form_password');
 
-  // エラーメッセージ表示
+  // is Disaled for the submit button
+  isDisabled = true;
+  // 上部Submit時にエラーメッセージ表示
   isError = false;
   errorMessage = '';
-
   // hide password
   hide = true;
-
   // error message
   mailErrorMessage = '';
   isMailError = false;
@@ -42,10 +41,6 @@ export class LoginComponent implements OnInit {
 
   returnUrl = '/';
 
-  customerCode = '';
-
-  @ViewChild('errorMessageContent') errorMessageContent: ElementRef | undefined;
-
   constructor(
     private fb: FormBuilder,
     public locationService: LocationService,
@@ -53,18 +48,24 @@ export class LoginComponent implements OnInit {
     private storageService: StorageService,
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
-    // private validationService: ValidationService,
+    private validationService: ValidationService,
     // private notificationService: NotificationService
   ){}
 
   ngOnInit(): void {
-    // デバッグ用 値の変化を出力
-    if (!environment.production){
-      this.formEmail?.valueChanges.subscribe((value) => {this.logService.logDebug(`form_email: ${value}`); });
-      this.formPassword?.valueChanges.subscribe((value) => {this.logService.logDebug(`form_password: ${value}`); });
-    }
+    // // デバッグ用 値の変化を出力
+    this.formEmail?.valueChanges.subscribe((value) => {
+        this.logService.logDebug(`form_email: ${value}`);
+      this.validateMailError()
+      this.onDisabled()
+    });
+    this.formPassword?.valueChanges.subscribe((value) => {
+      this.logService.logDebug(`form_password: ${value}`);
+      this.validatePasswordError()
+      this.onDisabled()
+    });
     // フォームデータ保存と復元
-    const formDraft = this.storageService.get('login_form_component_form');
+    const formDraft = this.storageService.get('login_form');
     if (formDraft) {
       this.form.setValue(JSON.parse(formDraft));
     }
@@ -72,10 +73,10 @@ export class LoginComponent implements OnInit {
       .pipe(
         filter(() => this.form.valid)
       )
-    .subscribe(value => this.storageService.set('login_form_component_form' , JSON.stringify(value)));
-    this.logService.logDebug(`${this.screenId}:${this.screenName} が初期化されました。` );
+    .subscribe(value => this.storageService.set('login_form' , JSON.stringify(value)));
 
     // ログイン画面に成功した時にリダイレクトする URLをクエリパラメーターから取得する。Guardから飛んできたなら元のページURL
+    // The URL to redirect to when the login screen succeeds, taken from the query parameter, or the original page URL if you flew in from Guard.
     this.activatedRoute.queryParams
       .pipe(
         filter(param => param['return'])
@@ -83,78 +84,64 @@ export class LoginComponent implements OnInit {
       .subscribe((params) => {
         this.returnUrl = params['return'] || '/';
       });
-
   }
 
   formOnClickLoginHandler(): void {
-    console.log(this.form_email)
-    console.log(this.form_password)
-
+    this.validateMailError()
+    this.validatePasswordError()
     if (!this.form_email || !this.form_password) return
+    if (this.isMailError || this.isPasswordError) return
+
     const trimmedEmail = this.form_email.replace(/\s+/g, '');
     const trimmedPassword = this.form_password.replace(/\s+/g, '');
+
     this.logService.logDebug(`trimmedEmail , ${trimmedEmail}`);
 
     this.authService.login(trimmedEmail, trimmedPassword)
-      .then(() => {
+      .then((result) => {
         this.logService.logDebug('login succeeded');
+        console.log(result)
+
         this.locationService.navigateTo(this.returnUrl);
       })
       .catch((error) => {
-        alert(error)
         this.isError = true;
-        this.errorMessage = 'ログインIDまたはパスワードが正しくありません';
-      });
-    // const tokenInfoPromise = this.appService.login( trimmedEmail, trimmedPassword);
-    // tokenInfoPromise.then((tokenInfo ) => {
-
-    //   if (tokenInfo.access_token !== undefined) {
-    //     this.logService.logDebug('logged in succeeded');
-
-    //     this.locationService.navigateTo(this.returnUrl);
-    //   } else if (tokenInfo.status === 4){
-    //     this.logService.logDebug('logged in failed due to lock');
-    //     this.isError = true;
-    //     this.errorMessage = '時間をおいて再度お試しいただくか<br>パスワードをリセットしてください';
-    //   } else {
-    //     this.logService.logDebug('logged in failed');
-    //     this.isError = true;
-    //     this.errorMessage = 'ログインIDまたはパスワードが正しくありません';
-    //   }
-    // }).catch((err) => {
-    //     this.logService.logDebug('unknown error');
-    //     this.isError = true;
-    //     this.errorMessage = '時間をおいて再度お試しください';
-    //     throwError(err);
-    // });
+        this.errorMessage = 'Incorrect Email or Password';
+        console.log(error)
+        this.logService.logDebug('login failure');
+      }
+    );
   }
 
-  // createMessageElement(message: string): void {
-  //   if (this.errorMessageContent && this.errorMessageContent.nativeElement) {
-  //     this.errorMessageContent.nativeElement.innerHTML = message;
-  //   }
-  // }
-
-  // validation mail
-  validateMailError(): void {
-    // const userAccountValidation = this.validationService.validateMailErrorOnLogin(this.form_email);
-    // this.mailErrorMessage = userAccountValidation.message;
-    // this.isMailError = userAccountValidation.isError;
+  onDisabled() {
+    console.log('mail:' + this.validateMailError() + this.form_email)
+    console.log('pass:' +this.validatePasswordError()+ this.form_password)
+    console.log(this.validateMailError() || this.validatePasswordError())
+    this.isDisabled = this.validateMailError() || this.validatePasswordError()
   }
 
-  // validation password
-  validatePasswordError(): void {
-    // const userAccountValidation = this.validationService.validatePasswordErrorOnLogin(this.form_password);
-    // this.passwordErrorMessage = userAccountValidation.message;
-    // this.isPasswordError = userAccountValidation.isError;
+  // validation for mail
+  validateMailError(): boolean {
+    const userAccountValidation = this.validationService.validateMailErrorOnLogin(String(this.form_email));
+    this.mailErrorMessage = userAccountValidation.message;
+    this.isMailError = userAccountValidation.isError;
+    return userAccountValidation.isError
   }
 
-  // form login_id の Getter
+  // validation for password
+  validatePasswordError(): boolean {
+    const userAccountValidation = this.validationService.validatePasswordErrorOnLogin(String(this.form_password));
+    this.passwordErrorMessage = userAccountValidation.message;
+    this.isPasswordError = userAccountValidation.isError;
+    return userAccountValidation.isError
+  }
+
+  // Getter for form_email
   get form_email(): string | null | undefined {
     return this.formEmail?.value;
   }
 
-  // form password の Getter
+  // Getter for form_password
   get form_password(): string | null | undefined {
     return this.formPassword?.value;
   }
