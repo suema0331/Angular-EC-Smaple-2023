@@ -2,15 +2,18 @@
 
 <div class="login">
   <form [formGroup]="form" >
-    <!-- <div class="errorToast" *ngIf="isError" #errorMessageContent>
-      {{createMessageElement(errorMessage)}}
-    </div> -->
+    <div class="errorToast" *ngIf="isError">
+      {{errorMessage}}
+    </div>
      <div class="form-group" >
-        <label for="form_email" class="form-label" >Mail</label>
+        <label for="form_email" class="form-label" >Email</label>
         <mdb-form-control class="_input-form" >
-           <input formControlName="form_email" id="form_email"
+           <input formControlName="form_email"
+                  id="form_email"
                   placeholder="**********@example.com"
-                  (change)="validateMailError()" [class._inputFormError]="isMailError" class="form-control"
+                  (change)="validateMailError()"
+                  [class._inputFormError]="isMailError"
+                  class="form-control"
                   mdbInput
                   type="text"
            />
@@ -22,37 +25,33 @@
      <div class="form-group" >
         <label for="form_password" class="form-label" >Password</label>
         <mdb-form-control class="_input-form" >
-          <!-- <input formControlName="form_password" id="form_password"
-                 placeholder="パスワード"
-                 [type]="hide ? 'password' : 'text'"
-                 (change)="validatePasswordError()"
-                 [class._inputFormError]="isPasswordError"
-                 class="form-control"
-                 mdbInput
-          /> -->
           <input formControlName="form_password" id="form_password"
                  placeholder="Password"
                  [type]="hide ? 'password' : 'text'"
+                 (change)="validatePasswordError()"
+                 [class._inputFormError]="isPasswordError"
                  class="form-control"
                  mdbInput
           />
           <button class="_display"
                   *ngIf="hide"
                   (click)="hide = !hide"
-          > display</button>
+          >display</button>
           <button (click)="hide = !hide"
                   *ngIf="!hide"
                   class="_display"
           >hide</button>
         </mdb-form-control>
-       <!-- <div *ngIf="isPasswordError" class="_error">{{passwordErrorMessage}}</div> -->
+       <div *ngIf="isPasswordError" class="_error">{{passwordErrorMessage}}</div>
      </div>
 
     <div class="btn_group">
       <button
          (click)="formOnClickLoginHandler()"
          data-test="login-btn"
-         class="btn btn-rounded submit" >
+         class="btn btn-rounded submit"
+         [disabled]="isDisabled"
+         >
          Log In
       </button>
       <div class="_signup-area">

@@ -18,13 +18,15 @@ export class AuthService {
     private afs: AngularFirestore,
     private locationService: LocationService,
   ) { }
+
   login(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then((result) => {
         console.log(result)
+        return result
       })
       .catch((error) => {
-        alert(error.message);
+        throw new Error(error)
       });
       ;
   }
@@ -54,10 +56,12 @@ export class AuthService {
 
         this.setUserData(result.user).catch(error => alert(error.message));
 
-        this.locationService.navigateTo1_1()
+        // this.locationService.navigateTo1_1()
+        return result
       })
       .catch((error) => {
-        alert(error.message);
+        // alert(error.message);
+        throw new Error(error)
       });
   }
   // Send email verfificaiton when new user sign up

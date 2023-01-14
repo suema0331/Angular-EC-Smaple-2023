@@ -1,5 +1,28 @@
+@import "variables";
 .signup{
   margin: 0 16px;
+
+  ._agreement-title{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  ._label {
+    display: flex;
+    border-bottom: 8px;
+    &._redBackground{
+      background: #FDECEF;
+      margin: 0 -16px;
+      padding: 0 16px;
+    }
+    ._agreement{
+      font-size: 14px;
+      margin: auto 0px auto 2px;
+      ._tos,._policy{
+        color: #0080DE;
+      }
+    }
+  }
 
   .btn_group {
     button {
@@ -10,9 +33,14 @@
     .submit {
       font-weight: bold;
       color: #fff;
-      background: -moz-linear-gradient(left, #393534 50%, #555555);
-      background: -webkit-linear-gradient(left, #393534 50%, #555555);
-      background: linear-gradient(to right, #393534 50%, #555555);
+
+      // For black version
+      // background: -moz-linear-gradient(left, #393534 50%, #555555);
+      // background: -webkit-linear-gradient(left, #393534 50%, #555555);
+      // background: linear-gradient(to right, #393534 50%, #555555);
+      background: -moz-linear-gradient(left, $shop_theme_color 50%, #017098);
+      background: -webkit-linear-gradient(left, $shop_theme_color 50%, #017098);
+      background: linear-gradient(to right, $shop_theme_color 50%, #017098);
       margin: 32px auto 32px;
     }
     ._signup-area{
