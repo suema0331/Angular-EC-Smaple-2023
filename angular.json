@@ -93,7 +93,7 @@
                   "maximumWarning": "2mb",
                   "maximumError": "4mb"
                 }
-              ] 
+              ]
             },
             "development": {
               "buildOptimizer": false,
