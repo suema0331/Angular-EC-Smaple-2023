@@ -42,17 +42,17 @@ export class ValidationService {
   validateMailError(email: string): StandardValidation {
     if (!email || email.length === 0) {
       return {
-        message: 'メールアドレスを入力してください',
+        message: 'Please enter your email address.',
         isError: true
       };
     } else if (email.indexOf('@') < 0) {
       return {
-        message: 'メールアドレスが正しくありません',
+        message: 'Incorrect email address.',
         isError: true
       };
     } else if (email.length > 50) {
       return {
-        message: '50文字以内で入力してください',
+        message: 'Please enter up to 50 characters.',
         isError: true
       };
     } else {
@@ -142,7 +142,7 @@ export class ValidationService {
       // length check
     else if (password.length > 20) {
         return {
-          message: 'Please enter up to 20 characters',
+          message: 'Please enter up to 20 characters.',
           isError: true,
         };
     } else {

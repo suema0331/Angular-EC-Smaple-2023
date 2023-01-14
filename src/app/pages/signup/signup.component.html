@@ -17,7 +17,7 @@
                   [class._inputFormError]="isMailError"
            />
         </mdb-form-control>
-       <div class="_error" *ngIf="isMailError">{{mailErrorMessage}}</div>
+       <div class="_error" *ngIf="isMailError" data-test="signup-mail-error">{{mailErrorMessage}}</div>
      </div>
      <div class="form-group">
        <label for="form_password" class="form-label" >Password</label>
@@ -41,11 +41,11 @@
                  class="_display">hide
          </button>
         </mdb-form-control>
-       <div *ngIf="passwordEmptyErrorMessage" class="_error ga-caution-register-entry-password">{{passwordEmptyErrorMessage}}</div>
-       <div *ngIf="passwordLengthErrorMessage" class="_error ga-caution-register-entry-password">{{passwordLengthErrorMessage}}</div>
-       <div *ngIf="passwordValidErrorMessage" class="_error ga-caution-register-entry-password">{{passwordValidErrorMessage}}</div>
-       <div *ngIf="passwordExclusionErrorMessage" class="_error ga-caution-register-entry-password">{{passwordExclusionErrorMessage}}</div>
-       <div *ngIf="passwordMailErrorMessage" class="_error ga-caution-register-entry-password">{{passwordMailErrorMessage}}</div>
+       <div *ngIf="passwordEmptyErrorMessage" class="_error" data-test="signup-password-error1">{{passwordEmptyErrorMessage}}</div>
+       <div *ngIf="passwordLengthErrorMessage" class="_error" data-test="signup-password-error2">{{passwordLengthErrorMessage}}</div>
+       <div *ngIf="passwordValidErrorMessage" class="_error" data-test="signup-password-error3">{{passwordValidErrorMessage}}</div>
+       <div *ngIf="passwordExclusionErrorMessage" class="_error" data-test="signup-password-error4">{{passwordExclusionErrorMessage}}</div>
+       <div *ngIf="passwordMailErrorMessage" class="_error" data-test="signup-password-error5">{{passwordMailErrorMessage}}</div>
        <div class="_hint">10-20 characters with a upper case, lower case, number, and symbol<br>Available symbols !@#%^&*/_?$¥-`˜()+=&#123;&#125;[]\|;"'<>,.</div>
      </div>
 
@@ -71,7 +71,7 @@
                  class="_display">hide
          </button>
         </mdb-form-control>
-       <div class="_error" *ngIf="isConfirmPasswordError">{{conformPasswordErrorMessage}}</div>
+       <div class="_error" *ngIf="isConfirmPasswordError" data-test="signup-confirm-password-error">{{conformPasswordErrorMessage}}</div>
      </div>
 
     <div class="form-group" >
@@ -90,13 +90,13 @@
                 class="_policy">Privacy Policy</span>
         </span>
       </label>
-      <div *ngIf="isAgreementError" class="_error ga-caution-register-entry-check">{{agreementErrorMessage}}</div>
+      <div *ngIf="isAgreementError" class="_error" data-test="signup-agreement-error">{{agreementErrorMessage}}</div>
     </div>
 
     <div class="btn_group">
       <button
          (click)="formOnClickSignupHandler()"
-         data-test="login-btn"
+         data-test="signup-btn"
          [disabled]="isDisabled"
          class="btn btn-rounded submit" >
          Register

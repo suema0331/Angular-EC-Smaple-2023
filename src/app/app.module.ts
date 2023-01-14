@@ -52,7 +52,6 @@ import { PriceService } from './service/utilities/price-service.service';
 import { CommonHeaderComponent } from './components/common-header/common-header.component';
 
 import { NgAisModule } from 'angular-instantsearch';
-import { ProductCardSearchComponent } from './components/product-card-search/product-card-search.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +74,6 @@ import { ProductCardSearchComponent } from './components/product-card-search/pro
     SignupComponent,
     ProductCardComponent,
     CommonHeaderComponent,
-    ProductCardSearchComponent,
   ],
   imports: [
     BrowserModule,
