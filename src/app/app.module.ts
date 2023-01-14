@@ -53,6 +53,7 @@ import { CommonHeaderComponent } from './components/common-header/common-header.
 
 import { NgAisModule } from 'angular-instantsearch';
 import { ValidationService } from './service/utilities/validation.service';
+import { SEOService } from './service/utilities/seo.service';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,7 @@ import { ValidationService } from './service/utilities/validation.service';
     ImageUrlService,
     PriceService,
     // CartService,
-    // SEOService,
+    SEOService,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
   ],
   bootstrap: [AppComponent]

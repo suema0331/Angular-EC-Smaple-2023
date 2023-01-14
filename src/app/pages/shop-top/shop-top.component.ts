@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
-import { Observable, map } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
 import { ApplicationService } from 'src/app/service/application.service';
 import { CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
@@ -37,6 +37,8 @@ export class ShopTopComponent {
   user$ = this.authService.user$
   isLoggedIn = false;
 
+  productsSubscription?: Subscription;
+
   constructor(
     private locationService: LocationService,
     // private logService: LogService,
@@ -51,7 +53,7 @@ export class ShopTopComponent {
 
     // Get messages from the store that can be written by the store staff.
     const storeMessageCollection = this.afs.collection<StoreTopMessage>('store-messages', (ref) => ref.limit(1));
-    storeMessageCollection.valueChanges().subscribe(message => {
+    this.productsSubscription = storeMessageCollection.valueChanges().subscribe(message => {
       if (message[0]) {
         this.storeMessage = message[0]
       }
@@ -80,6 +82,10 @@ export class ShopTopComponent {
       if (user) this.isLoggedIn = true;
       else this.isLoggedIn = false;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.productsSubscription?.unsubscribe();
   }
 
   logoutHandler(): void{

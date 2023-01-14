@@ -26,8 +26,8 @@ const routes: Routes = [
     component: ShopTopComponent,
     data: {
       title: BASE_TITLE + ' - Top Page',
-      description: 'This is a shop top page',
-      ogUrl: 'http://localhost:4200/#/shop-top',
+      description: 'This is a shop top page.',
+      ogUrl: 'http://localhost:4200/shop-top',
     },
   },
   {
@@ -39,8 +39,8 @@ const routes: Routes = [
     component: LoginComponent,
     data: {
       title: BASE_TITLE + ' - Login Page',
-      description: 'This is a login page',
-      ogUrl: 'http://localhost:4200/#/login',
+      description: 'This is a login page.',
+      ogUrl: 'http://localhost:4200/login',
     },
   },
     {
@@ -48,8 +48,8 @@ const routes: Routes = [
     component: SignupComponent,
     data: {
       title: BASE_TITLE + ' - Signup Page',
-      description: 'This is a signup page',
-      ogUrl: 'http://localhost:4200/#/signup',
+      description: 'This is a signup page.',
+      ogUrl: 'http://localhost:4200/signup',
     },
   },
   {
@@ -57,8 +57,8 @@ const routes: Routes = [
     component: SearchComponent,
     data: {
       title: BASE_TITLE + ' - Search Page',
-      description: 'This is a search page',
-      ogUrl: 'http://localhost:4200/#/search',
+      description: 'This is a search page.',
+      ogUrl: 'http://localhost:4200/search',
     },
   },
   {
@@ -66,8 +66,8 @@ const routes: Routes = [
     component: ProductListComponent,
     data: {
       title: BASE_TITLE + ' - Product List Page',
-      description: 'This is a product list page',
-      ogUrl: 'http://localhost:4200/#/products',
+      description: 'This is a product list page.',
+      ogUrl: 'http://localhost:4200/products',
     }
   },
   {
@@ -75,8 +75,8 @@ const routes: Routes = [
     component: ProductDetailComponent,
     data: {
       title: BASE_TITLE + ' - Product Detail Page',
-      description: 'This is a product Detail page',
-      ogUrl: 'http://localhost:4200/#/products/:productId',
+      description: 'This is a product Detail page.',
+      ogUrl: 'http://localhost:4200/products/:productId',
     }
   },
   {
@@ -84,18 +84,18 @@ const routes: Routes = [
     component: MypageComponent,
     data: {
       title: BASE_TITLE + ' - My Page',
-      description: 'This is a my page',
-      ogUrl: 'http://localhost:4200/#/mypage',
+      description: 'This is a my page.',
+      ogUrl: 'http://localhost:4200/mypage',
     }
   },
   {
     path: 'favorite',
     component: FavoriteComponent,
-    // data: {
-    //   title: BASE_TITLE + ' - Favorite Page',
-    //   description: 'This is a favorite page',
-    //   ogUrl: 'http://localhost:4200/#/favorite',
-    // }
+    data: {
+      title: BASE_TITLE + ' - Favorite Page',
+      description: 'This is a favorite page.',
+      ogUrl: 'http://localhost:4200/favorite',
+    }
   },
   {
     path: 'pastitem',
@@ -103,7 +103,7 @@ const routes: Routes = [
     // data: {
     //   title: BASE_TITLE + ' - Past Item Page',
     //   description: 'This is a past item page',
-    //   ogUrl: 'http://localhost:4200/#/pastitem',
+    //   ogUrl: 'http://localhost:4200/pastitem',
     // }
   },
   {
@@ -131,7 +131,7 @@ const routes: Routes = [
     component: PageNotFoundComponent,
     data: {
       title: BASE_TITLE + ' - Page Not Found',
-      description: 'page not found',
+      description: 'Page not found',
     }
   },
 ];

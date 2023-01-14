@@ -1,21 +1,15 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
-import { ApplicationService } from 'src/app/service/application.service';
-import { AuthService } from 'src/app/service/auth.service';
 import { CartService } from 'src/app/service/domains/cart.service';
-import { ImageUrlService, SizeType } from 'src/app/service/utilities/image.url.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { PriceService } from 'src/app/service/utilities/price-service.service';
-import { ProductImageExt } from 'src/backend/dto/common/product_image_ext';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { ProductStatus } from 'src/backend/enums/product_status';
-import { LogService } from 'src/shared/services/log.service';
-import { StorageService } from 'src/shared/services/storage.service';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, map, take } from 'rxjs';
+import { Subscription, map } from 'rxjs';
+import { SEOService } from 'src/app/service/utilities/seo.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -53,19 +47,13 @@ export class ProductDetailComponent implements OnInit {
   storeProduct = {} as StoreProductExt;
   productDocumentId = '';
 
+  productSubscription: Subscription;
+
   constructor(
-    private appService: ApplicationService,
     public locationService: LocationService,
-    private logService: LogService,
     private location: Location,
-    private cartService: CartService,
-    private storageService: StorageService,
-    private authService: AuthService,
-    private modalService: MdbModalService,
-    private router: Router,
-    private imageUrlService: ImageUrlService,
     private priceService: PriceService,
-    // private seoService: SEOService,
+    private seoService: SEOService,
     private activatedRoute: ActivatedRoute,
     private afs: AngularFirestore,
   ) {
@@ -73,7 +61,7 @@ export class ProductDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => this.productId = params['productId'])
 
     // Get A document from tha productId
-    this.afs.collection<StoreProductExt>('products', (ref) =>
+    this.productSubscription = this.afs.collection<StoreProductExt>('products', (ref) =>
       ref.where('store_product_id', '==', this.productId))
       .snapshotChanges().pipe(
       map((actions) =>
@@ -101,6 +89,8 @@ export class ProductDetailComponent implements OnInit {
             this.storeProduct = data[0]
             this.productDocumentId = data[0].docmentId
             this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
+
+            this.seoService.updateTitle( 'Sample Angular EC -  Product Detail Page: ' + this.storeProduct.product_name);
           }
 
           if (this.storeProduct.product_view_image_list?.length > 0) {
@@ -109,7 +99,6 @@ export class ProductDetailComponent implements OnInit {
             this.topViewImage = '/assets/product/no-image-small.jpg';
           }
     });
-
 
     // this.afs.collection<StoreProductExt>('products', (ref) =>
     //     ref.where('store_product_id', '==', this.productId))
@@ -142,8 +131,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO for SEO
-    // this.seoService.updateTitle( 'Sample Angular EC -  Product Detail Page - ' + this.storeProduct.product_name);
+    this.seoService.updateTitle( 'Sample Angular EC -  Product Detail Page for ' + this.storeProduct.product_name);
     this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
 
     if (this.storeProduct.product_view_image_list?.length > 0){
@@ -152,6 +140,10 @@ export class ProductDetailComponent implements OnInit {
       this.topViewImage = '/assets/product/no-image-small.jpg';
     }
 
+  }
+
+  ngOnDestroy(): void {
+    this.productSubscription.unsubscribe();
   }
 
   @HostListener('window:scroll', ['$event'])
