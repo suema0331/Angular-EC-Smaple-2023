@@ -458,9 +458,8 @@
         font-size: 16px;
         font-weight: bold;
         color: #FCFCFC;
-        //padding: 16px 50px; // OMO3-2081
-        padding: 16px 42px; // OMO3-2081
-        width: 100%; // OMO3-2081
+        padding: 16px 42px;
+        width: 100%;
         &.isCartClicked{
           flex-grow: 1;
           display: flex;
@@ -468,7 +467,7 @@
           margin-left: 3px;
           width: 263px;
           padding: 13px 23px;
-          width: 100%; // OMO3-2081
+          width: 100%;
           .fa-minus{
             margin: auto auto auto 0;
           }

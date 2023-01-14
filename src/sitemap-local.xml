@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://localhost:4200/shop-top</loc>
+  </url>
+  <url>
+    <loc>http://localhost:4200/signup</loc>
+  </url>
+  <url>
+    <loc>http://localhost:4200/login</loc>
+  </url>
+  <url>
+    <loc>http://localhost:4200/search</loc>
+  </url>
+  <url>
+    <loc>http://localhost:4200/products</loc>
+  </url>
+  <url>
+    <loc>http://localhost:4200/mypage</loc>
+  </url>
+  <url>
+    <loc>http://localhost:4200/favorite</loc>
+  </url>
+</urlset>

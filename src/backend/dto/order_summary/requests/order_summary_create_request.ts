@@ -1,13 +1,3 @@
-import { AddressDto } from '../../common/address_dto';
-import { CouponCodeDto } from '../../common/coupon_code_dto';
-import { DeliveryNumberDto } from '../../common/delivery_number_dto';
-import { OmoDateDto } from '../../common/omo_date_dto';
-import { OmoTimeDto } from '../../common/omo_time_dto';
-import { OmoTimePeriodDto } from '../../common/omo_time_period_dto';
-import { PostalDto } from '../../common/postal_dto';
-import { PriceSetDto } from '../../common/price_set_dto';
-import { ReceiptNumberDto } from '../../common/receipt_number_dto';
-import { TelDto } from '../../common/tel_dto';
 import { DeliveryType } from '../../../enums/delivery_type';
 import { HandleTypeForShortage } from '../../../enums/handle_type_for_shortage';
 import { PackageDropPlace } from '../../../enums/package_drop_place';
@@ -16,6 +6,16 @@ import { PaymentType } from '../../../enums/payment_type';
 import { PriceCalcMethod } from '../../../enums/price_calc_method';
 import { ReceivingMethod } from '../../../enums/receiving_method';
 import { TaxCalcMethod } from '../../../enums/tax_calc_method';
+import { AddressDto } from '../../common/address_dto';
+import { AppDateDto } from '../../common/app_date_dto';
+import { AppTimeDto } from '../../common/app_time_dto';
+import { AppTimePeriodDto } from '../../common/app_time_period_dto';
+import { CouponCodeDto } from '../../common/coupon_code_dto';
+import { DeliveryNumberDto } from '../../common/delivery_number_dto';
+import { PostalDto } from '../../common/postal_dto';
+import { PriceSetDto } from '../../common/price_set_dto';
+import { ReceiptNumberDto } from '../../common/receipt_number_dto';
+import { TelDto } from '../../common/tel_dto';
 export interface OrderSummaryCreateRequest{
 
   parent_store_id: string;
@@ -23,9 +23,9 @@ export interface OrderSummaryCreateRequest{
   estimate_price_set: PriceSetDto;
   settlement_price_set: PriceSetDto;
   order_date_time: Date;
-  order_date: OmoDateDto;
-  receipt_date: OmoDateDto;
-  sales_recorded_date: OmoDateDto;
+  order_date: AppDateDto;
+  receipt_date: AppDateDto;
+  sales_recorded_date: AppDateDto;
   order_memo: string;
   receiving_method: ReceivingMethod;
   delivery_type: DeliveryType;
@@ -36,9 +36,9 @@ export interface OrderSummaryCreateRequest{
   tel: TelDto;
   price_calc_method: PriceCalcMethod;
   tax_calc_method: TaxCalcMethod;
-  delivery_hours: OmoTimePeriodDto;
+  delivery_hours: AppTimePeriodDto;
   coupon_code: CouponCodeDto;
-  pickup_time: OmoTimeDto;
+  pickup_time: AppTimeDto;
   delivery_memo: string;
   payment_flag: PaymentFlag;
   prefer_drop_place: PackageDropPlace;

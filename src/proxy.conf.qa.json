@@ -1,0 +1,18 @@
+{
+  "/api/user/*": {
+    "target": "https://blue-user.qa-angular-ec-2023.com",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/api/public/*": {
+    "target": "https://blue-user.qa-angular-ec-2023.com",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/api/auth/*": {
+    "target": "https://blue-auth.qa-angular-ec-2023.com",
+    "secure": false,
+    "logLevel": "debug"
+  },
+    "changeOrigin": true
+}

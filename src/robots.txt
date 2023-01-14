@@ -1,0 +1,19 @@
+User-agent: *
+Disallow:
+Allow: /*
+
+# allow google image bot to search all images
+User-agent: Googlebot-Image
+Disallow:
+Allow: /*
+Sitemap: https://angular-ec-2023/sitemap.xml
+
+# allow Google adsense bot on entire site
+User-agent: Mediapartners-Google*
+Disallow:
+Allow: /*
+
+User-agent: Twitterbot
+Disallow:
+Allow: /*
+Sitemap: https://angular-ec-2023/sitemap.xml
