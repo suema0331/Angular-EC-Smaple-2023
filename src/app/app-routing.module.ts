@@ -16,7 +16,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { AuthGuard } from 'src/shared/services/auth.guard';
-import { VIPPageGuard } from 'src/shared/services/vip-page.guard';
+import { VIPGuard } from 'src/shared/services/vip.guard';
 
 const BASE_TITLE = 'Angular EC App';
 
@@ -102,7 +102,7 @@ const routes: Routes = [
   {
     path: 'pastitem',
     component: PastitemComponent,
-    canActivate: [VIPPageGuard],
+    canActivate: [VIPGuard],
     data: {
       title: BASE_TITLE + ' - Past Item Page',
       description: 'This is a past item page',

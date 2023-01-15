@@ -20,15 +20,12 @@ export class ProductDetailComponent implements OnInit {
   screenName = 'ProductDetailComponent';
   screenId = '2_2';
 
-  // 拡大画像初期値
+  // Value of the magnified image
   topViewImage = '';
 
   // スクロールエリア選択中の画像初期値
   isSelectedImg = 0;
 
-
-  // ユーザ情報・商品情報
-  userId: string | undefined = '';
   productId = '';
 
   // カートへ追加クリックView用
@@ -79,15 +76,17 @@ export class ProductDetailComponent implements OnInit {
             alert('Product does not exist');
             this.locationService.navigateTo2_1();
           }
-          // 商品の販売状況を確認
+          // Check product sales status
           if (data[0].product_status === ProductStatus.disContinued) {
             alert('Access to this page is currently unavailable due to suspension of publication, etc.');
             this.locationService.navigateTo2_1();
 
-          // 商品が販売中のステータスのため、画面に表示
+          // Display on the screen because the product is not a suspended listing status(disContinued).
           } else {
             this.storeProduct = data[0]
             this.productDocumentId = data[0].docmentId
+
+            // Product names are only displayed when scrolling down, so that users can better see the images.
             this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
 
             this.seoService.updateTitle( 'Sample Angular EC -  Product Detail Page: ' + this.storeProduct.product_name);
@@ -148,13 +147,13 @@ export class ProductDetailComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll($event: any): void {
-    // スクロール判定
+    // Scroll judgment
     if (window.pageYOffset <= 0){
       this.isScroll = false;
     } else {
       this.isScroll = true;
 
-      // スクロール方向判定
+      // Scroll direction judgment
       if (this.currentPageYOffset < window.pageYOffset){
         this.isScrollDown = true;
       } else {
@@ -211,7 +210,7 @@ export class ProductDetailComponent implements OnInit {
 
   getImageUrl(imgUrl: string): string {
     return imgUrl;
-    // TODO  本来ならImageServerを使用して backend もしくは S3 から画像を取得
+    // If we have a backend, I will use ImageService to retrieve images from the backend or S3
     // return this.imageUrlService.getImageUrl(this.storeProduct.store_product_id, imgUrl, SizeType.master);
   }
 
@@ -236,7 +235,7 @@ export class ProductDetailComponent implements OnInit {
 
   clickScrollImgHandler(i: number, img: string): void{
     this.isSelectedImg = i;
-    // 拡大画像を変更
+    // Change the magnified image
     this.topViewImage = img;
   }
 

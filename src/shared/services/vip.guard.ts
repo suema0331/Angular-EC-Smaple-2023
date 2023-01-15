@@ -7,7 +7,7 @@ import { LocationService } from 'src/app/service/utilities/location.service';
 @Injectable({
   providedIn: 'root'
 })
-export class VIPPageGuard implements CanActivate {
+export class VIPGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private locationService: LocationService,

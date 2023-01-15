@@ -49,6 +49,7 @@ import { LocationService } from './service/utilities/location.service';
 import { PriceService } from './service/utilities/price-service.service';
 import { SEOService } from './service/utilities/seo.service';
 import { ValidationService } from './service/utilities/validation.service';
+import { CartSummaryBtnComponent } from './components/cart-summary-btn/cart-summary-btn.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { ValidationService } from './service/utilities/validation.service';
     SignupComponent,
     ProductCardComponent,
     CommonHeaderComponent,
+    CartSummaryBtnComponent,
   ],
   imports: [
     BrowserModule,

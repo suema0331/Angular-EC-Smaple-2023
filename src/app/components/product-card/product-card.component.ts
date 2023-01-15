@@ -52,7 +52,7 @@ export class ProductCardComponent {
 
   isCartClicked = false;
 
-  cartItem: CartItem = {productId: '', quantity: 0, dirtyFlag: false};
+  cartItem: CartItem = {productId: '', quantity: 0, price:0, dirtyFlag: false};
 
   isOverConstraintMax = false;
 
@@ -93,8 +93,8 @@ export class ProductCardComponent {
     $event.stopPropagation();
     $event.preventDefault();
     if (!this.isLoggedIn){
-      this.openSignUpDialog();
-      return;
+      // this.openSignUpDialog();
+      // return;
     }
 
     // 上限購入可能個数を超えていたらtooltipをだす

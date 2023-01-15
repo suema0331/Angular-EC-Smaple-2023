@@ -29,8 +29,7 @@
         <ng-container *ngFor="let product of productList$ | async ; index as i" >
           <app-product-card
             [storeProduct]="product"
-            [isLoggedIn]="isLoggedIn$ | async"
-            [productViewImageType]="2"
+            [isLoggedIn]="isLoggedIn"
             (clickPlusHandler)="clickPlusHandler($event)"
             (clickMinusHandler)="clickMinusHandler($event)"
           ></app-product-card>
@@ -38,22 +37,11 @@
       </div>
     </ng-container>
   </div>
-
-
-  <!-- <ng-container *ngIf="isLoggedIn$ | async">
+  <ng-container *ngIf="isLoggedIn">
     <div class="cart-area" *ngIf="cartPriceInfo.numOfStoreProducts">
-      <div class="btn_group">
-        <button
-          class="btn btn-rounded submit"
-          (click)="cartBtnHandler()"
-        >
-          <img src="./assets/section/common_icon_cart@2x.png" alt="common_icon_cart">
-          <span class="_quantity">{{cartPriceInfo.numOfStoreProducts}}</span>
-          <span class="_ten">点</span>
-          <span class="_price">{{cartPriceInfo.totalProductPriceWithTax | currency : 'JPY': true}}</span>
-          <span class="_tax-in">(税込)</span>
-        </button>
-      </div>
+      <app-cart-summary-btn
+        [cartPriceInfo]="cartPriceInfo"
+      ></app-cart-summary-btn>
     </div>
-  </ng-container> -->
+  </ng-container>
 </div>
