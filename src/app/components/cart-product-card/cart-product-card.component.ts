@@ -6,7 +6,6 @@ import { CONSTRAINT_MAX } from 'src/app/extra/constants';
 import { PriceService } from 'src/app/service/utilities/price-service.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 
-
 @Component({
   selector: 'app-cart-product',
   templateUrl: './cart-product-card.component.html',

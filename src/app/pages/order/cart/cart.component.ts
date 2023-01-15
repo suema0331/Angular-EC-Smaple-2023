@@ -140,7 +140,7 @@ export class CartComponent {
           .add(orderData)
           .then(doc => {
             console.log(doc)
-            alert('Your item has been successfully purchased!')
+            alert('💙Your item has been successfully purchased!')
             this.cartService.clearCart();
             this.cartService.clearCartCacheFromStorage();
             this.userCart = {} as StoreProductExt[]
@@ -149,7 +149,7 @@ export class CartComponent {
           })
           .catch( err => {
             console.log(err)
-            alert('Something went wrong.')
+            alert('🥲Sorry, Something went wrong.')
           })
       }
     });
