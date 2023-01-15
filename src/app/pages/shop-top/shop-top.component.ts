@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Observable, Subscription, map } from 'rxjs';
-import { ApplicationService } from 'src/app/service/application.service';
-import { CartService } from 'src/app/service/domains/cart.service';
+import { CartPriceInfo, CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { environment } from 'src/environments/environment';
-import { LogService } from 'src/shared/services/log.service';
 import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
-import { UserTopPageInfo } from 'src/backend/dto/common/user_top_page_info';
 import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
-import { AvailableFlag } from 'src/backend/enums/available_flag';
 import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
@@ -32,10 +28,9 @@ export class ShopTopComponent {
 
   recommendedProductList$: Observable<StoreProductExt[]>;
   storeMessage = {} as StoreTopMessage;
-  // cartPriceInfo: CartPriceInfo = {totalProductPriceWithTax: 0, totalProductPriceWithoutTax: 0, numOfStoreProducts: 0 };
-
+  cartPriceInfo: CartPriceInfo =  this.cartService.getCartPriceInfo();
   user$ = this.authService.user$
-  isLoggedIn = false;
+  isLoggedIn = this.authService.isLoggedIn;
 
   productsSubscription?: Subscription;
 
@@ -58,7 +53,6 @@ export class ShopTopComponent {
         this.storeMessage = message[0]
       }
     });
-
     // this.recommendedProductList$ = this.productCollection.valueChanges().pipe(
     //   map((actions) =>
     //     actions.map((data) => {
@@ -83,7 +77,7 @@ export class ShopTopComponent {
     //   else this.isLoggedIn = false;
     // });
 
-    this.isLoggedIn = this.authService.isLoggedIn
+    // this.isLoggedIn = this.authService.isLoggedIn
   }
 
   ngOnDestroy(): void {
@@ -97,7 +91,7 @@ export class ShopTopComponent {
   }
 
   clickPlusHandler($event: StoreProductExt): void {
-    this.cartService.incrementItem($event.store_product_id);
+    this.cartService.incrementItem($event.store_product_id, $event.store_price);
   }
 
   clickMinusHandler($event: StoreProductExt): void {

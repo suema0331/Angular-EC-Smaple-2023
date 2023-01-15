@@ -29,6 +29,8 @@
                 <ng-container *ngFor="let hit of hits; index as i" >
                   <app-product-card
                     [storeProduct]="hit"
+                    (clickPlusHandler)="clickPlusHandler($event)"
+                    (clickMinusHandler)="clickMinusHandler($event)"
                   ></app-product-card>
                 </ng-container>
               </div>
@@ -37,4 +39,11 @@
       </div>
     </div>
   </ais-instantsearch>
+    <ng-container *ngIf="isLoggedIn">
+    <div class="cart-area" *ngIf="cartPriceInfo.numOfStoreProducts">
+      <app-cart-summary-btn
+        [cartPriceInfo]="cartPriceInfo"
+      ></app-cart-summary-btn>
+    </div>
+  </ng-container>
 </div>

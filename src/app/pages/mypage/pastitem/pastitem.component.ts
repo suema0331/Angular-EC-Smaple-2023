@@ -19,14 +19,10 @@ export class PastitemComponent {
 
   userId: string | undefined = '';
 
-  cartPriceInfo: CartPriceInfo = {totalProductPriceWithTax: 0, totalProductPriceWithoutTax: 0, numOfStoreProducts: 0 };
-
-  isLoggedIn = false;
-
+  cartPriceInfo: CartPriceInfo =  this.cartService.getCartPriceInfo();
+  isLoggedIn = this.authService.isLoggedIn;
 
   constructor(
-    private locationService: LocationService,
-    private logService: LogService,
     private cartService: CartService,
     private authService: AuthService,
   ){}
@@ -71,7 +67,7 @@ export class PastitemComponent {
       alert('最大50点までしか購入できません');
       return;
     }
-    this.cartService.incrementItem($event.store_product_id);
+    this.cartService.incrementItem($event.store_product_id, $event.store_price);
   }
 
   clickMinusHandler($event: StoreProductExt): void {

@@ -117,22 +117,11 @@
       </div>
     </div>
   </div>
-  <!-- <ng-container *ngIf="isLoggedIn$">
+  <ng-container *ngIf="isLoggedIn">
     <div class="cart-area" *ngIf="cartPriceInfo.numOfStoreProducts">
-
-      <div class="btn_group">
-        <button
-          class="btn btn-rounded submit"
-          data-test="top-cart-price-info-button"
-          (click)="cartBtnHandler()"
-        >
-          <img src="./assets/section/common_icon_cart@2x.png" alt="common_icon_cart">
-          <span class="_quantity">{{cartPriceInfo.numOfStoreProducts}}</span>
-          <span class="_ten">点</span>
-          <span class="_price">{{cartPriceInfo.totalProductPriceWithTax | currency : 'JPY': true}}</span>
-          <span class="_tax-in">(税込)</span>
-        </button>
-      </div>
+      <app-cart-summary-btn
+        [cartPriceInfo]="cartPriceInfo"
+      ></app-cart-summary-btn>
     </div>
-  </ng-container> -->
+  </ng-container>
 </div>
