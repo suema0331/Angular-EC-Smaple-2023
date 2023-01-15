@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
 import { CartPriceInfo, CartService } from 'src/app/service/domains/cart.service';
+import { LocationService } from 'src/app/service/utilities/location.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { AuthService } from 'src/shared/services/auth.service';
@@ -26,6 +27,7 @@ export class FavoriteComponent{
     private afs: AngularFirestore,
     private authService: AuthService,
     private notificationService: NotificationService,
+    private locationService: LocationService,
   ) {
     const favoriteProductCollection = this.afs.collection<StoreProductExt>('products', ref =>
       ref
@@ -70,6 +72,6 @@ export class FavoriteComponent{
 
 
   cartBtnHandler(): void{
-    // this.locationService.navigateTo4_12();
+    this.locationService.navigateTo4_1();
   }
 }

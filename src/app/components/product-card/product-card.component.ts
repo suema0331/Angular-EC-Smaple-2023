@@ -1,9 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
-import { ApplicationService } from 'src/app/service/application.service';
 import { CartItem, CartService } from 'src/app/service/domains/cart.service';
-import { ImageUrlService, SizeType } from 'src/app/service/utilities/image.url.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { PriceService } from 'src/app/service/utilities/price-service.service';
 import { ProductImageExt } from 'src/backend/dto/common/product_image_ext';
@@ -58,17 +55,13 @@ export class ProductCardComponent {
   constructor(
     public locationService: LocationService,
     private logService: LogService,
-    private appService: ApplicationService,
     private cartService: CartService,
-    private modalService: MdbModalService,
-    private imageUrlService: ImageUrlService,
     private priceService: PriceService,
   ) {
 
   }
   ngOnInit(): void {
     this.logService.logDebug('[cart] product-card ngOnInit');
-
     if (this.storeProduct.store_product_id !== '') {
       this.cartItem = this.cartService.getCartItem(this.storeProduct.store_product_id);
     }
@@ -107,8 +100,6 @@ export class ProductCardComponent {
 
     this.isOverConstraintMax = false;
     this.displayConstraintTooltip = false;
-
-    // this.storeProduct.cart_quantity = this.cartItem.quantity;
     this.clickMinusHandler.emit(this.storeProduct);
   }
 
@@ -128,9 +119,6 @@ export class ProductCardComponent {
 
   getProductDisplayLabel(producingArea: string, productName: string, brand: string): string{
     const displayLabel = (producingArea ? (producingArea + ' ') : '' ) + productName + ' ' + (brand ?  brand : '' );
-    // return this.isMoreClicked ? displayLabel.substring(0, 21) : displayLabel.substring(0, 14);
-    // 一律14文字に変更
-    // return displayLabel.substring(0, 14);
     return displayLabel.substring(0, 32);
   }
 
@@ -140,13 +128,5 @@ export class ProductCardComponent {
     } else {
       return internalCapacity ? internalCapacity : unitRange;
     }
-  }
-
-  openSignUpDialog(): void{
-    // this.signupDialogRef = this.modalService.open(SignupDialogPageComponent,
-    //   {
-    //     modalClass: 'modal-dialog-centered'
-    //   }
-    // );
   }
 }

@@ -46,7 +46,6 @@ export class ProductDetailComponent{
 
   constructor(
     public locationService: LocationService,
-    private location: Location,
     private priceService: PriceService,
     private seoService: SEOService,
     private activatedRoute: ActivatedRoute,

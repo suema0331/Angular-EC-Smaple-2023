@@ -10,7 +10,6 @@ import { UserCreateRequest } from 'src/backend/dto/common/user_create_request';
 })
 export class AuthService {
 
-  // user$ = this.auth.currentUser;
   currentUser = {} as User;
 
   constructor(
@@ -26,7 +25,7 @@ export class AuthService {
       if (user) {
         this.currentUser = user
       }
-      // To store (only some information) in local storage
+        // To store (only some information) in local storage. (Not used at this time.)
         // localStorage.setItem('user', JSON.stringify(user));
         // JSON.parse(localStorage.getItem('user')!);
       // } else {
