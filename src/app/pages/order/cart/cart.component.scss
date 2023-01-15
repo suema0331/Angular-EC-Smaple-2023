@@ -1,0 +1,179 @@
+@import "variables.scss";
+.cart-page{
+  background: #F2F2F2;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+
+  @media screen and (min-width:600px) {
+    /*　画面サイズ 600 px以上　*/
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cart-header{
+    position: relative;
+    width: 100%;
+    background: rgba(23, 23, 23, 0.5);
+    padding-top: 20px;
+    ._inner{
+      padding: 16px;
+      border-radius: 16px 16px 0 0;
+      background: #FCFCFC;
+      position: relative;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 1.9;
+      border-bottom: #EAE5E2 1px solid;
+
+      .empty-cart-button{
+        cursor: pointer;
+        color: #0080DE;
+        position: absolute;
+        left: 16px;
+        font-size: 14px;
+        line-height: 2.2;
+      }
+      button{
+        position: absolute;
+        right: 16px;
+        border: none;
+        background: transparent;
+        img{
+          width: 24px;
+        }
+      }
+    }
+  }
+
+  .cart{
+    position: relative;
+    width: 100%;
+    padding-top: 10px;
+    background: #F2F2F2;
+    padding-bottom: 200px;
+
+    .no-cart-area{
+      text-align: center;
+      font-size: 16px;
+      background: #F2F2F2;
+      padding-bottom: 100px;
+      ._message{
+        color: #717171;
+        font-weight: bold;
+        margin-bottom: 24px;
+        padding: 32px 0 0;
+      }
+      ._img-area{
+        padding: 0px 138px;
+        img{
+          width: 100%
+        }
+      }
+    }
+
+    .inner-area{
+      padding: 0px 16px;
+      background: #FCFCFC;
+
+      .message-area{
+        padding-top: 24px;
+
+        div:not(:last-of-type){
+          margin-bottom: 16px;
+        }
+        text-align: center;
+        font-size: 14px;
+        ._caution{
+          color: #E50721;
+          background: #FDECEF;
+          border-radius: 3px;
+          padding: 16px;
+        }
+        ._delivery{
+          background: #FFF4EA;
+          color: #D15F00;
+          border-radius: 3px;
+          padding: 16px;
+        }
+      }
+
+      .product-area{
+        &:not(:last-of-type){
+          border-bottom: #D1D1D1 1px dotted;
+        }
+      }
+    }
+
+    .order-area{
+      box-shadow: #90867F1F 0px -2px 6px;
+      position: fixed;
+      bottom: 0;
+      padding: 16px 20px 16px;
+      width: 100%;
+      background: rgba(252,252,252,0.9);
+
+      @media screen and (min-width:600px) {
+        /*　画面サイズ 600 px以上　*/
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .note-free{
+        text-align: right;
+        font-size: 12px;
+        color: #717171;
+      }
+      .price{
+        text-align: right;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1.2;
+        ._red{
+          color: #E50721;
+          font-size: 26px;
+          margin-right: 2px;
+        }
+        ._tax{
+          color: #717171;
+          font-size: 12px;
+          font-weight: normal;
+        }
+      }
+      .tax-price{
+        text-align: right;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        line-height: 1.1;
+        ._tax{
+          color: #717171;
+          font-size: 10px;
+          font-weight: normal;
+          margin-left: 2px;
+        }
+      }
+      .btn_group{
+        button {
+          width: 100%;
+          padding: 16px 0px;
+          font-size: 16px;
+          cursor: pointer;
+        }
+        .submit {
+          font-weight: bold;
+          color: #FCFCFC;
+          background: $shop_theme_color;
+          margin: 0px auto 0px;
+        }
+        .no-cart{
+          font-weight: bold;
+          color: #F2F2F2;
+          background: #D8D8D8;
+          margin: 0px auto 0px;
+        }
+      }
+    }
+  }
+}
+

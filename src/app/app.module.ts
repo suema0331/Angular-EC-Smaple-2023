@@ -42,6 +42,8 @@ import { ValidationService } from './service/utilities/validation.service';
 import { AddCartToastComponent } from './components/toasts/add-cart-toast/add.cart.toast.component';
 import { NotificationService } from './service/utilities/notification.service';
 import { CartService } from './service/domains/cart.service';
+import { CartProductCardComponent } from './components/cart-product-card/cart-product-card.component';
+import { ConfirmCartClearModalComponent } from './pages/order/confirm-cart-clear-modal/confirm-cart-clear-modal.component';
 
 // import {MdbSelectModule} from 'mdb-angular-ui-kit/select';
 // import {MdbValidationModule} from 'mdb-angular-ui-kit/validation';
@@ -67,6 +69,8 @@ import { CartService } from './service/domains/cart.service';
     CommonHeaderComponent,
     CartSummaryBtnComponent,
     AddCartToastComponent,
+    CartProductCardComponent,
+    ConfirmCartClearModalComponent,
   ],
   imports: [
     BrowserModule,

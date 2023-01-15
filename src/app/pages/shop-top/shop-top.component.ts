@@ -1,16 +1,17 @@
 import { Component, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MdbCarouselComponent } from 'mdb-angular-ui-kit/carousel';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
-import { Observable, Subscription, map } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CartPriceInfo, CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
-import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
-import { environment } from 'src/environments/environment';
-import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
-import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
-import { AuthService } from 'src/shared/services/auth.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
-import {MdbCarouselComponent} from 'mdb-angular-ui-kit/carousel';
+import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
+import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
+import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/shared/services/auth.service';
+import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
+
 @Component({
   selector: 'app-shop-top',
   templateUrl: './shop-top.component.html',
@@ -21,7 +22,6 @@ export class ShopTopComponent {
   screenId = '1_1';
 
   onboardModalRef: MdbModalRef<ShopGuideComponent> | undefined;
-  // signupDialogRef: MdbModalRef<SignupDialogPageComponent> | undefined;
 
   isScroll = false;
   isScrollDown = false;
@@ -33,12 +33,11 @@ export class ShopTopComponent {
   user$ = this.authService.user$
   isLoggedIn = this.authService.isLoggedIn;
 
-  productsSubscription?: Subscription;
+  messageSubscription?: Subscription;
 
   @ViewChild('mdbCarousel') mdbCarousel!: MdbCarouselComponent;
   constructor(
     private locationService: LocationService,
-    // private logService: LogService,
     private modalService: MdbModalService,
     private cartService: CartService,
     private afs: AngularFirestore,
@@ -51,40 +50,15 @@ export class ShopTopComponent {
 
     // Get messages from the store that can be written by the store staff.
     const storeMessageCollection = this.afs.collection<StoreTopMessage>('store-messages', (ref) => ref.limit(1));
-    this.productsSubscription = storeMessageCollection.valueChanges().subscribe(message => {
+    this.messageSubscription = storeMessageCollection.valueChanges().subscribe(message => {
       if (message[0]) {
         this.storeMessage = message[0]
       }
     });
-    // this.recommendedProductList$ = this.productCollection.valueChanges().pipe(
-    //   map((actions) =>
-    //     actions.map((data) => {
-    //       return { ...data };
-    //     }
-    //     )
-    //   )
-    // );
-
-    // this.recommendedProductList$ = this.productCollection.snapshotChanges().pipe(
-    //   map((actions) =>
-    //     actions.map((a) => {
-    //       const data = a.payload.doc.data() as StoreProductExt;
-    //       const id = a.payload.doc.id;
-    //       return { id, ...data };
-    //     })
-    //   )
-    // );
-
-    // this.authService.getAuthState().subscribe((user) => {
-    //   if (user) this.isLoggedIn = true;
-    //   else this.isLoggedIn = false;
-    // });
-
-    // this.isLoggedIn = this.authService.isLoggedIn
   }
 
   ngOnDestroy(): void {
-    this.productsSubscription?.unsubscribe();
+    this.messageSubscription?.unsubscribe();
   }
 
   logoutHandler(): void{
@@ -134,7 +108,7 @@ export class ShopTopComponent {
   }
 
   cartBtnHandler(): void{
-    // this.locationService.navigateTo4_12();
+    this.locationService.navigateTo4_1();
   }
 
   openModal(): void {
@@ -145,18 +119,8 @@ export class ShopTopComponent {
     );
   }
 
-  // openSignUpDialog(): void{
-  //   this.signupDialogRef = this.modalService.open(SignupDialogPageComponent,
-  //     {
-  //       modalClass: 'modal-dialog-centered'
-  //     }
-  //   );
-  // }
-
-
   loginHandler(): void{
     this.locationService.navigateTo('/login');
-    // this.locationService.navigateTo('/login?return=/shop-top');
   }
 
   navigateToShopHandler(): void{

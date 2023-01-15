@@ -163,4 +163,9 @@ export class LocationService{
   navigateTo3_3(): void {
     this.navigateTo(`/pastitem`);
   }
+
+  // nvigate to CartComponent
+  navigateTo4_1(): void {
+    this.navigateTo(`/cart`);
+  }
 }

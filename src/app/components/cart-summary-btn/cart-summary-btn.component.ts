@@ -8,7 +8,7 @@ import { LocationService } from 'src/app/service/utilities/location.service';
   styleUrls: ['./cart-summary-btn.component.scss']
 })
 
-export class CartSummaryBtnComponent implements OnInit {
+export class CartSummaryBtnComponent {
   @Input() cartPriceInfo: CartPriceInfo = {
     totalProductPriceWithTax: 0,
     totalProductPriceWithoutTax: 0,
@@ -17,11 +17,9 @@ export class CartSummaryBtnComponent implements OnInit {
 
   constructor(public locationService: LocationService) { }
 
-  ngOnInit(): void {
-  }
 
-  cartBtnHandler(): void {
-    // this.locationService.navigateTo4_12();
+  navigateToCartHandler(): void {
+    this.locationService.navigateTo4_1();
   }
 
 }
