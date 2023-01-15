@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
 import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
 import { AuthService } from 'src/shared/services/auth.service';
+import { NotificationService } from 'src/app/service/utilities/notification.service';
 
 @Component({
   selector: 'app-shop-top',
@@ -41,6 +42,7 @@ export class ShopTopComponent {
     private cartService: CartService,
     private afs: AngularFirestore,
     private authService: AuthService,
+    private notificationService: NotificationService,
   ) {
     // Get up to 6 products in order of registration
     const productCollection = this.afs.collection<StoreProductExt>('products', (ref) => ref.limit(6));
@@ -91,6 +93,16 @@ export class ShopTopComponent {
   }
 
   clickPlusHandler($event: StoreProductExt): void {
+    const toastImagePath = $event.product_images[0].small
+      ?  $event.product_images[0].small
+      : '/assets/product/no-image-small.jpg';
+
+    this.notificationService.openAddProductToCartImageToast(
+      toastImagePath,
+      $event.producing_area ? $event.producing_area : '',
+      $event.product_name,
+      $event.brand ? $event.brand : '',
+    );
     this.cartService.incrementItem($event.store_product_id, $event.store_price);
   }
 

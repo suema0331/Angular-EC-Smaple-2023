@@ -10,13 +10,14 @@ import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Subscription, map } from 'rxjs';
 import { SEOService } from 'src/app/service/utilities/seo.service';
+import { NotificationService } from 'src/app/service/utilities/notification.service';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent{
   screenName = 'ProductDetailComponent';
   screenId = '2_2';
 
@@ -53,6 +54,7 @@ export class ProductDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private afs: AngularFirestore,
     private cartService: CartService,
+    private notificationService: NotificationService,
   ) {
     // Get ID from the URL path query
     this.activatedRoute.params.subscribe(params => this.productId = params['productId'])
@@ -135,11 +137,6 @@ export class ProductDetailComponent implements OnInit {
     // })
   }
 
-  ngOnInit() {
-  //   this.seoService.updateTitle( 'Sample Angular EC -  Product Detail Page for ' + this.storeProduct.product_name);
-  //   this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
-  }
-
   ngOnDestroy(): void {
     this.productSubscription.unsubscribe();
   }
@@ -178,21 +175,17 @@ export class ProductDetailComponent implements OnInit {
       return;
     }
 
-    // Normal Toast Ver
-    // const displayLabel = (this.storeProduct.producing_area ? (this.storeProduct.producing_area + ' ') : '' ) + this.storeProduct.product_name + ' ' + (this.storeProduct.brand ?  this.storeProduct.brand : '' );
-    // this.notificationService.openAddProductToCartToast(displayLabel);
-
     // Image Toast（画像がない場合も考慮）
     const toastImagePath = this.storeProduct.product_images[0].small
       ? this.storeProduct.product_images[0].small
       : '/assets/product/no-image-small.jpg';
 
-    // this.notificationService.openAddProductToCartImageToast(
-    //   toastImagePath,
-    //   this.storeProduct.producing_area ? this.storeProduct.producing_area : '',
-    //   this.storeProduct.product_name,
-    //   this.storeProduct.brand ? this.storeProduct.brand : '',
-    // );
+    this.notificationService.openAddProductToCartImageToast(
+      toastImagePath,
+      this.storeProduct.producing_area ? this.storeProduct.producing_area : '',
+      this.storeProduct.product_name,
+      this.storeProduct.brand ? this.storeProduct.brand : '',
+    );
     this.isOverConstraintMax = false;
     this.displayConstraintTooltip = false;
     this.cartService.incrementItem(this.productId, this.storeProduct.store_price);

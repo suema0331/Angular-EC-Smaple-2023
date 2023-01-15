@@ -4,6 +4,7 @@ import { Observable, map } from 'rxjs';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
 import { CartPriceInfo, CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
+import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { AuthService } from 'src/shared/services/auth.service';
 
@@ -31,6 +32,7 @@ export class ProductListComponent {
     private cartService: CartService,
     private afs: AngularFirestore,
     private authService: AuthService,
+    private notificationService: NotificationService,
   ) {
     this.productCollection = this.afs.collection<StoreProductExt>('products');
     this.productList$ = this.productCollection.snapshotChanges().pipe(
@@ -61,6 +63,16 @@ export class ProductListComponent {
     if ($event.cart_quantity >= CONSTRAINT_MAX) {
       return;
     }
+    const toastImagePath = $event.product_images[0].small
+      ?  $event.product_images[0].small
+      : '/assets/product/no-image-small.jpg';
+
+    this.notificationService.openAddProductToCartImageToast(
+      toastImagePath,
+      $event.producing_area ? $event.producing_area : '',
+      $event.product_name,
+      $event.brand ? $event.brand : '',
+    );
     this.cartService.incrementItem($event.store_product_id, $event.store_price);
   }
 
