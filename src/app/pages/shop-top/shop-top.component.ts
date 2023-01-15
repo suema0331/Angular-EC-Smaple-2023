@@ -30,7 +30,7 @@ export class ShopTopComponent {
   recommendedProductList$: Observable<StoreProductExt[]>;
   storeMessage = {} as StoreTopMessage;
   cartPriceInfo: CartPriceInfo =  this.cartService.getCartPriceInfo();
-  user$ = this.authService.user$
+  currentUser = this.authService.currentUser
   isLoggedIn = this.authService.isLoggedIn;
 
   messageSubscription?: Subscription;

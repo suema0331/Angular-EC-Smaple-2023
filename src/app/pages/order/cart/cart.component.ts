@@ -6,9 +6,11 @@ import { CartPriceInfo, CartService } from 'src/app/service/domains/cart.service
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
-import { StorageService } from 'src/shared/services/storage.service';
 import { Location } from '@angular/common';
 import { ConfirmCartClearModalComponent } from '../confirm-cart-clear-modal/confirm-cart-clear-modal.component';
+import { ConfirmOrderModalComponent } from '../confirm-order-modal/confirm-order-modal.component';
+import { CartToOrder } from 'src/backend/dto/common/cart_to_order';
+import { AuthService } from 'src/shared/services/auth.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -16,10 +18,12 @@ import { ConfirmCartClearModalComponent } from '../confirm-cart-clear-modal/conf
 })
 export class CartComponent {
 
+  currentUser = this.authService.currentUser;
   userCart = [] as StoreProductExt[];
   cartPriceInfo: CartPriceInfo = {totalProductPriceWithTax: 0, totalProductPriceWithoutTax: 0, numOfStoreProducts: -1 };
 
   checkCartClearModalRef: MdbModalRef<ConfirmCartClearModalComponent> | undefined;
+  confirmOrderModalRef: MdbModalRef<ConfirmOrderModalComponent> | undefined;
   overCartConstraintMax = false;
 
   storeMessage = {} as StoreTopMessage;
@@ -32,6 +36,7 @@ export class CartComponent {
     private cartService: CartService,
     private modalService: MdbModalService,
     private afs: AngularFirestore,
+    private authService: AuthService,
 
   ) {
     // Get messages from the store that can be written by the store staff.
@@ -91,13 +96,6 @@ export class CartComponent {
     this.cartPriceInfo = this.cartService.getCartPriceInfo();
   }
 
-  submitHandler(): void {
-    if (this.cartPriceInfo.numOfStoreProducts === 0){
-      alert('There are no items in your cart.');
-      return;
-    }
-  }
-
   emptyCartHandler(): void {
     if (this.cartPriceInfo.numOfStoreProducts === 0){
       alert('There are no items in your cart.');
@@ -118,6 +116,50 @@ export class CartComponent {
       { modalClass: 'modal-dialog-centered'}
     );
     return this.checkCartClearModalRef.onClose;
+  }
+
+  confirmOrderHandler(): void {
+    console.log(this.currentUser)
+    if (this.cartPriceInfo.numOfStoreProducts === 0){
+      alert('There are no items in your cart.');
+    }
+    if (!this.currentUser.uid) {
+      alert('Please log in.')
+      this.locationService.navigateTo1_4();
+      return;
+    }
+    this.openConfirmOrderModal().subscribe((selected)  => {
+      if (selected) { // Order confirmed
+        // Register order information in the database
+        const orderData: CartToOrder = {
+          "user_id": this.currentUser.uid,
+          "order_date": new Date(),
+          "order_products": this.userCart,
+        }
+        this.afs.collection<CartToOrder>('orders')
+          .add(orderData)
+          .then(doc => {
+            console.log(doc)
+            alert('Your item has been successfully purchased!')
+            this.cartService.clearCart();
+            this.cartService.clearCartCacheFromStorage();
+            this.userCart = {} as StoreProductExt[]
+            this.cartPriceInfo = this.cartService.getCartPriceInfo();
+            this.locationService.navigateTo1_1();
+          })
+          .catch( err => {
+            console.log(err)
+            alert('Something went wrong.')
+          })
+      }
+    });
+  }
+
+  openConfirmOrderModal(): Observable<boolean> {
+    this.confirmOrderModalRef = this.modalService.open(ConfirmOrderModalComponent,
+      { modalClass: 'modal-dialog-centered'}
+    );
+    return this.confirmOrderModalRef.onClose;
   }
 
   hasCanNotOrderProducts(): boolean {

@@ -3,11 +3,8 @@
     <div class="_ttl">
       My Page
     </div>
-    <!-- <div (click)="logoutHandler()" aria-label="LogOut" class="_logout">
-      logout
-    </div> -->
     <div class="_right">
-      <div *ngIf="user$ | async" class="_logout" (click)="logoutHandler()" >
+      <div *ngIf="currentUser" class="_logout" (click)="logoutHandler()" >
         <div class="_button-area"
           title="This is a logput button on the header."
         >
@@ -21,29 +18,28 @@
   </div>
 
   <div class="mypage">
-    <div *ngIf="user$ | async" class="account-area">
+    <div *ngIf="currentUser" class="account-area">
       <div class="_left">
         <div class="_icon">
-          <!-- <img alt="userIcon" src="assets/mypage/userIcon.png"> -->
-          <img alt="userIcon" [src]="(user$ | async)?.photoURL" >
+          <img alt="userIcon" [src]="currentUser.photoURL" >
         </div>
       </div>
       <div class="_right">
         <div class="_name">
-          <span>Welcome, <span class="_value">{{(user$ | async)?.displayName}}</span></span>
+          <span>Welcome, <span class="_value">{{currentUser.displayName}}</span></span>
         </div>
         <div class="_info">
           EmailVerified:
-          <span class="_value">{{(user$ | async)?.emailVerified}}</span>
-          <div class="_note" *ngIf="!(user$ | async)?.emailVerified">*Please verify your email</div>
+          <span class="_value">{{currentUser.emailVerified}}</span>
+          <div class="_note" *ngIf="!currentUser.emailVerified">*Please verify your email</div>
         </div>
         <div class="_info">
           LastLogin:
-        <span class="_value">{{(user$ | async)?.metadata?.lastSignInTime ?? '' | date: 'dd/MM/yyyy hh:mm:ss'}}</span>
+        <span class="_value">{{currentUser.metadata.lastSignInTime ?? '' | date: 'dd/MM/yyyy hh:mm:ss'}}</span>
         </div>
       </div>
     </div>
-    <div *ngIf="!(user$ | async)" class="require-signup-area">
+    <div *ngIf="!currentUser" class="require-signup-area">
       <div class="_message">
         Please register your account!
       </div>
@@ -56,20 +52,6 @@
         >Log In</button>
       </div>
     </div>
-
-    <!-- <div *ngIf="userId" class="menu-area">
-      <div class="_ttl">お客様情報</div>
-      <ul class="list-group">
-        <li (click)="clickEditAccountHandler()"
-            class="list-group-item"
-        >登録情報の変更　<i class="fas fa-chevron-right"></i></li>
-        <li
-        (click)="this.locationService.navigateTo6_3()"
-
-            class="list-group-item"
-        >注文履歴　<i class="fas fa-chevron-right"></i></li>
-      </ul>
-    </div> -->
 
     <div class="menu-area">
       <div class="_ttl">Search Products</div>
@@ -102,16 +84,5 @@
         >Privacy Policy <i class="fas fa-chevron-right"></i></li>
       </ul>
     </div>
-
-    <!-- <div *ngIf="user$" class="logout-area">
-      <button (click)="logoutHandler()">logout</button>
-    </div> -->
-
-    <!-- <div *ngIf="secondLastLogin && secondLastLogin !== '0'"
-         class="last-login-area">
-      前回ログイン日時{{createOrderDateLabel(secondLastLogin)}}
-    </div> -->
   </div>
-
-
 </div>

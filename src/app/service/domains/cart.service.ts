@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { STORAGE_KEY_CART, STORE_ID_SAMPLE } from 'src/app/extra/constants';
-import { CartSummaryExt } from 'src/backend/dto/common/cart_summary_ext';
-import { CartRestUserServiceExt } from 'src/backend/services/cart.rest.user.service.ext';
+import { STORAGE_KEY_CART } from 'src/app/extra/constants';
 import { LogService } from 'src/shared/services/log.service';
 import { StorageService } from 'src/shared/services/storage.service';
 import { PriceService } from '../utilities/price-service.service';
@@ -38,8 +35,6 @@ export class CartService {
   constructor(
     private logService: LogService,
     private storageService: StorageService,
-    // private authService: AuthService,
-    private cartRestUserServiceExt: CartRestUserServiceExt,
     private priceService: PriceService,
   ) {
     // Retrieve cart data from local storage if available and display it in the view.

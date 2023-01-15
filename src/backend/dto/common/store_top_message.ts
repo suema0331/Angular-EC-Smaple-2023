@@ -6,10 +6,5 @@ export interface StoreTopMessage{
   notice2: string;
   store_available_flag: AvailableFlag;
   operation_message: string;
-  // delivery_message: string;
-  // on_time_message: string;
-  // package_drop_message: string;
-  // store_pickup_message: string;
-  // delivery_discount_message: string;
 
 }
