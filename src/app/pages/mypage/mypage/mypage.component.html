@@ -4,9 +4,9 @@
       My Page
     </div>
     <div class="_right">
-      <div *ngIf="currentUser" class="_logout" (click)="logoutHandler()" >
+      <div *ngIf="currentUser.uid" class="_logout" (click)="logoutHandler()" >
         <div class="_button-area"
-          title="This is a logput button on the header."
+          title="This is a logout button on the header."
         >
           logout
         </div>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="mypage">
-    <div *ngIf="currentUser" class="account-area">
+    <div *ngIf="currentUser.uid" class="account-area">
       <div class="_left">
         <div class="_icon">
           <img alt="userIcon" [src]="currentUser.photoURL" >
@@ -35,11 +35,11 @@
         </div>
         <div class="_info">
           LastLogin:
-        <span class="_value">{{currentUser.metadata.lastSignInTime ?? '' | date: 'dd/MM/yyyy hh:mm:ss'}}</span>
+        <span class="_value">{{(currentUser.metadata && currentUser.metadata.lastSignInTime) ?? '' | date: 'dd/MM/yyyy hh:mm:ss'}}</span>
         </div>
       </div>
     </div>
-    <div *ngIf="!currentUser" class="require-signup-area">
+    <div *ngIf="!currentUser.uid" class="require-signup-area">
       <div class="_message">
         Please register your account!
       </div>

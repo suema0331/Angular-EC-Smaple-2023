@@ -1,0 +1,38 @@
+@import 'variables';
+.not-found{
+    margin: 120px 16px 0;
+
+    ._img{
+      margin: 0px 120px 24px;
+      text-align: center;
+      img{
+        width: 100%;
+      }
+    }
+    ._message {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    ._note{
+      text-align: center;
+      font-size: 16px;
+    }
+    .btn_group{
+      button {
+        width: 100%;
+        padding: 16px 0px;
+        font-size: 16px;
+      }
+      .submit {
+        font-weight: bold;
+        color: #fff;
+        background: -moz-linear-gradient(left, $shop_theme_color 50%, #017098);
+        background: -webkit-linear-gradient(left, $shop_theme_color 50%, #017098);
+        background: linear-gradient(to right, $shop_theme_color 50%, #017098);
+        margin: 56px auto 32px;
+      }
+    }
+
+}

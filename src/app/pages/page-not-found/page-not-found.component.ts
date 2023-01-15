@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocationService } from 'src/app/service/utilities/location.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-not-found.component.scss']
 })
 export class PageNotFoundComponent {
+  constructor(
+    public locationService: LocationService,
+  ){}
 
 }

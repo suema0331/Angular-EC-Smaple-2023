@@ -49,8 +49,8 @@ export class AuthService {
 
   logout() {
     return signOut(this.auth).then(() => {
+      this.currentUser = {} as User;
       // localStorage.removeItem('user');
-      localStorage.removeItem('user');
       this.locationService.navigateTo1_1()
     });
   }
@@ -61,23 +61,21 @@ export class AuthService {
       .then(async (result) => {
         console.log(result)
         const newUser = this.auth.currentUser as User
-        //updateProfileメソッドでdisplayNameに情報を登録
+
         await updateProfile(newUser, {
           displayName: newUser.email?.split('@')[0] ?? 'Anonymous',
-          // License: Multiavatar  https://api.multiavatar.com/
+          /**
+           * License: Multiavatar  https://api.multiavatar.com/
+           */
           photoURL: `https://api.multiavatar.com/${Math.floor(Math.random()*1000)}.png`,
         })
 
         /* Call the SendVerificaitonMail() function when new user signup and returns promise */
         this.sendVerificationMail().catch(error => alert(error.message))
-
         this.setUserData(result.user).catch(error => alert(error.message));
-
-        // this.locationService.navigateTo1_1()
         return result
       })
       .catch((error) => {
-        // alert(error.message);
         throw new Error(error)
       });
   }
@@ -86,9 +84,7 @@ export class AuthService {
     return sendEmailVerification(this.auth.currentUser as User);
   }
 
-  /* Setting up user data when sign in with username/password,
-  sign up with username/password and sign in with social auth
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
+  // Use the AngularFirestore + AngularFirestoreDocument service to set up user data when signing in to the Firestore database with a username/password.
   setUserData(user: any) {
     const userRef = this.afs.doc(`users/${user.uid}`);
     const userData: UserCreateRequest = {
@@ -109,9 +105,7 @@ export class AuthService {
 
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
-    console.log('isLoggedin')
-    console.log( this.user ? true : false)
-    return this.user ? true : false;
+    return this.currentUser.uid ? true : false;
   }
 
   getAuthState() {

@@ -1,1 +1,17 @@
-<p>page-not-found works!</p>
+<div class="not-found">
+  <div class="_img">
+    <img src="assets/404_img_nopage@2x.png">
+  </div>
+  <div class="_message">The page you were looking for could not be found.</div>
+
+  <div class="_note">
+    The address you entered may be incorrect or the page may have moved.
+  </div>
+  <div class="btn_group">
+    <button
+      (click)="this.locationService.navigateTo1_1()"
+      class="btn btn-rounded submit" >
+      To Shop Top Page
+    </button>
+  </div>
+</div>
