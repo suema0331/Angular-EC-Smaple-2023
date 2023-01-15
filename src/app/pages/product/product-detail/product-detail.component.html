@@ -29,7 +29,7 @@
           class="_top-img stockout ga-display-soldout-item"
           alt="sold-out-image"
     />
-        <span class="_note">*Pictures and prices may vary depending on the stocks.</span>
+        <span class="_note">*Image is for illustration purposes.</span>
         <img *ngIf="!storeProduct.favorite_flag"
              (click)="clickFavHandler()"
               src="/assets/product/common_btn_favorite@2x.png"
@@ -105,61 +105,48 @@
     </div>
   </div>
 
-
-    <!-- TODO Reccomend Related Products  -->
-  <!-- <div *ngIf="searchRelatedStoreProductsResponses.length > 0" class="recommend-area">
-    <div class="_ttl">関連商品</div>
-    <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
-      <ng-container *ngFor="let searchProduct of searchRelatedStoreProductsResponses; index as i" >
-        <app-search-product-related
-          [searchRelatedStoreProductsDetails]="searchProduct"
-          [isLoggedIn]="isLoggedIn$ | async"
-          (clickPlusHandler)="clickPlusHandler($event)"
-          (clickMinusHandler)="clickMinusHandler($event)"
-        ></app-search-product-related>
-      </ng-container>
-    </div>
-  </div> -->
   <div class="cart-area">
     <div class="btn_group">
       <div class="_cart">
         <button class="_icon-btn"
+            (click)="cartBtnHandler()"
         >
           <img src="/assets/product/common_icon_cart@2x.png" alt="cart">
         </button>
-        <span class="badge rounded-pill badge-notification">5</span>
+        <span class="badge rounded-pill badge-notification" *ngIf="cartPriceInfo.numOfStoreProducts">{{cartPriceInfo.numOfStoreProducts}}</span>
       </div>
 
       <div class="constraint-tooltip"
            *ngIf="displayConstraintTooltip"
            (click)="hideConstraintTooltip()"
            #constraintTooltip
-      >
-        最大{{storeProduct.constraint_max}}点までしか<br>購入できません
+      >You can only purchase up to {{storeProduct.constraint_max}} items
       </div>
 
-      <button *ngIf="false"
-        class="_add-cart ga-click-fixCart">
+      <button *ngIf="storeProduct.product_status === 1 && cartItem.quantity === 0" class="_add-cart ga-click-fixCart"
+      (click)="clickCart()"
+      >
         <i class="fas fa-plus"></i>
-        カートへ追加する
+        Add to cart
       </button>
 
       <button class="_add-cart isCartClicked"
               [class.overConstraintMax]="isOverConstraintMax"
-      >
+              *ngIf="storeProduct.product_status === 1 && cartItem.quantity > 0">
 
         <i class="fas fa-minus ga-click-fixCart-minus"
+           (click)="removeCart()"
         ></i>
-        {{5}}
+        {{cartItem.quantity}}
         <i class="fas fa-plus ga-click-fixCart-plus"
            [class.overConstraintMax]="isOverConstraintMax"
+           (click)="addCart()"
         ></i>
       </button>
       <button class="_add-cart stockout" *ngIf="storeProduct.product_status === 2">
-        売り切れ中
+        SOLD OUT
       </button>
 
     </div>
   </div>
-
 </div>

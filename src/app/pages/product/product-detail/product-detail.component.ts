@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
-import { CartService } from 'src/app/service/domains/cart.service';
+import { CartItem, CartPriceInfo, CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { PriceService } from 'src/app/service/utilities/price-service.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
@@ -22,14 +22,13 @@ export class ProductDetailComponent implements OnInit {
 
   // Value of the magnified image
   topViewImage = '';
-
-  // スクロールエリア選択中の画像初期値
   isSelectedImg = 0;
 
   productId = '';
-
   // カートへ追加クリックView用
-  // isCartClicked = false;
+  isCartClicked = false;
+  cartPriceInfo: CartPriceInfo = this.cartService.getCartPriceInfo();
+  cartItem: CartItem = {productId: '', quantity: 0, price:0, dirtyFlag: false};
 
   isOverConstraintMax = false;
 
@@ -53,6 +52,7 @@ export class ProductDetailComponent implements OnInit {
     private seoService: SEOService,
     private activatedRoute: ActivatedRoute,
     private afs: AngularFirestore,
+    private cartService: CartService,
   ) {
     // Get ID from the URL path query
     this.activatedRoute.params.subscribe(params => this.productId = params['productId'])
@@ -86,9 +86,15 @@ export class ProductDetailComponent implements OnInit {
             this.storeProduct = data[0]
             this.productDocumentId = data[0].docmentId
 
+
             // Product names are only displayed when scrolling down, so that users can better see the images.
             this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
-
+            if (this.productId !== '') {
+              this.cartItem = this.cartService.getCartItem(this.productId);
+              if (this.cartItem.quantity > 0){
+                this.isCartClicked = true;
+              }
+            }
             this.seoService.updateTitle( 'Sample Angular EC -  Product Detail Page: ' + this.storeProduct.product_name);
           }
 
@@ -130,15 +136,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.seoService.updateTitle( 'Sample Angular EC -  Product Detail Page for ' + this.storeProduct.product_name);
-    this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
-
-    if (this.storeProduct.product_view_image_list?.length > 0){
-      this.topViewImage = this.storeProduct.product_view_image_list[0].master;
-    } else {
-      this.topViewImage = '/assets/product/no-image-small.jpg';
-    }
-
+  //   this.seoService.updateTitle( 'Sample Angular EC -  Product Detail Page for ' + this.storeProduct.product_name);
+  //   this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
   }
 
   ngOnDestroy(): void {
@@ -164,17 +163,47 @@ export class ProductDetailComponent implements OnInit {
   }
 
 
-  getProductDetail(productId: string): void{
-      // 価格などのカート情報を取得(バッチ表示用)
-      // this.cartPriceInfo = this.cartService.getCartPriceInfo();
-
-      // if (productId !== '') {
-      //   this.cartItem = this.cartService.getCartItem(productId);
-      //   if (this.cartItem.quantity > 0){
-      //     this.isCartClicked = true;
-      //   }
-      // }
+  clickCart(): void{
+    this.isCartClicked = true;
+    this.addCart();
   }
+
+  addCart(): void{
+    if (this.cartItem.quantity >= this.storeProduct.constraint_max) {
+      this.isOverConstraintMax = true;
+      this.displayConstraintTooltip = true;
+      setTimeout(() => {
+        this.hideConstraintTooltip();
+      }, 1000);
+      return;
+    }
+
+    // Normal Toast Ver
+    // const displayLabel = (this.storeProduct.producing_area ? (this.storeProduct.producing_area + ' ') : '' ) + this.storeProduct.product_name + ' ' + (this.storeProduct.brand ?  this.storeProduct.brand : '' );
+    // this.notificationService.openAddProductToCartToast(displayLabel);
+
+    // Image Toast（画像がない場合も考慮）
+    const toastImagePath = this.storeProduct.product_images[0].small
+      ? this.storeProduct.product_images[0].small
+      : '/assets/product/no-image-small.jpg';
+
+    // this.notificationService.openAddProductToCartImageToast(
+    //   toastImagePath,
+    //   this.storeProduct.producing_area ? this.storeProduct.producing_area : '',
+    //   this.storeProduct.product_name,
+    //   this.storeProduct.brand ? this.storeProduct.brand : '',
+    // );
+    this.isOverConstraintMax = false;
+    this.displayConstraintTooltip = false;
+    this.cartService.incrementItem(this.productId, this.storeProduct.store_price);
+  }
+
+  removeCart(): void{
+    this.isOverConstraintMax = false;
+    this.displayConstraintTooltip = false;
+    this.cartService.decrementItem(this.productId);
+  }
+
 
   getRangeLabel(internalCapacity: string, unitRange: string): string {
     if (internalCapacity && unitRange){
@@ -246,6 +275,11 @@ export class ProductDetailComponent implements OnInit {
   getProductDisplayLabel(producingArea: string, productName: string, brand: string): string{
     const displayLabel = (producingArea ? (producingArea + ' ') : '' ) + productName + ' ' + (brand ?  brand : '' );
     return displayLabel;
+  }
+
+
+  cartBtnHandler(): void {
+    // this.locationService.navigateTo4_12();
   }
 
 }

@@ -12,14 +12,14 @@
       "internal_capacity": "1 bag",
       "unit_range": "2~3 pcs.",
       "store_comment": "Very Good Taste!",
-      "tags": ["NEW"],
+      "tags": ["NEW", "FRESH", "NICE PRICE", "LIMITED"],
       "product_images": [{
         "small": "/assets/product/small/44.jpg",
         "master": "/assets/product/master/44.jpg"
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -41,6 +41,18 @@
         {
           "small": "/assets/product/small/22.jpg",
           "master": "/assets/product/master/22.jpg"
+        },
+        {
+          "small": "/assets/product/small/21.jpg",
+          "master": "/assets/product/master/21.jpg"
+        },
+        {
+          "small": "/assets/product/small/29.jpg",
+          "master": "/assets/product/master/29.jpg"
+        },
+        {
+          "small": "/assets/product/small/35.jpg",
+          "master": "/assets/product/master/35.jpg"
         }
       ]
     },
@@ -55,14 +67,14 @@
       "internal_capacity": "1 bag",
       "unit_range": "2~3 pcs.",
       "store_comment": "Very Good Taste!",
-      "tags": ["NEW"],
+      "tags": ["NEW", "NICE", "LIMITED"],
       "product_images": [{
         "small": "/assets/product/small/6.jpg",
         "master": "/assets/product/master/6.jpg"
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -84,6 +96,18 @@
         {
           "small": "/assets/product/small/35.jpg",
           "master": "/assets/product/master/35.jpg"
+        },
+        {
+          "small": "/assets/product/small/7.jpg",
+          "master": "/assets/product/master/7.jpg"
+        },
+        {
+          "small": "/assets/product/small/8.jpg",
+          "master": "/assets/product/master/8.jpg"
+        },
+        {
+          "small": "/assets/product/small/9.jpg",
+          "master": "/assets/product/master/9.jpg"
         }
       ]
     },
@@ -98,7 +122,7 @@
       "internal_capacity": "1 bag",
       "unit_range": "2~3 pcs.",
       "store_comment": "Very Good Taste!",
-      "tags": ["NEW"],
+      "tags": ["NEW", "GREAT", "LIMITED"],
       "product_images": [{
         "small": "/assets/product/small/37.jpg",
         "master": "/assets/product/small/37.jpg"
@@ -127,6 +151,18 @@
         {
           "small": "/assets/product/small/25.jpg",
           "master": "/assets/product/master/25.jpg"
+        },
+        {
+          "small": "/assets/product/small/24.jpg",
+          "master": "/assets/product/master/24.jpg"
+        },
+        {
+          "small": "/assets/product/small/43.jpg",
+          "master": "/assets/product/master/43.jpg"
+        },
+        {
+          "small": "/assets/product/small/26.jpg",
+          "master": "/assets/product/master/26.jpg"
         }
       ]
     },
@@ -138,17 +174,17 @@
       "constraint_max": 10,
       "producing_area": "Germany",
       "brand": "Fresh-brand",
-      "internal_capacity": "1 bag",
+      "internal_capacity": "3 bag",
       "unit_range": "2~3 pcs.",
       "store_comment": "Very Good Taste!",
-      "tags": ["NEW"],
+      "tags": ["NEW", "SEASONAL", "LIMITED"],
       "product_images": [{
         "small": "/assets/product/small/41.jpg",
         "master": "/assets/product/master/41.jpg"
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -170,6 +206,18 @@
         {
           "small": "/assets/product/small/26.jpg",
           "master": "/assets/product/master/26.jpg"
+        },
+        {
+          "small": "/assets/product/small/42.jpg",
+          "master": "/assets/product/master/42.jpg"
+        },
+        {
+          "small": "/assets/product/small/41.jpg",
+          "master": "/assets/product/master/41.jpg"
+        },
+        {
+          "small": "/assets/product/small/40.jpg",
+          "master": "/assets/product/master/40.jpg"
         }
       ]
     },
@@ -184,14 +232,14 @@
       "internal_capacity": "1 bag",
       "unit_range": "2~3 pcs.",
       "store_comment": "Very Good Taste!",
-      "tags": ["NEW"],
+      "tags": ["NEW", "HOME MADE"],
       "product_images": [{
         "small": "/assets/product/small/8.jpg",
         "master": "/assets/product/master/8.jpg"
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -224,17 +272,17 @@
       "constraint_max": 10,
       "producing_area": "Germany",
       "brand": "Good-brand",
-      "internal_capacity": "1 bag",
-      "unit_range": "2~3 pcs.",
-      "store_comment": "Very Good Taste!",
-      "tags": ["NEW"],
+      "internal_capacity": "3 bag",
+      "unit_range": "2~4 pcs.",
+      "store_comment": "Really Good Taste!",
+      "tags": ["NEW", "ORIGINAL", "FRESH", "NICE"],
       "product_images": [{
         "small": "/assets/product/small/39.jpg",
         "master": "/assets/product/master/39.jpg"
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -267,8 +315,8 @@
       "constraint_max": 10,
       "producing_area": "Germany",
       "brand": "Super-brand",
-      "internal_capacity": "1 bag",
-      "unit_range": "2~3 pcs.",
+      "internal_capacity": "4 bag",
+      "unit_range": "2 pcs.",
       "store_comment": "Very Good Taste!",
       "tags": ["NEW"],
       "product_images": [{
@@ -310,8 +358,8 @@
       "constraint_max": 10,
       "producing_area": "Germany",
       "brand": "Super-brand",
-      "internal_capacity": "1 pack",
-      "unit_range": "2~3 pcs.",
+      "internal_capacity": "3 pack",
+      "unit_range": "2~5 pcs.",
       "store_comment": "Super Good Taste!",
       "tags": ["FRESH"],
       "product_images": [{
@@ -320,7 +368,7 @@
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -351,19 +399,19 @@
       "standard_price": 999,
       "store_price": 900,
       "constraint_max": 10,
-      "producing_area": "Germany",
+      "producing_area": "Japan",
       "brand": "Good-brand",
       "internal_capacity": "1 pack",
       "unit_range": "2~3 pcs.",
-      "store_comment": "Very Good Taste!",
-      "tags": ["FRESH"],
+      "store_comment": "Really Good Taste!",
+      "tags": ["FRESH", "NICE", "ORIGINAL"],
       "product_images": [{
         "small": "/assets/product/small/36.jpg",
         "master": "/assets/product/master/36.jpg"
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -396,7 +444,7 @@
       "constraint_max": 10,
       "producing_area": "Germany",
       "brand": "Good-brand",
-      "internal_capacity": "1 pack",
+      "internal_capacity": "3 pack",
       "unit_range": "2~3 pcs.",
       "store_comment": "Very Good Taste!",
       "tags": ["FRESH"],
@@ -406,7 +454,7 @@
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -449,7 +497,7 @@
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -522,8 +570,8 @@
       "constraint_max": 10,
       "producing_area": "Germany",
       "brand": "Good-brand",
-      "internal_capacity": "1 pack",
-      "unit_range": "2~3 pcs.",
+      "internal_capacity": "2 pack",
+      "unit_range": "1~2 pcs.",
       "store_comment": "Very Good Taste!",
       "tags": ["FRESH"],
       "product_images": [{
@@ -532,7 +580,7 @@
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -566,7 +614,7 @@
       "producing_area": "Germany",
       "brand": "Good-brand",
       "internal_capacity": "1 pack",
-      "unit_range": "2~3 pcs.",
+      "unit_range": "3 pcs.",
       "store_comment": "SO Good Taste!",
       "tags": ["ORIGINAL"],
       "product_images": [
@@ -577,7 +625,7 @@
       ],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -611,7 +659,7 @@
       "producing_area": "Germany",
       "brand": "Good-brand",
       "internal_capacity": "1 pack",
-      "unit_range": "2~3 pcs.",
+      "unit_range": "2~5 pcs.",
       "store_comment": "Very Good Taste!",
       "tags": ["FRESH"],
       "product_images": [{
@@ -654,7 +702,7 @@
       "producing_area": "Germany",
       "brand": "Good-brand",
       "internal_capacity": "1 pack",
-      "unit_range": "2~3 pcs.",
+      "unit_range": "1~3 pcs.",
       "store_comment": "Very Good Taste!",
       "tags": ["ORIGINAL"],
       "product_images": [{
@@ -663,7 +711,7 @@
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -696,8 +744,8 @@
       "constraint_max": 10,
       "producing_area": "Germany",
       "brand": "Good-brand",
-      "internal_capacity": "1 pack",
-      "unit_range": "2~3 pcs.",
+      "internal_capacity": "2 pack",
+      "unit_range": "1~3 pcs.",
       "store_comment": "Very Good Taste!",
       "tags": ["FRESH"],
       "product_images": [{
@@ -706,7 +754,7 @@
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
@@ -737,7 +785,7 @@
       "standard_price": 99,
       "store_price": 90,
       "constraint_max": 10,
-      "producing_area": "Germany",
+      "producing_area": "Japan",
       "brand": "Good-brand",
       "internal_capacity": "1 pack",
       "unit_range": "2~3 pcs.",
@@ -749,7 +797,7 @@
       }],
       "purchased_flag": 0,
       "favorite_flag": 1,
-      "product_status": 0,
+      "product_status": 1,
       "cart_quantity": 0,
       "product_view_image_list": [
         {
