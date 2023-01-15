@@ -14,7 +14,7 @@
   </div>
   <div class="img-area">
     <img src="/assets/product/common_ic_close2@2x.png"
-         class="_close ga-click-button-close"
+         class="_close"
          alt="product-close"
           (click)="handleBack()"
     >
@@ -26,14 +26,14 @@
 
     <img *ngIf="storeProduct.product_status === 2"
           src="/assets/product/productdetails_img_soldout@2x.png"
-          class="_top-img stockout ga-display-soldout-item"
+          class="_top-img stockout"
           alt="sold-out-image"
     />
         <span class="_note">*Image is for illustration purposes.</span>
         <img *ngIf="!storeProduct.favorite_flag"
              (click)="clickFavHandler()"
               src="/assets/product/common_btn_favorite@2x.png"
-              class="_fav ga-click-favorite"
+              class="_fav"
               alt="product-before-favorite-icon"
         >
         <img *ngIf="storeProduct.favorite_flag"
@@ -64,7 +64,7 @@
       <div class="_ttl">Estimated price</div>
 
       <div *ngIf="storeProduct.standard_price>0 && storeProduct.store_price < storeProduct.standard_price"
-        class="_discount-tag ga-display-discount-item">
+        class="_discount-tag">
         <span class="_tag">
           {{calculateDiscountRate(storeProduct.standard_price, storeProduct.store_price)}}
         </span>
@@ -76,7 +76,7 @@
     </div>
     <div class="_tags" *ngIf="storeProduct.tags.length>0">
       <ng-container *ngFor="let tag of storeProduct.tags; index as i">
-        <span class="_tag ga-display-item-label"
+        <span class="_tag"
         >
           {{tag}}
         </span>
@@ -109,7 +109,7 @@
     <div class="btn_group">
       <div class="_cart">
         <button class="_icon-btn"
-            (click)="cartBtnHandler()"
+            (click)="navigateToCartHandler()"
         >
           <img src="/assets/product/common_icon_cart@2x.png" alt="cart">
         </button>
@@ -123,7 +123,7 @@
       >You can only purchase up to {{storeProduct.constraint_max}} items
       </div>
 
-      <button *ngIf="storeProduct.product_status === 1 && cartItem.quantity === 0" class="_add-cart ga-click-fixCart"
+      <button *ngIf="storeProduct.product_status === 1 && cartItem.quantity === 0" class="_add-cart"
       (click)="clickCart()"
       >
         <i class="fas fa-plus"></i>
@@ -134,11 +134,11 @@
               [class.overConstraintMax]="isOverConstraintMax"
               *ngIf="storeProduct.product_status === 1 && cartItem.quantity > 0">
 
-        <i class="fas fa-minus ga-click-fixCart-minus"
+        <i class="fas fa-minus"
            (click)="removeCart()"
         ></i>
         {{cartItem.quantity}}
-        <i class="fas fa-plus ga-click-fixCart-plus"
+        <i class="fas fa-plus"
            [class.overConstraintMax]="isOverConstraintMax"
            (click)="addCart()"
         ></i>

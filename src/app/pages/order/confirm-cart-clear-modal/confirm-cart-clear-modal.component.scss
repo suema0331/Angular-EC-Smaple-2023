@@ -1,0 +1,67 @@
+@import "variables.scss";
+
+.confirm-modal{
+  padding: 16px;
+}
+.modal-body {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #2E2621;
+  padding: 24px 8px 8px;
+
+  ._message {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 32px;
+  }
+
+  ._product{
+    display: flex;
+    margin-bottom: 32px;
+    text-align: left;
+    padding: 0 38px;
+    img{
+      width: 77px;
+      height: 77px;
+      margin-right: 8px;
+    }
+    ._item{
+      ._name{
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+      ._price{
+        font-size: 18px;
+        font-weight: bold;
+      }
+      ._tax{
+        margin-left: 4px;
+        font-weight: normal;
+        font-size: 16px;
+        color: #717171;
+      }
+    }
+  }
+
+  .btn_group{
+    padding: 0 16px 16px;
+    margin-top: 0;
+    button{
+      width: 100%;
+      border-radius: 48px;
+      font-size: 16px;
+      padding: 16px;
+    }
+    .submit{
+      background: #E50721;
+      color: #fcfcfc;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .cancel{
+      background: #FFFFFF;
+      color: #2E2621;
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { CartItem, CartPriceInfo, CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { PriceService } from 'src/app/service/utilities/price-service.service';
@@ -26,7 +25,6 @@ export class ProductDetailComponent{
   isSelectedImg = 0;
 
   productId = '';
-  // カートへ追加クリックView用
   isCartClicked = false;
   cartPriceInfo: CartPriceInfo = this.cartService.getCartPriceInfo();
   cartItem: CartItem = {productId: '', quantity: 0, price:0, dirtyFlag: false};
@@ -58,7 +56,6 @@ export class ProductDetailComponent{
   ) {
     // Get ID from the URL path query
     this.activatedRoute.params.subscribe(params => this.productId = params['productId'])
-
     // Get A document from tha productId
     this.productSubscription = this.afs.collection<StoreProductExt>('products', (ref) =>
       ref.where('store_product_id', '==', this.productId))
@@ -107,34 +104,7 @@ export class ProductDetailComponent{
           }
     });
 
-    // this.afs.collection<StoreProductExt>('products', (ref) =>
-    //     ref.where('store_product_id', '==', this.productId))
-    //   .valueChanges()
-    //   .subscribe(res => {
-    //     console.log(res)
-    //     console.log(res[0])
-    //     console.log(res[0].tags)
 
-    //     if (!res[0] || !res[0].store_product_id){
-    //       alert('Product does not exist');
-    //       this.locationService.navigateTo2_1();
-    //     }
-    //     if (res[0].product_status === ProductStatus.disContinued) {
-    //       alert('Access to this page is currently unavailable due to suspension of publication, etc.');
-    //       this.locationService.navigateTo2_1();
-    //     }
-    //     else {
-    //       this.storeProduct = res[0]
-    //       this.displayHeaderName = this.getProductDisplayLabel(this.storeProduct.producing_area, this.storeProduct.product_name, this.storeProduct.brand).substring(0, 30);
-    //       if (this.storeProduct.product_view_image_list?.length > 0){
-    //         this.topViewImage = this.storeProduct.product_view_image_list[0].master;
-    //         console.log(this.topViewImage)
-    //       } else {
-    //         this.topViewImage = '/assets/product/no-image-small.jpg';
-    //       }
-
-    //     }
-    // })
   }
 
   ngOnDestroy(): void {
@@ -148,7 +118,6 @@ export class ProductDetailComponent{
       this.isScroll = false;
     } else {
       this.isScroll = true;
-
       // Scroll direction judgment
       if (this.currentPageYOffset < window.pageYOffset){
         this.isScrollDown = true;
@@ -174,8 +143,6 @@ export class ProductDetailComponent{
       }, 1000);
       return;
     }
-
-    // Image Toast（画像がない場合も考慮）
     const toastImagePath = this.storeProduct.product_images[0].small
       ? this.storeProduct.product_images[0].small
       : '/assets/product/no-image-small.jpg';
@@ -196,7 +163,6 @@ export class ProductDetailComponent{
     this.displayConstraintTooltip = false;
     this.cartService.decrementItem(this.productId);
   }
-
 
   getRangeLabel(internalCapacity: string, unitRange: string): string {
     if (internalCapacity && unitRange){
@@ -262,7 +228,7 @@ export class ProductDetailComponent{
   }
 
   handleBack(): void {
-    this.location.back();
+    this.locationService.navigateTo2_1();
   }
 
   getProductDisplayLabel(producingArea: string, productName: string, brand: string): string{
@@ -270,9 +236,8 @@ export class ProductDetailComponent{
     return displayLabel;
   }
 
-
-  cartBtnHandler(): void {
-    // this.locationService.navigateTo4_12();
+  navigateToCartHandler(): void {
+    this.locationService.navigateTo4_1();
   }
 
 }

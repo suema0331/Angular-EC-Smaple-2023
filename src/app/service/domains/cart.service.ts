@@ -48,29 +48,6 @@ export class CartService {
     this.calculateCartPriceInfo(this.getValidCache());
   }
 
-  // ログインしている場合に１回だけ呼ばれる想定
-  // loadCartPriceInfoFromBackend(userId: string): void {
-  //   this.logService.logDebug('[cart] loadCartPriceInfoFromBackend');
-  //   // const deliveryType = DeliveryType.none;
-  //   const coupon = '';
-
-  //   // const receivingMethod = ReceivingMethod.none;
-  //   // const calcPriceType = CalcPriceType.cartEstimation;
-  //   this.cartRestUserServiceExt.getCart(
-  //     userId,
-  //     STORE_ID_SAMPLE,
-  //     coupon,
-  //   ).subscribe((data) => {
-  //       // カートの合計価格＆数量 情報
-  //       this.cartPriceInfo.totalProductPriceWithTax = data.estimate_price_set.total_product_price_with_tax;
-  //       this.cartPriceInfo.totalProductPriceWithoutTax = data.estimate_price_set.total_product_price;
-  //       this.cartPriceInfo.numOfStoreProducts = data.estimate_price_set.num_of_store_products;
-  //     },
-  //     () => {
-  //       this.updatePriceInfoCountDownTimer = this.UPDATE_GRACE_PERIOD;
-  //     });
-  // }
-
   loadCartCacheFromStorage(): void {
     this.logService.logDebug('[cart] loadCartCacheFromStorage');
     const strCartCache = this.storageService.get(STORAGE_KEY_CART);
@@ -163,7 +140,11 @@ export class CartService {
       temp.quantity = 0;
     }
     temp.dirtyFlag = true;
+    this.saveCartCacheToStorage();
+  }
 
+  getCartCache(): Cart {
+    return this.cartCache;
   }
 
   getCartPriceInfo(): CartPriceInfo {
@@ -188,15 +169,29 @@ export class CartService {
     }
   }
 
-  getCartBeforeOrder(userId: string, inputCoupon?: string ): Observable<CartSummaryExt> {
-    this.logService.logDebug('[cart] getCartBeforeOrder');
-    const coupon = inputCoupon ? inputCoupon : '';
-    return this.cartRestUserServiceExt.getCart(
-      userId,
-      STORE_ID_SAMPLE,
-      coupon,
-    );
-    }
+  clearCart(): void {
+    Object.keys(this.cartCache).forEach(key => {
+      const temp = this.cartCache[key];
+      temp.quantity = 0;
+      temp.dirtyFlag = false;
+    });
+    this.cartPriceInfo.totalProductPriceWithTax = 0;
+    this.cartPriceInfo.totalProductPriceWithoutTax = 0;
+    this.cartPriceInfo.numOfStoreProducts = 0;
+  }
+
+  clearCartCacheFromStorage(): void {
+    this.storageService.remove(STORAGE_KEY_CART);
+  }
+  // getCartBeforeOrder(userId: string, inputCoupon?: string ): Observable<CartSummaryExt> {
+  //   this.logService.logDebug('[cart] getCartBeforeOrder');
+  //   const coupon = inputCoupon ? inputCoupon : '';
+  //   return this.cartRestUserServiceExt.getCart(
+  //     userId,
+  //     STORE_ID_SAMPLE,
+  //     coupon,
+  //   );
+  //   }
 
 
 

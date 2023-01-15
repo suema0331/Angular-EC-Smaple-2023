@@ -40,7 +40,6 @@ export class ProductListComponent {
         actions.map((a) => {
           const data = a.payload.doc.data() as StoreProductExt;
           const id = a.payload.doc.id;
-
           return { id, ...data };
         })
       )

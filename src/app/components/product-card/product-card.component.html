@@ -24,76 +24,55 @@
                class="card-img-top"
                alt="product-image"
           />
-
-          <div class="add_cart_btn"
-               *ngIf="cartItem.quantity === 0"
-          >
-            <div class="_expand-cart-add-btn-area ga-click-store-cartAdd"
-                 (click)="addCart($event)"
-            >
-              <i class="fas fa-plus ga-click-store-cartAdd"></i>
+          <div class="add_cart_btn" *ngIf="cartItem.quantity === 0">
+            <div class="_expand-cart-add-btn-area"
+                 (click)="addCart($event)">
+              <i class="fas fa-plus"></i>
             </div>
           </div>
-
           <div class="constraint-tooltip"
                *ngIf="displayConstraintTooltip"
                (click)="hideConstraintTooltip()"
-               #constraintTooltip
-          >
-            最大{{storeProduct.constraint_max}}点までしか<br>購入できません
+               #constraintTooltip>
+            You can only purchase up to {{storeProduct.constraint_max}} items
           </div>
-
-
             <div class="add_cart_btn isClicked"
                  *ngIf="cartItem.quantity > 0"
-                 [class.overConstraintMax]="isOverConstraintMax"
-            >
-              <div class="_expand-cart-minus-btn-area ga-click-store-cartMinus"
-                    (click)="removeCart($event)"
-              >
-                <i class="fas fa-minus ga-click-store-cartMinus"></i>
+                 [class.overConstraintMax]="isOverConstraintMax">
+              <div class="_expand-cart-minus-btn-area"
+                    (click)="removeCart($event)">
+                <i class="fas fa-minus"></i>
               </div>
                   {{cartItem.quantity}}
-              <div class="_expand-cart-plus-btn-area ga-click-store-cartPlus"
-                   (click)="addCart($event)"
-              >
-                <i class="fas fa-plus ga-click-store-cartPlus"
+              <div class="_expand-cart-plus-btn-area"
+                   (click)="addCart($event)" >
+                <i class="fas fa-plus"
                    [class.overConstraintMax]="isOverConstraintMax"
                 ></i>
               </div>
             </div>
-
         </div>
         <div [class._small]="storeProduct.store_price > 999"
              [class.discount]="storeProduct.standard_price && storeProduct.store_price < storeProduct.standard_price"
              class="card-body" >
           <div class="card-title"
                [class._small]="storeProduct.store_price > 999"
-               [class._no-wrap]="storeProduct.store_price > 9999"
-          >
+               [class._no-wrap]="storeProduct.store_price > 9999">
             <span [class.discount]="storeProduct.standard_price && storeProduct.store_price < storeProduct.standard_price"
                   class="_price">{{storeProduct.store_price | currency : 'JPY': true}}</span>
             <span [class._small]="storeProduct.store_price > 999"
-                  class="_tax-price"
-            > {{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': true}}</span>
+                  class="_tax-price"> {{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': true}}</span>
 
             <span class="_tax-tag"
-                  [class._small]="calculateTaxedValue(storeProduct.store_price)> 999"
-            >/with tax</span>
-
+                  [class._small]="calculateTaxedValue(storeProduct.store_price)> 999">/with tax</span>
           </div>
           <p [class._expandLabel]="isMoreClicked" class="card-text _name">
             {{getProductDisplayLabel(storeProduct.producing_area, storeProduct.product_name, storeProduct.brand) }}
           </p>
-
           <div class="_expandLabel">
-            <p class="card-text _quantity"
-            >
+            <p class="card-text _quantity">
               {{getRangeLabel(storeProduct.internal_capacity, storeProduct.unit_range)}}
             </p>
-            <!-- <p class="card-text _gram">
-              {{ (storeProduct.unit_price_per100g) ? '¥'+storeProduct.unit_price_per100g+'/100g' : ''}}
-            </p> -->
           </div>
         </div>
       </div>

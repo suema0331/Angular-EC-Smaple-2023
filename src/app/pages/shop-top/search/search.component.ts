@@ -11,7 +11,6 @@ const searchClient = algoliasearch(
   'CF1WVZ4JQG',
   '488ec6355da8fef55477fc85d464a645'
 );
-
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',

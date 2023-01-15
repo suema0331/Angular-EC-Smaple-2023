@@ -20,12 +20,8 @@ export class ProductCardComponent {
   @Input() storeProduct: StoreProductExt = {
     store_product_id: '',
     product_name: '',
-    // product_code: '',
     standard_price: 0,
-    // standard_price_with_tax: 0,
     store_price: 0,
-    // store_price_with_tax: 0,
-    // tax_rate: 0,
     constraint_max: CONSTRAINT_MAX,
     producing_area: '',
     brand: '',
@@ -37,7 +33,7 @@ export class ProductCardComponent {
     purchased_flag: 0,
     favorite_flag: 0,
     product_status: 0,
-    cart_quantity: 0, // 使わない
+    cart_quantity: 0,
     product_view_image_list: new Array<ProductImageExt>(),
   };
   @Input() isMoreClicked = false;
@@ -58,8 +54,6 @@ export class ProductCardComponent {
 
   @ViewChild('constraintTooltip') constraintTooltip!: ElementRef | undefined;
   displayConstraintTooltip = false;
-
-  // signupDialogRef: MdbModalRef<SignupDialogPageComponent> | undefined;
 
   constructor(
     public locationService: LocationService,
@@ -92,28 +86,17 @@ export class ProductCardComponent {
     this.isCartClicked = true;
     $event.stopPropagation();
     $event.preventDefault();
-    if (!this.isLoggedIn){
-      // this.openSignUpDialog();
-      // return;
-    }
-
-    // 上限購入可能個数を超えていたらtooltipをだす
     if (this.cartItem.quantity >= this.storeProduct.constraint_max){
       this.isOverConstraintMax = true;
       this.displayConstraintTooltip = true;
-
-      // display flexの親であるためscssアニメーションだけでは消えない
       setTimeout(() => {
         this.hideConstraintTooltip();
       }, 1000);
-
       return;
-
     } else {
       this.isOverConstraintMax = false;
       this.displayConstraintTooltip = false;
     }
-    // this.storeProduct.cart_quantity = this.cartItem.quantity;
     this.clickPlusHandler.emit(this.storeProduct);
   }
 

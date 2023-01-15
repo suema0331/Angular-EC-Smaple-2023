@@ -1,1 +1,84 @@
-<p>cart works!</p>
+<div class="cart-page">
+
+  <div class="cart-header">
+    <div class="_inner">
+      <span class="empty-cart-button"
+            *ngIf="cartPriceInfo.numOfStoreProducts !== 0"
+        (click)="emptyCartHandler()"
+      >Empty Cart</span>YOUR CART
+      <button
+        (click)="handleBack()" aria-label="close" class="_close"
+        type="button"
+      >
+        <img alt="close" src="/assets/product/common_btn_close@2x.png">
+      </button>
+    </div>
+  </div>
+
+  <div class="cart" >
+    <ng-container *ngIf="
+    userCart.length === 0
+      || cartPriceInfo.numOfStoreProducts === 0">
+      <div class="no-cart-area">
+        <div class="_message">There are no items in your cart.</div>
+        <div class="_img-area">
+          <img alt="" src="./assets/order/purchasehistory_img_cart@2x.png">
+        </div>
+      </div>
+    </ng-container>
+
+    <div *ngIf="cartPriceInfo.numOfStoreProducts > 0 || userCart.length > 0" class="inner-area">
+      <div class="message-area">
+        <div *ngIf="storeMessage.store_available_flag === 0" class="_delivery">
+          {{storeMessage.operation_message}}
+        </div>
+      </div>
+
+      <ng-container>
+        <div *ngFor="let product of userCart; index as i" class="product-area" >
+          <ng-container *ngIf="product.store_product_id">
+            <app-cart-product
+              (clickMinusHandler)="clickMinusHandler($event)"
+              (clickPlusHandler)="clickPlusHandler($event)"
+              (clickRemoveAllHandler)="clickRemoveAllHandler($event)"
+              [storeProduct]="product"
+              [productViewImageType]="1"
+            >
+            </app-cart-product>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="order-area">
+      <div class="note-free">
+         Free shipping for orders over 7777 yen! (excluding tax)
+      </div>
+      <div class="price">
+        Estimated total amount <span class="_red">
+        {{cartPriceInfo.totalProductPriceWithoutTax | currency : 'JPY': true}}</span>
+        <span class="_tax">/without tax</span>
+      </div>
+      <div class="tax-price">
+        <span>
+        {{cartPriceInfo.totalProductPriceWithTax | currency : 'JPY': true}}</span>
+        <span class="_tax">/with tax</span>
+      </div>
+      <div class="btn_group">
+        <button
+          (click)="submitHandler()"
+          *ngIf="userCart.length > 0 && !hasCanNotOrderProducts()"
+          class="btn btn-rounded submit"
+        >Proceed to Order
+        </button>
+        <button
+          *ngIf="hasCanNotOrderProducts()"
+          class="btn btn-rounded no-cart"
+        >Proceed to Order
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+

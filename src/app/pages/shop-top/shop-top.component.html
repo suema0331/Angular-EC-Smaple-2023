@@ -23,34 +23,25 @@
   </div>
   <div (click)="navigateToMypageHandler()"
       title="This is a munu icon on the header to navigate the my page."
-      class="_menu ga-click-hamburgerMenu">
+      class="_menu">
     <i class="fas fa-bars fa-lg"></i>
   </div>
 </div>
 
 <div *ngIf="storeMessage.notice_available_flag"
   class="store-message-area">
-  <div class="_notice1 ga-caution-store-close">
+  <div class="_notice1">
     {{storeMessage.notice1}}
   </div>
   <div class="_notice2">{{storeMessage.notice2}}</div>
 </div>
 
 <div *ngIf="storeMessage.store_available_flag === 0"
-  class="delivery-message-area ga-caution-delibery-capaciy">
+  class="delivery-message-area">
   {{storeMessage.operation_message}}
 </div>
 
 <div class="shop-top">
-  <!-- <div class="_store"
-  >
-    <img src="./assets/store_image@2x.png" alt="store-top-image">
-    <button class="_search"
-      (click)="navigateToProductList()"
-    >
-      Search from the product list  <i class="fas fa-angle-right"></i>
-    </button>
-  </div> -->
 
   <div class="_store">
     <div class="_scroll-area" #swipeContent>
@@ -96,7 +87,7 @@
   <div class="recommend-area">
     <div class="_ttl">
       <span *ngIf="isLoggedIn">Recommended products for you</span>
-      <span *ngIf="!isLoggedIn">Recommended products from us</span>
+      <span *ngIf="!isLoggedIn">Recommended products from our staffs</span>
     </div>
     <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
       <ng-container *ngFor="let product of recommendedProductList$ | async; index as i" >
@@ -124,10 +115,6 @@
       <img src="assets/top_icon_history@2x.png" alt="purchase-icon"> Purchase History
     </button>
   </div>
-  <!-- <div class="category-area">カテゴリから探す</div>
-      <app-custom-category-list
-        [topPageInfo]="topPageInfo"
-      ></app-custom-category-list> -->
 
   <div class="bottom-menu-area">
     <ul class="list-group">

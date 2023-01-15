@@ -48,9 +48,7 @@ export class SignupComponent {
   agreementErrorMessage = '';
 
   isMailError = false;
-  // isPasswordLengthError = false;
   isPasswordError = false;
-  // isPasswordExclusionError = false;
   isConfirmPasswordError = false;
   isAgreementError = false;
   agreementChecked = false; // submit時のバリデーションのため
