@@ -44,6 +44,7 @@ import { NotificationService } from './service/utilities/notification.service';
 import { CartService } from './service/domains/cart.service';
 import { CartProductCardComponent } from './components/cart-product-card/cart-product-card.component';
 import { ConfirmCartClearModalComponent } from './pages/order/confirm-cart-clear-modal/confirm-cart-clear-modal.component';
+import { ConfirmOrderModalComponent } from './pages/order/confirm-order-modal/confirm-order-modal.component';
 
 // import {MdbSelectModule} from 'mdb-angular-ui-kit/select';
 // import {MdbValidationModule} from 'mdb-angular-ui-kit/validation';
@@ -71,6 +72,7 @@ import { ConfirmCartClearModalComponent } from './pages/order/confirm-cart-clear
     AddCartToastComponent,
     CartProductCardComponent,
     ConfirmCartClearModalComponent,
+    ConfirmOrderModalComponent,
   ],
   imports: [
     BrowserModule,

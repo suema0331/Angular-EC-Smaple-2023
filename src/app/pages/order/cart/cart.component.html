@@ -66,7 +66,7 @@
       </div>
       <div class="btn_group">
         <button
-          (click)="submitHandler()"
+          (click)="confirmOrderHandler()"
           *ngIf="userCart.length > 0 && !hasCanNotOrderProducts()"
           class="btn btn-rounded submit"
         >Proceed to Order

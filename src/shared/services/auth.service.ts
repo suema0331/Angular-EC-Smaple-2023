@@ -10,7 +10,8 @@ import { UserCreateRequest } from 'src/backend/dto/common/user_create_request';
 })
 export class AuthService {
 
-  user$ = this.auth.currentUser;
+  // user$ = this.auth.currentUser;
+  currentUser = {} as User;
 
   constructor(
      // Tell Angular that dependencies are optional
@@ -23,12 +24,15 @@ export class AuthService {
     authState(this.auth).subscribe((user) => {
       console.log(user)
       if (user) {
-        localStorage.setItem('user', JSON.stringify(user));
-        JSON.parse(localStorage.getItem('user')!);
-      } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
+        this.currentUser = user
       }
+      // To store (only some information) in local storage
+        // localStorage.setItem('user', JSON.stringify(user));
+        // JSON.parse(localStorage.getItem('user')!);
+      // } else {
+      //   localStorage.setItem('user', 'null');
+      //   JSON.parse(localStorage.getItem('user')!);
+      // }
     });
   }
 
@@ -106,10 +110,9 @@ export class AuthService {
 
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
     console.log('isLoggedin')
-    console.log( user ? true : false)
-    return user ? true : false;
+    console.log( this.user ? true : false)
+    return this.user ? true : false;
   }
 
   getAuthState() {

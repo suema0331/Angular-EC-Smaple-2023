@@ -14,18 +14,12 @@ export class MypageComponent {
   screenName = 'MypageComponent';
   screenId = '3_1';
 
-  user$ = this.authService.user
+  currentUser = this.authService.currentUser
 
   constructor(
     public locationService: LocationService,
     private authService: AuthService,
-  ) {
-    // user = this.authService.user.subscribe()
-    this.user$.subscribe(res => {
-      console.log("🌟subscribed User data")
-      console.log(res)
-    })
-  }
+  ) { }
 
   logoutHandler(): void{
 
