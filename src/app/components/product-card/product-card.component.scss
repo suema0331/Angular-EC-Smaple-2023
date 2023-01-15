@@ -14,7 +14,6 @@
       &.stockout::after{
 
         @media screen and (min-width:600px) {
-          /*　画面サイズ 600 px以上　*/
           line-height: 11;
         }
         content: 'SOLD OUT';
@@ -114,7 +113,6 @@
           justify-content: center;
 
           @media screen and (min-width:600px) {
-            /*　画面サイズ 600 px以上　*/
             right: 14px;
           }
 

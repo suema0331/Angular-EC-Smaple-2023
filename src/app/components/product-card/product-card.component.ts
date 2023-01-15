@@ -37,7 +37,6 @@ export class ProductCardComponent {
   @Input() isBackgroundTransparent = false;
   @Input() isLoggedIn: boolean | null = false;
   @Input() productViewImageType = 0;
-
   @Input() activeSection = [] as number[];
 
   @Output() clickPlusHandler: EventEmitter<StoreProductExt> = new EventEmitter();
@@ -102,7 +101,6 @@ export class ProductCardComponent {
     this.displayConstraintTooltip = false;
     this.clickMinusHandler.emit(this.storeProduct);
   }
-
 
   calculateDiscountRate(standardPrice: number, storePrice: number, ): string {
     return this.priceService.calculateDiscountRate(standardPrice, storePrice);

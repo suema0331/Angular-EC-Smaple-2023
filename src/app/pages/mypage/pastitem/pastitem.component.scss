@@ -9,7 +9,6 @@
   height: 100%;
 
   @media screen and (min-width:600px) {
-    /*　画面サイズ 600 px以上　*/
     max-width: 600px;
     margin: 0 auto;
   }
@@ -27,7 +26,6 @@
       margin-bottom: 24px;
 
       @media screen and (min-width:600px) {
-        /*　画面サイズ 600 px以上　*/
         padding: 0px 190px 32px;
       }
 

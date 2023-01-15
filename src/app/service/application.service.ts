@@ -4,12 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApplicationService {
-
+  /**
+   * Not used at this time.
+   * The front-end calls the app service and does not call the backend service form ./backend/services directly.
+   * In ApplicationService, the backend services that the frontend wants to invoke are centrally managed in the application layer (ApplicationService) and are provided by appModule.
+   *  */
   constructor(
     // private userQueryRestUserServiceExt: UserQueryRestUserServiceExt,
   ) { }
 
-  // TOPおすすめ商品
+  // e.g. Recommended products for the user on the TOP oage
   // getUserRecommendations(storeId: string, userId: string): Observable<[StoreProductExt]> {
   //   return this.userQueryRestUserServiceExt.getUserRecommendations(storeId, userId);
   // }

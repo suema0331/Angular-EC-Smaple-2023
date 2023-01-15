@@ -178,16 +178,4 @@ export class CartService {
   clearCartCacheFromStorage(): void {
     this.storageService.remove(STORAGE_KEY_CART);
   }
-  // getCartBeforeOrder(userId: string, inputCoupon?: string ): Observable<CartSummaryExt> {
-  //   this.logService.logDebug('[cart] getCartBeforeOrder');
-  //   const coupon = inputCoupon ? inputCoupon : '';
-  //   return this.cartRestUserServiceExt.getCart(
-  //     userId,
-  //     STORE_ID_SAMPLE,
-  //     coupon,
-  //   );
-  //   }
-
-
-
 }

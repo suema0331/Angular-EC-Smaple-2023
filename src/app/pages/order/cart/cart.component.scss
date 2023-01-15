@@ -6,7 +6,6 @@
   position: absolute;
 
   @media screen and (min-width:600px) {
-    /*　画面サイズ 600 px以上　*/
     max-width: 600px;
     margin: 0 auto;
   }
@@ -115,7 +114,6 @@
       background: rgba(252,252,252,0.9);
 
       @media screen and (min-width:600px) {
-        /*　画面サイズ 600 px以上　*/
         max-width: 600px;
         margin: 0 auto;
       }

@@ -11,7 +11,10 @@ export enum SizeType {
 export class ImageUrlService{
   constructor(){}
 
-  // 将来的に顧客が増えた場合はCroudFrontを使用してS3の中に保存されているオブジェクトから取得する
+  /**
+   * Not used at this time,
+   * but if more customers are added in the future, they will be retrieved from objects stored in S3 using CroudFront
+   *  */
   getImageUrl(id: string, imgUrl: string, sizeType?: SizeType): string {
     // if (environment.IMAGE_DL_FROM_S3){
       // return this.getImageUrlForS3(id, imgUrl, sizeType);

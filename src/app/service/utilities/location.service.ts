@@ -3,7 +3,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { SystemStatusResponse } from 'src/backend/dto/common/system_status_response';
-import { SystemStatusRestUserServiceExt } from '../../../backend/services/system.status.rest.user.service.ext';
 import { LogService } from '../../../shared/services/log.service';
 import { HttpParams } from '@angular/common/http';
 
@@ -18,7 +17,7 @@ export class LocationService{
     private router: Router,
     private afs: AngularFirestore
   ) {
-    this.systemStatusCollection = afs.collection<SystemStatusResponse>('system-status', (ref) => ref.limit(1));
+    this.systemStatusCollection = this.afs.collection<SystemStatusResponse>('system-status', (ref) => ref.limit(1));
     this.systemStatus$ = this.systemStatusCollection.snapshotChanges().pipe(
       map((actions) =>
         actions.map((a) => {
@@ -68,16 +67,6 @@ export class LocationService{
       this.navigateTo1_1();
       return;
     }
-    // if (url.startsWith('/step/purchase')){
-    //   // カートに遷移
-    //   this.navigateTo4_12();
-    //   return;
-    // }
-    // if (url.startsWith('/step/confirm')){
-    //   // 注文に遷移
-    //   this.navigateTo5_2();
-    //   return;
-    // }
   }
 
   /**

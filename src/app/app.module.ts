@@ -25,7 +25,6 @@ import { FavoriteComponent } from './pages/mypage/favorite/favorite.component';
 import { MypageComponent } from './pages/mypage/mypage/mypage.component';
 import { PastitemComponent } from './pages/mypage/pastitem/pastitem.component';
 import { CartComponent } from './pages/order/cart/cart.component';
-import { CheckoutComponent } from './pages/order/checkout/checkout.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
@@ -46,9 +45,6 @@ import { CartProductCardComponent } from './components/cart-product-card/cart-pr
 import { ConfirmCartClearModalComponent } from './pages/order/confirm-cart-clear-modal/confirm-cart-clear-modal.component';
 import { ConfirmOrderModalComponent } from './pages/order/confirm-order-modal/confirm-order-modal.component';
 
-// import {MdbSelectModule} from 'mdb-angular-ui-kit/select';
-// import {MdbValidationModule} from 'mdb-angular-ui-kit/validation';
-// import {MdbAccordionModule} from 'mdb-angular-ui-kit/accordion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +52,6 @@ import { ConfirmOrderModalComponent } from './pages/order/confirm-order-modal/co
     ShopTopComponent,
     MypageComponent,
     CartComponent,
-    CheckoutComponent,
     FavoriteComponent,
     PastitemComponent,
     PageNotFoundComponent,
