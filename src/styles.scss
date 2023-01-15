@@ -171,7 +171,6 @@ input[type=checkbox] {
   }
 }
 
-
 // Toast
 .errorToast{
   font-size: 14px;
@@ -183,142 +182,9 @@ input[type=checkbox] {
   text-align: center;
 }
 
-
-/* message-accordion */
-.accordion-button::after {
-  width: 1rem ;
-  height: 1rem ;
-  background-size: 1rem ;
-  //margin-right: 16px; // カテゴリ一覧画面のため
-}
-.accordion-item{
-  border: none;
-  //border-bottom: 0.5px solid #EAE5E2;
-}
-.accordion-item:first-of-type .accordion-button,
-.accordion-item:last-of-type{
-  border-radius: 0;
-}
-.accordion-button{
-  padding: 0;
-  background-color: #FCFCFC;
-}
-.accordion-header{
-  background-color: #FCFCFC;
-}
-.accordion-button:not(.collapsed){
-  background-color: #FCFCFC;
-}
-.accordion-body{
-  padding: 0;
-}
-
-
-/* select-with-check */
-.option{
-  font-size: 16px;
-  padding: 24px;
-  color: $base_font_color;
-  &:hover:not(.disabled) {
-    background-color: $select_background_color;
-  }
-  &.active {
-    background-color:$select_background_color;
-    .option-check-container {
-      visibility: visible;
-    }
-  }
-  &.selected.active {
-    background-color: $select_background_color;
-    .option-check-container {
-      visibility: visible;
-    }
-  }
-  &.selected.disabled {
-    background-color: $select_background_color;
-  }
-  &.selected {
-    background-color: $select_background_color;
-    font-weight: bold;
-    .option-check-container {
-      visibility: visible;
-    }
-  }
-  &.disabled {
-    background-color: $select_background_color;
-  }
-}
-
-.select-input.form-control[readonly]:not([disabled]){
-  background: #EAEAEA;
-  border-radius: 8px;
-  border: none;
-  &::placeholder{
-    color: #B7B7B7;
-  }
-}
-.select ~ .form-notch .form-notch-leading,
-.select ~ .form-notch .form-notch-trailing{
-  border: none;
-}
-
-mdb-select{
-  &.isError{
-    .select-input.form-control{
-      background: #FDECEF !important;
-      border: #EB5545 1px solid !important;
-    }
-  }
-}
-
-
 .form-control.select-input{
   padding: 14px;
 }
-.select-arrow:before{
-  margin-right: 5px;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  font-size: 18px;
-  content: "\f078";
-  line-height: 2;
-}
-
-
-.custom-category-list{
-  padding: 0;
-
-  &.accordion-item {
-    border-radius: 0;
-    border: 1px solid #EAE5E2;
-  }
-  &.accordion-item:nth-child(even) {
-    border-left: 0;
-  }
-  .accordion-button{
-    padding: 16px;
-    transition: none !important;
-    &:not(.collapsed){
-      color: $base_font_color;
-      &:focus{
-        box-shadow: none;
-      }
-      &::after{
-        color: $base_font_color;
-        background-image: escape-svg($accordion-button-icon);
-      }
-    }
-  }
-  .accordion-body{
-    background: #F4F4F4;
-    position: relative;
-
-    &:nth-child(1){
-      border-top: 1px solid #EAE5E2;
-    }
-  }
-}
-
 
 /* stepper-modal */
 .stepper-horizontal-content-container{
@@ -365,24 +231,6 @@ mdb-select{
   }
 }
 
-/* order/confirm.not.package.drop.page */
-.confirm-modal{
-  .accordion-button{
-    &.collapsed{
-      ._header{
-        margin-bottom: 0px;
-      }
-    }
-    color: #2E2621;
-    ._header{
-      margin-bottom: 8px;
-    }
-    background: #F4F4F4;
-    &::after {
-      margin: 0px 0 auto auto;
-    }
-  }
-}
 .ais-SearchBox{
   .ais-SearchBox-form{
     .ais-SearchBox-input{

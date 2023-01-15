@@ -137,7 +137,6 @@
       @media screen and (min-width:540px) {
         left: 27%;
       }
-
     }
   }
 
@@ -204,19 +203,22 @@
     border: #EAE5E2 1px solid;
   }
   .bottom-menu-area{
-    padding: 32px 0 200px;
+    padding: 0px 0 200px;
     background: #F2F2F2;
     .list-group-item{
       background: #FCFCFC;
       padding: 20px 16px;
       font-size: 16px;
+      color: #2E2621;
       border-bottom: #EAE5E2 1px solid;
       border-radius: 0;
       position: relative;
       cursor: pointer;
       i {
         position: absolute;
+        color: #717171;
         right: 16px;
+        line-height: 1.7;
       }
     }
   }

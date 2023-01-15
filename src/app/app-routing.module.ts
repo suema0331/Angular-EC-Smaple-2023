@@ -6,7 +6,6 @@ import { MypageComponent } from './pages/mypage/mypage/mypage.component';
 import { CartComponent } from './pages/order/cart/cart.component';
 import { ShopTopComponent } from './pages/shop-top/shop-top.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { CheckoutComponent } from './pages/order/checkout/checkout.component';
 import { PastitemComponent } from './pages/mypage/pastitem/pastitem.component';
 import { SearchComponent } from './pages/shop-top/search/search.component';
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
@@ -110,10 +109,6 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
-  },
-  {
-    path: 'checkout',
-    component: CheckoutComponent,
   },
   {
     path: 'maintenance',
