@@ -1,30 +1,22 @@
 import { NgModule } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { FIREBASE_OPTIONS } from "@angular/fire/compat";
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgAisModule } from 'angular-instantsearch';
-import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
-import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
-import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
-import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
-import { MdbPopoverModule } from 'mdb-angular-ui-kit/popover';
-import { MdbRadioModule } from 'mdb-angular-ui-kit/radio';
-import { MdbRangeModule } from 'mdb-angular-ui-kit/range';
-import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
-import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
-import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
-import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
-import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { MdbNotificationModule } from 'mdb-angular-ui-kit/notification';
+import { MdbStepperModule } from 'mdb-angular-ui-kit/stepper';
 import { SharedModule } from 'src/shared/shared.module';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CartSummaryBtnComponent } from './components/cart-summary-btn/cart-summary-btn.component';
 import { CommonHeaderComponent } from './components/common-header/common-header.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -49,8 +41,13 @@ import { LocationService } from './service/utilities/location.service';
 import { PriceService } from './service/utilities/price-service.service';
 import { SEOService } from './service/utilities/seo.service';
 import { ValidationService } from './service/utilities/validation.service';
-import { CartSummaryBtnComponent } from './components/cart-summary-btn/cart-summary-btn.component';
+import { AddCartToastComponent } from './components/toasts/add-cart-toast/add.cart.toast.component';
+import { NotificationService } from './service/utilities/notification.service';
+import { CartService } from './service/domains/cart.service';
 
+// import {MdbSelectModule} from 'mdb-angular-ui-kit/select';
+// import {MdbValidationModule} from 'mdb-angular-ui-kit/validation';
+// import {MdbAccordionModule} from 'mdb-angular-ui-kit/accordion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,25 +70,17 @@ import { CartSummaryBtnComponent } from './components/cart-summary-btn/cart-summ
     ProductCardComponent,
     CommonHeaderComponent,
     CartSummaryBtnComponent,
+    AddCartToastComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    MdbAccordionModule,
-    MdbCarouselModule,
-    MdbCheckboxModule,
-    MdbCollapseModule,
-    MdbDropdownModule,
     MdbFormsModule,
     MdbModalModule,
-    MdbPopoverModule,
-    MdbRadioModule,
-    MdbRangeModule,
-    MdbRippleModule,
-    MdbScrollspyModule,
-    MdbTabsModule,
-    MdbTooltipModule,
-    MdbValidationModule,
+    MdbStepperModule,
+    MdbNotificationModule,
+    MdbCarouselModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
@@ -106,7 +95,8 @@ import { CartSummaryBtnComponent } from './components/cart-summary-btn/cart-summ
     ValidationService,
     ImageUrlService,
     PriceService,
-    // CartService,
+    CartService,
+    NotificationService,
     SEOService,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
   ],

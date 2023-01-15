@@ -24,7 +24,7 @@
     "algoliasearch": "^4.14.3",
     "angular-instantsearch": "^4.4.0",
     "bs-stepper": "^1.7.0",
-    "mdb-angular-ui-kit": "^4.0.0",
+    "mdb-angular-ui-kit": "file:mdb/mdb-angular-ui-kit-1.5.0.tgz",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

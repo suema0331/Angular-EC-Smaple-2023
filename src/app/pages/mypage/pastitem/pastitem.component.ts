@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
 import { CartPriceInfo, CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
+import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { AuthService } from 'src/shared/services/auth.service';
 import { LogService } from 'src/shared/services/log.service';
@@ -25,6 +26,7 @@ export class PastitemComponent {
   constructor(
     private cartService: CartService,
     private authService: AuthService,
+    private notificationService: NotificationService,
   ){}
 
   ngOnInit(): void {
@@ -64,9 +66,18 @@ export class PastitemComponent {
 
   clickPlusHandler($event: StoreProductExt): void {
     if ($event.cart_quantity >= CONSTRAINT_MAX) {
-      alert('最大50点までしか購入できません');
       return;
     }
+    const toastImagePath = $event.product_images[0].small
+      ?  $event.product_images[0].small
+      : '/assets/product/no-image-small.jpg';
+
+    this.notificationService.openAddProductToCartImageToast(
+      toastImagePath,
+      $event.producing_area ? $event.producing_area : '',
+      $event.product_name,
+      $event.brand ? $event.brand : '',
+    );
     this.cartService.incrementItem($event.store_product_id, $event.store_price);
   }
 
