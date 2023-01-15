@@ -42,7 +42,7 @@
 </div>
 
 <div class="shop-top">
-  <div class="_store"
+  <!-- <div class="_store"
   >
     <img src="./assets/store_image@2x.png" alt="store-top-image">
     <button class="_search"
@@ -50,7 +50,49 @@
     >
       Search from the product list  <i class="fas fa-angle-right"></i>
     </button>
+  </div> -->
+
+  <div class="_store">
+    <div class="_scroll-area" #swipeContent>
+      <mdb-carousel
+        #mdbCarousel
+        class="top-carousel-area"
+          [controls]="true"
+          [indicators]="true"
+          [interval]="3500"
+          [keyboard]="true"
+          [pause]="true"
+          [ride]="true"
+          [wrap]="true"
+        >
+          <mdb-carousel-item>
+            <img src="./assets/store_image@2x.jpeg" alt="store-top-image">
+            <button class="_search"
+              (click)="navigateToProductList()"
+            >
+              Search from the product list  <i class="fas fa-angle-right"></i>
+            </button>
+          </mdb-carousel-item>
+          <mdb-carousel-item>
+            <img src="./assets/store_image_2@2x.jpeg" alt="store-top-image">
+            <button class="_search"
+              (click)="navigateToProductList()"
+            >
+              Search from the product list  <i class="fas fa-angle-right"></i>
+            </button>
+          </mdb-carousel-item>
+          <mdb-carousel-item>
+            <img src="./assets/store_image_3@2x.jpeg" alt="store-top-image">
+            <button class="_search"
+              (click)="navigateToProductList()"
+            >
+              Search from the product list  <i class="fas fa-angle-right"></i>
+            </button>
+          </mdb-carousel-item>
+        </mdb-carousel>
+    </div>
   </div>
+
   <div class="recommend-area">
     <div class="_ttl">
       <span *ngIf="isLoggedIn">Recommended products for you</span>

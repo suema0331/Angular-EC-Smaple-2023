@@ -101,7 +101,16 @@
     background: #F2F2F2;
     padding-top: 8px;
     position: relative;
+    ._scroll-area {
+      .top-carousel-area {
+        img {
+
+          width: 100%;
+        }
+      }
+    }
     img {
+      cursor: pointer;
       width: 100%;
     }
     button {

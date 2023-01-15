@@ -4,9 +4,7 @@ import { ProductListComponent } from './pages/product/product-list/product-list.
 import { FavoriteComponent } from './pages/mypage/favorite/favorite.component';
 import { MypageComponent } from './pages/mypage/mypage/mypage.component';
 import { CartComponent } from './pages/order/cart/cart.component';
-import { OrderHistoryComponent } from './pages/order/order-history/order-history.component';
 import { ShopTopComponent } from './pages/shop-top/shop-top.component';
-import { OrderHistoryDetailComponent } from './pages/order/order-history-detail/order-history-detail.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { CheckoutComponent } from './pages/order/checkout/checkout.component';
 import { PastitemComponent } from './pages/mypage/pastitem/pastitem.component';
@@ -108,14 +106,6 @@ const routes: Routes = [
       description: 'This is a past item page',
       ogUrl: 'http://localhost:4200/pastitem',
     }
-  },
-  {
-    path: 'order-history',
-    component: OrderHistoryComponent,
-  },
-  {
-    path: 'order-history/:orderId',
-    component: OrderHistoryDetailComponent,
   },
   {
     path: 'cart',
