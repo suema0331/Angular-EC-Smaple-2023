@@ -26,8 +26,6 @@ import { MypageComponent } from './pages/mypage/mypage/mypage.component';
 import { PastitemComponent } from './pages/mypage/pastitem/pastitem.component';
 import { CartComponent } from './pages/order/cart/cart.component';
 import { CheckoutComponent } from './pages/order/checkout/checkout.component';
-import { OrderHistoryDetailComponent } from './pages/order/order-history-detail/order-history-detail.component';
-import { OrderHistoryComponent } from './pages/order/order-history/order-history.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
@@ -58,8 +56,6 @@ import { CartService } from './service/domains/cart.service';
     CheckoutComponent,
     FavoriteComponent,
     PastitemComponent,
-    OrderHistoryComponent,
-    OrderHistoryDetailComponent,
     PageNotFoundComponent,
     SearchComponent,
     LoginComponent,

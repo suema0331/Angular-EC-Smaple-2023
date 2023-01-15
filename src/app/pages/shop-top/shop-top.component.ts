@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Observable, Subscription, map } from 'rxjs';
@@ -10,7 +10,7 @@ import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
 import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
 import { AuthService } from 'src/shared/services/auth.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
-
+import {MdbCarouselComponent} from 'mdb-angular-ui-kit/carousel';
 @Component({
   selector: 'app-shop-top',
   templateUrl: './shop-top.component.html',
@@ -35,6 +35,7 @@ export class ShopTopComponent {
 
   productsSubscription?: Subscription;
 
+  @ViewChild('mdbCarousel') mdbCarousel!: MdbCarouselComponent;
   constructor(
     private locationService: LocationService,
     // private logService: LogService,
