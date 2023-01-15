@@ -16,24 +16,18 @@ export class LoginComponent implements OnInit {
   screenName = 'LoginComponent';
   screenId = '(none)';
 
-  // リアクティブ フォーム定義
   form = this.fb.group({
     form_email: [''],
     form_password: [''],
   });
 
-  // form login_id のインスタンス
   formEmail = this.form.get('form_email');
   formPassword = this.form.get('form_password');
 
-  // is Disaled for the submit button
   isDisabled = true;
-  // 上部Submit時にエラーメッセージ表示
   isError = false;
   errorMessage = '';
-  // hide password
   hide = true;
-  // error message
   mailErrorMessage = '';
   isMailError = false;
   passwordErrorMessage = '';
@@ -52,7 +46,6 @@ export class LoginComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    // // デバッグ用 値の変化を出力
     this.formEmail?.valueChanges.subscribe((value) => {
         this.logService.logDebug(`form_email: ${value}`);
       this.validateMailError()
@@ -63,7 +56,6 @@ export class LoginComponent implements OnInit {
       this.validatePasswordError()
       this.onDisabled()
     });
-    // フォームデータ保存と復元
     const formDraft = this.storageService.get('login_form');
     if (formDraft) {
       this.form.setValue(JSON.parse(formDraft));
@@ -131,24 +123,16 @@ export class LoginComponent implements OnInit {
     return userAccountValidation.isError
   }
 
-  // Getter for form_email
   get form_email(): string | null | undefined {
     return this.formEmail?.value;
   }
 
-  // Getter for form_password
   get form_password(): string | null | undefined {
     return this.formPassword?.value;
   }
 
-  // formの 保存データのクリア
   clearSavedDataOfForm(): void {
     this.storageService.remove('login_form_component_form');
-  }
-
-  // フォーム保存データのクリア
-  clearAllSavedData(): void {
-    this.clearSavedDataOfForm();
   }
 
 }

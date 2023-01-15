@@ -5,12 +5,10 @@ import { Injectable } from '@angular/core';
 export class LogService{
   constructor(){}
 
-  // ログ情報出力 (自動生成)
   logInfo(msg: string | object): void {
-      // console.log(`${msg}`);
+      console.log(`${msg}`);
   }
 
-  // ログ情報出力 (自動生成)
   logDebug(msg: string | object): void {
     if (!environment.production) {
       console.log(`[DEBUG] ${msg}`);
@@ -19,18 +17,16 @@ export class LogService{
 
   logError(msg: string | object): void {
     if (!environment.production) {
-      // console.log(`[ERROR] ${msg}`);
+      console.log(`[ERROR] ${msg}`);
     }
   }
 
-  // ログ出力 - スタックトレース
   logStackTrace(msg: string | object): void {
     if (!environment.production) {
-      // console.trace(`[TRACE] ${msg}`);
+      console.trace(`[TRACE] ${msg}`);
     }
   }
 
-  // ログ出力 - トレース情報
   logTrace(msg: string | object): void {
     if (!environment.production) {
       console.log(`[TRACE] ${msg}`);

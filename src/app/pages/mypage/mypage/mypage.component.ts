@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/shared/services/auth.service';
-import { LogService } from 'src/shared/services/log.service';
-import { StorageService } from 'src/shared/services/storage.service';
 
 @Component({
   selector: 'app-mypage',

@@ -1,6 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { ValidationService } from 'src/app/service/utilities/validation.service';
@@ -18,32 +17,29 @@ export class SignupComponent {
   screenName = 'SignupComponent';
   screenId = '(none)';
 
-  // リアクティブ フォーム定義
+  // Reactive Form Definition
   form = this.fb.group({
     form_email: [''],
     form_password: [''],
     form_confirm_password: [''],
   });
 
-  // form login_id のインスタンス
+  // Instance of forms
   formEmail = this.form.get('form_email');
   formPassword = this.form.get('form_password');
   formConfirm_password = this.form.get('form_confirm_password');
 
-  // 上部Submit時にエラーメッセージ表示
   isError = false;
   errorMessage = '';
-  // is Disaled for the submit button
-  isDisabled = true;
-  // error message
+
+  isDisabled = true; // is Disaled for the submit button
+
   mailErrorMessage = '';
-  // password error message
   passwordEmptyErrorMessage = '';
   passwordValidErrorMessage = '';
   passwordLengthErrorMessage = '';
   passwordExclusionErrorMessage = '';
   passwordMailErrorMessage = '';
-
   conformPasswordErrorMessage = '';
   agreementErrorMessage = '';
 
@@ -51,13 +47,13 @@ export class SignupComponent {
   isPasswordError = false;
   isConfirmPasswordError = false;
   isAgreementError = false;
-  agreementChecked = false; // submit時のバリデーションのため
+  agreementChecked = false;
 
   // hide password
   hide1 = true;
   hide2 = true;
 
-  // 確定は一度しか押せない
+  // The confirm button should not be pressed in succession.
   isSubmitted = false;
 
   constructor(
@@ -65,13 +61,12 @@ export class SignupComponent {
     public locationService: LocationService,
     private logService: LogService,
     private storageService: StorageService,
-    private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private validationService: ValidationService,
   ){}
 
   ngOnInit(): void {
-    // Form 値の変化を出力
+    // Outputs changes in Form values.
     this.formEmail?.valueChanges.subscribe((value) => {
         this.logService.logDebug(`form_email: ${value}`);
       this.validateMailError()
@@ -87,7 +82,8 @@ export class SignupComponent {
       this.validateConfirmPasswordError()
       this.onDisabled()
     });
-    // フォームデータ保存と復元
+    // Restore form data stored in storage, if any.
+    // In this way, input values can be restored again when the user returns from a page transition.
     const formDraft = this.storageService.get('signup_form');
     if (formDraft) {
       this.form.setValue(JSON.parse(formDraft));
@@ -100,11 +96,9 @@ export class SignupComponent {
   }
 
   formOnClickSignupHandler(): void {
-    // cacheが残っている可能性があるので、再度validationをかける
     this.validateMailError()
     this.validatePasswordError()
     this.validateConfirmPasswordError()
-    // 初期状態のまま、先に進めないようにする
     if (!this.agreementChecked) {
       this.isAgreementError = true;
       this.agreementErrorMessage = '*Your consent is required. Please check the box';
@@ -125,7 +119,7 @@ export class SignupComponent {
 
     this.logService.logDebug(`trimmedEmail , ${trimmedEmail}`);
 
-    // 二重サブミット禁止
+    // No double submitting
     if (this.isSubmitted){
       return;
     }
@@ -184,8 +178,8 @@ export class SignupComponent {
     this.isPasswordError = userAccountValidation.isError;
     return userAccountValidation.isError;
   }
-  // validation confirm password
 
+  // validation confirm password
   validateConfirmPasswordError(): boolean {
     const userAccountValidation = this.validationService.validateConfirmPassword(String(this.form_password), String(this.form_confirm_password));
     this.conformPasswordErrorMessage = userAccountValidation.message;
@@ -202,29 +196,24 @@ export class SignupComponent {
     return checkedValidation.isError;
   }
 
-  // form login_id の Getter
+  // Getter: form login_id
   get form_email(): string | null | undefined {
     return this.formEmail?.value;
   }
 
-  // form password の Getter
+  // Getter: form password
   get form_password(): string | null | undefined {
     return this.formPassword?.value;
   }
 
-  // form confirm_password の Getter
+  // Getter: form confirm_password
   get form_confirm_password(): string | null | undefined {
     return this.formConfirm_password?.value;
   }
 
-  // formの 保存データのクリア
+  // Clear saved data of the forms
   clearSavedDataOfForm(): void {
     this.storageService.remove('login_form_component_form');
-  }
-
-  // フォーム保存データのクリア
-  clearAllSavedData(): void {
-    this.clearSavedDataOfForm();
   }
 
 }

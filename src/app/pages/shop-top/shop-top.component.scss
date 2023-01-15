@@ -8,7 +8,6 @@
     background: #FCFCFC;
     width: 100%;
     @media screen and (min-width:600px) {
-      /*　画面サイズ 600 px以上　*/
         max-width: 600px;
         margin: 0 auto;
     }
@@ -17,7 +16,6 @@
   display: flex;
   justify-content: space-between;
   border-bottom: #90867F1F 1px solid;
-  //box-shadow: 0px 2px 6px #90867f1f;
   padding: 8px 16px ;
   vertical-align: center;
   ._logo-area{
@@ -47,7 +45,6 @@
       font-weight: normal;
 
       @media screen and (min-width:540px) {
-        /*　画面サイズが540px以上　*/
         padding: 8px 180px 8px 18px;
       }
 
@@ -134,12 +131,10 @@
       }
 
       @media screen and (min-width:425px) {
-        /*　画面サイズが540px以上　*/
         left: 16%;
       }
 
       @media screen and (min-width:540px) {
-        /*　画面サイズが540px以上　*/
         left: 27%;
       }
 
@@ -176,11 +171,9 @@
     background: #F2F2F2;
     padding: 32px 10px;
     display: flex;
-    //justify-content: space-between;
     justify-content: space-around;
 
     @media screen and (min-width:540px) {
-      /*　画面サイズが540px以上　*/
       padding: 32px;
     }
 
@@ -195,7 +188,6 @@
       cursor: pointer;
 
       @media screen and (min-width:540px) {
-        /*　画面サイズが540px以上　*/
         padding: 16px 42px;
       }
 
@@ -237,7 +229,6 @@
     background: rgba(252,252,252,0.9);
 
     @media screen and (min-width:600px) {
-      /*　画面サイズ 600 px以上　*/
       max-width: 600px;
       margin: 0 auto;
     }
@@ -264,51 +255,5 @@
         }
       }
     }
-  }
-
-  .cart-area {
-    // position: fixed;
-    // bottom: 0;
-    // padding: 16px;
-    // margin: 0px auto 0px;
-    // width: 100%;
-    // z-index: 100;
-
-    // @media screen and (min-width:600px) {
-    //   /*　画面サイズ 600 px以上　*/
-    //   max-width: 600px;
-    //   margin: 0 auto;
-    // }
-    // .btn_group{
-    //   .submit {
-    //     width: 100%;
-    //     display: flex;
-    //     align-items: flex-end;
-    //     color: #fff;
-    //     background: $shop_theme_color;
-    //     img{
-    //       height: 24px;
-    //       margin: auto 8px 8px 0;
-    //     }
-    //     ._quantity{
-    //       font-size: 20px;
-    //       font-weight: bold;
-    //       margin: auto 2px 4px;
-    //     }
-    //     ._ten{
-    //       font-size: 12px;
-    //       margin: auto 0 4px;
-    //     }
-    //     ._price{
-    //       font-size: 26px;
-    //       font-weight: bold;
-    //       margin: auto 2px auto auto;
-    //     }
-    //     ._tax-in{
-    //       font-size: 12px;
-    //       margin: auto 0 7px;
-    //     }
-    //   }
-    // }
   }
 }

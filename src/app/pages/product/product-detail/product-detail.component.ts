@@ -5,7 +5,6 @@ import { LocationService } from 'src/app/service/utilities/location.service';
 import { PriceService } from 'src/app/service/utilities/price-service.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { ProductStatus } from 'src/backend/enums/product_status';
-import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Subscription, map } from 'rxjs';
 import { SEOService } from 'src/app/service/utilities/seo.service';

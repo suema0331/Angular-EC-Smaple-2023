@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LogService } from 'src/shared/services/log.service';
 
-
 interface StandardValidation {
   message: string;
   isError: boolean;
@@ -16,7 +15,6 @@ interface ValidationForPassword {
   isError: boolean;
 }
 
-
 interface StandardCheckedValidation {
   message: string;
   isChecked: boolean;
@@ -28,7 +26,18 @@ interface StandardCheckedValidation {
 })
 export class ValidationService {
 
-  // Rule:
+  /**  Rule:
+   * E-mail address:
+   *  - Include @.
+   *  - 1 to 50 characters. (due to database type limitation)
+   * Password:
+   *  - 11 characters or more and less than 20 characters.
+   *  - Include uppercase and lowercase letters, numbers, and the following allowed symbols.
+   *  - No symbols other than the following allowed symbols.
+   *  - Not contain the exact same email address or part of an email address
+  */
+// ! @#%^&*/_? $¥-`˜()+=&#123;&#125;[]\|;"'<>,.
+
   ratz = /[a-z]/;
   rAtZ = /[A-Z]/;
   r0t9 = /[0-9]/;
@@ -38,7 +47,7 @@ export class ValidationService {
 
   constructor(private logService: LogService) { }
 
-    // validation mail
+  // validation mail
   validateMailError(email: string): StandardValidation {
     if (!email || email.length === 0) {
       return {
@@ -63,7 +72,7 @@ export class ValidationService {
     }
   }
 
-    // validation password
+  // validation password
   validatePasswordError(password: string, mail: string): ValidationForPassword {
 
     const validationForPassword: ValidationForPassword = {
@@ -131,6 +140,10 @@ export class ValidationService {
     }
   }
 
+  /**
+   * The login screen does not generate many validation errors,
+   * so that the email and password restrictions are not known in case of a brute force attack.
+   */
   // validation password for login
   validatePasswordErrorOnLogin(password: string): StandardValidation {
     if (!password || password.length === 0) {

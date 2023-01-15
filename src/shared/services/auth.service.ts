@@ -28,10 +28,10 @@ export class AuthService {
         // To store (only some information) in local storage. (Not used at this time.)
         // localStorage.setItem('user', JSON.stringify(user));
         // JSON.parse(localStorage.getItem('user')!);
-      // } else {
-      //   localStorage.setItem('user', 'null');
-      //   JSON.parse(localStorage.getItem('user')!);
-      // }
+        // } else {
+        //   localStorage.setItem('user', 'null');
+        //   JSON.parse(localStorage.getItem('user')!);
+        // }
     });
   }
 
