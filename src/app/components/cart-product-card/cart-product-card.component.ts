@@ -3,7 +3,7 @@ import {ProductImageExt} from '../../../backend/dto/common/product_image_ext';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { CartItem, CartService } from 'src/app/service/domains/cart.service';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
-import { PriceService } from 'src/app/service/utilities/price-service.service';
+import { PriceService } from 'src/app/service/utilities/price.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 
 @Component({

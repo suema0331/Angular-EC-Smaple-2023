@@ -2,7 +2,7 @@ import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
 import { CartItem, CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
-import { PriceService } from 'src/app/service/utilities/price-service.service';
+import { PriceService } from 'src/app/service/utilities/price.service';
 import { ProductImageExt } from 'src/backend/dto/common/product_image_ext';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { LogService } from 'src/shared/services/log.service';

@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { ActivatedRoute } from '@angular/router';
 import { CartItem, CartPriceInfo, CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
-import { PriceService } from 'src/app/service/utilities/price-service.service';
+import { PriceService } from 'src/app/service/utilities/price.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { ProductStatus } from 'src/backend/enums/product_status';
 import { AngularFirestore } from '@angular/fire/compat/firestore';

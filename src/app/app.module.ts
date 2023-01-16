@@ -41,7 +41,7 @@ import { CartService } from './service/domains/cart.service';
 import { ImageUrlService } from './service/utilities/image.url.service';
 import { LocationService } from './service/utilities/location.service';
 import { NotificationService } from './service/utilities/notification.service';
-import { PriceService } from './service/utilities/price-service.service';
+import { PriceService } from './service/utilities/price.service';
 import { SEOService } from './service/utilities/seo.service';
 import { ValidationService } from './service/utilities/validation.service';
 
