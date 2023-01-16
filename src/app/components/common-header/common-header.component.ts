@@ -11,8 +11,6 @@ export class CommonHeaderComponent {
   @Input() headerTitle = '';
   @Input() isBack = true;
   @Input() backUrl = '';
-  @Input() isSkip = false;
-  @Input() skipRoutePath = '/';
 
   constructor(
     private location: Location,
