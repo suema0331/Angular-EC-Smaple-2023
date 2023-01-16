@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/shared/services/auth.service';
@@ -17,6 +18,7 @@ export class MypageComponent {
   constructor(
     public locationService: LocationService,
     private authService: AuthService,
+    private cartService: CartService,
   ) { }
 
   logoutHandler(): void{
@@ -25,6 +27,8 @@ export class MypageComponent {
       .then((result) => {
         alert('Successfully logged out!');
         console.log('Successfully logged out!');
+        this.cartService.clearCart();
+        this.cartService.clearCartCacheFromStorage();
         this.locationService.navigateTo1_1();
       })
       .catch((error) => {
