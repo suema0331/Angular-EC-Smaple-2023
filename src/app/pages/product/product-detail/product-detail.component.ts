@@ -63,8 +63,8 @@ export class ProductDetailComponent{
         })
       )
     ).subscribe(data => {
-          console.log("🌟subscribed Product data")
-          console.log(data)
+          // console.log("🌟subscribed Product data")
+          // console.log(data)
 
           if (!data[0] || !data[0].store_product_id){
             alert('Product does not exist');

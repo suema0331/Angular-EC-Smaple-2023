@@ -21,7 +21,7 @@ export class AuthService {
 
     // Setting logged in user in localstorage else null
     authState(this.auth).subscribe((user) => {
-      console.log(user)
+      // console.log(user)
       if (user) {
         this.currentUser = user
       }
@@ -38,7 +38,7 @@ export class AuthService {
   login(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then((result) => {
-        console.log(result)
+        // console.log(result)
         return result
       })
       .catch((error) => {
@@ -52,7 +52,7 @@ export class AuthService {
       .then((result) => {
         this.currentUser = {} as User;
         // localStorage.removeItem('user');
-        console.log(result)
+        // console.log(result)
         return result
       })
       .catch((error) => {
@@ -64,7 +64,7 @@ export class AuthService {
   async signUp(email: string, password: string) {
     return createUserWithEmailAndPassword(this.auth, email, password)
       .then(async (result) => {
-        console.log(result)
+        // console.log(result)
         const newUser = this.auth.currentUser as User
 
         await updateProfile(newUser, {

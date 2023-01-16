@@ -45,8 +45,8 @@
           </div>
         </div>
         <div class="_bottom">
-          <div>{{storeProduct.store_price | currency : 'JPY': true}}
-            <span class="_tax">{{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': true}}<span class="_in">/with tax</span></span>
+          <div>{{storeProduct.store_price | currency : 'JPY': 'symbol'}}
+            <span class="_tax">{{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': 'symbol'}}<span class="_in">/with tax</span></span>
           </div>
           <div (click)="removeAllFromCart()" class="_remove"
             title="This button deletes all the specific number of items in the cart."

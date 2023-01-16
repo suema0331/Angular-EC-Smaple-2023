@@ -58,12 +58,12 @@
       </div>
       <div class="price">
         Estimated total amount <span class="_red">
-        {{cartPriceInfo.totalProductPriceWithoutTax | currency : 'JPY': true}}</span>
+        {{cartPriceInfo.totalProductPriceWithoutTax | currency : 'JPY': 'symbol'}}</span>
         <span class="_tax">/without tax</span>
       </div>
       <div class="tax-price">
         <span>
-        {{cartPriceInfo.totalProductPriceWithTax | currency : 'JPY': true}}</span>
+        {{cartPriceInfo.totalProductPriceWithTax | currency : 'JPY': 'symbol'}}</span>
         <span class="_tax">/with tax</span>
       </div>
       <div class="btn_group">

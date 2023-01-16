@@ -43,8 +43,8 @@ export class PastitemComponent {
         })
       )
     ).subscribe(data => {
-      console.log("🌟subscribed Orders data")
-      console.log(data)
+      // console.log("🌟subscribed Orders data")
+      // console.log(data)
       const productIds = new Map<string, number>();
 
       data.forEach(order => {

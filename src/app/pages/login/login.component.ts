@@ -97,7 +97,6 @@ export class LoginComponent implements OnInit {
       .catch((error) => {
         this.isError = true;
         this.errorMessage = 'Incorrect Email or Password';
-        console.log(error)
         this.logService.logDebug('login failure');
       }
     );

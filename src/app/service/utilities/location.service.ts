@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { SystemStatusResponse } from 'src/backend/dto/common/system_status_response';
 import { LogService } from '../../../shared/services/log.service';
 import { HttpParams } from '@angular/common/http';
@@ -10,7 +10,7 @@ import { HttpParams } from '@angular/common/http';
 export class LocationService{
 
   private systemStatusCollection: AngularFirestoreCollection<SystemStatusResponse>
-  systemStatus$: Observable<SystemStatusResponse[]>
+  systemStatusSubscription: Subscription;
 
   constructor(
     private logService: LogService,
@@ -18,7 +18,7 @@ export class LocationService{
     private afs: AngularFirestore
   ) {
     this.systemStatusCollection = this.afs.collection<SystemStatusResponse>('system-status', (ref) => ref.limit(1));
-    this.systemStatus$ = this.systemStatusCollection.snapshotChanges().pipe(
+    this.systemStatusSubscription = this.systemStatusCollection.snapshotChanges().pipe(
       map((actions) =>
         actions.map((a) => {
           const data = a.payload.doc.data() as SystemStatusResponse;
@@ -27,13 +27,26 @@ export class LocationService{
           return { id, ...data };
         })
       )
-    );
+    ).subscribe(data => {
+      /**
+       *  monitor the state of system maintenance　mode
+       */
+      if (data[0] && data[0].user_app_run_status === 0) {
+        this.logService.logDebug('navigation to the /maintenance !')
+        this.router.navigateByUrl('/maintenance');
+      } else {
+        this.router.navigateByUrl('/');
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.systemStatusSubscription.unsubscribe();
   }
 
   // Navigate to the url inside the application
   navigateTo(url: string): void {
-    // Always check maintenance mode status before navigation
-    this.navigateToMaintenanceIfMaintenanceMode(url)
+    this.router.navigateByUrl(url);
   }
 
   // Get query parameters
@@ -46,49 +59,6 @@ export class LocationService{
     }
     return value;
   }
-
-  // Checks if the system is in system maintenance mode during all transitions
-  navigateToMaintenanceIfMaintenanceMode(url: string): void {
-    this.systemStatus$.subscribe(res => {
-      if (res[0] && res[0].user_app_run_status === 0) {
-        this.logService.logDebug('navigation to the /maintenance !')
-        this.router.navigateByUrl('/maintenance');
-      } else {
-        this.logService.logDebug(`navigation to the ${url} !`);
-        this.router.navigateByUrl(url);
-      }
-    })
-  }
-
-  /**
-   * If we have a backend server, I will send a request to the backend like below
-   */
-  // navigateToMaintenanceIfMaintenanceMode(url: string): void {
-  //   const storeStatus = this.systemStatusRestUserServiceExt.getSystemStatus();
-  //   storeStatus.subscribe((value) => {
-  //     if (value.user_app_run_status === 0) {
-  //       this.router.navigateByUrl('/maintenance');
-  //     } else {
-  //       // Members-only pages that require a login or sign-up dialog
-  //       if (this.isMembersOnlyPage(url) && this.authService.isLoggedOut()){
-  //         this.modalService.open(SignupDialogPageComponent, {
-  //           data: { returnURL: url},
-  //           modalClass: 'modal-dialog-centered'
-  //         });
-  //       } else {
-  //         this.router.navigateByUrl(url);
-  //       }
-  //     }
-  //   });
-  // }
-  // isMembersOnlyPage(url: string): boolean {
-  //   return url.startsWith('/favorite') ||
-  //     url.startsWith('/pastitem') ||
-  //     url.startsWith('/mypage/order-history') ||
-  //     url.startsWith('/cart');
-  // }
-
-
 
   /**
    * Assuming screen IDs are managed centrally(in requirement definition documents, etc.),

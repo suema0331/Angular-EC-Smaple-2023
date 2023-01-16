@@ -10,10 +10,8 @@ export class NotificationService {
 
   constructor(
     private mdbNotificationService: MdbNotificationService,
-    private logService: LogService
+    private logService: LogService,
   ) {}
-
-  networkErrorShown = false;
 
   // Add item to cart Toast
   openAddProductToCartToast(message: string): void {

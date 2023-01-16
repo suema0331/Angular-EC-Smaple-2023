@@ -137,7 +137,7 @@ export class SignupComponent {
         this.isError = true;
         this.errorMessage = 'Incorrect Email or Password';
         this.logService.logDebug('Signup failure');
-        console.log(error)
+        // console.log(error)
         this.isSubmitted = false;
       })
   }

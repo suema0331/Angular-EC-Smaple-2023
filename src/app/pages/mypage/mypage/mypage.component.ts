@@ -24,6 +24,7 @@ export class MypageComponent {
     this.authService.logout()
       .then((result) => {
         alert('Successfully logged out!');
+        console.log('Successfully logged out!');
         this.locationService.navigateTo1_1();
       })
       .catch((error) => {

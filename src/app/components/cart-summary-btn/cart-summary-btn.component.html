@@ -13,10 +13,10 @@
       </span>
       <span class="prices-area">
         <span class="_price">
-          <span>{{cartPriceInfo.totalProductPriceWithoutTax | currency : 'JPY': true}}</span>
+          <span>{{cartPriceInfo.totalProductPriceWithoutTax | currency : 'JPY': 'symbol'}}</span>
           <span class="_tax">/without tax</span>
         </span>
-        <span class="_tax-price">{{cartPriceInfo.totalProductPriceWithTax | currency : 'JPY': true}}
+        <span class="_tax-price">{{cartPriceInfo.totalProductPriceWithTax | currency : 'JPY': 'symbol'}}
           <span class="_tax">/with tax</span>
         </span>
       </span>
