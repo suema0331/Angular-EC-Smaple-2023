@@ -39,10 +39,12 @@
           <button class="_display"
                   *ngIf="hide"
                   (click)="hide = !hide"
+                  title="This is a button to show password characters"
           >display</button>
           <button (click)="hide = !hide"
                   *ngIf="!hide"
                   class="_display"
+                  title="This is a button to hide password characters"
           >hide</button>
         </mdb-form-control>
        <div *ngIf="isPasswordError" class="_error">{{passwordErrorMessage}}</div>
@@ -54,11 +56,14 @@
          data-test="login-btn"
          class="btn btn-rounded submit"
          [disabled]="isDisabled"
+         title="This is a button to execute login."
       >Log In
       </button>
       <div class="_signup-area">
         Don't have an account?
-        <a class="_signup" routerLink="/signup">Register</a>
+        <a class="_signup" routerLink="/signup"
+          title="This is a link to navigate to the signup page."
+        >Register</a>
       </div>
     </div>
   </form>

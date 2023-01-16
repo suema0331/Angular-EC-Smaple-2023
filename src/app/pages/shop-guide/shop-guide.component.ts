@@ -7,10 +7,7 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
   styleUrls: ['./shop-guide.component.scss']
 })
 export class ShopGuideComponent {
-  // 画面名
   screenName = 'ShopGuideComponent';
-  // 画面ID
-  screenId = '(none)';
   steps = [
     {
       name: 'STEP1',

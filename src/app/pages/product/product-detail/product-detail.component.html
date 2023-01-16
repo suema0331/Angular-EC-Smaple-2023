@@ -5,24 +5,26 @@
     <div class="_inner">
       <span class="_ttl">{{displayHeaderName}}</span>
       <button
-        type="button" class="_close" aria-label="close"
+        type="button" class="_close"
+        title="This is a button to back to the product list page."
         (click)="handleBack()"
       >
-        <img src="/assets/product/common_btn_close@2x.png" alt="close">
+        <img src="/assets/product/common_btn_close@2x.png" alt="back-btn">
       </button>
     </div>
   </div>
   <div class="img-area">
     <img src="/assets/product/common_ic_close2@2x.png"
          class="_close"
-         alt="product-close"
+         alt="close-icon"
+         title="This is a button to back to the product list page."
           (click)="handleBack()"
     >
     <img [src]="getImageUrl(topViewImage)"
-         alt="product-lg"
-         class="_top-img"
-         onerror="this.src='/assets/product/no_image.png'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
-         onload="this.removeAttribute('onerror'); this.removeAttribute('onload');">
+          class="_top-img"
+          alt="product-large-image"
+          onerror="this.src='/assets/product/no_image.png'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
+          onload="this.removeAttribute('onerror'); this.removeAttribute('onload');">
 
     <img *ngIf="storeProduct.product_status === 2"
           src="/assets/product/productdetails_img_soldout@2x.png"
@@ -34,13 +36,15 @@
              (click)="clickFavHandler()"
               src="/assets/product/common_btn_favorite@2x.png"
               class="_fav"
-              alt="product-before-favorite-icon"
+              alt="unfavorite-icon"
+              title="This is a button to remove the item from favorites."
         >
         <img *ngIf="storeProduct.favorite_flag"
              (click)="clickFavHandler()"
               src="/assets/product/common_btn_afterFavorites@2x.png"
               class="_fav"
-              alt="product-favrite-icon"
+              alt="favrite-icon"
+              title="This is a button to add the item to favorites."
         >
       </div>
       <div class="scroll-img-area">
@@ -53,7 +57,9 @@
                    [src]=" img.small ? getImageUrl(img.small) : '/assets/product/no-image-small.jpg'"
                   onerror="this.src='/assets/product/no-image-small.jpg'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
                   onload="this.removeAttribute('onerror'); this.removeAttribute('onload');"
-                   alt="product-sm" />
+                   alt="product-small-image"
+                    title="This is a button to change the expanded image."
+                   />
             </ng-container>
           </div>
         </div>
@@ -110,8 +116,9 @@
       <div class="_cart">
         <button class="_icon-btn"
             (click)="navigateToCartHandler()"
+            title="This is a button to navigate to the cart page."
         >
-          <img src="/assets/product/common_icon_cart@2x.png" alt="cart">
+          <img src="/assets/product/common_icon_cart@2x.png" alt="cart-btn">
         </button>
         <span class="badge rounded-pill badge-notification" *ngIf="cartPriceInfo.numOfStoreProducts">{{cartPriceInfo.numOfStoreProducts}}</span>
       </div>
@@ -124,7 +131,8 @@
       </div>
 
       <button *ngIf="storeProduct.product_status === 1 && cartItem.quantity === 0" class="_add-cart"
-      (click)="clickCart()"
+          (click)="clickCart()"
+          title="This is a button to add one new item to your cart."
       >
         <i class="fas fa-plus"></i>
         Add to cart
@@ -136,11 +144,13 @@
 
         <i class="fas fa-minus"
            (click)="removeCart()"
+           title="This is a button to remove one item from your cart."
         ></i>
         {{cartItem.quantity}}
         <i class="fas fa-plus"
            [class.overConstraintMax]="isOverConstraintMax"
            (click)="addCart()"
+           title="This is a button to add one item to your cart."
         ></i>
       </button>
       <button class="_add-cart stockout" *ngIf="storeProduct.product_status === 2">

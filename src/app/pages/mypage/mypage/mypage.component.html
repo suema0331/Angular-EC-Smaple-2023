@@ -4,15 +4,17 @@
       My Page
     </div>
     <div class="_right">
-      <div *ngIf="currentUser.uid" class="_logout" (click)="logoutHandler()" >
-        <div class="_button-area"
-          title="This is a logout button on the header."
-        >
+      <div *ngIf="currentUser.uid" class="_logout" (click)="logoutHandler()"
+            title="This is a button to execute logout."
+      >
+        <div class="_button-area">
           logout
         </div>
       </div>
-      <button (click)="handleBack()" aria-label="Close" class="btn-close"
-              type="button"
+      <button (click)="handleBack()"
+        class="btn-close"
+        type="button"
+        title="This is a button to navigate to the top page."
       ></button>
   </div>
   </div>
@@ -21,7 +23,7 @@
     <div *ngIf="currentUser.uid" class="account-area">
       <div class="_left">
         <div class="_icon">
-          <img alt="userIcon" [src]="currentUser.photoURL" >
+          <img alt="user-icon" [src]="currentUser.photoURL" >
         </div>
       </div>
       <div class="_right">
@@ -45,9 +47,11 @@
       </div>
       <div class="_buttons">
         <button (click)="this.locationService.navigateTo3_1()"
+                title="This is a button to navigate to the signup page."
                 class="_signup"
         >Register</button>
         <button (click)="loginHandler()"
+                title="This is a button to navigate to the login page."
                 class="_login"
         >Log In</button>
       </div>
@@ -58,10 +62,14 @@
       <ul class="list-group">
         <li class="list-group-item">
           Categories <i class="fas fa-chevron-right"></i></li>
-        <li (click)="navigateToFavoriteHandler()" class="list-group-item">
+        <li (click)="navigateToFavoriteHandler()" class="list-group-item"
+          title="This is a link to navigate to the favorite page."
+        >
           Favorites <i class="fas fa-chevron-right"></i>
         </li>
-        <li (click)="navigateToPastitemHandler()" class="list-group-item">
+        <li (click)="navigateToPastitemHandler()" class="list-group-item"
+          title="This is a link to navigate to the purchased item page."
+        >
           Purchase History <i class="fas fa-chevron-right"></i>
         </li>
       </ul>
@@ -72,15 +80,19 @@
       <ul class="list-group">
         <li (click)="navigateToCampaignHandler()"
             class="list-group-item"
+
         >Campaigns <i class="fas fa-chevron-right"></i></li>
         <li (click)="navigateToFaqHandler()"
             class="list-group-item"
+            title="This is a link to navigate to the external FAQ page."
         >FAQ <i class="fas fa-chevron-right"></i></li>
         <li (click)="navigateToTermsHandler()"
             class="list-group-item"
+            title="This is a link to navigate to the external compliance page."
         >Compliance <i class="fas fa-chevron-right"></i></li>
         <li (click)="navigateToPolicyHandler()"
             class="list-group-item"
+            title="This is a link to navigate to the external privacy policy page."
         >Privacy Policy <i class="fas fa-chevron-right"></i></li>
       </ul>
     </div>

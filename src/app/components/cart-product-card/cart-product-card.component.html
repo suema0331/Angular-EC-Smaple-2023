@@ -5,6 +5,7 @@
     <div class="product">
       <div class="_left"
            (click)="navigateToProduct()"
+           title="This is a button to navigate to the product detail page."
       >
         <img
              [src]="storeProduct.product_images
@@ -33,11 +34,13 @@
             </div>
 
             <i class="fas fa-minus fa-xs"
-               (click)="removeCart($event)"
+              (click)="removeCart($event)"
+              title="This is a button to remove one item from your cart."
             ></i>
             {{cartItem.quantity}}
             <i class="fas fa-plus fa-xs"
-               (click)="addCart($event)"
+              (click)="addCart($event)"
+              title="This is a button to add one item to your cart."
             ></i>
           </div>
         </div>
@@ -45,7 +48,9 @@
           <div>{{storeProduct.store_price | currency : 'JPY': true}}
             <span class="_tax">{{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': true}}<span class="_in">/with tax</span></span>
           </div>
-          <div (click)="removeAllFromCart()" class="_remove">Remove</div>
+          <div (click)="removeAllFromCart()" class="_remove"
+            title="This button deletes all the specific number of items in the cart."
+          >Remove</div>
         </div>
       </div>
     </div>

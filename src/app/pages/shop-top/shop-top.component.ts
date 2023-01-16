@@ -11,6 +11,8 @@ import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/shared/services/auth.service';
 import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
+import { STORAGE_KEY_SHOWN_ONBOARD } from 'src/app/extra/constants';
+import { StorageService } from 'src/shared/services/storage.service';
 
 @Component({
   selector: 'app-shop-top',
@@ -43,6 +45,7 @@ export class ShopTopComponent {
     private afs: AngularFirestore,
     private authService: AuthService,
     private notificationService: NotificationService,
+    private storageService: StorageService,
   ) {
     // Get up to 6 products in order of registration
     const productCollection = this.afs.collection<StoreProductExt>('products', (ref) => ref.limit(6));
@@ -57,8 +60,23 @@ export class ShopTopComponent {
     });
   }
 
+  ngOnInit(): void{
+    // Modal only when member registration succeeds.
+    const hasShowOnboard = this.storageService.get(STORAGE_KEY_SHOWN_ONBOARD);
+    if (hasShowOnboard === 'false'){
+      this.openModal();
+      this.storageService.set(STORAGE_KEY_SHOWN_ONBOARD, 'true');
+    }
+  }
+
   ngOnDestroy(): void {
     this.messageSubscription?.unsubscribe();
+  }
+
+  openModal(): void {
+    this.onboardModalRef = this.modalService.open(ShopGuideComponent,
+    {  modalClass: 'modal-dialog-centered' }
+    );
   }
 
   logoutHandler(): void{
@@ -85,7 +103,6 @@ export class ShopTopComponent {
     this.cartService.decrementItem($event.store_product_id);
   }
 
-
   navigateToMypageHandler(): void{
     this.locationService.navigateTo3_1();
   }
@@ -109,14 +126,6 @@ export class ShopTopComponent {
 
   cartBtnHandler(): void{
     this.locationService.navigateTo4_1();
-  }
-
-  openModal(): void {
-    this.onboardModalRef = this.modalService.open(ShopGuideComponent,
-      {
-        modalClass: 'modal-dialog-centered'
-      }
-    );
   }
 
   loginHandler(): void{
