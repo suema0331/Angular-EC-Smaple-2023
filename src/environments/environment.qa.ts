@@ -13,7 +13,7 @@ export const environment = {
     messagingSenderId: '995863562978',
     measurementId: 'G-NT4TSNGS8E',
   },
-  production: true,
+  production: false,
   remote: true,
   API_URL: 'http://localhost:8080',
   API_AUTH_URL: 'http://localhost:8080',

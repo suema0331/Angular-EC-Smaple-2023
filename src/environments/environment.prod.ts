@@ -15,8 +15,9 @@ export const environment = {
   },
   production: true,
   remote: true,
-  API_URL: 'http://localhost:8080',
-  API_AUTH_URL: 'http://localhost:8080',
+  // Assuming you are doing blue green deploy, we can easily change the setting by changing the API_URL from blue to green.
+  API_URL: 'https://blue-user.angular-ec-2023.com',
+  API_AUTH_URL: 'https://blue-auth.angular-ec-2023.com',
   // IMAGE_DL_FROM_S3 : false,
   // S3_URL : 'https://image.angular-ec-2023.com',
 };
