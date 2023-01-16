@@ -48,10 +48,15 @@ export class AuthService {
   }
 
   logout() {
-    return signOut(this.auth).then(() => {
-      this.currentUser = {} as User;
-      // localStorage.removeItem('user');
-      this.locationService.navigateTo1_1()
+    return signOut(this.auth)
+      .then((result) => {
+        this.currentUser = {} as User;
+        // localStorage.removeItem('user');
+        console.log(result)
+        return result
+      })
+      .catch((error) => {
+        throw new Error(error)
     });
   }
 

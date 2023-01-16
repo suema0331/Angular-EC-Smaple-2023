@@ -21,13 +21,18 @@ export class MypageComponent {
 
   logoutHandler(): void{
 
-    this.authService.logout();
-    alert('Successfully logged out!');
-    this.locationService.navigateTo1_1();
+    this.authService.logout()
+      .then((result) => {
+        alert('Successfully logged out!');
+        this.locationService.navigateTo1_1();
+      })
+      .catch((error) => {
+        console.log(error)
+      });
   }
 
   handleBack(): void {
-    this.locationService.navigateBack('/mypage');
+    this.locationService.navigateTo1_1();
   }
 
   loginHandler(): void{
