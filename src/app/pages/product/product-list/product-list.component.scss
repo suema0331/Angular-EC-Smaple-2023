@@ -1,10 +1,6 @@
 @import "variables";
 
 .section-header {
-  &.isScrollDown{
-    display: none;
-  }
-
   @media screen and (min-width:600px) {
     max-width: 600px;
     margin: 0 auto;
@@ -45,10 +41,9 @@
   }
   ._menu{
     width: 28px;
-    margin-left: 8px;
-    margin: auto 0;
-    cursor: pointer;
+    margin: auto 0 auto 8px;
     color: #EAEAEA;
+    cursor: pointer;
   }
 }
 
@@ -57,7 +52,7 @@
   padding-bottom: 134px;
   margin-top: 57px;
 
-  .sub-category-area{
+  .products-area{
     background: #FCFCFC;
     margin-bottom: 12px;
     padding: 16px 10px 12px;
@@ -65,20 +60,6 @@
       font-size: 16px;
       font-weight: bold;
       margin-bottom: 12px;
-    }
-
-    .more-area {
-      padding: 12px 0 0;
-      ._more{
-        color: #0080DE;
-        font-size: 14px;
-        text-align: center;
-        cursor: pointer;
-        display: block;
-        i{
-          vertical-align: middle;
-        }
-      }
     }
   }
 }

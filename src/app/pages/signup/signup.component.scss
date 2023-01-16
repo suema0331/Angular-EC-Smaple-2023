@@ -1,7 +1,6 @@
 @import "variables";
 .signup{
   margin: 0 16px;
-
   ._agreement-title{
     font-size: 14px;
     font-weight: bold;
@@ -33,7 +32,6 @@
     .submit {
       font-weight: bold;
       color: #fff;
-
       // For black version
       // background: -moz-linear-gradient(left, #393534 50%, #555555);
       // background: -webkit-linear-gradient(left, #393534 50%, #555555);
@@ -73,11 +71,6 @@
       border: none;
       background: transparent;
     }
-  }
-  ._forget{
-    color: #0080DE;
-    text-align: right;
-    font-size: 14px;
   }
 }
 

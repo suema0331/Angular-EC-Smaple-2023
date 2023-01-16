@@ -16,34 +16,6 @@
     margin-bottom: 32px;
   }
 
-  ._product{
-    display: flex;
-    margin-bottom: 32px;
-    text-align: left;
-    padding: 0 38px;
-    img{
-      width: 77px;
-      height: 77px;
-      margin-right: 8px;
-    }
-    ._item{
-      ._name{
-        font-size: 16px;
-        margin-bottom: 8px;
-      }
-      ._price{
-        font-size: 18px;
-        font-weight: bold;
-      }
-      ._tax{
-        margin-left: 4px;
-        font-weight: normal;
-        font-size: 16px;
-        color: #717171;
-      }
-    }
-  }
-
   .btn_group{
     padding: 0 16px 16px;
     margin-top: 0;

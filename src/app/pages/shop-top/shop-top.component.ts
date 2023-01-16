@@ -25,10 +25,6 @@ export class ShopTopComponent {
 
   onboardModalRef: MdbModalRef<ShopGuideComponent> | undefined;
 
-  isScroll = false;
-  isScrollDown = false;
-  currentPageYOffset = 0;
-
   recommendedProductList$: Observable<StoreProductExt[]>;
   storeMessage = {} as StoreTopMessage;
   cartPriceInfo: CartPriceInfo =  this.cartService.getCartPriceInfo();

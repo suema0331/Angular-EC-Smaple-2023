@@ -6,7 +6,6 @@
   .col {
     padding: 0 4px;
   }
-
   .card {
     background: #FCFCFC;
 
@@ -115,7 +114,6 @@
           @media screen and (min-width:600px) {
             right: 14px;
           }
-
           i {
             margin: auto 9px;
           }
@@ -233,9 +231,6 @@
       ._expandLabel{
         ._quantity{
           margin-bottom: 0;
-        }
-        ._gram{
-          font-weight: bold;
         }
       }
     }

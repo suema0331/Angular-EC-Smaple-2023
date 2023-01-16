@@ -1,17 +1,6 @@
 @import "variables";
 
 .top-header {
-  &.isScrollDown{
-    position: fixed;
-    top: 0;
-    z-index: 999;
-    background: #FCFCFC;
-    width: 100%;
-    @media screen and (min-width:600px) {
-        max-width: 600px;
-        margin: 0 auto;
-    }
-  }
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -21,9 +10,6 @@
   ._logo-area{
     line-height: 2.5;
     cursor: pointer;
-    @media screen and (min-width:321px) {
-      // margin-right: 25px;
-    }
     ._logo {
       width: 28px;
       height: 28px;
@@ -48,7 +34,6 @@
       @media screen and (min-width:540px) {
         padding: 8px 180px 8px 18px;
       }
-
       i {
         font-size: 15px;
         margin-right: 4px;
@@ -115,7 +100,6 @@
       display: block;
       position: absolute;
       bottom: 16px;
-      // left: 52px;
       left: 10%;
       text-align: center;
       background: rgba(58,171,210,0.5);
@@ -141,19 +125,6 @@
     }
   }
 
-  .more-area{
-    padding: 12px 0 0;
-    ._more{
-      color: #0080DE;
-      font-size: 14px;
-      text-align: center;
-      cursor: pointer;
-      display: block;
-      i{
-        vertical-align: middle;
-      }
-    }
-  }
   .recommend-area{
     margin: 24px 12px 12px;
 
@@ -190,18 +161,10 @@
       @media screen and (min-width:540px) {
         padding: 16px 42px;
       }
-
       img{
         width: 20px;
       }
     }
-  }
-  .category-area{
-    background: #FCFCFC;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 16px 0 16px 16px;
-    border: #EAE5E2 1px solid;
   }
   .bottom-menu-area{
     padding: 0px 0 200px;

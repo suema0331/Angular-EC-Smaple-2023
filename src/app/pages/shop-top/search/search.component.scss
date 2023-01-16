@@ -1,34 +1,5 @@
 @import "variables";
 
-.search-header{
-  height: 56px;
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 16px;
-  vertical-align: center;
-
-  background: $shop_theme_color;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 100;
-
-  @media screen and (min-width:600px) {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  ._back{
-    margin: auto 0;
-    color: #EAEAEA;
-    cursor: pointer;
-  }
-  .btn-close{
-    margin: auto 4px auto 18px;
-    color: #2E2621;
-    cursor: pointer;
-  }
-}
-
 .search{
   background: #F2F2F2;
   padding: 88px 0;
@@ -45,32 +16,32 @@
     margin: 0 auto;
   }
 
-  &._no-padding{
-    padding: 0 0 120px;
-  }
-  .no-search-result-area{
-    text-align: center;
-    padding: 88px 0 400px;
+  .search-header{
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 16px;
+    vertical-align: center;
 
-    ._ttl{
-      font-size: 16px;
-      color: #717171;
-      font-weight: bold;
-      margin-bottom: 24px;
+    background: $shop_theme_color;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+
+    @media screen and (min-width:600px) {
+      max-width: 600px;
+      margin: 0 auto;
     }
-    ._image-area{
-      margin: 0px 131px 24px;
-
-      @media screen and (min-width:600px) {
-        margin: 0px 205px 24px;
-      }
-
-      img{
-        width: 100%;
-      }
+    ._back{
+      margin: auto 0;
+      color: #EAEAEA;
+      cursor: pointer;
     }
-    ._message{
-      color: #717171;
+    .btn-close{
+      margin: auto 4px auto 18px;
+      color: #2E2621;
+      cursor: pointer;
     }
   }
 
@@ -99,12 +70,10 @@
 
       .btn_group{
         .submit {
-
           @media screen and (min-width:600px) {
             max-width: 568px;
-            margin: 0 auto 16px;;
+            margin: 0 auto 16px;
           }
-
           width: 100%;
           display: flex;
           align-items: flex-end;
