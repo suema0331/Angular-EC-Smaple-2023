@@ -25,13 +25,16 @@ export class ShopTopComponent {
 
   onboardModalRef: MdbModalRef<ShopGuideComponent> | undefined;
 
-  recommendedProductList$: Observable<StoreProductExt[]>;
+  recommendedProductList: Array<StoreProductExt> = [];
+
   storeMessage = {} as StoreTopMessage;
   cartPriceInfo: CartPriceInfo =  this.cartService.getCartPriceInfo();
   currentUser = this.authService.currentUser
   isLoggedIn = this.authService.isLoggedIn;
 
   messageSubscription?: Subscription;
+  recommendedSubscription?: Subscription;
+
 
   @ViewChild('mdbCarousel') mdbCarousel!: MdbCarouselComponent;
   constructor(
@@ -45,8 +48,9 @@ export class ShopTopComponent {
   ) {
     // Get up to 6 products in order of registration
     const productCollection = this.afs.collection<StoreProductExt>('products', (ref) => ref.limit(6));
-    this.recommendedProductList$ = productCollection.valueChanges();
-
+    this.recommendedSubscription = productCollection.valueChanges().subscribe(data => {
+      this.recommendedProductList = data;
+    });
     // Get messages from the store that can be written by the store staff.
     const storeMessageCollection = this.afs.collection<StoreTopMessage>('store-messages', (ref) => ref.limit(1));
     this.messageSubscription = storeMessageCollection.valueChanges().subscribe(message => {
@@ -67,6 +71,7 @@ export class ShopTopComponent {
 
   ngOnDestroy(): void {
     this.messageSubscription?.unsubscribe();
+    this.recommendedSubscription?.unsubscribe();
   }
 
   openModal(): void {

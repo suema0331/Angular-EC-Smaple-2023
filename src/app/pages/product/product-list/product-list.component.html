@@ -28,7 +28,7 @@
       >All Products
       </div>
       <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
-        <ng-container *ngFor="let product of productList$ | async ; index as i" >
+        <ng-container *ngFor="let product of productList; index as i" >
           <app-product-card
             [storeProduct]="product"
             [isLoggedIn]="isLoggedIn"

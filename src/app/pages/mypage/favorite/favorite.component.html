@@ -5,7 +5,7 @@
   ></app-common-header>
 
 <div class="favorite">
-  <div *ngIf="(productList$ | async)?.length===0; else showFavoriteList" class="not-found-area">
+  <div *ngIf="productList.length===0; else showFavoriteList" class="not-found-area">
     <div class="_ttl">You have no favorite products.</div>
     <div class="_img-area">
       <img src="/assets/mypage/favorite_img_heart@2x.png" alt="your-favorite-item-is-not-found">
@@ -14,7 +14,7 @@
   </div>
   <ng-template  class="sub-category-area" #showFavoriteList>
     <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
-      <ng-container *ngFor="let product of productList$ | async; index as i" >
+      <ng-container *ngFor="let product of productList; index as i" >
         <app-product-card
           [storeProduct]="product"
           [isMoreClicked]="false"
