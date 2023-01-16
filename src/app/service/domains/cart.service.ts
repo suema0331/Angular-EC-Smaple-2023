@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { STORAGE_KEY_CART } from 'src/app/extra/constants';
 import { LogService } from 'src/shared/services/log.service';
 import { StorageService } from 'src/shared/services/storage.service';
-import { PriceService } from '../utilities/price-service.service';
+import { PriceService } from '../utilities/price.service';
 
 export interface CartItem {
   productId: string;

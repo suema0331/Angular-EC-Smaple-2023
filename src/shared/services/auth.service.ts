@@ -2,7 +2,6 @@ import { Injectable, Optional } from '@angular/core';
 import { Auth, User, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signOut, updateProfile, user } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { authState } from 'rxfire/auth';
-import { LocationService } from 'src/app/service/utilities/location.service';
 import { UserCreateRequest } from 'src/backend/dto/common/user_create_request';
 
 @Injectable({
@@ -16,7 +15,6 @@ export class AuthService {
      // Tell Angular that dependencies are optional
     @Optional() private auth: Auth,
     private afs: AngularFirestore,
-    private locationService: LocationService,
   ) {
 
     // Setting logged in user in localstorage else null
