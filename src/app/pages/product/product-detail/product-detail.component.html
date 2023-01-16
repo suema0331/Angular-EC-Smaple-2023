@@ -76,8 +76,8 @@
         </span>
       </div>
 
-      <div class="_price">{{storeProduct.store_price | currency : 'JPY': true}}
-        <span class="_tax">{{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': true}}/with tax</span>
+      <div class="_price">{{storeProduct.store_price | currency : 'JPY': 'symbol'}}
+        <span class="_tax">{{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': 'symbol'}}/with tax</span>
       </div>
     </div>
     <div class="_tags" *ngIf="storeProduct.tags.length>0">
@@ -98,7 +98,7 @@
       </div>
       <div class="_row">
         <div class="_key">Unit price</div>
-        <div class="_value">{{100 | currency : 'JPY': true}}/100g</div>
+        <div class="_value">{{100 | currency : 'JPY': 'symbol'}}/100g</div>
       </div>
       <div class="_row" *ngIf="storeProduct.store_comment">
         <div class="_key">Comments</div>

@@ -66,9 +66,9 @@
                [class._small]="storeProduct.store_price > 999"
                [class._no-wrap]="storeProduct.store_price > 9999">
             <span [class.discount]="storeProduct.standard_price && storeProduct.store_price < storeProduct.standard_price"
-                  class="_price">{{storeProduct.store_price | currency : 'JPY': true}}</span>
+                  class="_price">{{storeProduct.store_price | currency : 'JPY': 'symbol'}}</span>
             <span [class._small]="storeProduct.store_price > 999"
-                  class="_tax-price"> {{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': true}}</span>
+                  class="_tax-price"> {{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': 'symbol'}}</span>
 
             <span class="_tax-tag"
                   [class._small]="calculateTaxedValue(storeProduct.store_price)> 999">/with tax</span>

@@ -64,9 +64,10 @@ export class CartComponent {
             })
           )
         ).subscribe(data => {
-          console.log("🌟subscribed Product data")
+          // console.log("🌟subscribed Product data")
           console.log(data)
-          if (data[0]) this.userCart.push(data[0]);
+          if (!this.userCart) return;
+          if (data[0]) this.userCart?.push(data[0] as StoreProductExt);
         });
       }
     })
@@ -119,7 +120,6 @@ export class CartComponent {
   }
 
   confirmOrderHandler(): void {
-    console.log(this.currentUser)
     if (this.cartPriceInfo.numOfStoreProducts === 0){
       alert('There are no items in your cart.');
     }
@@ -139,7 +139,7 @@ export class CartComponent {
         this.afs.collection<CartToOrder>('orders')
           .add(orderData)
           .then(doc => {
-            console.log(doc)
+            // console.log(doc)
             alert('💙Your item has been successfully purchased!')
             this.cartService.clearCart();
             this.cartService.clearCartCacheFromStorage();
@@ -148,7 +148,7 @@ export class CartComponent {
             this.locationService.navigateTo1_1();
           })
           .catch( err => {
-            console.log(err)
+            // console.log(err)
             alert('🥲Sorry, Something went wrong.')
           })
       }

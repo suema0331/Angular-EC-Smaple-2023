@@ -87,16 +87,19 @@ export class ShopTopComponent {
   }
 
   clickPlusHandler($event: StoreProductExt): void {
-    const toastImagePath = $event.product_images[0].small
-      ?  $event.product_images[0].small
-      : '/assets/product/no-image-small.jpg';
 
-    this.notificationService.openAddProductToCartImageToast(
-      toastImagePath,
-      $event.producing_area ? $event.producing_area : '',
-      $event.product_name,
-      $event.brand ? $event.brand : '',
-    );
+    if (this.isLoggedIn) {
+      const toastImagePath = $event.product_images[0].small
+        ? $event.product_images[0].small
+        : '/assets/product/no-image-small.jpg';
+
+      this.notificationService.openAddProductToCartImageToast(
+        toastImagePath,
+        $event.producing_area ? $event.producing_area : '',
+        $event.product_name,
+        $event.brand ? $event.brand : '',
+      );
+    }
     this.cartService.incrementItem($event.store_product_id, $event.store_price);
   }
 

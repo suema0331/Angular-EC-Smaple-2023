@@ -28,7 +28,7 @@ export class AppComponent {
       map((route) => {
         // iterate while until firstChild: null
         while (route.firstChild) { route = route.firstChild; } // firstChild - the first ActivatedRoute in this route's child routes
-        console.log(`route.firstChild ${route}`); // Route(url:'products/1', path:'products/:productId')
+        // console.log(`route.firstChild ${route}`); // Route(url:'products/1', path:'products/:productId')
         return route;
       }),
       filter((route) => route.outlet === 'primary'), // Unnamed outlets will be named primary
