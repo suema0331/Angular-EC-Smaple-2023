@@ -2,6 +2,9 @@ import {environment} from '../../environments/environment';
 import {LogService} from './log.service';
 import {Injectable} from '@angular/core';
 
+/**
+ * Service for manipulating local storage
+ */
 @Injectable()
 export class StorageService{
   ENC_KEY = 'sample';

@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 
+/**
+ * Guard to allow logged-in users only
+ */
 @Injectable({
   providedIn: 'root'
 })

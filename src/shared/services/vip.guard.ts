@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, map, take } from 'rxjs';
 import { AuthService } from './auth.service';
-import { LocationService } from 'src/app/service/utilities/location.service';
 
+/**
+ * Guard to allow only certain VIP users
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class VIPGuard implements CanActivate {
   constructor(
     private authService: AuthService,
-    private locationService: LocationService,
     private route: Router,
   ) { }
   canActivate(

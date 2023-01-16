@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductListComponent } from './pages/product/product-list/product-list.component';
-import { FavoriteComponent } from './pages/mypage/favorite/favorite.component';
-import { MypageComponent } from './pages/mypage/mypage/mypage.component';
-import { CartComponent } from './pages/order/cart/cart.component';
-import { ShopTopComponent } from './pages/shop-top/shop-top.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { PastitemComponent } from './pages/mypage/pastitem/pastitem.component';
-import { SearchComponent } from './pages/shop-top/search/search.component';
-import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
-import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
-import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { AuthGuard } from 'src/shared/services/auth.guard';
 import { VIPGuard } from 'src/shared/services/vip.guard';
+import { LoginComponent } from './pages/login/login.component';
+import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
+import { FavoriteComponent } from './pages/mypage/favorite/favorite.component';
+import { MypageComponent } from './pages/mypage/mypage/mypage.component';
+import { PastitemComponent } from './pages/mypage/pastitem/pastitem.component';
+import { CartComponent } from './pages/order/cart/cart.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
+import { ProductListComponent } from './pages/product/product-list/product-list.component';
+import { SearchComponent } from './pages/search/search.component';
+import { ShopTopComponent } from './pages/shop-top/shop-top.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 const BASE_TITLE = 'Angular EC App';
 

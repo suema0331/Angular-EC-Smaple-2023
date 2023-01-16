@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription, filter, map, mergeMap } from 'rxjs';
-import { LogService } from 'src/shared/services/log.service';
 import { SEOService } from './service/utilities/seo.service';
 
 @Component({
@@ -17,7 +16,6 @@ export class AppComponent {
   routerEventSubscription?: Subscription;
 
   constructor(
-    private logService: LogService,
     private router: Router,
     private seoService: SEOService,
     private activatedRoute: ActivatedRoute,
@@ -54,6 +52,5 @@ export class AppComponent {
 
   ngOnDestroy(): void {
     this.routerEventSubscription?.unsubscribe();
-    this.logService.logDebug(`${this.screenId}:${this.screenName} が破棄されました。` );
   }
 }
