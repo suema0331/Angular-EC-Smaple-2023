@@ -29,6 +29,7 @@
   ._right{
     display: flex;
     ._logout{
+      cursor: pointer;
       font-size: 14px;
       font-weight: bold;
       margin: auto 15px auto;
@@ -58,6 +59,7 @@
       ._icon{
         width: 80px;
         margin-right: 12px;
+        cursor: pointer;
         img{
           width: 100%;
         }

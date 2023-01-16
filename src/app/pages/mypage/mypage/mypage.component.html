@@ -23,7 +23,9 @@
     <div *ngIf="currentUser.uid" class="account-area">
       <div class="_left">
         <div class="_icon">
-          <img alt="user-icon" [src]="currentUser.photoURL" >
+          <img alt="user-icon" [src]="currentUser.photoURL"
+             (click)="clickUserIconHandler()"
+          >
         </div>
       </div>
       <div class="_right">

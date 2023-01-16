@@ -75,4 +75,9 @@ export class MypageComponent {
       window.open(`https://haruno-suematsu.netlify.app/`, '_blank');
     }
   }
+
+  clickUserIconHandler(): void {
+    if (!this.currentUser.photoURL) return
+    window.open(this.currentUser.photoURL, '_blank');
+  }
 }
