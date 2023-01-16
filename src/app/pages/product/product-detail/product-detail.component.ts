@@ -19,29 +19,26 @@ export class ProductDetailComponent{
   screenName = 'ProductDetailComponent';
   screenId = '2_2';
 
-  // Value of the magnified image
-  topViewImage = '';
-  isSelectedImg = 0;
-
+  storeProduct = {} as StoreProductExt;
+  productDocumentId = '';
+  productSubscription: Subscription;
   productId = '';
+
   isCartClicked = false;
   cartPriceInfo: CartPriceInfo = this.cartService.getCartPriceInfo();
   cartItem: CartItem = {productId: '', quantity: 0, price:0, dirtyFlag: false};
-
   isOverConstraintMax = false;
-
-  @ViewChild('constraintTooltip') constraintTooltip!: ElementRef | undefined;
-  displayConstraintTooltip = false;
-
   isScroll = false;
   isScrollDown = false;
   currentPageYOffset = 0;
   displayHeaderName = '';
+  displayConstraintTooltip = false;
 
-  storeProduct = {} as StoreProductExt;
-  productDocumentId = '';
+  // Value of the magnified image
+  topViewImage = '';
+  isSelectedImg = 0;
 
-  productSubscription: Subscription;
+  @ViewChild('constraintTooltip') constraintTooltip!: ElementRef | undefined;
 
   constructor(
     public locationService: LocationService,

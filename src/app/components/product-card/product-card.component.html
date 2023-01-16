@@ -25,6 +25,7 @@
                alt="product-image"
           />
           <div class="add_cart_btn" *ngIf="cartItem.quantity === 0">
+            <!-- The area above the product image where you can click the Add to Cart button is small on mobile, so it is enlarged. -->
             <div class="_expand-cart-add-btn-area"
                  (click)="addCart($event)"
                  title="This is a button to add one new item to your cart."

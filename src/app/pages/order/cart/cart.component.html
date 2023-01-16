@@ -31,7 +31,7 @@
 
     <div *ngIf="cartPriceInfo.numOfStoreProducts > 0 || userCart.length > 0" class="inner-area">
       <div class="message-area">
-        <div *ngIf="storeMessage.store_available_flag === 0" class="_delivery">
+        <div *ngIf="storeMessage.store_available_flag === 0" class="_message">
           {{storeMessage.operation_message}}
         </div>
       </div>

@@ -17,10 +17,6 @@ export class ProductListComponent {
   screenName = 'ProductListComponent';
   screenId = '2_1';
 
-  isScroll = false;
-  isScrollDown = false;
-  prevPageYOffset = 0;
-
   cartPriceInfo: CartPriceInfo =  this.cartService.getCartPriceInfo();
   isLoggedIn = this.authService.isLoggedIn;
 

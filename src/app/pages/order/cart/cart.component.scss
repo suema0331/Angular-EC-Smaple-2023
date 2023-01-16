@@ -84,20 +84,13 @@
         }
         text-align: center;
         font-size: 14px;
-        ._caution{
-          color: #E50721;
-          background: #FDECEF;
-          border-radius: 3px;
-          padding: 16px;
-        }
-        ._delivery{
+        ._message{
           background: #FFF4EA;
           color: #D15F00;
           border-radius: 3px;
           padding: 16px;
         }
       }
-
       .product-area{
         &:not(:last-of-type){
           border-bottom: #D1D1D1 1px dotted;
