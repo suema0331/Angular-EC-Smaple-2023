@@ -58,8 +58,6 @@ export class CartService {
         this.cartCache[item.productId] = item;
       });
     }
-    console.log("this.cartCache")
-    console.log(this.cartCache)
   }
 
    getValidCache(): CartItem[] {
@@ -76,8 +74,6 @@ export class CartService {
   saveCartCacheToStorage(): void {
     this.logService.logDebug('[cart] saveCartCacheToStorage');
     const validCache = this.getValidCache();
-    console.log("validCache")
-    console.log(validCache)
     this.calculateCartPriceInfo(validCache)
     this.storageService.set(STORAGE_KEY_CART, JSON.stringify(validCache));
   }
@@ -93,9 +89,6 @@ export class CartService {
     this.cartPriceInfo.totalProductPriceWithoutTax = sumPrice;
     this.cartPriceInfo.numOfStoreProducts = sumQuantity;
     this.cartPriceInfo.totalProductPriceWithTax = this.priceService.calculateTaxedValue(sumPrice);
-    console.log(sumPrice)
-    console.log(sumQuantity)
-    console.log(this.cartPriceInfo.totalProductPriceWithTax)
   }
 
   incrementItem(productId: string , storePrice: number): void {

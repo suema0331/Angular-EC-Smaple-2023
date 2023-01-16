@@ -50,7 +50,6 @@ export class AppComponent {
         this.seoService.updateDescription(event.description);
         event.ogUrl ? this.seoService.updateOgUrl(event.ogUrl) : this.seoService.updateOgUrl('');
       });
-
   }
 
   ngOnDestroy(): void {
