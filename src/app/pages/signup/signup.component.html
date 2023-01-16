@@ -36,12 +36,16 @@
                   [class._inputFormError]="isPasswordError"
            />
           <button (click)="hide1 = !hide1"
-                 *ngIf="hide1"
-                 class="_display">display
+                *ngIf="hide1"
+                class="_display"
+                title="This is a button to show password characters"
+                 >display
          </button>
          <button (click)="hide1 = !hide1"
-                 *ngIf="!hide1"
-                 class="_display">hide
+                *ngIf="!hide1"
+                class="_display"
+                title="This is a button to hide password characters"
+                 >hide
          </button>
         </mdb-form-control>
        <div *ngIf="passwordEmptyErrorMessage" class="_error" data-test="signup-password-error1">{{passwordEmptyErrorMessage}}</div>
@@ -67,11 +71,15 @@
            />
          <button (click)="hide2 = !hide2"
                  *ngIf="hide2"
-                 class="_display">display
+                 class="_display"
+                title="This is a button to show confirm password characters"
+                 >display
          </button>
          <button (click)="hide2 = !hide2"
                  *ngIf="!hide2"
-                 class="_display">hide
+                 class="_display"
+                 title="This is a button to hide confirm password characters"
+                 >hide
          </button>
         </mdb-form-control>
        <div class="_error" *ngIf="isConfirmPasswordError" data-test="signup-confirm-password-error">{{conformPasswordErrorMessage}}</div>
@@ -87,9 +95,11 @@
         <span class="_agreement"  >
           I agree to the
           <span (click)="navigateToTermsHandler()"
+                title="This is a link to navigate to the external Terms of Use page."
                 class="_tos"
           >
           Terms of Use</span> and <span (click)="navigateToPolicyHandler()"
+                title="This is a link to navigate to the external Privacy Policy page."
                 class="_policy">Privacy Policy</span>
         </span>
       </label>
@@ -98,11 +108,13 @@
 
     <div class="btn_group">
       <button
-         (click)="formOnClickSignupHandler()"
-         data-test="signup-btn"
-         [disabled]="isDisabled"
-         class="btn btn-rounded submit" >
-         Register
+        (click)="formOnClickSignupHandler()"
+        data-test="signup-btn"
+        [disabled]="isDisabled"
+        class="btn btn-rounded submit"
+        title="This is a button to execute signup."
+         >
+        Register
       </button>
       <div class="_signup-area">
         Already have an account?

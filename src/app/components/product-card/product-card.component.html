@@ -26,7 +26,9 @@
           />
           <div class="add_cart_btn" *ngIf="cartItem.quantity === 0">
             <div class="_expand-cart-add-btn-area"
-                 (click)="addCart($event)">
+                 (click)="addCart($event)"
+                 title="This is a button to add one new item to your cart."
+                 >
               <i class="fas fa-plus"></i>
             </div>
           </div>
@@ -40,12 +42,16 @@
                  *ngIf="cartItem.quantity > 0"
                  [class.overConstraintMax]="isOverConstraintMax">
               <div class="_expand-cart-minus-btn-area"
-                    (click)="removeCart($event)">
+                    (click)="removeCart($event)"
+                    title="This is a button to remove one item from your cart."
+                    >
                 <i class="fas fa-minus"></i>
               </div>
                   {{cartItem.quantity}}
               <div class="_expand-cart-plus-btn-area"
-                   (click)="addCart($event)" >
+                   (click)="addCart($event)"
+                   title="This is a button to add one item to your cart."
+                   >
                 <i class="fas fa-plus"
                    [class.overConstraintMax]="isOverConstraintMax"
                 ></i>

@@ -2,12 +2,12 @@
      class="top-header"
 >
   <div class="_logo-area">
-    <img  class="_logo" src="assets/top_img_shoplogo@2x.png" alt="shop-logo">
+    <img  class="_logo" src="assets/top_img_shoplogo@2x.png" alt="logo">
     <span class="_name">Sample EC</span>
   </div>
   <div class="_search">
     <div class="_button-area"
-      title="This is a button on the header to navigate the search page."
+      title="This is a button on the header to navigate to the search page."
       (click)="navigateToSearchHandler()"
     >
       <i class="fas fa-search"></i>
@@ -22,7 +22,7 @@
     </div>
   </div>
   <div (click)="navigateToMypageHandler()"
-      title="This is a munu icon on the header to navigate the my page."
+      title="This is a munu icon on the header to navigate to the my page."
       class="_menu">
     <i class="fas fa-bars fa-lg"></i>
   </div>
@@ -57,25 +57,28 @@
           [wrap]="true"
         >
           <mdb-carousel-item>
-            <img src="./assets/store_image@2x.jpeg" alt="store-top-image">
+            <img src="./assets/store_image@2x.jpeg" alt="store-top-image-1">
             <button class="_search"
               (click)="navigateToProductList()"
+              title="This is a munu icon on the header to navigate to the product list page."
             >
               Search from the product list  <i class="fas fa-angle-right"></i>
             </button>
           </mdb-carousel-item>
           <mdb-carousel-item>
-            <img src="./assets/store_image_2@2x.jpeg" alt="store-top-image">
+            <img src="./assets/store_image_2@2x.jpeg" alt="store-top-image-2">
             <button class="_search"
               (click)="navigateToProductList()"
+              title="This is a munu icon on the header to navigate to the product list page."
             >
               Search from the product list  <i class="fas fa-angle-right"></i>
             </button>
           </mdb-carousel-item>
           <mdb-carousel-item>
-            <img src="./assets/store_image_3@2x.jpeg" alt="store-top-image">
+            <img src="./assets/store_image_3@2x.jpeg" alt="store-top-image-3">
             <button class="_search"
               (click)="navigateToProductList()"
+              title="This is a munu icon on the header to navigate to the product list page."
             >
               Search from the product list  <i class="fas fa-angle-right"></i>
             </button>
@@ -103,13 +106,13 @@
   </div>
   <div class="tab-btn-area">
     <button mdbRipple rippleColor="dark" type="button" class="btn btn-outline"
-            title="This is a button to navigate the favorit page."
+            title="This is a button to navigate to the favorit page."
             (click)="navigateToFavoriteHandler()"
     >
       <img src="assets/common_icon_heart@2x.png" alt="favorite-icon"> Favorites
     </button>
     <button mdbRipple rippleColor="dark" type="button" class="btn btn-outline"
-            title="This is a button to navigate the purchased items page."
+            title="This is a button to navigate to the purchased items page."
             (click)="navigateToPastitemHandler()"
     >
       <img src="assets/top_icon_history@2x.png" alt="purchase-icon"> Purchased
@@ -119,15 +122,15 @@
   <div class="bottom-menu-area">
     <ul class="list-group">
       <li class="list-group-item"
-        title="This is a link to navigate the store information page."
+        title="This is a link to navigate to the store information page."
           (click)="navigateToShopHandler()"
       >Store Information <i class="fas fa-chevron-right"></i></li>
       <li class="list-group-item"
-        title="This is a link to navigate the compliance page."
+        title="This is a link to navigate to the compliance page."
           (click)="navigateToComplianceHandler()"
       >Compliance <i class="fas fa-chevron-right"></i></li>
       <li class="list-group-item"
-        title="This is a link to navigate the privacy policy page."
+        title="This is a link to navigate to the privacy policy page."
           (click)="navigateToPrivacyHandler()"
       >Privacy Policy <i class="fas fa-chevron-right"></i></li>
     </ul>
@@ -135,13 +138,16 @@
   <div class="signup-area" *ngIf="!isLoggedIn">
     <div class="btn_group">
       <button
+        routerLink="/signup"
         class="btn btn-rounded submit"
-        routerLink="/signup">
+        title="This is a link to navigate to the signup page."
+        >
         Register
       </button>
       <div class="_login-area">Already have an account?
         <span class="_login"
               (click)="loginHandler()"
+              title="This is a link to navigate to the login page."
         >Log In</span>
       </div>
     </div>

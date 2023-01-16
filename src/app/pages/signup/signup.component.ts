@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { filter } from 'rxjs';
+import { STORAGE_KEY_SHOWN_ONBOARD } from 'src/app/extra/constants';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { ValidationService } from 'src/app/service/utilities/validation.service';
 import { environment } from 'src/environments/environment';
@@ -129,6 +130,8 @@ export class SignupComponent {
       .then((result) => {
         this.logService.logDebug('Signup succeeded');
         this.locationService.navigateTo1_1();
+        // Onboarding display flag after successful registration
+        this.storageService.set(STORAGE_KEY_SHOWN_ONBOARD , 'false');
       })
       .catch((error) => {
         this.isError = true;
