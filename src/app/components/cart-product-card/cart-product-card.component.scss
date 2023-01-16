@@ -122,55 +122,6 @@
       }
     }
   }
-  .choosy{
-    background: #F4F4F4;
-    border-radius: 8px;
-    padding: 12px 16px;
-    position: relative;
-    &.set{
-      background: none;
-      padding: 10px;
-    }
-    ._change{
-      cursor: pointer;
-      color: #0080DE;
-      position: absolute;
-      font-size: 14px;
-      top: 12px;
-      right: 16px;
-    }
-    ._set{
-      cursor: pointer;
-      color: #0080DE;
-      position: absolute;
-      font-size: 14px;
-      top: 0px;
-      left: 0px;
-    }
-    ._row{
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      margin-bottom: 4px;
-
-      ._key{
-        color: #717171;
-        pre{
-          display: inline;
-          font-size: 14px;
-          vertical-align: top;
-        }
-        ._value{
-          color: #141414;
-          display: inline-block;
-        }
-      }
-    }
-  }
-  ._select{
-    font-size: 14px;
-    color: #0080DE;
-  }
 }
 
 @keyframes fadeOutAnimation {
