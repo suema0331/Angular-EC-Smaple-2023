@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/products', pathMatch: 'full',
+    redirectTo: '/shop-top', pathMatch: 'full',
   },
   {
     path: 'login',

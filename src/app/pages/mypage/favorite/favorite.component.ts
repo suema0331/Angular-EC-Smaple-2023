@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, map } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
 import { CartPriceInfo, CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
@@ -17,7 +17,9 @@ export class FavoriteComponent{
   screenName = 'FavoriteComponent';
   screenId = '3_2';
 
-  productList$: Observable<StoreProductExt[]>;
+  productList: Array<StoreProductExt> = [];
+  productListSubscription: Subscription;
+
   userId: string | undefined = '';
   cartPriceInfo: CartPriceInfo =  this.cartService.getCartPriceInfo();
   isLoggedIn = this.authService.isLoggedIn;
@@ -37,7 +39,7 @@ export class FavoriteComponent{
     // If another field is used in the operation and orderby used in the where condition, a composite index is required.
     // https://cloud.google.com/firestore/docs/query-data/indexing
 
-    this.productList$ = favoriteProductCollection.snapshotChanges().pipe(
+    this.productListSubscription = favoriteProductCollection.snapshotChanges().pipe(
       map((actions) =>
         actions.map((a) => {
           const data = a.payload.doc.data() as StoreProductExt;
@@ -46,7 +48,11 @@ export class FavoriteComponent{
           return { id, ...data };
         })
       )
-    );
+    ).subscribe(data => this.productList = data);
+  }
+
+  ngOnDestroy(): void {
+    this.productListSubscription?.unsubscribe();
   }
 
   clickPlusHandler($event: StoreProductExt): void {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Observable, map } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
 import { CartPriceInfo, CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
@@ -20,8 +20,8 @@ export class ProductListComponent {
   cartPriceInfo: CartPriceInfo =  this.cartService.getCartPriceInfo();
   isLoggedIn = this.authService.isLoggedIn;
 
-  private productCollection: AngularFirestoreCollection<StoreProductExt>;
-  productList$: Observable<StoreProductExt[]>;
+  productList: Array<StoreProductExt> = [];
+  productListSubscription: Subscription;
 
   constructor(
     public locationService: LocationService,
@@ -30,8 +30,8 @@ export class ProductListComponent {
     private authService: AuthService,
     private notificationService: NotificationService,
   ) {
-    this.productCollection = this.afs.collection<StoreProductExt>('products');
-    this.productList$ = this.productCollection.snapshotChanges().pipe(
+    const productCollection = this.afs.collection<StoreProductExt>('products');
+    this.productListSubscription = productCollection.snapshotChanges().pipe(
       map((actions) =>
         actions.map((a) => {
           const data = a.payload.doc.data() as StoreProductExt;
@@ -39,7 +39,11 @@ export class ProductListComponent {
           return { id, ...data };
         })
       )
-    );
+    ).subscribe( data => this.productList = data);
+  }
+
+  ngOnDestroy(): void {
+    this.productListSubscription?.unsubscribe();
   }
 
   backToTopHandler(): void{

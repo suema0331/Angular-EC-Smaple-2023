@@ -98,7 +98,7 @@
       <span *ngIf="!isLoggedIn">Recommended products from our staffs</span>
     </div>
     <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
-      <ng-container *ngFor="let product of recommendedProductList$ | async; index as i" >
+      <ng-container *ngFor="let product of recommendedProductList; index as i" >
         <app-product-card
           [storeProduct]="product"
           [productViewImageType]="1"
