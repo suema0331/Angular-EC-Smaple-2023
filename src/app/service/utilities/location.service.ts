@@ -60,15 +60,6 @@ export class LocationService{
     })
   }
 
-  // Defines which page the back button returns to and to which page
-  navigateBack(url: string): void{
-    if (url.startsWith('/mypage')){
-      // TOPに遷移
-      this.navigateTo1_1();
-      return;
-    }
-  }
-
   /**
    * If we have a backend server, I will send a request to the backend like below
    */

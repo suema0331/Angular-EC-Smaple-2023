@@ -26,7 +26,6 @@ export class AppComponent {
       filter((event: any) => event instanceof NavigationEnd), // NavigationEnd - event fired when a screen transition is successfully completed
       map(() => this.activatedRoute),
       map((route) => {
-        console.log(`route ${route}`);
         // iterate while until firstChild: null
         while (route.firstChild) { route = route.firstChild; } // firstChild - the first ActivatedRoute in this route's child routes
         console.log(`route.firstChild ${route}`); // Route(url:'products/1', path:'products/:productId')
@@ -34,14 +33,10 @@ export class AppComponent {
       }),
       filter((route) => route.outlet === 'primary'), // Unnamed outlets will be named primary
       mergeMap((route) => {
-        console.log("primary route")
-        console.log(route)
         return route.data
       })
     )
       .subscribe((event: any) => {
-        console.log('event is subscribed at app component');
-        console.log(event);
         this.seoService.updateTitle(event.title);
         // Updating Description tag dynamically with title
         // this.seoService.updateDescription(event.title + event.description);

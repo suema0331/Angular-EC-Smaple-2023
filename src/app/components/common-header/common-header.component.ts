@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Location } from '@angular/common';
 import { LocationService } from 'src/app/service/utilities/location.service';
 
 @Component({
@@ -13,11 +12,10 @@ export class CommonHeaderComponent {
   @Input() backUrl = '';
 
   constructor(
-    private location: Location,
     public locationService: LocationService,
   ) { }
 
   handleBack(): void {
-    this.backUrl ?  this.locationService.navigateTo(this.backUrl) : this.location.back();
+    this.backUrl ?  this.locationService.navigateTo(this.backUrl) : this.locationService.navigateTo1_1();
   }
 }
