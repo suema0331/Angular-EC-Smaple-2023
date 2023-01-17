@@ -21,6 +21,7 @@ body {
   }
 }
 
+/* .modal-open class is automatically added to the background body when the modal opens, and !important is needed to remove its margin */
 .modal-open {
   padding: 0 !important;
 }
@@ -30,7 +31,7 @@ body {
 }
 
 input {
-  border: initial !important;
+  border: initial;
 
   &::placeholder {
     color: #b7b7b7;
@@ -235,7 +236,7 @@ input[type='checkbox'] {
 .ais-SearchBox {
   .ais-SearchBox-form {
     .ais-SearchBox-input {
-      border: initial !important;
+      border: initial;
       padding: 10px 95px 10px 10px;
       border-radius: 20px;
       flex-basis: 1;
