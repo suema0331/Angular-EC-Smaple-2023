@@ -159,7 +159,7 @@ export class CartComponent {
         this.afs
           .collection<CartToOrder>('orders')
           .add(orderData)
-          .then((doc) => {
+          .then(() => {
             // console.log(doc)
             alert('💙Your item has been successfully purchased!');
             this.cartService.clearCart();
@@ -169,7 +169,7 @@ export class CartComponent {
             this.locationService.navigateTo1_1();
           })
           .catch((err) => {
-            // console.log(err)
+            console.log(err)
             alert('🥲Sorry, Something went wrong.');
           });
       }

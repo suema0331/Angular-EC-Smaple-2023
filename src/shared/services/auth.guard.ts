@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { CanActivate } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { AuthService } from './auth.service';
@@ -20,10 +16,7 @@ export class AuthGuard implements CanActivate {
     private locationService: LocationService
   ) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.authService.isLoggedIn) {
       console.log('❗️This page can be accessed after logging in.');
       this.locationService.navigateTo1_4();

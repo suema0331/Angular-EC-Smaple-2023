@@ -76,7 +76,7 @@ export class CartProductCardComponent implements OnInit {
     }
   }
 
-  clickCart($event: any): void {
+  clickCart($event: MouseEvent): void {
     $event.stopPropagation();
     $event.preventDefault();
     this.addCart($event);
@@ -89,7 +89,7 @@ export class CartProductCardComponent implements OnInit {
     this.displayConstraintTooltip = false;
   }
 
-  addCart($event: any): void {
+  addCart($event: MouseEvent): void {
     $event.stopPropagation();
     $event.preventDefault();
 
@@ -108,7 +108,7 @@ export class CartProductCardComponent implements OnInit {
     this.clickPlusHandler.emit(this.storeProduct);
   }
 
-  removeCart($event: any): void {
+  removeCart($event: MouseEvent): void {
     $event.stopPropagation();
     $event.preventDefault();
 

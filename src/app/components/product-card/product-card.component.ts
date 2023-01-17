@@ -86,7 +86,7 @@ export class ProductCardComponent {
     this.displayConstraintTooltip = false;
   }
 
-  addCart($event: any): void {
+  addCart($event: MouseEvent): void {
     this.logService.logDebug('addCart');
     this.isCartClicked = true;
     $event.stopPropagation();
@@ -105,7 +105,7 @@ export class ProductCardComponent {
     this.clickPlusHandler.emit(this.storeProduct);
   }
 
-  removeCart($event: any): void {
+  removeCart($event: MouseEvent): void {
     this.logService.logDebug('removeCart');
     $event.stopPropagation();
     $event.preventDefault();
