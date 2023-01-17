@@ -1,13 +1,14 @@
-@import "variables";
+@import 'variables';
 
-.confirm-modal{
+.confirm-modal {
   padding: 16px;
 }
+
 .modal-body {
   font-size: 18px;
   font-weight: bold;
   text-align: center;
-  color: #2E2621;
+  color: #2e2621;
   padding: 24px 8px 8px;
 
   ._message {
@@ -16,24 +17,27 @@
     margin-bottom: 32px;
   }
 
-  .btn_group{
+  .btn_group {
     padding: 0 16px 16px;
     margin-top: 0;
-    button{
+
+    button {
       width: 100%;
       border-radius: 48px;
       font-size: 16px;
       padding: 16px;
     }
-    .submit{
-      background: #E50721;
+
+    .submit {
+      background: #e50721;
       color: #fcfcfc;
       font-weight: bold;
       margin-bottom: 8px;
     }
-    .cancel{
-      background: #FFFFFF;
-      color: #2E2621;
+
+    .cancel {
+      background: #fff;
+      color: #2e2621;
     }
   }
 }

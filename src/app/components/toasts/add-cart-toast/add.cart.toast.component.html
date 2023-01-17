@@ -8,19 +8,14 @@
 >
   <div class="toast-body">
     <div class="left-body">
-      <img [src]="productImage" alt="product-image">
+      <img [src]="productImage" alt="product-image" />
     </div>
     <div class="right-body">
-      <div class="title">
-        Added to cart!
-      </div>
+      <div class="title">Added to cart!</div>
       <div class="product-name">
-        <span *ngIf="produceArea">
-          {{produceArea}}<br>
-        </span>
-        {{productName}} {{productBrand}}
+        <span *ngIf="produceArea"> {{ produceArea }}<br /> </span>
+        {{ productName }} {{ productBrand }}
       </div>
     </div>
   </div>
 </div>
-

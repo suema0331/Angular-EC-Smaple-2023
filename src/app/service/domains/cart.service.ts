@@ -22,11 +22,15 @@ export interface CartPriceInfo {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
   cartCache: Cart = {}; // in-memory cache
-  cartPriceInfo: CartPriceInfo = {totalProductPriceWithTax: 0, totalProductPriceWithoutTax: 0, numOfStoreProducts: 0};
+  cartPriceInfo: CartPriceInfo = {
+    totalProductPriceWithTax: 0,
+    totalProductPriceWithoutTax: 0,
+    numOfStoreProducts: 0,
+  };
   FLUSH_GRACE_PERIOD = 2;
   UPDATE_GRACE_PERIOD = 5;
   TIMER_STOPPED = -999;
@@ -35,7 +39,7 @@ export class CartService {
   constructor(
     private logService: LogService,
     private storageService: StorageService,
-    private priceService: PriceService,
+    private priceService: PriceService
   ) {
     // Retrieve cart data from local storage if available and display it in the view.
     this.loadCartCacheFromStorage();
@@ -53,28 +57,28 @@ export class CartService {
     this.logService.logDebug('[cart] Retrieve data from local storage.');
     const validCache: CartItem[] = JSON.parse(strCartCache);
     this.cartCache = {};
-    if ( validCache && validCache.length > 0) {
+    if (validCache && validCache.length > 0) {
       validCache.forEach((item) => {
         this.cartCache[item.productId] = item;
       });
     }
   }
 
-   getValidCache(): CartItem[] {
+  getValidCache(): CartItem[] {
     const validCache: CartItem[] = [];
-    Object.keys(this.cartCache).forEach(key => {
+    Object.keys(this.cartCache).forEach((key) => {
       const temp = this.cartCache[key];
       if (temp.quantity > 0 && temp.dirtyFlag) {
         validCache.push(temp);
       }
     });
     return validCache;
-   }
+  }
 
   saveCartCacheToStorage(): void {
     this.logService.logDebug('[cart] saveCartCacheToStorage');
     const validCache = this.getValidCache();
-    this.calculateCartPriceInfo(validCache)
+    this.calculateCartPriceInfo(validCache);
     this.storageService.set(STORAGE_KEY_CART, JSON.stringify(validCache));
   }
 
@@ -82,16 +86,17 @@ export class CartService {
     let sumPrice = 0;
     let sumQuantity = 0;
     cartItem.forEach((item) => {
-      sumPrice += item.price * item.quantity
-      sumQuantity += item.quantity
-    })
+      sumPrice += item.price * item.quantity;
+      sumQuantity += item.quantity;
+    });
     // Calculate cart total price & quantity info
     this.cartPriceInfo.totalProductPriceWithoutTax = sumPrice;
     this.cartPriceInfo.numOfStoreProducts = sumQuantity;
-    this.cartPriceInfo.totalProductPriceWithTax = this.priceService.calculateTaxedValue(sumPrice);
+    this.cartPriceInfo.totalProductPriceWithTax =
+      this.priceService.calculateTaxedValue(sumPrice);
   }
 
-  incrementItem(productId: string , storePrice: number): void {
+  incrementItem(productId: string, storePrice: number): void {
     this.logService.logDebug('[cart] incrementItem');
     const temp = this.cartCache[productId];
     temp.price = storePrice;
@@ -104,7 +109,9 @@ export class CartService {
     this.logService.logDebug('[cart] decrementItem');
     const temp = this.cartCache[productId];
     if (temp === undefined) {
-      this.logService.logInfo('想定外のエラーが発生しました。CartServiceに登録されてない商品のカート数量を取得しようとしました。');
+      this.logService.logInfo(
+        '想定外のエラーが発生しました。CartServiceに登録されてない商品のカート数量を取得しようとしました。'
+      );
       return;
     }
     temp.quantity--;
@@ -120,7 +127,9 @@ export class CartService {
     this.logService.logDebug('[cart] decrementAllItem');
     const temp = this.cartCache[productId];
     if (temp === undefined) {
-      this.logService.logInfo('想定外のエラーが発生しました。CartServiceに登録されてない商品のカート数量を取得しようとしました。');
+      this.logService.logInfo(
+        '想定外のエラーが発生しました。CartServiceに登録されてない商品のカート数量を取得しようとしました。'
+      );
       return;
     }
     temp.quantity = 0;
@@ -158,7 +167,7 @@ export class CartService {
   }
 
   clearCart(): void {
-    Object.keys(this.cartCache).forEach(key => {
+    Object.keys(this.cartCache).forEach((key) => {
       const temp = this.cartCache[key];
       temp.quantity = 0;
       temp.dirtyFlag = false;

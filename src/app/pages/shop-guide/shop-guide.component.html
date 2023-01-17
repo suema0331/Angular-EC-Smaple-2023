@@ -7,38 +7,37 @@
       title="This is a button to close this guide modal."
     ></button>
     <div class="modal-header">
-      <div class="modal-title" id="exampleModalLabel">{{step.name}}</div>
+      <div class="modal-title" id="exampleModalLabel">{{ step.name }}</div>
     </div>
     <div class="modal-body">
-      <div class="_title">{{step.title}}</div>
+      <div class="_title">{{ step.title }}</div>
       <div class="_img">
-        <img [src]="step.img" alt="step--describe-image"/>
+        <img [src]="step.img" alt="step--describe-image" />
       </div>
-      <div class="_message">{{step.message}}</div>
+      <div class="_message">{{ step.message }}</div>
     </div>
     <div class="stepper-btn">
       <button
         *ngIf="!step.last"
         (click)="stepper.next()"
-        [class.ga-display-tutorial-1]="i === 0" [class.ga-display-tutorial-2]="i === 1"
+        [class.ga-display-tutorial-1]="i === 0"
+        [class.ga-display-tutorial-2]="i === 1"
         [class.ga-display-tutorial-3]="i === 2"
         class="btn btn-rounded"
         type="button"
         title="This is a button to go to the next step."
       >
-        {{step.btn_name}}
+        {{ step.btn_name }}
       </button>
       <button
         *ngIf="step.last"
         (click)="modalRef.close()"
-        class="btn btn-rounded" type="button"
+        class="btn btn-rounded"
+        type="button"
         title="This is a button to close this guide modal."
       >
-        {{step.btn_name}}
+        {{ step.btn_name }}
       </button>
     </div>
   </mdb-step>
 </mdb-stepper>
-
-
-

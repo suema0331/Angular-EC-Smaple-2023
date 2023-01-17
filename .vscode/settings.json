@@ -1,11 +1,10 @@
 {
-  "scss.validate": false,
-  "[scss]": {
-    "editor.formatOnSave": false,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": true
-    },
-  },
-  "stylelint.configFile": "./.stylelintrc",
-  "stylelint.validate" : ["css", "scss"]
+  "stylelint.configFile": "./.stylelintrc.json",
+  "stylelint.validate" : ["css", "scss"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // デフォルトフォーマッターとして Prettier プラグインを利用
+  "editor.formatOnSave": true, // ファイル保存時にデフォルトフォーマッターでファイルをフォーマットする
+  "editor.codeActionsOnSave": { // ファイル保存時のコードアクション設定
+    "source.fixAll.eslint": true, // ESLint プラグインでフォーマットする
+    "source.fixAll.stylelint": true, // Stylelint プラグインでフォーマットする
+  }
 }

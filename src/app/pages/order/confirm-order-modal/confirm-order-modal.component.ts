@@ -5,24 +5,21 @@ import { StoreProductExt } from '../../../../backend/dto/common/store_product_ex
 @Component({
   selector: 'confirm-order-modal',
   templateUrl: './confirm-order-modal.component.html',
-  styleUrls: ['./confirm-order-modal.component.scss']
-  })
+  styleUrls: ['./confirm-order-modal.component.scss'],
+})
 export class ConfirmOrderModalComponent {
   screenName = 'ConfirmOrderModalComponent';
   storeProductExt = {} as StoreProductExt;
 
-  constructor(
-    public modalRef: MdbModalRef<ConfirmOrderModalComponent>,
-  ){}
+  constructor(public modalRef: MdbModalRef<ConfirmOrderModalComponent>) {}
 
-  clickYesHandler(): void{
+  clickYesHandler(): void {
     this.storeProductExt.cart_quantity = 0;
     this.modalRef.close(true);
   }
 
-  clickNoHandler(): void{
+  clickNoHandler(): void {
     this.storeProductExt.cart_quantity = 1;
     this.modalRef.close(false);
   }
-
 }

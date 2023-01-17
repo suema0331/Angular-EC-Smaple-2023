@@ -1,0 +1,9 @@
+*.json
+node_modules
+.angular
+dist
+mdb
+cypress
+assets
+.stylelintrc
+.eslintrc.js

@@ -1,44 +1,49 @@
 @import 'variables';
-.login{
+
+.login {
   margin: 0 16px;
 
   .btn_group {
     button {
       width: 100%;
-      padding: 16px 0px;
+      padding: 16px 0;
       font-size: 16px;
     }
+
     .submit {
       font-weight: bold;
       color: #fff;
-      background: -moz-linear-gradient(left, $shop_theme_color 50%, #017098);
-      background: -webkit-linear-gradient(left, $shop_theme_color 50%, #017098);
+      background: linear-gradient(to left, $shop_theme_color 50%, #017098);
       background: linear-gradient(to right, $shop_theme_color 50%, #017098);
-      margin: 32px auto 32px;
+      margin: 32px auto;
     }
-    ._signup-area{
+
+    ._signup-area {
       text-align: center;
       font-size: 14px;
-      ._signup{
-        color: #0080DE;
+
+      ._signup {
+        color: #0080de;
       }
     }
   }
 }
 
-.form-group{
+.form-group {
   margin-bottom: 24px;
- .form-label{
-   font-size: 14px;
-   font-weight: bold;
-   color: #2E2621;
-   margin-bottom:6px;
- }
+
+  .form-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2e2621;
+    margin-bottom: 6px;
+  }
+
   ._input-form {
     position: relative;
 
     ._display {
-      color: #0080DE;
+      color: #0080de;
       font-size: 14px;
       position: absolute;
       right: 16px;
@@ -48,4 +53,3 @@
     }
   }
 }
-

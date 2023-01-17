@@ -1,56 +1,76 @@
-<div class="cart-product"
-     *ngIf="storeProduct.store_product_id"
->
+<div class="cart-product" *ngIf="storeProduct.store_product_id">
   <ng-container>
     <div class="product">
-      <div class="_left"
-           (click)="navigateToProduct()"
-           title="This is a button to navigate to the product detail page."
+      <div
+        class="_left"
+        (click)="navigateToProduct()"
+        title="This is a button to navigate to the product detail page."
       >
         <img
-             [src]="storeProduct.product_images
-             && storeProduct.product_images[0].small
-             ? getImageUrl(storeProduct.product_images[0].small) :  '/assets/product/no-image-small.jpg'"
-             onerror="this.src='/assets/product/no-image-small.jpg'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
-             onload="this.removeAttribute('onerror'); this.removeAttribute('onload');"
-             class="card-img-top"
-             alt="product-image"
+          [src]="
+            storeProduct.product_images && storeProduct.product_images[0].small
+              ? getImageUrl(storeProduct.product_images[0].small)
+              : '/assets/product/no-image-small.jpg'
+          "
+          onerror="this.src='/assets/product/no-image-small.jpg'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
+          onload="this.removeAttribute('onerror'); this.removeAttribute('onload');"
+          class="card-img-top"
+          alt="product-image"
         />
       </div>
       <div class="_right">
         <div class="_top">
           <div class="_name">
-            {{getProductDisplayLabel(storeProduct.producing_area,storeProduct.product_name,storeProduct.brand)}}
+            {{
+              getProductDisplayLabel(
+                storeProduct.producing_area,
+                storeProduct.product_name,
+                storeProduct.brand
+              )
+            }}
           </div>
 
-          <div class="_quantity-btn"
-          >
-            <div class="constraint-tooltip"
-                 *ngIf="displayConstraintTooltip"
-                 (click)="hideConstraintTooltip()"
-                 #constraintTooltip
+          <div class="_quantity-btn">
+            <div
+              class="constraint-tooltip"
+              *ngIf="displayConstraintTooltip"
+              (click)="hideConstraintTooltip()"
+              #constraintTooltip
             >
-              You can only purchase up to {{storeProduct.constraint_max}} items.
+              You can only purchase up to
+              {{ storeProduct.constraint_max }} items.
             </div>
 
-            <i class="fas fa-minus fa-xs"
+            <i
+              class="fas fa-minus fa-xs"
               (click)="removeCart($event)"
               title="This is a button to remove one item from your cart."
             ></i>
-            {{cartItem.quantity}}
-            <i class="fas fa-plus fa-xs"
+            {{ cartItem.quantity }}
+            <i
+              class="fas fa-plus fa-xs"
               (click)="addCart($event)"
               title="This is a button to add one item to your cart."
             ></i>
           </div>
         </div>
         <div class="_bottom">
-          <div>{{storeProduct.store_price | currency : 'JPY': 'symbol'}}
-            <span class="_tax">{{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': 'symbol'}}<span class="_in">/with tax</span></span>
+          <div>
+            {{ storeProduct.store_price | currency : 'JPY' : 'symbol' }}
+            <span class="_tax"
+              >{{
+                calculateTaxedValue(storeProduct.store_price)
+                  | currency : 'JPY' : 'symbol'
+              }}<span class="_in">/with tax</span></span
+            >
           </div>
-          <div (click)="removeAllFromCart()" class="_remove"
+          <div
+            (click)="removeAllFromCart()"
+            class="_remove"
             title="This button deletes all the specific number of items in the cart."
-          >Remove</div>
+          >
+            Remove
+          </div>
         </div>
       </div>
     </div>

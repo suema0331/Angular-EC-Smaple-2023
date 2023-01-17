@@ -4,106 +4,183 @@
 ></app-common-header>
 
 <div class="signup">
-  <form [formGroup]="form" >
+  <form [formGroup]="form">
     <div class="errorToast" *ngIf="isError">
-      {{errorMessage}}
+      {{ errorMessage }}
     </div>
-     <div class="form-group" >
-        <label for="form_email" class="form-label" >Email</label>
-       <span class="_req">required</span>
-        <mdb-form-control class="_input-form" >
-           <input formControlName="form_email" id="form_email" type="text"
-                  (change)="validateMailError()"
-                  placeholder="**********@example.com"
-                  mdbInput
-                  class="form-control"
-                  [class._inputFormError]="isMailError"
-           />
-        </mdb-form-control>
-       <div class="_error" *ngIf="isMailError" data-test="signup-mail-error">{{mailErrorMessage}}</div>
-     </div>
-     <div class="form-group">
-       <label for="form_password" class="form-label" >Password</label>
-       <span class="_req">required</span>
-       <mdb-form-control class="_input-form" >
-           <input formControlName="form_password"
-                  id="form_password"
-                  [type]="hide1 ? 'password' : 'text'"
-                  (change)="validatePasswordError()"
-                  placeholder="Password"
-                  mdbInput
-                  class="form-control"
-                  [class._inputFormError]="isPasswordError"
-           />
-          <button (click)="hide1 = !hide1"
-                *ngIf="hide1"
-                class="_display"
-                title="This is a button to show password characters"
-                 >display
-         </button>
-         <button (click)="hide1 = !hide1"
-                *ngIf="!hide1"
-                class="_display"
-                title="This is a button to hide password characters"
-                 >hide
-         </button>
-        </mdb-form-control>
-       <div *ngIf="passwordEmptyErrorMessage" class="_error" data-test="signup-password-error1">{{passwordEmptyErrorMessage}}</div>
-       <div *ngIf="passwordLengthErrorMessage" class="_error" data-test="signup-password-error2">{{passwordLengthErrorMessage}}</div>
-       <div *ngIf="passwordValidErrorMessage" class="_error" data-test="signup-password-error3">{{passwordValidErrorMessage}}</div>
-       <div *ngIf="passwordExclusionErrorMessage" class="_error" data-test="signup-password-error4">{{passwordExclusionErrorMessage}}</div>
-       <div *ngIf="passwordMailErrorMessage" class="_error" data-test="signup-password-error5">{{passwordMailErrorMessage}}</div>
-       <div class="_hint">10-20 characters with a upper case, lower case, number, and symbol<br>Available symbols !@#%^&*/_?$¥-`˜()+=&#123;&#125;[]\|;"'<>,.</div>
-     </div>
-
-     <div class="form-group" >
-       <label for="form_confirm_password" class="form-label" >Confirm Password</label>
-       <span class="_req">required</span>
-       <mdb-form-control class="_input-form" >
-           <input formControlName="form_confirm_password"
-                  id="form_confirm_password"
-                  [type]="hide2 ? 'password' : 'text'"
-                  (change)="validateConfirmPasswordError()"
-                  placeholder="Password"
-                  mdbInput
-                  class="form-control"
-                  [class._inputFormError]="isConfirmPasswordError"
-           />
-         <button (click)="hide2 = !hide2"
-                 *ngIf="hide2"
-                 class="_display"
-                title="This is a button to show confirm password characters"
-                 >display
-         </button>
-         <button (click)="hide2 = !hide2"
-                 *ngIf="!hide2"
-                 class="_display"
-                 title="This is a button to hide confirm password characters"
-                 >hide
-         </button>
-        </mdb-form-control>
-       <div class="_error" *ngIf="isConfirmPasswordError" data-test="signup-confirm-password-error">{{conformPasswordErrorMessage}}</div>
-     </div>
-
-    <div class="form-group" >
-      <div class="_agreement-title">Terms of Use, Privacy Policy<span class="_req">required</span></div>
-      <label for="form_confirm_policy" class="_label" [class._redBackground]="isAgreementError">
+    <div class="form-group">
+      <label for="form_email" class="form-label">Email</label>
+      <span class="_req">required</span>
+      <mdb-form-control class="_input-form">
         <input
-          id="form_confirm_policy" class="form-label" type="checkbox"
-               (change)="validateAgreementError($event)"
+          formControlName="form_email"
+          id="form_email"
+          type="text"
+          (change)="validateMailError()"
+          placeholder="**********@example.com"
+          mdbInput
+          class="form-control"
+          [class._inputFormError]="isMailError"
         />
-        <span class="_agreement"  >
+      </mdb-form-control>
+      <div class="_error" *ngIf="isMailError" data-test="signup-mail-error">
+        {{ mailErrorMessage }}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="form_password" class="form-label">Password</label>
+      <span class="_req">required</span>
+      <mdb-form-control class="_input-form">
+        <input
+          formControlName="form_password"
+          id="form_password"
+          [type]="hide1 ? 'password' : 'text'"
+          (change)="validatePasswordError()"
+          placeholder="Password"
+          mdbInput
+          class="form-control"
+          [class._inputFormError]="isPasswordError"
+        />
+        <button
+          (click)="hide1 = !hide1"
+          *ngIf="hide1"
+          class="_display"
+          title="This is a button to show password characters"
+        >
+          display
+        </button>
+        <button
+          (click)="hide1 = !hide1"
+          *ngIf="!hide1"
+          class="_display"
+          title="This is a button to hide password characters"
+        >
+          hide
+        </button>
+      </mdb-form-control>
+      <div
+        *ngIf="passwordEmptyErrorMessage"
+        class="_error"
+        data-test="signup-password-error1"
+      >
+        {{ passwordEmptyErrorMessage }}
+      </div>
+      <div
+        *ngIf="passwordLengthErrorMessage"
+        class="_error"
+        data-test="signup-password-error2"
+      >
+        {{ passwordLengthErrorMessage }}
+      </div>
+      <div
+        *ngIf="passwordValidErrorMessage"
+        class="_error"
+        data-test="signup-password-error3"
+      >
+        {{ passwordValidErrorMessage }}
+      </div>
+      <div
+        *ngIf="passwordExclusionErrorMessage"
+        class="_error"
+        data-test="signup-password-error4"
+      >
+        {{ passwordExclusionErrorMessage }}
+      </div>
+      <div
+        *ngIf="passwordMailErrorMessage"
+        class="_error"
+        data-test="signup-password-error5"
+      >
+        {{ passwordMailErrorMessage }}
+      </div>
+      <div class="_hint">
+        10-20 characters with a upper case, lower case, number, and symbol<br />Available
+        symbols !@#%^&*/_?$¥-`˜()+=&#123;&#125;[]\|;"'<>,.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="form_confirm_password" class="form-label"
+        >Confirm Password</label
+      >
+      <span class="_req">required</span>
+      <mdb-form-control class="_input-form">
+        <input
+          formControlName="form_confirm_password"
+          id="form_confirm_password"
+          [type]="hide2 ? 'password' : 'text'"
+          (change)="validateConfirmPasswordError()"
+          placeholder="Password"
+          mdbInput
+          class="form-control"
+          [class._inputFormError]="isConfirmPasswordError"
+        />
+        <button
+          (click)="hide2 = !hide2"
+          *ngIf="hide2"
+          class="_display"
+          title="This is a button to show confirm password characters"
+        >
+          display
+        </button>
+        <button
+          (click)="hide2 = !hide2"
+          *ngIf="!hide2"
+          class="_display"
+          title="This is a button to hide confirm password characters"
+        >
+          hide
+        </button>
+      </mdb-form-control>
+      <div
+        class="_error"
+        *ngIf="isConfirmPasswordError"
+        data-test="signup-confirm-password-error"
+      >
+        {{ conformPasswordErrorMessage }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="_agreement-title">
+        Terms of Use, Privacy Policy<span class="_req">required</span>
+      </div>
+      <label
+        for="form_confirm_policy"
+        class="_label"
+        [class._redBackground]="isAgreementError"
+      >
+        <input
+          id="form_confirm_policy"
+          class="form-label"
+          type="checkbox"
+          (change)="validateAgreementError($event)"
+        />
+        <span class="_agreement">
           I agree to the
-          <span (click)="navigateToTermsHandler()"
-                title="This is a link to navigate to the external Terms of Use page."
-                class="_tos"
+          <span
+            (click)="navigateToTermsHandler()"
+            title="This is a link to navigate to the external Terms of Use page."
+            class="_tos"
           >
-          Terms of Use</span> and <span (click)="navigateToPolicyHandler()"
-                title="This is a link to navigate to the external Privacy Policy page."
-                class="_policy">Privacy Policy</span>
+            Terms of Use</span
+          >
+          and
+          <span
+            (click)="navigateToPolicyHandler()"
+            title="This is a link to navigate to the external Privacy Policy page."
+            class="_policy"
+            >Privacy Policy</span
+          >
         </span>
       </label>
-      <div *ngIf="isAgreementError" class="_error" data-test="signup-agreement-error">{{agreementErrorMessage}}</div>
+      <div
+        *ngIf="isAgreementError"
+        class="_error"
+        data-test="signup-agreement-error"
+      >
+        {{ agreementErrorMessage }}
+      </div>
     </div>
 
     <div class="btn_group">
@@ -113,7 +190,7 @@
         [disabled]="isDisabled"
         class="btn btn-rounded submit"
         title="This is a button to execute signup."
-         >
+      >
         Register
       </button>
       <div class="_signup-area">

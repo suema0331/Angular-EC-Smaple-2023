@@ -1,8 +1,8 @@
 const firebaseConfig = require('./config.js');
 const serviceAccount = require('./serviceAccount.json');
-const { initializeFirebaseApp, restore } = require('firestore-export-import')
+const { initializeFirebaseApp, restore } = require('firestore-export-import');
 
-initializeFirebaseApp(serviceAccount,firebaseConfig.appName)
+initializeFirebaseApp(serviceAccount, firebaseConfig.appName);
 
 // JSON To Firestore
 const jsonToFirestore = async () => {
@@ -14,11 +14,9 @@ const jsonToFirestore = async () => {
       autoParseDates: true, // timestamp → Date
     });
     console.log('Upload Success');
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
   }
 };
 
 jsonToFirestore();
-

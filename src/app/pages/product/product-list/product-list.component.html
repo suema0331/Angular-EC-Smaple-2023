@@ -1,22 +1,25 @@
 <div class="section-header">
-
-  <div class="_back"
-       (click)="backToTopHandler()"
-      title="This is a button to navigate to the top page."
+  <div
+    class="_back"
+    (click)="backToTopHandler()"
+    title="This is a button to navigate to the top page."
   >
     <i class="fas fa-chevron-left fa-lg _back"></i>
   </div>
   <div class="_search">
-    <div class="_button-area"
-        (click)="navigateToSearchHandler()"
-        title="This is a button on the header to navigate to the search page."
+    <div
+      class="_button-area"
+      (click)="navigateToSearchHandler()"
+      title="This is a button on the header to navigate to the search page."
     >
       <i class="fas fa-search"></i>Search
     </div>
   </div>
-  <div (click)="navigateToMypageHandler()"
-      title="This is a munu icon on the header to navigate to the my page."
-      class="_menu">
+  <div
+    (click)="navigateToMypageHandler()"
+    title="This is a munu icon on the header to navigate to the my page."
+    class="_menu"
+  >
     <i class="fas fa-bars fa-lg"></i>
   </div>
 </div>
@@ -24,11 +27,9 @@
 <div class="section">
   <div class="products-area">
     <ng-container>
-      <div class="_ttl"
-      >All Products
-      </div>
+      <div class="_ttl">All Products</div>
       <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
-        <ng-container *ngFor="let product of productList; index as i" >
+        <ng-container *ngFor="let product of productList; index as i">
           <app-product-card
             [storeProduct]="product"
             [isLoggedIn]="isLoggedIn"

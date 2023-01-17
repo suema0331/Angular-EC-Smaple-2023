@@ -30,7 +30,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/shop-top', pathMatch: 'full',
+    redirectTo: '/shop-top',
+    pathMatch: 'full',
   },
   {
     path: 'login',
@@ -41,7 +42,7 @@ const routes: Routes = [
       ogUrl: 'http://localhost:4200/login',
     },
   },
-    {
+  {
     path: 'signup',
     component: SignupComponent,
     data: {
@@ -66,7 +67,7 @@ const routes: Routes = [
       title: BASE_TITLE + ' - Product List Page',
       description: 'This is a product list page.',
       ogUrl: 'http://localhost:4200/products',
-    }
+    },
   },
   {
     path: 'products/:productId',
@@ -75,7 +76,7 @@ const routes: Routes = [
       title: BASE_TITLE + ' - Product Detail Page',
       description: 'This is a product Detail page.',
       ogUrl: 'http://localhost:4200/products/:productId',
-    }
+    },
   },
   {
     path: 'mypage',
@@ -84,7 +85,7 @@ const routes: Routes = [
       title: BASE_TITLE + ' - My Page',
       description: 'This is a my page.',
       ogUrl: 'http://localhost:4200/mypage',
-    }
+    },
   },
   {
     path: 'favorite',
@@ -94,7 +95,7 @@ const routes: Routes = [
       title: BASE_TITLE + ' - Favorite Page',
       description: 'This is a favorite page.',
       ogUrl: 'http://localhost:4200/favorite',
-    }
+    },
   },
   {
     path: 'pastitem',
@@ -104,7 +105,7 @@ const routes: Routes = [
       title: BASE_TITLE + ' - Past Item Page',
       description: 'This is a past item page',
       ogUrl: 'http://localhost:4200/pastitem',
-    }
+    },
   },
   {
     path: 'cart',
@@ -120,11 +121,11 @@ const routes: Routes = [
     data: {
       title: BASE_TITLE + ' - Page Not Found',
       description: 'Page not found',
-    }
+    },
   },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

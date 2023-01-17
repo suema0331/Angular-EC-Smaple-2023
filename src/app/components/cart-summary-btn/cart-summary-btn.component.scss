@@ -1,18 +1,18 @@
-@import "variables";
+@import 'variables';
 
-.cart-summary-btn{
+.cart-summary-btn {
   position: fixed;
   bottom: 0;
   padding: 16px;
-  margin: 0px auto 0px;
+  margin: 0 auto;
   width: 100%;
   z-index: 100;
-  @media screen and (min-width:600px) {
+  @media screen and (min-width: 600px) {
     max-width: 600px;
     margin: 0 auto;
   }
-  .btn_group{
 
+  .btn_group {
     .submit {
       width: 100%;
       display: flex;
@@ -20,49 +20,58 @@
       justify-content: space-between;
       color: #fff;
       background: $shop_theme_color;
-      padding: 8px 24px 8px 24px;
+      padding: 8px 24px;
       text-transform: none;
-      .cart-number{
+
+      .cart-number {
         display: inline-block;
         margin: auto 0 3px;
-        img{
+
+        img {
           height: 24px;
           margin: auto 8px 8px 0;
         }
-        ._quantity{
+
+        ._quantity {
           font-size: 28px;
           font-weight: bold;
-          margin: auto 3px 0px 0px;
+          margin: auto 3px 0 0;
         }
-        ._ten{
+
+        ._ten {
           font-size: 18px;
           margin: auto 0 4px;
         }
       }
-      .prices-area{
+
+      .prices-area {
         display: flex;
         flex-direction: column;
         text-align: right;
-        ._price{
+
+        ._price {
           font-size: 26px;
           font-weight: bold;
           line-height: 1.2;
           display: inline-block;
-          ._tax{
+
+          ._tax {
             font-size: 12px;
             margin: auto 0 auto 2px;
             font-weight: normal;
             display: inline-block;
           }
         }
-        ._tax-price{
+
+        ._tax-price {
           font-size: 14px;
           font-weight: bold;
           line-height: 1.1;
           display: inline-block;
-          ._tax{
+
+          ._tax {
             font-size: 10px;
-            margin: auto 0 auto 0px;
+            margin: auto 0;
             font-weight: normal;
             display: inline-block;
           }
@@ -71,4 +80,3 @@
     }
   }
 }
-

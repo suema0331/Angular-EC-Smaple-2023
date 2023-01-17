@@ -9,7 +9,8 @@ export const environment = {
     storageBucket: 'my-ec-2023.appspot.com',
     apiKey: 'AIzaSyCVmuRmHUGT2j0w6XxtsP5aAyvIi2ilSa0',
     authDomain: 'my-ec-2023.firebaseapp.com',
-    databaseURL: "https://my-ec-2023-default-rtdb.asia-southeast1.firebasedatabase.app",
+    databaseURL:
+      'https://my-ec-2023-default-rtdb.asia-southeast1.firebasedatabase.app',
     messagingSenderId: '995863562978',
     measurementId: 'G-NT4TSNGS8E',
   },
@@ -20,7 +21,6 @@ export const environment = {
   // IMAGE_DL_FROM_S3 : false,
   // S3_URL : 'http://localhost:9090/local-image-contents',
 };
-
 
 /*
  * For easier debugging in development mode, you can import the following file

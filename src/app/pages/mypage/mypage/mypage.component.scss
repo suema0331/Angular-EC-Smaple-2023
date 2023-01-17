@@ -1,160 +1,113 @@
-@import "variables";
+@import 'variables';
 
-.mypage-cover{
-  background: #F2F2F2;
+.mypage-cover {
+  background: #f2f2f2;
   position: absolute;
   width: 100%;
   height: 100%;
 
-  @media screen and (min-width:600px) {
+  @media screen and (min-width: 600px) {
     max-width: 600px;
     margin: 0 auto;
     position: absolute;
   }
 }
+
 .mypage-header {
   height: 56px;
   position: relative;
   display: flex;
   justify-content: space-between;
-  border-bottom: #90867F1F 1px solid;
-  box-shadow: 0px 2px 6px #90867f1f;
-  padding: 16px ;
+  border-bottom: #90867f1f 1px solid;
+  box-shadow: 0 2px 6px #90867f1f;
+  padding: 16px;
   vertical-align: center;
-  background-color: #FCFCFC;
-  ._ttl{
+  background-color: #fcfcfc;
+
+  ._ttl {
     font-size: 16px;
     font-weight: bold;
   }
-  ._right{
+
+  ._right {
     display: flex;
-    ._logout{
+
+    ._logout {
       cursor: pointer;
       font-size: 14px;
       font-weight: bold;
-      margin: auto 15px auto;
+      margin: auto 15px;
       color: $shop_theme_color;
     }
-    .btn-close{
-      color: #2E2621;
+
+    .btn-close {
+      color: #2e2621;
       cursor: pointer;
     }
   }
-
 }
 
-.mypage{
-  background: #F2F2F2;
+.mypage {
+  background: #f2f2f2;
   padding-bottom: 100px;
   position: absolute;
   top: 56px;
   width: 100%;
-  .account-area{
-    background: #FCFCFC;
+
+  .account-area {
+    background: #fcfcfc;
     border-radius: 12px;
     margin-bottom: 24px;
     padding: 24px 16px;
     display: flex;
-    ._left{
-      ._icon{
+
+    ._left {
+      ._icon {
         width: 80px;
         margin-right: 12px;
         cursor: pointer;
-        img{
+
+        img {
           width: 100%;
         }
       }
     }
-    ._right{
-      ._name{
+
+    ._right {
+      ._name {
         font-size: 14px;
         margin-bottom: 10px;
-        ._value{
+
+        ._value {
           font-size: 18px;
           font-weight: bold;
         }
       }
-      ._info{
+
+      ._info {
         font-size: 14px;
         color: #717171;
-        ._value{
-          color: #2E2621;
+
+        ._value {
+          color: #2e2621;
           font-weight: bold;
         }
-        ._note{
+
+        ._note {
           font-size: 12px;
-          color: #EB5545;
+          color: #eb5545;
         }
       }
     }
   }
 
-  .require-signup-area{
-    background: #FCFCFC;
-    padding: 24px 0;
-    margin-bottom: 24px;
-    ._message{
-      font-size: 14px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    ._buttons{
-      display: flex;
-      justify-content: center;
-      button{
-        font-size: 14px;
-        padding: 6px 12px;
-        border-radius: 47px;
-        border: none;
-      }
-      ._signup{
-        background: $shop_theme_color;
-        color: #FCFCFC;
-        margin-right: 8px;
-      }
-      ._login{
-        border: #D1D1D1 1px solid;
-        background: #FFFFFF;
-      }
-    }
-  }
-
-  .menu-area{
-    margin-bottom: 24px;
-    ._ttl{
-      padding: 0 16px;
-      margin-bottom: 12px;
-      font-size: 14px;
-      color: #717171;
-      font-weight: bold;
-    }
-    .list-group-item{
-      background: #FCFCFC;
-      padding: 20px 16px;
-      font-size: 16px;
-      color: #2E2621;
-      border: none;
-      border-radius: 0;
-      position: relative;
-      cursor: pointer;
-      i {
-        position: absolute;
-        color: #717171;
-        right: 16px;
-        line-height: 1.7;
-      }
-      &:not(:last-of-type){
-        border-bottom: #EAE5E2 1px solid;
-      }
-    }
-  }
-  .logout-area{
-    padding: 0px 18px;
+  .logout-area {
+    padding: 0 18px;
     margin-bottom: 32px;
     background: transparent;
-    button{
-      color: #0080DE;
+
+    button {
+      color: #0080de;
       font-size: 14px;
       border: none;
       cursor: pointer;
@@ -162,8 +115,74 @@
       background: transparent;
     }
   }
+
+  .require-signup-area {
+    background: #fcfcfc;
+    padding: 24px 0;
+    margin-bottom: 24px;
+
+    ._message {
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    ._buttons {
+      display: flex;
+      justify-content: center;
+
+      button {
+        font-size: 14px;
+        padding: 6px 12px;
+        border-radius: 47px;
+        border: none;
+      }
+
+      ._signup {
+        background: $shop_theme_color;
+        color: #fcfcfc;
+        margin-right: 8px;
+      }
+
+      ._login {
+        border: #d1d1d1 1px solid;
+        background: #fff;
+      }
+    }
+  }
+
+  .menu-area {
+    margin-bottom: 24px;
+
+    ._ttl {
+      padding: 0 16px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #717171;
+      font-weight: bold;
+    }
+
+    .list-group-item {
+      background: #fcfcfc;
+      padding: 20px 16px;
+      font-size: 16px;
+      color: #2e2621;
+      border: none;
+      border-radius: 0;
+      position: relative;
+      cursor: pointer;
+
+      i {
+        position: absolute;
+        color: #717171;
+        right: 16px;
+        line-height: 1.7;
+      }
+
+      &:not(:last-of-type) {
+        border-bottom: #eae5e2 1px solid;
+      }
+    }
+  }
 }
-
-
-
-

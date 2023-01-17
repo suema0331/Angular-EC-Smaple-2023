@@ -1,43 +1,51 @@
 <div class="cart-page">
-
   <div class="cart-header">
     <div class="_inner">
-      <span class="empty-cart-button"
+      <span
+        class="empty-cart-button"
         *ngIf="cartPriceInfo.numOfStoreProducts !== 0"
         (click)="emptyCartHandler()"
         title="This is a button to remove all items from your cart."
-      >Empty Cart</span>YOUR CART
+        >Empty Cart</span
+      >YOUR CART
       <button
-        (click)="handleBack()"class="_close"
+        (click)="handleBack()"
+        class="_close"
         type="button"
         title="This is a button to back to the preious page."
       >
-        <img alt="close-btn" src="/assets/product/common_btn_close@2x.png">
+        <img alt="close-btn" src="/assets/product/common_btn_close@2x.png" />
       </button>
     </div>
   </div>
 
-  <div class="cart" >
-    <ng-container *ngIf="
-    userCart.length === 0
-      || cartPriceInfo.numOfStoreProducts === 0">
+  <div class="cart">
+    <ng-container
+      *ngIf="userCart.length === 0 || cartPriceInfo.numOfStoreProducts === 0"
+    >
       <div class="no-cart-area">
         <div class="_message">There are no items in your cart.</div>
         <div class="_img-area">
-          <img alt="your-cart-is-empty" src="./assets/order/purchasehistory_img_cart@2x.png">
+          <img
+            alt="your-cart-is-empty"
+            src="./assets/order/purchasehistory_img_cart@2x.png"
+          />
         </div>
       </div>
     </ng-container>
 
-    <div *ngIf="cartPriceInfo.numOfStoreProducts > 0 || userCart.length > 0" class="inner-area">
+    <div
+      *ngIf="cartPriceInfo.numOfStoreProducts > 0 || userCart.length > 0"
+      class="inner-area"
+    >
       <div class="message-area">
         <div *ngIf="storeMessage.store_available_flag === 0" class="_message">
-          {{storeMessage.operation_message}}
+          {{ storeMessage.operation_message }}
         </div>
       </div>
 
       <ng-container>
-        <div *ngFor="let product of userCart; index as i" class="product-area" >
+        <div *ngFor="let product of userCart; index as i" class="product-area">
           <ng-container *ngIf="product.store_product_id">
             <app-cart-product
               (clickMinusHandler)="clickMinusHandler($event)"
@@ -54,16 +62,24 @@
 
     <div class="order-area">
       <div class="note-free">
-         Free shipping for orders over 7777 yen! (excluding tax)
+        Free shipping for orders over 7777 yen! (excluding tax)
       </div>
       <div class="price">
-        Estimated total amount <span class="_red">
-        {{cartPriceInfo.totalProductPriceWithoutTax | currency : 'JPY': 'symbol'}}</span>
+        Estimated total amount
+        <span class="_red">
+          {{
+            cartPriceInfo.totalProductPriceWithoutTax
+              | currency : 'JPY' : 'symbol'
+          }}</span
+        >
         <span class="_tax">/without tax</span>
       </div>
       <div class="tax-price">
         <span>
-        {{cartPriceInfo.totalProductPriceWithTax | currency : 'JPY': 'symbol'}}</span>
+          {{
+            cartPriceInfo.totalProductPriceWithTax | currency : 'JPY' : 'symbol'
+          }}</span
+        >
         <span class="_tax">/with tax</span>
       </div>
       <div class="btn_group">
@@ -72,16 +88,16 @@
           *ngIf="userCart.length > 0 && !hasCanNotOrderProducts()"
           class="btn btn-rounded submit"
           title="This is a button to confirm your order."
-        >Proceed to Order
+        >
+          Proceed to Order
         </button>
         <button
           *ngIf="hasCanNotOrderProducts()"
           class="btn btn-rounded no-cart"
-        >Proceed to Order
+        >
+          Proceed to Order
         </button>
       </div>
     </div>
-
   </div>
 </div>
-

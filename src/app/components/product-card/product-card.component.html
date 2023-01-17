@@ -1,84 +1,146 @@
-<div class="product-card"
-     [class._transparent]="isBackgroundTransparent"
-     *ngIf="storeProduct.store_product_id"
+<div
+  class="product-card"
+  [class._transparent]="isBackgroundTransparent"
+  *ngIf="storeProduct.store_product_id"
 >
   <ng-container>
     <div class="col">
-      <div class="card h-100"
-      >
-        <div class="card_img"
-             [class.stockout]="storeProduct.product_status === 2"
-             [routerLink]="['/products', storeProduct.store_product_id]"
+      <div class="card h-100">
+        <div
+          class="card_img"
+          [class.stockout]="storeProduct.product_status === 2"
+          [routerLink]="['/products', storeProduct.store_product_id]"
         >
           <span *ngIf="storeProduct.tags[0]" class="_tag"
-          >{{storeProduct.tags[0]}}
+            >{{ storeProduct.tags[0] }}
           </span>
-          <span *ngIf="storeProduct.standard_price && storeProduct.store_price < storeProduct.standard_price" class="_discount-tag"
-          >{{calculateDiscountRate(storeProduct.standard_price, storeProduct.store_price)}}
+          <span
+            *ngIf="
+              storeProduct.standard_price &&
+              storeProduct.store_price < storeProduct.standard_price
+            "
+            class="_discount-tag"
+            >{{
+              calculateDiscountRate(
+                storeProduct.standard_price,
+                storeProduct.store_price
+              )
+            }}
           </span>
 
-          <img [src]="storeProduct.product_images.length > 0 && storeProduct.product_images[0].small
-             ? getImageUrl(storeProduct.product_images[0].small) :  '/assets/product/no-image-small.jpg'"
-               onerror="this.src='/assets/product/no-image-small.jpg'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
-               onload="this.removeAttribute('onerror'); this.removeAttribute('onload');"
-               class="card-img-top"
-               alt="product-image"
+          <img
+            [src]="
+              storeProduct.product_images.length > 0 &&
+              storeProduct.product_images[0].small
+                ? getImageUrl(storeProduct.product_images[0].small)
+                : '/assets/product/no-image-small.jpg'
+            "
+            onerror="this.src='/assets/product/no-image-small.jpg'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
+            onload="this.removeAttribute('onerror'); this.removeAttribute('onload');"
+            class="card-img-top"
+            alt="product-image"
           />
           <div class="add_cart_btn" *ngIf="cartItem.quantity === 0">
             <!-- The area above the product image where you can click the Add to Cart button is small on mobile, so it is enlarged. -->
-            <div class="_expand-cart-add-btn-area"
-                 (click)="addCart($event)"
-                 title="This is a button to add one new item to your cart."
-                 >
+            <div
+              class="_expand-cart-add-btn-area"
+              (click)="addCart($event)"
+              title="This is a button to add one new item to your cart."
+            >
               <i class="fas fa-plus"></i>
             </div>
           </div>
-          <div class="constraint-tooltip"
-               *ngIf="displayConstraintTooltip"
-               (click)="hideConstraintTooltip()"
-               #constraintTooltip>
-            You can only purchase up to {{storeProduct.constraint_max}} items
+          <div
+            class="constraint-tooltip"
+            *ngIf="displayConstraintTooltip"
+            (click)="hideConstraintTooltip()"
+            #constraintTooltip
+          >
+            You can only purchase up to {{ storeProduct.constraint_max }} items
           </div>
-            <div class="add_cart_btn isClicked"
-                 *ngIf="cartItem.quantity > 0"
-                 [class.overConstraintMax]="isOverConstraintMax">
-              <div class="_expand-cart-minus-btn-area"
-                    (click)="removeCart($event)"
-                    title="This is a button to remove one item from your cart."
-                    >
-                <i class="fas fa-minus"></i>
-              </div>
-                  {{cartItem.quantity}}
-              <div class="_expand-cart-plus-btn-area"
-                   (click)="addCart($event)"
-                   title="This is a button to add one item to your cart."
-                   >
-                <i class="fas fa-plus"
-                   [class.overConstraintMax]="isOverConstraintMax"
-                ></i>
-              </div>
+          <div
+            class="add_cart_btn isClicked"
+            *ngIf="cartItem.quantity > 0"
+            [class.overConstraintMax]="isOverConstraintMax"
+          >
+            <div
+              class="_expand-cart-minus-btn-area"
+              (click)="removeCart($event)"
+              title="This is a button to remove one item from your cart."
+            >
+              <i class="fas fa-minus"></i>
             </div>
+            {{ cartItem.quantity }}
+            <div
+              class="_expand-cart-plus-btn-area"
+              (click)="addCart($event)"
+              title="This is a button to add one item to your cart."
+            >
+              <i
+                class="fas fa-plus"
+                [class.overConstraintMax]="isOverConstraintMax"
+              ></i>
+            </div>
+          </div>
         </div>
-        <div [class._small]="storeProduct.store_price > 999"
-             [class.discount]="storeProduct.standard_price && storeProduct.store_price < storeProduct.standard_price"
-             class="card-body" >
-          <div class="card-title"
-               [class._small]="storeProduct.store_price > 999"
-               [class._no-wrap]="storeProduct.store_price > 9999">
-            <span [class.discount]="storeProduct.standard_price && storeProduct.store_price < storeProduct.standard_price"
-                  class="_price">{{storeProduct.store_price | currency : 'JPY': 'symbol'}}</span>
-            <span [class._small]="storeProduct.store_price > 999"
-                  class="_tax-price"> {{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': 'symbol'}}</span>
+        <div
+          [class._small]="storeProduct.store_price > 999"
+          [class.discount]="
+            storeProduct.standard_price &&
+            storeProduct.store_price < storeProduct.standard_price
+          "
+          class="card-body"
+        >
+          <div
+            class="card-title"
+            [class._small]="storeProduct.store_price > 999"
+            [class._no-wrap]="storeProduct.store_price > 9999"
+          >
+            <span
+              [class.discount]="
+                storeProduct.standard_price &&
+                storeProduct.store_price < storeProduct.standard_price
+              "
+              class="_price"
+              >{{
+                storeProduct.store_price | currency : 'JPY' : 'symbol'
+              }}</span
+            >
+            <span
+              [class._small]="storeProduct.store_price > 999"
+              class="_tax-price"
+            >
+              {{
+                calculateTaxedValue(storeProduct.store_price)
+                  | currency : 'JPY' : 'symbol'
+              }}</span
+            >
 
-            <span class="_tax-tag"
-                  [class._small]="calculateTaxedValue(storeProduct.store_price)> 999">/with tax</span>
+            <span
+              class="_tax-tag"
+              [class._small]="
+                calculateTaxedValue(storeProduct.store_price) > 999
+              "
+              >/with tax</span
+            >
           </div>
           <p [class._expandLabel]="isMoreClicked" class="card-text _name">
-            {{getProductDisplayLabel(storeProduct.producing_area, storeProduct.product_name, storeProduct.brand) }}
+            {{
+              getProductDisplayLabel(
+                storeProduct.producing_area,
+                storeProduct.product_name,
+                storeProduct.brand
+              )
+            }}
           </p>
           <div class="_expandLabel">
             <p class="card-text _quantity">
-              {{getRangeLabel(storeProduct.internal_capacity, storeProduct.unit_range)}}
+              {{
+                getRangeLabel(
+                  storeProduct.internal_capacity,
+                  storeProduct.unit_range
+                )
+              }}
             </p>
           </div>
         </div>

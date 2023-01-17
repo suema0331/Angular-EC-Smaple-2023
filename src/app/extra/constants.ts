@@ -7,4 +7,4 @@ export const CONSTRAINT_MAX = 50;
 export const STORAGE_KEY_CART = 'user_storage_cart';
 
 // Registration Completion Flag
-export const STORAGE_KEY_SHOWN_ONBOARD= 'shown_onboard';
+export const STORAGE_KEY_SHOWN_ONBOARD = 'shown_onboard';

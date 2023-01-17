@@ -1,17 +1,27 @@
-<app-common-header headerTitle="Purchased Product List" backUrl="/shop-top"></app-common-header>
+<app-common-header
+  headerTitle="Purchased Product List"
+  backUrl="/shop-top"
+></app-common-header>
 
 <div class="pastitem">
-  <div *ngIf="productList.length===0; else showFavoriteList" class="not-found-area">
+  <div
+    *ngIf="productList.length === 0; else showFavoriteList"
+    class="not-found-area"
+  >
     <div class="_ttl">There are no products in your purchase history.</div>
     <div class="_img-area">
-      <img src="/assets/mypage/purchasehistory_img_cart@2x.png" alt="your-purchased-item-is-not-found">
+      <img
+        src="/assets/mypage/purchasehistory_img_cart@2x.png"
+        alt="your-purchased-item-is-not-found"
+      />
     </div>
-    <div>Once you have purchased an item, you will be able to purchase it here.</div>
+    <div>
+      Once you have purchased an item, you will be able to purchase it here.
+    </div>
   </div>
-  <ng-template  class="sub-category-area" #showFavoriteList>
-
+  <ng-template class="sub-category-area" #showFavoriteList>
     <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
-      <ng-container *ngFor="let product of productList; index as i" >
+      <ng-container *ngFor="let product of productList; index as i">
         <app-product-card
           [storeProduct]="product"
           [isLoggedIn]="isLoggedIn"

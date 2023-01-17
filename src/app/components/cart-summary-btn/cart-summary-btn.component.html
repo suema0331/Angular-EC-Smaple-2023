@@ -4,23 +4,28 @@
       class="btn btn-rounded submit"
       data-test="cart-price-info-button"
       (click)="navigateToCartHandler()"
-       title="This is a button to navigate to the cart page."
+      title="This is a button to navigate to the cart page."
     >
       <span class="cart-number">
-        <img src="./assets/common_icon_cart@2x.png" alt="common-cart-icon">
-        <span class="_quantity">{{cartPriceInfo.numOfStoreProducts}}</span>
+        <img src="./assets/common_icon_cart@2x.png" alt="common-cart-icon" />
+        <span class="_quantity">{{ cartPriceInfo.numOfStoreProducts }}</span>
         <span class="_ten"> items</span>
       </span>
       <span class="prices-area">
         <span class="_price">
-          <span>{{cartPriceInfo.totalProductPriceWithoutTax | currency : 'JPY': 'symbol'}}</span>
+          <span>{{
+            cartPriceInfo.totalProductPriceWithoutTax
+              | currency : 'JPY' : 'symbol'
+          }}</span>
           <span class="_tax">/without tax</span>
         </span>
-        <span class="_tax-price">{{cartPriceInfo.totalProductPriceWithTax | currency : 'JPY': 'symbol'}}
+        <span class="_tax-price"
+          >{{
+            cartPriceInfo.totalProductPriceWithTax | currency : 'JPY' : 'symbol'
+          }}
           <span class="_tax">/with tax</span>
         </span>
       </span>
     </button>
   </div>
 </div>
-

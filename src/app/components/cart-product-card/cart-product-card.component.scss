@@ -1,42 +1,50 @@
-.cart-product{
+.cart-product {
   padding: 16px 0;
-  &:not(:last-of-type){
-    border-bottom: #D1D1D1 1px dotted;
+
+  &:not(:last-of-type) {
+    border-bottom: #d1d1d1 1px dotted;
   }
-  .product{
+
+  .product {
     display: flex;
     margin-bottom: 8px;
-    ._left{
+
+    ._left {
       cursor: pointer;
       width: 77px;
       margin-right: 8px;
-      img{
+
+      img {
         width: 100%;
         border-radius: 3px;
       }
     }
-    ._right{
+
+    ._right {
       flex-grow: 1;
-      ._top{
+
+      ._top {
         display: flex;
-        ._soldout{
+
+        ._soldout {
           cursor: pointer;
           margin: auto 0 0 auto;
           font-size: 14px;
           text-align: right;
-          color: #0080DE;
+          color: #0080de;
         }
-        ._name{
+
+        ._name {
           width: 145px;
           margin-right: 12px;
           font-size: 16px;
 
-          @media screen and (min-width:600px) {
+          @media screen and (min-width: 600px) {
             width: 326px;
           }
         }
 
-        ._quantity-btn{
+        ._quantity-btn {
           margin: auto auto 0;
           height: 26px;
           flex-grow: 1;
@@ -44,15 +52,15 @@
           justify-content: space-between;
           color: #717171;
           font-size: 18px;
-          border: #EAE5E2 1px solid;
+          border: #eae5e2 1px solid;
           border-radius: 16px;
-          background: #FCFCFC;
+          background: #fcfcfc;
           line-height: 1.35;
           position: relative;
 
-          .constraint-tooltip{
-            color: #FFFFFF;
-            background: #2E2621;
+          .constraint-tooltip {
+            color: #fff;
+            background: #2e2621;
             top: -104px;
             position: absolute;
             left: -46px;
@@ -62,60 +70,57 @@
             width: 155px;
             z-index: 9999;
             border-radius: 8px;
-            box-shadow: 0px 8px 24px #B5B5B580;
+            box-shadow: 0 8px 24px #b5b5b580;
 
-            &:after{
+            &::after {
               z-index: 10000;
-              content: "";
+              content: '';
               position: absolute;
               right: 0;
               bottom: -12px;
               left: 74px;
-              width: 0px;
-              height: 0px;
+              width: 0;
+              height: 0;
               margin: auto;
               border-style: solid;
-              border-color: #2E2621 transparent transparent transparent;
-              border-width: 13px 13px 0 13px;
+              border-color: #2e2621 transparent transparent;
+              border-width: 13px 13px 0;
             }
 
-            -moz-animation: fadeOutAnimation 0s ease-in 1s forwards;
-            /* Firefox */
-            -webkit-animation: fadeOutAnimation 0s ease-in 1s forwards;
             /* Safari and Chrome */
-            -o-animation: fadeOutAnimation 0s ease-in 1s forwards;
-            /* Opera */
             animation: fadeOutAnimation 0s ease-in 1s forwards;
-            -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
           }
 
-          i{
+          i {
             cursor: pointer;
-            color: #0080DE;
+            color: #0080de;
             width: 10px;
             margin: auto 10px;
           }
         }
       }
-      ._bottom{
+
+      ._bottom {
         display: flex;
         justify-content: space-between;
         font-size: 18px;
         font-weight: bold;
-        ._remove{
+
+        ._remove {
           cursor: pointer;
           margin: auto 0 0 auto;
           font-size: 16px;
           text-align: right;
-          color: #0080DE;
+          color: #0080de;
           font-weight: normal;
         }
-        ._tax{
+
+        ._tax {
           font-size: 16px;
           color: #717171;
           font-weight: normal;
-          ._in{
+
+          ._in {
             font-size: 14px;
           }
         }
@@ -126,18 +131,18 @@
 
 @keyframes fadeOutAnimation {
   to {
-    width:0;
-    height:0;
-    overflow:hidden;
+    width: 0;
+    height: 0;
+    overflow: hidden;
     display: none;
-    z-index: 0
+    z-index: 0;
   }
 }
-@-webkit-keyframes fadeOutAnimation {
+@keyframes fadeOutAnimation {
   to {
-    width:0;
-    height:0;
-    visibility:hidden;
+    width: 0;
+    height: 0;
+    visibility: hidden;
     display: none;
     z-index: 0;
   }

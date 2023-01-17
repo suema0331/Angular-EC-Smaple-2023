@@ -1,21 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
-@import '@fortawesome/fontawesome-free/scss/solid.scss';
-@import '@fortawesome/fontawesome-free/scss/regular.scss';
-@import '@fortawesome/fontawesome-free/scss/brands.scss';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/brands';
 
-@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
-// variables
-@import "variables";
+@import 'mdb-angular-ui-kit/assets/scss/mdb';
 
+@import 'variables';
 
 body {
   color: $base_font_color;
   font-family: $base_font;
 }
 
-@media screen and (min-width:600px) {
-  /*　画面サイズ 600 px以上　*/
+@media screen and (min-width: 600px) {
   html {
     max-width: 600px;
     margin: 0 auto;
@@ -27,51 +25,43 @@ body {
   padding: 0 !important;
 }
 
-.container-fluid{
+.container-fluid {
   padding: 0;
 }
 
-input{
-  border: initial!important;
-  &::placeholder{
-    color: #B7B7B7;
-    font-size: 16px;
-  }
-  /* IE */
-  &:-ms-input-placeholder {
-    color: #B7B7B7;
-    font-size: 16px;
-  }
-  /* Edge */
-  &::-ms-input-placeholder{
-    color: #B7B7B7;
+input {
+  border: initial !important;
+
+  &::placeholder {
+    color: #b7b7b7;
     font-size: 16px;
   }
 }
-.form-outline .form-control ~ .form-notch div{
+
+.form-outline .form-control ~ .form-notch div {
   border: none;
 }
 
-
 /* checkbox */
-input[type=checkbox] {
+input[type='checkbox'] {
   width: 21px;
-  height:	21px;
-  -moz-appearance:none;
-  -webkit-appearance:none;
-  -o-appearance:none;;
-  outline: #D1D1D1 2px solid;
-  background: #FCFCFC;
+  height: 21px;
+  appearance: none;
+  outline: #d1d1d1 2px solid;
+  background: #fcfcfc;
   border-radius: 6px;
   margin: 5px;
-  & + span{
+
+  & + span {
     position: relative;
   }
-  &:checked{
-    background: #00ABDE;
+
+  &:checked {
+    background: #00abde;
   }
-  &:checked + span::before{
-    content: "";
+
+  &:checked + span::before {
+    content: '';
     position: absolute;
     display: block;
     box-sizing: border-box;
@@ -92,62 +82,69 @@ input[type=checkbox] {
   }
 }
 
-
 /* login & signup header */
-.header{
+.header {
   position: relative;
-  ._back{
+
+  ._back {
     position: absolute;
     left: 24px;
   }
-  ._skip{
-    color: #0080DE;
+
+  ._skip {
+    color: #0080de;
     position: absolute;
     right: 16px;
     font-size: 14px;
   }
+
   text-align: center;
   font-weight: bold;
   font-size: 16px;
   padding: 16px;
   margin-bottom: 32px;
-  border-bottom: #90867F1F 1px solid;
-  box-shadow: 0px 2px 6px #90867F1F;
+  border-bottom: #90867f1f 1px solid;
+  box-shadow: 0 2px 6px #90867f1f;
 }
 
-
 /* input form */
-.form-group{
+.form-group {
   margin-bottom: 24px;
-  .form-label{
+
+  .form-label {
     font-size: 14px;
     font-weight: bold;
-    color: #2E2621;
-    margin-bottom:6px;
+    color: #2e2621;
+    margin-bottom: 6px;
   }
-  ._req{
-    background: #EB5545;
+
+  ._req {
+    background: #eb5545;
     border-radius: 3px;
     font-size: 12px;
     padding: 2px;
     margin-left: 6px;
-    color: #ffffff;
+    color: #fff;
     font-weight: bold;
   }
+
   ._input-form {
     position: relative;
+
     input {
-      background-color: #EAEAEA;
+      background-color: #eaeaea;
       border-radius: 8px;
-      padding: 12px 0  12px 16px;
+      padding: 12px 0 12px 16px;
       margin-bottom: 8px;
-      &._inputFormError{
-        background: #FDECEF;
-        outline: #EB5545 1px solid;
+
+      &._inputFormError {
+        background: #fdecef;
+        outline: #eb5545 1px solid;
       }
     }
+
     ._display {
-      color: #0080DE;
+      color: #0080de;
       font-size: 14px;
       position: absolute;
       right: 16px;
@@ -156,63 +153,69 @@ input[type=checkbox] {
       background: transparent;
     }
   }
-  ._hint{
+
+  ._hint {
     color: #717171;
     font-size: 14px;
   }
-  ._forget{
-    color: #0080DE;
+
+  ._forget {
+    color: #0080de;
     text-align: right;
     font-size: 14px;
   }
-  ._error{
+
+  ._error {
     font-size: 14px;
-    color: #E82212;
+    color: #e82212;
   }
 }
 
-// Toast
-.errorToast{
+.errorToast {
   font-size: 14px;
-  color: #E50721;
+  color: #e50721;
   padding: 16px;
-  background: #FDECEF;
+  background: #fdecef;
   border-radius: 3px;
   margin-bottom: 32px;
   text-align: center;
 }
 
-.form-control.select-input{
+.form-control.select-input {
   padding: 14px;
 }
 
 /* stepper-modal */
-.stepper-horizontal-content-container{
+.stepper-horizontal-content-container {
   padding: 0;
 }
-.stepper-mobile-head{
+
+.stepper-mobile-head {
   display: none;
 }
+
 .stepper-mobile-footer {
   display: none;
 }
+
 .stepper.stepper-mobile {
   bottom: 104px;
   justify-content: space-evenly;
   padding: 0 128px;
 }
-// current
+
+.stepper-head-icon {
+  background-color: #d1d1d1;
+}
+
 .stepper-active .stepper-head-icon {
   background-color: $base_font_color;
 }
-// previous
-.stepper-completed .stepper-head-icon{
-  background-color: #D1D1D1;
+
+.stepper-completed .stepper-head-icon {
+  background-color: #d1d1d1;
 }
-// next
-.stepper-head-icon {
-  background-color: #D1D1D1;
-}
+
 .stepper-head:hover {
   background-color: transparent;
 }
@@ -223,48 +226,48 @@ input[type=checkbox] {
   }
 }
 
-
-// app-product-card
-.card-products-area{
-  &.row > *{
+.card-products-area {
+  &.row > * {
     padding: 0;
   }
 }
 
-// Algolia
-.ais-SearchBox{
-  .ais-SearchBox-form{
-    .ais-SearchBox-input{
+.ais-SearchBox {
+  .ais-SearchBox-form {
+    .ais-SearchBox-input {
       border: initial !important;
       padding: 10px 95px 10px 10px;
       border-radius: 20px;
       flex-basis: 1;
       flex-grow: 1;
     }
-    .ais-SearchBox-reset{
+
+    .ais-SearchBox-reset {
       display: none;
     }
-    .ais-SearchBox-submit{
+
+    .ais-SearchBox-submit {
       position: absolute;
       right: 24px;
       top: 6px;
       border: none;
       background: none;
       width: 40px;
-      svg{
+
+      svg {
         width: 100%;
-        color: #ffffff;
+        color: #fff;
       }
     }
   }
 }
 
-// TOP carousel
-mdb-carousel{
-  .carousel{
-    .carousel-indicators{
+mdb-carousel {
+  .carousel {
+    .carousel-indicators {
       margin-bottom: 8px;
-      button{
+
+      button {
         opacity: 1;
         height: 0.4rem;
         width: 0.4rem;
@@ -274,20 +277,24 @@ mdb-carousel{
         box-shadow: 0 0 3px #3c3a3a;
         margin: auto 4px;
       }
-      .active{
+
+      .active {
         border: 1px solid #fff;
         background-color: $shop_theme_color;
       }
     }
   }
-  .carousel-control-prev, .carousel-control-next{
+
+  .carousel-control-prev,
+  .carousel-control-next {
     width: 18%;
     opacity: 0.8;
-    .carousel-control-prev-icon, .carousel-control-next-icon{
-      text-align: center;
-      background: rgba(242,242,242, 0.9);
 
-      box-shadow: #00000080 0px 0px 4px;
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      text-align: center;
+      background: rgb(242 242 242 / 90%);
+      box-shadow: #00000080 0 0 4px;
       color: #717171;
       border-radius: 80%;
       font-size: 16px;
@@ -295,18 +302,19 @@ mdb-carousel{
       padding: 7px 14px;
       width: 40px;
       height: 40px;
-      &::after{
-       margin: auto 2px auto 0px;
-       vertical-align: middle;
-       font-size: 1rem;
+
+      &::after {
+        margin: auto 2px auto 0;
+        vertical-align: middle;
+        font-size: 1rem;
         font-weight: 600;
       }
     }
-    .carousel-control-next-icon{
-      &::after{
-        margin: auto 0px auto 2px;
+
+    .carousel-control-next-icon {
+      &::after {
+        margin: auto 0 auto 2px;
       }
     }
   }
 }
-

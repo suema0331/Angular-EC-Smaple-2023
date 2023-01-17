@@ -1,24 +1,31 @@
-@import "variables";
-.signup{
+@import 'variables';
+
+.signup {
   margin: 0 16px;
-  ._agreement-title{
+
+  ._agreement-title {
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 8px;
   }
+
   ._label {
     display: flex;
     border-bottom: 8px;
-    &._redBackground{
-      background: #FDECEF;
+
+    &._redBackground {
+      background: #fdecef;
       margin: 0 -16px;
       padding: 0 16px;
     }
-    ._agreement{
+
+    ._agreement {
       font-size: 14px;
-      margin: auto 0px auto 2px;
-      ._tos,._policy{
-        color: #0080DE;
+      margin: auto 0 auto 2px;
+
+      ._tos,
+      ._policy {
+        color: #0080de;
       }
     }
   }
@@ -26,44 +33,44 @@
   .btn_group {
     button {
       width: 100%;
-      padding: 16px 0px;
+      padding: 16px 0;
       font-size: 16px;
     }
+
     .submit {
       font-weight: bold;
       color: #fff;
-      // For black version
-      // background: -moz-linear-gradient(left, #393534 50%, #555555);
-      // background: -webkit-linear-gradient(left, #393534 50%, #555555);
-      // background: linear-gradient(to right, #393534 50%, #555555);
-      background: -moz-linear-gradient(left, $shop_theme_color 50%, #017098);
-      background: -webkit-linear-gradient(left, $shop_theme_color 50%, #017098);
+      background: linear-gradient(to left, $shop_theme_color 50%, #017098);
       background: linear-gradient(to right, $shop_theme_color 50%, #017098);
-      margin: 32px auto 32px;
+      margin: 32px auto;
     }
-    ._signup-area{
+
+    ._signup-area {
       text-align: center;
       font-size: 14px;
-      ._signup{
-        color: #0080DE;
+
+      ._signup {
+        color: #0080de;
       }
     }
   }
 }
 
-.form-group{
+.form-group {
   margin-bottom: 24px;
- .form-label{
-   font-size: 14px;
-   font-weight: bold;
-   color: #2E2621;
-   margin-bottom:6px;
- }
+
+  .form-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2e2621;
+    margin-bottom: 6px;
+  }
+
   ._input-form {
     position: relative;
 
     ._display {
-      color: #0080DE;
+      color: #0080de;
       font-size: 14px;
       position: absolute;
       right: 16px;
@@ -73,4 +80,3 @@
     }
   }
 }
-
