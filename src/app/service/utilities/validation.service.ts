@@ -260,17 +260,20 @@ export class ValidationService {
   }
 
   // validation checkAgreement
-  validateAgreementError(event: any): StandardCheckedValidation {
-    if (!event.target.checked) {
+  validateAgreementError(event: Event): StandardCheckedValidation {
+    const { target } = event;
+    if (!(target instanceof HTMLInputElement))
+      return { message: '', isChecked: false, isError: false };
+    if (!target.checked) {
       return {
         message: '*Your consent is required. Please check the box.',
-        isChecked: event.target.checked,
+        isChecked: target.checked,
         isError: true,
       };
     } else {
       return {
         message: '',
-        isChecked: event.target.checked,
+        isChecked: target.checked,
         isError: false,
       };
     }

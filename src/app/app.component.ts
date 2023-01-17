@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription, filter, map, mergeMap } from 'rxjs';
-import { SEOService } from './service/utilities/seo.service';
+import { MetaInfo, SEOService } from './service/utilities/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +24,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.routerEventSubscription = this.router.events
       .pipe(
-        filter((event: any) => event instanceof NavigationEnd), // NavigationEnd - event fired when a screen transition is successfully completed
+        filter((event) => event instanceof NavigationEnd), // NavigationEnd - event fired when a screen transition is successfully completed
         map(() => this.activatedRoute),
         map((route) => {
           // iterate while until firstChild: null
@@ -39,13 +39,13 @@ export class AppComponent {
           return route.data;
         })
       )
-      .subscribe((event: any) => {
-        this.seoService.updateTitle(event.title);
+      .subscribe((event: Partial<MetaInfo>) => {
+        this.seoService.updateTitle(String(event.title));
         // Updating Description tag dynamically with title
         // this.seoService.updateDescription(event.title + event.description);
-        this.seoService.updateDescription(event.description);
+        this.seoService.updateDescription(String(event.description));
         event.ogUrl
-          ? this.seoService.updateOgUrl(event.ogUrl)
+          ? this.seoService.updateOgUrl(String(event.ogUrl))
           : this.seoService.updateOgUrl('');
       });
   }

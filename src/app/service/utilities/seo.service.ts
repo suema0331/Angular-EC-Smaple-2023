@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
+export interface MetaInfo {
+  title: string;
+  description: string;
+  ogUrl: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })

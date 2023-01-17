@@ -215,7 +215,7 @@ export class SignupComponent {
   }
 
   // validation checkAgreement
-  validateAgreementError(event: any): boolean {
+  validateAgreementError(event: Event): boolean {
     const checkedValidation =
       this.validationService.validateAgreementError(event);
     this.agreementErrorMessage = checkedValidation.message;
