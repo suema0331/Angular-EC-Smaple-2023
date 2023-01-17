@@ -57,7 +57,7 @@ npm run build:pro
 
 ## Documentation
 
-For documentation purposes, I have written docs.md on each directory.
+For documentation purposes, I have written `docs.md` on each directory.
 
 e.g.,
 
@@ -70,4 +70,13 @@ This application uses [Cypress](https://www.cypress.io/) for E2E testing. The te
 
 ```bash
 npm run e2e
+```
+
+## Formatting
+
+General style issues are automatically formatted at file save time using `Prettier`, a VSCode extension (`.vscode/settings.json`).
+Lint and format by `ESLint` for `TypeScript` and `StyleLint` for `SCSS`. Their rules that conflict with `Prettier` is disabled.
+
+```bash
+npm run eslint
 ```
