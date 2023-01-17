@@ -12,6 +12,7 @@ import { LogService } from '../../../shared/services/log.service';
 export class LocationService {
   private systemStatusCollection: AngularFirestoreCollection<SystemStatusResponse>;
   systemStatusSubscription: Subscription;
+  isMentenance = false;
 
   constructor(
     private logService: LogService,
@@ -39,10 +40,14 @@ export class LocationService {
          *  monitor the state of system maintenance mode
          */
         if (data[0] && data[0].user_app_run_status === 0) {
+          this.isMentenance = true;
           this.logService.logDebug('navigation to the /maintenance !');
           this.router.navigateByUrl('/maintenance');
         } else {
-          this.router.navigateByUrl('/');
+          if (this.isMentenance) {
+            this.router.navigateByUrl('/');
+            this.isMentenance = false;
+          }
         }
       });
   }
