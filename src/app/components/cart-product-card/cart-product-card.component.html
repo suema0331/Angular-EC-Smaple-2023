@@ -1,7 +1,7 @@
 <div class="cart-product" *ngIf="storeProduct.store_product_id">
   <ng-container>
     <div class="product">
-      <div
+      <a
         class="_left"
         (click)="navigateToProduct()"
         title="This is a button to navigate to the product detail page."
@@ -17,7 +17,7 @@
           class="card-img-top"
           alt="product-image"
         />
-      </div>
+      </a>
       <div class="_right">
         <div class="_top">
           <div class="_name">
@@ -41,17 +41,17 @@
               {{ storeProduct.constraint_max }} items.
             </div>
 
-            <i
+            <button
               class="fas fa-minus fa-xs"
               (click)="removeCart($event)"
               title="This is a button to remove one item from your cart."
-            ></i>
+            ></button>
             {{ cartItem.quantity }}
-            <i
+            <button
               class="fas fa-plus fa-xs"
               (click)="addCart($event)"
               title="This is a button to add one item to your cart."
-            ></i>
+            ></button>
           </div>
         </div>
         <div class="_bottom">
@@ -64,13 +64,13 @@
               }}<span class="_in">/with tax</span></span
             >
           </div>
-          <div
+          <button
             (click)="removeAllFromCart()"
             class="_remove"
             title="This button deletes all the specific number of items in the cart."
           >
             Remove
-          </div>
+          </button>
         </div>
       </div>
     </div>

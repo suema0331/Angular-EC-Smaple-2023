@@ -1,21 +1,22 @@
 <div class="cart-page">
   <div class="cart-header">
     <div class="_inner">
-      <span
+      <button
         class="empty-cart-button"
         *ngIf="cartPriceInfo.numOfStoreProducts !== 0"
         (click)="emptyCartHandler()"
         title="This is a button to remove all items from your cart."
-        >Empty Cart</span
+      >
+        Empty Cart</button
       >YOUR CART
-      <button
+      <a
         (click)="handleBack()"
         class="_close"
         type="button"
         title="This is a button to back to the preious page."
       >
         <img alt="close-btn" src="/assets/product/common_btn_close@2x.png" />
-      </button>
+      </a>
     </div>
   </div>
 

@@ -42,13 +42,13 @@
           />
           <div class="add_cart_btn" *ngIf="cartItem.quantity === 0">
             <!-- The area above the product image where you can click the Add to Cart button is small on mobile, so it is enlarged. -->
-            <div
+            <button
               class="_expand-cart-add-btn-area"
               (click)="addCart($event)"
               title="This is a button to add one new item to your cart."
             >
               <i class="fas fa-plus"></i>
-            </div>
+            </button>
           </div>
           <div
             class="constraint-tooltip"
@@ -63,15 +63,15 @@
             *ngIf="cartItem.quantity > 0"
             [class.overConstraintMax]="isOverConstraintMax"
           >
-            <div
+            <button
               class="_expand-cart-minus-btn-area"
               (click)="removeCart($event)"
               title="This is a button to remove one item from your cart."
             >
               <i class="fas fa-minus"></i>
-            </div>
+            </button>
             {{ cartItem.quantity }}
-            <div
+            <button
               class="_expand-cart-plus-btn-area"
               (click)="addCart($event)"
               title="This is a button to add one item to your cart."
@@ -80,7 +80,7 @@
                 class="fas fa-plus"
                 [class.overConstraintMax]="isOverConstraintMax"
               ></i>
-            </div>
+            </button>
           </div>
         </div>
         <div

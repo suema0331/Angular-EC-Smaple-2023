@@ -27,6 +27,7 @@
     position: relative;
 
     ._button-area {
+      display: block;
       padding: 8px 60px 8px 12px;
       border-radius: 18px;
       background: #eaeaea;
@@ -52,6 +53,8 @@
     font-weight: bold;
     margin: auto 0;
     color: $shop_theme_color;
+    border: none;
+    background: none;
   }
 
   ._menu {
@@ -106,7 +109,7 @@
       }
     }
 
-    button {
+    a {
       display: block;
       position: absolute;
       bottom: 33px;
@@ -160,7 +163,7 @@
       padding: 32px;
     }
 
-    button {
+    a {
       display: flex;
       background: #fcfcfc;
       border: #eae5e2 1px solid;
@@ -219,7 +222,7 @@
     .btn_group {
       margin: auto 20px;
 
-      button {
+      a {
         width: 100%;
         padding: 16px 0;
         font-size: 16px;

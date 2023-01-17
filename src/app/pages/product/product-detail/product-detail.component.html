@@ -2,14 +2,14 @@
   <div class="header-area" *ngIf="isScroll">
     <div class="_inner">
       <span class="_ttl">{{ displayHeaderName }}</span>
-      <button
+      <a
         type="button"
         class="_close"
         title="This is a button to back to the product list page."
         (click)="handleBack()"
       >
         <img src="/assets/product/common_btn_close@2x.png" alt="back-btn" />
-      </button>
+      </a>
     </div>
   </div>
   <div class="img-area">
@@ -168,13 +168,13 @@
   <div class="cart-area">
     <div class="btn_group">
       <div class="_cart">
-        <button
+        <a
           class="_icon-btn"
           (click)="navigateToCartHandler()"
           title="This is a button to navigate to the cart page."
         >
           <img src="/assets/product/common_icon_cart@2x.png" alt="cart-btn" />
-        </button>
+        </a>
         <span
           class="badge rounded-pill badge-notification"
           *ngIf="cartPriceInfo.numOfStoreProducts"

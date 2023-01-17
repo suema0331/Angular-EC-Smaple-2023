@@ -38,6 +38,8 @@
       font-weight: bold;
       margin: auto 15px;
       color: $shop_theme_color;
+      border: none;
+      background: none;
     }
 
     .btn-close {
@@ -106,7 +108,7 @@
     margin-bottom: 32px;
     background: transparent;
 
-    button {
+    a {
       color: #0080de;
       font-size: 14px;
       border: none;
@@ -132,7 +134,7 @@
       display: flex;
       justify-content: center;
 
-      button {
+      a {
         font-size: 14px;
         padding: 6px 12px;
         border-radius: 47px;
