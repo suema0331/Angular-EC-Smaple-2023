@@ -1,1 +1,0 @@
-Describes a component that can be used repeatedly on multiple screens.

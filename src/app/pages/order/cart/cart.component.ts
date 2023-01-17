@@ -20,6 +20,8 @@ import { ConfirmOrderModalComponent } from '../confirm-order-modal/confirm-order
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
+  screenName = 'CartComponent';
+  screenId = '4_1';
   currentUser = this.authService.currentUser;
   userCart = [] as StoreProductExt[];
   cartPriceInfo: CartPriceInfo = {
@@ -169,7 +171,7 @@ export class CartComponent {
             this.locationService.navigateTo1_1();
           })
           .catch((err) => {
-            console.log(err)
+            console.log(err);
             alert('🥲Sorry, Something went wrong.');
           });
       }

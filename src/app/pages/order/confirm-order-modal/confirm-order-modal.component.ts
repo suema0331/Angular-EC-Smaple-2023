@@ -9,6 +9,7 @@ import { StoreProductExt } from '../../../../backend/dto/common/store_product_ex
 })
 export class ConfirmOrderModalComponent {
   screenName = 'ConfirmOrderModalComponent';
+  screenId = '4_3';
   storeProductExt = {} as StoreProductExt;
 
   constructor(public modalRef: MdbModalRef<ConfirmOrderModalComponent>) {}

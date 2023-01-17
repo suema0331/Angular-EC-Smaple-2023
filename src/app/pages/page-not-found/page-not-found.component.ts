@@ -7,5 +7,7 @@ import { LocationService } from 'src/app/service/utilities/location.service';
   styleUrls: ['./page-not-found.component.scss'],
 })
 export class PageNotFoundComponent {
+  screenName = 'PageNotFoundComponent';
+  screenId = '1_6';
   constructor(public locationService: LocationService) {}
 }
