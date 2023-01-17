@@ -44,6 +44,7 @@ import { NotificationService } from './service/utilities/notification.service';
 import { PriceService } from './service/utilities/price.service';
 import { SEOService } from './service/utilities/seo.service';
 import { ValidationService } from './service/utilities/validation.service';
+import { CommonFooterComponent } from './components/common-footer/common-footer.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ValidationService } from './service/utilities/validation.service';
     CartProductCardComponent,
     ConfirmCartClearModalComponent,
     ConfirmOrderModalComponent,
+    CommonFooterComponent,
   ],
   imports: [
     BrowserModule,
