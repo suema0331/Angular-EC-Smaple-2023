@@ -13,11 +13,8 @@ export class AddCartToastComponent {
   produceArea = '';
   productName = '';
   productBrand = '';
-  // Overridden when the Toast is generated
-  // closeHandler(): void {}
 
   close(): void {
     // Calls the toast close process passed from NotificationService.
-    // this.closeHandler();
   }
 }
