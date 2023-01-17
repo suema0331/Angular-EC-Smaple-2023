@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
@@ -56,7 +57,8 @@ export class ProductDetailComponent {
     private activatedRoute: ActivatedRoute,
     private afs: AngularFirestore,
     private cartService: CartService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private location: Location
   ) {
     // Get ID from the URL path query
     this.activatedRoute.params.subscribe(
@@ -252,7 +254,8 @@ export class ProductDetailComponent {
   }
 
   handleBack(): void {
-    this.locationService.navigateTo2_1();
+    this.location.back();
+    // this.locationService.navigateTo2_1();
   }
 
   getProductDisplayLabel(
