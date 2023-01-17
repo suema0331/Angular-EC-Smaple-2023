@@ -96,13 +96,13 @@ export class AuthService {
   }
 
   // Use the AngularFirestore + AngularFirestoreDocument service to set up user data when signing in to the Firestore database with a username/password.
-  setUserData(user: any) {
+  setUserData(user: User) {
     const userRef = this.afs.doc(`users/${user.uid}`);
     const userData: UserCreateRequest = {
       uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
+      email: user.email ?? '',
+      displayName: user.displayName ?? '',
+      photoURL: user.photoURL ?? '',
       emailVerified: user.emailVerified,
     };
     return userRef.set(userData, {
