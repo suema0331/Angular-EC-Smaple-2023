@@ -83,7 +83,7 @@ export class SignupComponent {
       this.validateConfirmPasswordError();
       this.onDisabled();
     });
-    // Restore form data stored in storage, if any.
+    // Restore form data stored in storage if there are.
     // In this way, input values can be restored again when the user returns from a page transition.
     const formDraft = this.storageService.get('signup_form');
     if (formDraft) {
@@ -143,7 +143,7 @@ export class SignupComponent {
         this.isError = true;
         this.errorMessage = 'Incorrect Email or Password';
         this.logService.logDebug('Signup failure');
-        console.log(error)
+        console.log(error);
         this.isSubmitted = false;
       });
   }

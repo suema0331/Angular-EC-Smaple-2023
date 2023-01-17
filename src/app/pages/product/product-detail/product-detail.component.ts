@@ -129,7 +129,7 @@ export class ProductDetailComponent {
   }
 
   @HostListener('window:scroll', ['$event'])
-  onWindowScroll($event: any): void {
+  onWindowScroll(): void {
     // Scroll judgment
     if (window.pageYOffset <= 0) {
       this.isScroll = false;

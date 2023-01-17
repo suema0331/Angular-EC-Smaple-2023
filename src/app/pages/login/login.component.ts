@@ -88,12 +88,12 @@ export class LoginComponent implements OnInit {
 
     this.authService
       .login(trimmedEmail, trimmedPassword)
-      .then((result) => {
+      .then(() => {
         this.logService.logDebug('login succeeded');
 
         this.locationService.navigateTo(this.returnUrl);
       })
-      .catch((error) => {
+      .catch(() => {
         this.isError = true;
         this.errorMessage = 'Incorrect Email or Password';
         this.logService.logDebug('login failure');

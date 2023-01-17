@@ -95,7 +95,7 @@ export class ShopTopComponent {
   logoutHandler(): void {
     this.authService
       .logout()
-      .then((result) => {
+      .then(() => {
         alert('Successfully logged out!');
         this.cartService.clearCart();
         this.cartService.clearCartCacheFromStorage();

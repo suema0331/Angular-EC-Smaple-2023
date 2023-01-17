@@ -56,10 +56,10 @@ export class PastitemComponent {
 
         data.forEach((order) => {
           order.order_products.forEach((p) => {
-            if (productIds.get(p.store_product_id)) {
+            if (productIds.has(p.store_product_id)) {
               productIds.set(
                 p.store_product_id,
-                productIds.get(p.store_product_id)! + 1
+                Number(productIds.get(p.store_product_id)) + 1
               );
             } else {
               productIds.set(p.store_product_id, 1);

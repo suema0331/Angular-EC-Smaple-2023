@@ -1,5 +1,6 @@
 .angular
 .stylelintrc
+.eslintrc.js
 dist
 *.json
 node_modules
@@ -7,4 +8,5 @@ mdb
 cypress
 assets
 scripts
+polyfills.ts
 
