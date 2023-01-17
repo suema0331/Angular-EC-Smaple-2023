@@ -1,67 +1,68 @@
-.toast{
-  background: #F2FAE8;
+.toast {
+  background: #f2fae8;
   color: #047100;
-  box-shadow: 0px 8px 24px #90867F3D;
+  box-shadow: 0 8px 24px #90867f3d;
   font-weight: bold;
   font-size: 16px;
   padding: 12px;
-
   position: absolute;
   width: 245px;
   right: 12px;
   bottom: 95px;
 
-  @media screen and (min-width:600px) {
+  @media screen and (min-width: 600px) {
     right: 2rem;
   }
-  @media screen and (min-width:700px) {
+  @media screen and (min-width: 700px) {
     right: 8rem;
   }
-  @media screen and (min-width:800px) {
+  @media screen and (min-width: 800px) {
     right: 10rem;
   }
-  @media screen and (min-width:900px) {
+  @media screen and (min-width: 900px) {
     right: 13rem;
   }
-  @media screen and (min-width:1000px) {
+  @media screen and (min-width: 1000px) {
     right: 15rem;
   }
-  @media screen and (min-width:1200px) {
+  @media screen and (min-width: 1200px) {
     right: 22rem;
   }
-  @media screen and (min-width:1400px) {
+  @media screen and (min-width: 1400px) {
     right: 28rem;
   }
-  @media screen and (min-width:1500px) {
+  @media screen and (min-width: 1500px) {
     right: 31rem;
   }
-  @media screen and (min-width:1600px) {
+  @media screen and (min-width: 1600px) {
     right: 34rem;
   }
-  @media screen and (min-width:1700px) {
+  @media screen and (min-width: 1700px) {
     right: 35rem;
   }
 
-  .toast-body{
-    background: #F2FAE8;
+  .toast-body {
+    background: #f2fae8;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     padding: 0;
     display: flex;
 
-    .left-body{
+    .left-body {
       width: 65px;
       min-width: 65px;
       margin-right: 10px;
+
       img {
         width: 100%;
         border-radius: 5px;
       }
     }
-    .right-body{
-      color: #2E2621;
 
-      .title{
+    .right-body {
+      color: #2e2621;
+
+      .title {
         color: #047100;
       }
     }

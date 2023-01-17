@@ -1,0 +1,10 @@
+.angular
+.stylelintrc
+dist
+*.json
+node_modules
+mdb
+cypress
+assets
+scripts
+

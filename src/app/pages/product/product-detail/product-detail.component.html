@@ -1,112 +1,166 @@
 <div class="product-detail" *ngIf="storeProduct.store_product_id">
-  <div class="header-area"
-       *ngIf="isScroll"
-  >
+  <div class="header-area" *ngIf="isScroll">
     <div class="_inner">
-      <span class="_ttl">{{displayHeaderName}}</span>
+      <span class="_ttl">{{ displayHeaderName }}</span>
       <button
-        type="button" class="_close"
+        type="button"
+        class="_close"
         title="This is a button to back to the product list page."
         (click)="handleBack()"
       >
-        <img src="/assets/product/common_btn_close@2x.png" alt="back-btn">
+        <img src="/assets/product/common_btn_close@2x.png" alt="back-btn" />
       </button>
     </div>
   </div>
   <div class="img-area">
-    <img src="/assets/product/common_ic_close2@2x.png"
-         class="_close"
-         alt="close-icon"
-         title="This is a button to back to the product list page."
-          (click)="handleBack()"
-    >
-    <img [src]="getImageUrl(topViewImage)"
-          class="_top-img"
-          alt="product-large-image"
-          onerror="this.src='/assets/product/no_image.png'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
-          onload="this.removeAttribute('onerror'); this.removeAttribute('onload');">
-
-    <img *ngIf="storeProduct.product_status === 2"
-          src="/assets/product/productdetails_img_soldout@2x.png"
-          class="_top-img stockout"
-          alt="sold-out-image"
+    <img
+      src="/assets/product/common_ic_close2@2x.png"
+      class="_close"
+      alt="close-icon"
+      title="This is a button to back to the product list page."
+      (click)="handleBack()"
     />
-        <span class="_note">*Image is for illustration purposes.</span>
-        <img *ngIf="!storeProduct.favorite_flag"
-             (click)="clickFavHandler()"
-              src="/assets/product/common_btn_favorite@2x.png"
-              class="_fav"
-              alt="unfavorite-icon"
-              title="This is a button to remove the item from favorites."
+    <img
+      [src]="getImageUrl(topViewImage)"
+      class="_top-img"
+      alt="product-large-image"
+      onerror="this.src='/assets/product/no_image.png'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
+      onload="this.removeAttribute('onerror'); this.removeAttribute('onload');"
+    />
+
+    <img
+      *ngIf="storeProduct.product_status === 2"
+      src="/assets/product/productdetails_img_soldout@2x.png"
+      class="_top-img stockout"
+      alt="sold-out-image"
+    />
+    <span class="_note">*Image is for illustration purposes.</span>
+    <img
+      *ngIf="!storeProduct.favorite_flag"
+      (click)="clickFavHandler()"
+      src="/assets/product/common_btn_favorite@2x.png"
+      class="_fav"
+      alt="unfavorite-icon"
+      title="This is a button to remove the item from favorites."
+    />
+    <img
+      *ngIf="storeProduct.favorite_flag"
+      (click)="clickFavHandler()"
+      src="/assets/product/common_btn_afterFavorites@2x.png"
+      class="_fav"
+      alt="favrite-icon"
+      title="This is a button to add the item to favorites."
+    />
+  </div>
+  <div class="scroll-img-area">
+    <div class="_scroll-area">
+      <div class="_scroll-imgs">
+        <ng-container
+          *ngFor="let img of storeProduct.product_view_image_list; index as i"
         >
-        <img *ngIf="storeProduct.favorite_flag"
-             (click)="clickFavHandler()"
-              src="/assets/product/common_btn_afterFavorites@2x.png"
-              class="_fav"
-              alt="favrite-icon"
-              title="This is a button to add the item to favorites."
-        >
+          <img
+            (click)="clickScrollImgHandler(i, img.master)"
+            [class.selected]="isSelectedImg === i"
+            [src]="
+              img.small
+                ? getImageUrl(img.small)
+                : '/assets/product/no-image-small.jpg'
+            "
+            onerror="this.src='/assets/product/no-image-small.jpg'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
+            onload="this.removeAttribute('onerror'); this.removeAttribute('onload');"
+            alt="product-small-image"
+            title="This is a button to change the expanded image."
+          />
+        </ng-container>
       </div>
-      <div class="scroll-img-area">
-        <div class="_scroll-area">
-          <div class="_scroll-imgs">
-            <ng-container *ngFor="let img of storeProduct.product_view_image_list; index as i">
-              <img
-                  (click)="clickScrollImgHandler(i , img.master)"
-                  [class.selected]="isSelectedImg === i"
-                   [src]=" img.small ? getImageUrl(img.small) : '/assets/product/no-image-small.jpg'"
-                  onerror="this.src='/assets/product/no-image-small.jpg'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
-                  onload="this.removeAttribute('onerror'); this.removeAttribute('onload');"
-                   alt="product-small-image"
-                    title="This is a button to change the expanded image."
-                   />
-            </ng-container>
-          </div>
-        </div>
-     </div>
+    </div>
+  </div>
   <div class="info-area">
-    <div class="_name">{{ getProductDisplayLabel(storeProduct.producing_area, storeProduct.product_name, storeProduct.brand) }}</div>
+    <div class="_name">
+      {{
+        getProductDisplayLabel(
+          storeProduct.producing_area,
+          storeProduct.product_name,
+          storeProduct.brand
+        )
+      }}
+    </div>
     <div class="_estimation">
       <div class="_ttl">Estimated price</div>
 
-      <div *ngIf="storeProduct.standard_price>0 && storeProduct.store_price < storeProduct.standard_price"
-        class="_discount-tag">
+      <div
+        *ngIf="
+          storeProduct.standard_price > 0 &&
+          storeProduct.store_price < storeProduct.standard_price
+        "
+        class="_discount-tag"
+      >
         <span class="_tag">
-          {{calculateDiscountRate(storeProduct.standard_price, storeProduct.store_price)}}
+          {{
+            calculateDiscountRate(
+              storeProduct.standard_price,
+              storeProduct.store_price
+            )
+          }}
         </span>
       </div>
 
-      <div class="_price">{{storeProduct.store_price | currency : 'JPY': 'symbol'}}
-        <span class="_tax">{{calculateTaxedValue(storeProduct.store_price) | currency : 'JPY': 'symbol'}}/with tax</span>
+      <div class="_price">
+        {{ storeProduct.store_price | currency : 'JPY' : 'symbol' }}
+        <span class="_tax"
+          >{{
+            calculateTaxedValue(storeProduct.store_price)
+              | currency : 'JPY' : 'symbol'
+          }}/with tax</span
+        >
       </div>
     </div>
-    <div class="_tags" *ngIf="storeProduct.tags.length>0">
+    <div class="_tags" *ngIf="storeProduct.tags.length > 0">
       <ng-container *ngFor="let tag of storeProduct.tags; index as i">
-        <span class="_tag"
-        >
-          {{tag}}
+        <span class="_tag">
+          {{ tag }}
         </span>
       </ng-container>
     </div>
   </div>
-  <div *ngIf="storeProduct.unit_range || storeProduct.internal_capacity || storeProduct.store_comment" class="detail-area">
+  <div
+    *ngIf="
+      storeProduct.unit_range ||
+      storeProduct.internal_capacity ||
+      storeProduct.store_comment
+    "
+    class="detail-area"
+  >
     <div class="_ttl">Product detail</div>
     <div class="_detail">
-      <div *ngIf="storeProduct.unit_range || storeProduct.internal_capacity" class="_row">
-        <div class="_key" >Contents</div>
-        <div class="_value">{{getRangeLabel( storeProduct.internal_capacity, storeProduct.unit_range)}}</div>
+      <div
+        *ngIf="storeProduct.unit_range || storeProduct.internal_capacity"
+        class="_row"
+      >
+        <div class="_key">Contents</div>
+        <div class="_value">
+          {{
+            getRangeLabel(
+              storeProduct.internal_capacity,
+              storeProduct.unit_range
+            )
+          }}
+        </div>
       </div>
       <div class="_row">
         <div class="_key">Unit price</div>
-        <div class="_value">{{100 | currency : 'JPY': 'symbol'}}/100g</div>
+        <div class="_value">{{ 100 | currency : 'JPY' : 'symbol' }}/100g</div>
       </div>
       <div class="_row" *ngIf="storeProduct.store_comment">
         <div class="_key">Comments</div>
-        <div class="_value">{{storeProduct.store_comment}}</div>
+        <div class="_value">{{ storeProduct.store_comment }}</div>
       </div>
       <div class="_row">
         <div class="_key">Note</div>
-        <div class="_value">We choose a product whose consumption date is relatively long in stocked products.</div>
+        <div class="_value">
+          We choose a product whose consumption date is relatively long in
+          stocked products.
+        </div>
       </div>
     </div>
   </div>
@@ -114,49 +168,63 @@
   <div class="cart-area">
     <div class="btn_group">
       <div class="_cart">
-        <button class="_icon-btn"
-            (click)="navigateToCartHandler()"
-            title="This is a button to navigate to the cart page."
+        <button
+          class="_icon-btn"
+          (click)="navigateToCartHandler()"
+          title="This is a button to navigate to the cart page."
         >
-          <img src="/assets/product/common_icon_cart@2x.png" alt="cart-btn">
+          <img src="/assets/product/common_icon_cart@2x.png" alt="cart-btn" />
         </button>
-        <span class="badge rounded-pill badge-notification" *ngIf="cartPriceInfo.numOfStoreProducts">{{cartPriceInfo.numOfStoreProducts}}</span>
+        <span
+          class="badge rounded-pill badge-notification"
+          *ngIf="cartPriceInfo.numOfStoreProducts"
+          >{{ cartPriceInfo.numOfStoreProducts }}</span
+        >
       </div>
 
-      <div class="constraint-tooltip"
-           *ngIf="displayConstraintTooltip"
-           (click)="hideConstraintTooltip()"
-           #constraintTooltip
-      >You can only purchase up to {{storeProduct.constraint_max}} items
+      <div
+        class="constraint-tooltip"
+        *ngIf="displayConstraintTooltip"
+        (click)="hideConstraintTooltip()"
+        #constraintTooltip
+      >
+        You can only purchase up to {{ storeProduct.constraint_max }} items
       </div>
 
-      <button *ngIf="storeProduct.product_status === 1 && cartItem.quantity === 0" class="_add-cart"
-          (click)="clickCart()"
-          title="This is a button to add one new item to your cart."
+      <button
+        *ngIf="storeProduct.product_status === 1 && cartItem.quantity === 0"
+        class="_add-cart"
+        (click)="clickCart()"
+        title="This is a button to add one new item to your cart."
       >
         <i class="fas fa-plus"></i>
         Add to cart
       </button>
 
-      <button class="_add-cart isCartClicked"
-              [class.overConstraintMax]="isOverConstraintMax"
-              *ngIf="storeProduct.product_status === 1 && cartItem.quantity > 0">
-
-        <i class="fas fa-minus"
-           (click)="removeCart()"
-           title="This is a button to remove one item from your cart."
+      <button
+        class="_add-cart isCartClicked"
+        [class.overConstraintMax]="isOverConstraintMax"
+        *ngIf="storeProduct.product_status === 1 && cartItem.quantity > 0"
+      >
+        <i
+          class="fas fa-minus"
+          (click)="removeCart()"
+          title="This is a button to remove one item from your cart."
         ></i>
-        {{cartItem.quantity}}
-        <i class="fas fa-plus"
-           [class.overConstraintMax]="isOverConstraintMax"
-           (click)="addCart()"
-           title="This is a button to add one item to your cart."
+        {{ cartItem.quantity }}
+        <i
+          class="fas fa-plus"
+          [class.overConstraintMax]="isOverConstraintMax"
+          (click)="addCart()"
+          title="This is a button to add one item to your cart."
         ></i>
       </button>
-      <button class="_add-cart stockout" *ngIf="storeProduct.product_status === 2">
+      <button
+        class="_add-cart stockout"
+        *ngIf="storeProduct.product_status === 2"
+      >
         SOLD OUT
       </button>
-
     </div>
   </div>
 </div>

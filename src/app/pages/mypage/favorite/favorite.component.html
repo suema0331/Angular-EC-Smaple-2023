@@ -1,20 +1,27 @@
-<!-- FavoritePageComponent の HTMLファイル -->
 <app-common-header
   headerTitle="Favorite Product List"
   backUrl="/shop-top"
-  ></app-common-header>
+></app-common-header>
 
 <div class="favorite">
-  <div *ngIf="productList.length===0; else showFavoriteList" class="not-found-area">
+  <div
+    *ngIf="productList.length === 0; else showFavoriteList"
+    class="not-found-area"
+  >
     <div class="_ttl">You have no favorite products.</div>
     <div class="_img-area">
-      <img src="/assets/mypage/favorite_img_heart@2x.png" alt="your-favorite-item-is-not-found">
+      <img
+        src="/assets/mypage/favorite_img_heart@2x.png"
+        alt="your-favorite-item-is-not-found"
+      />
     </div>
-    <div>Register a product as a favorite and you will be able to view it here.</div>
+    <div>
+      Register a product as a favorite and you will be able to view it here.
+    </div>
   </div>
-  <ng-template  class="sub-category-area" #showFavoriteList>
+  <ng-template class="sub-category-area" #showFavoriteList>
     <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
-      <ng-container *ngFor="let product of productList; index as i" >
+      <ng-container *ngFor="let product of productList; index as i">
         <app-product-card
           [storeProduct]="product"
           [isMoreClicked]="false"
@@ -26,7 +33,6 @@
         ></app-product-card>
       </ng-container>
     </div>
-
   </ng-template>
   <ng-container *ngIf="isLoggedIn">
     <div class="cart-area" *ngIf="cartPriceInfo.numOfStoreProducts">

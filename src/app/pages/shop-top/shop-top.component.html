@@ -1,11 +1,11 @@
-<div class="top-header"
->
+<div class="top-header">
   <div class="_logo-area">
-    <img  class="_logo" src="assets/top_img_shoplogo@2x.png" alt="logo">
+    <img class="_logo" src="assets/top_img_shoplogo@2x.png" alt="logo" />
     <span class="_name">Sample EC</span>
   </div>
   <div class="_search">
-    <div class="_button-area"
+    <div
+      class="_button-area"
       title="This is a button on the header to navigate to the search page."
       (click)="navigateToSearchHandler()"
     >
@@ -13,82 +13,91 @@
       Search
     </div>
   </div>
-  <div *ngIf="isLoggedIn" class="_logout" (click)="logoutHandler()" >
-    <div class="_button-area"
-      title="This is a looput button on the header."
-    >
+  <div *ngIf="isLoggedIn" class="_logout" (click)="logoutHandler()">
+    <div class="_button-area" title="This is a looput button on the header.">
       logout
     </div>
   </div>
-  <div (click)="navigateToMypageHandler()"
-      title="This is a munu icon on the header to navigate to the my page."
-      class="_menu">
+  <div
+    (click)="navigateToMypageHandler()"
+    title="This is a munu icon on the header to navigate to the my page."
+    class="_menu"
+  >
     <i class="fas fa-bars fa-lg"></i>
   </div>
 </div>
 
-<div *ngIf="storeMessage.notice_available_flag"
-  class="store-message-area">
+<div *ngIf="storeMessage.notice_available_flag" class="store-message-area">
   <div class="_notice1">
-    {{storeMessage.notice1}}
+    {{ storeMessage.notice1 }}
   </div>
-  <div class="_notice2">{{storeMessage.notice2}}</div>
+  <div class="_notice2">{{ storeMessage.notice2 }}</div>
 </div>
 
-<div *ngIf="storeMessage.store_available_flag === 0"
-  class="delivery-message-area">
-  {{storeMessage.operation_message}}
+<div
+  *ngIf="storeMessage.store_available_flag === 0"
+  class="delivery-message-area"
+>
+  {{ storeMessage.operation_message }}
 </div>
 
 <div class="shop-top">
-
   <div class="_store">
     <div class="_scroll-area" #swipeContent>
       <mdb-carousel
         #mdbCarousel
         class="top-carousel-area"
-          [controls]="true"
-          [indicators]="true"
-          [interval]="3500"
-          [keyboard]="true"
-          [pause]="true"
-          [ride]="true"
-          [wrap]="true"
-        >
-          <mdb-carousel-item>
-            <img src="./assets/store_image@2x.jpeg" alt="store-top-image-1"
-              (click)="navigateToProductList()"
-            >
-            <button class="_search"
-              (click)="navigateToProductList()"
-              title="This is a munu icon on the header to navigate to the product list page."
-            >
-              Search from the product list  <i class="fas fa-angle-right"></i>
-            </button>
-          </mdb-carousel-item>
-          <mdb-carousel-item>
-            <img src="./assets/store_image_2@2x.jpeg" alt="store-top-image-2"
-              (click)="navigateToProductList()"
-            >
-            <button class="_search"
-              (click)="navigateToProductList()"
-              title="This is a munu icon on the header to navigate to the product list page."
-            >
-              Search from the product list  <i class="fas fa-angle-right"></i>
-            </button>
-          </mdb-carousel-item>
-          <mdb-carousel-item>
-            <img src="./assets/store_image_3@2x.jpeg" alt="store-top-image-3"
-              (click)="navigateToProductList()"
-            >
-            <button class="_search"
-              (click)="navigateToProductList()"
-              title="This is a munu icon on the header to navigate to the product list page."
-            >
-              Search from the product list  <i class="fas fa-angle-right"></i>
-            </button>
-          </mdb-carousel-item>
-        </mdb-carousel>
+        [controls]="true"
+        [indicators]="true"
+        [interval]="3500"
+        [keyboard]="true"
+        [pause]="true"
+        [ride]="true"
+        [wrap]="true"
+      >
+        <mdb-carousel-item>
+          <img
+            src="./assets/store_image@2x.jpeg"
+            alt="store-top-image-1"
+            (click)="navigateToProductList()"
+          />
+          <button
+            class="_search"
+            (click)="navigateToProductList()"
+            title="This is a munu icon on the header to navigate to the product list page."
+          >
+            Search from the product list <i class="fas fa-angle-right"></i>
+          </button>
+        </mdb-carousel-item>
+        <mdb-carousel-item>
+          <img
+            src="./assets/store_image_2@2x.jpeg"
+            alt="store-top-image-2"
+            (click)="navigateToProductList()"
+          />
+          <button
+            class="_search"
+            (click)="navigateToProductList()"
+            title="This is a munu icon on the header to navigate to the product list page."
+          >
+            Search from the product list <i class="fas fa-angle-right"></i>
+          </button>
+        </mdb-carousel-item>
+        <mdb-carousel-item>
+          <img
+            src="./assets/store_image_3@2x.jpeg"
+            alt="store-top-image-3"
+            (click)="navigateToProductList()"
+          />
+          <button
+            class="_search"
+            (click)="navigateToProductList()"
+            title="This is a munu icon on the header to navigate to the product list page."
+          >
+            Search from the product list <i class="fas fa-angle-right"></i>
+          </button>
+        </mdb-carousel-item>
+      </mdb-carousel>
     </div>
   </div>
 
@@ -98,7 +107,7 @@
       <span *ngIf="!isLoggedIn">Recommended products from our staffs</span>
     </div>
     <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
-      <ng-container *ngFor="let product of recommendedProductList; index as i" >
+      <ng-container *ngFor="let product of recommendedProductList; index as i">
         <app-product-card
           [storeProduct]="product"
           [productViewImageType]="1"
@@ -106,38 +115,64 @@
           (clickMinusHandler)="clickMinusHandler($event)"
         ></app-product-card>
       </ng-container>
-
     </div>
   </div>
   <div class="tab-btn-area">
-    <button mdbRipple rippleColor="dark" type="button" class="btn btn-outline"
-            title="This is a button to navigate to the favorit page."
-            (click)="navigateToFavoriteHandler()"
+    <button
+      mdbRipple
+      rippleColor="dark"
+      type="button"
+      class="btn btn-outline"
+      title="This is a button to navigate to the favorit page."
+      (click)="navigateToFavoriteHandler()"
     >
-      <img src="assets/common_icon_heart@2x.png" alt="favorite-icon"> Favorites
+      <img
+        src="assets/common_icon_heart@2x.png"
+        class="_img"
+        alt="favorite-icon"
+      />
+      Favorites
     </button>
-    <button mdbRipple rippleColor="dark" type="button" class="btn btn-outline"
-            title="This is a button to navigate to the purchased items page."
-            (click)="navigateToPastitemHandler()"
+    <button
+      mdbRipple
+      rippleColor="dark"
+      type="button"
+      class="btn btn-outline"
+      title="This is a button to navigate to the purchased items page."
+      (click)="navigateToPastitemHandler()"
     >
-      <img src="assets/top_icon_history@2x.png" alt="purchase-icon"> Purchased
+      <img
+        src="assets/top_icon_history@2x.png"
+        class="_img"
+        alt="purchase-icon"
+      />
+      Purchased
     </button>
   </div>
 
   <div class="bottom-menu-area">
     <ul class="list-group">
-      <li class="list-group-item"
+      <li
+        class="list-group-item"
         title="This is a link to navigate to the store information page."
-          (click)="navigateToShopHandler()"
-      >Store Information <i class="fas fa-chevron-right"></i></li>
-      <li class="list-group-item"
+        (click)="navigateToShopHandler()"
+      >
+        Store Information <i class="fas fa-chevron-right"></i>
+      </li>
+      <li
+        class="list-group-item"
         title="This is a link to navigate to the compliance page."
-          (click)="navigateToComplianceHandler()"
-      >Compliance <i class="fas fa-chevron-right"></i></li>
-      <li class="list-group-item"
+        (click)="navigateToComplianceHandler()"
+      >
+        Compliance <i class="fas fa-chevron-right"></i>
+      </li>
+      <li
+        class="list-group-item"
         title="This is a link to navigate to the privacy policy page."
-          (click)="navigateToPrivacyHandler()"
-      >Privacy Policy <i class="fas fa-chevron-right"></i></li>
+        (click)="navigateToPrivacyHandler()"
+      >
+        Privacy Policy <i class="fas fa-chevron-right"></i>
+      </li>
     </ul>
   </div>
   <div class="signup-area" *ngIf="!isLoggedIn">
@@ -146,14 +181,17 @@
         routerLink="/signup"
         class="btn btn-rounded submit"
         title="This is a link to navigate to the signup page."
-        >
+      >
         Register
       </button>
-      <div class="_login-area">Already have an account?
-        <span class="_login"
-              (click)="loginHandler()"
-              title="This is a link to navigate to the login page."
-        >Log In</span>
+      <div class="_login-area">
+        Already have an account?
+        <span
+          class="_login"
+          (click)="loginHandler()"
+          title="This is a link to navigate to the login page."
+          >Log In</span
+        >
       </div>
     </div>
   </div>

@@ -2,13 +2,10 @@ import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SEOService {
-
-  constructor(
-    private title: Title,
-    private meta: Meta){}
+  constructor(private title: Title, private meta: Meta) {}
 
   updateTitle(title: string): void {
     this.title.setTitle(title);

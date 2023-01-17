@@ -4,13 +4,8 @@ import { SharedModule } from '../shared/shared.module';
 import { SystemStatusRestUserServiceExt } from './services/system.status.rest.user.service.ext';
 @NgModule({
   declarations: [],
-  imports: [
-    HttpClientModule,
-    SharedModule
-  ],
-  providers: [
-    SystemStatusRestUserServiceExt,
-  ],
-  bootstrap: []
+  imports: [HttpClientModule, SharedModule],
+  providers: [SystemStatusRestUserServiceExt],
+  bootstrap: [],
 })
-export class BackendModule{}
+export class BackendModule {}

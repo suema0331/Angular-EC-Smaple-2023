@@ -12,7 +12,7 @@ import { StorageService } from 'src/shared/services/storage.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent {
   screenName = 'SignupComponent';
@@ -63,25 +63,25 @@ export class SignupComponent {
     private logService: LogService,
     private storageService: StorageService,
     private authService: AuthService,
-    private validationService: ValidationService,
-  ){}
+    private validationService: ValidationService
+  ) {}
 
   ngOnInit(): void {
     // Outputs changes in Form values.
     this.formEmail?.valueChanges.subscribe((value) => {
-        this.logService.logDebug(`form_email: ${value}`);
-      this.validateMailError()
-      this.onDisabled()
+      this.logService.logDebug(`form_email: ${value}`);
+      this.validateMailError();
+      this.onDisabled();
     });
     this.formPassword?.valueChanges.subscribe((value) => {
       this.logService.logDebug(`form_password: ${value}`);
-      this.validatePasswordError()
-      this.onDisabled()
+      this.validatePasswordError();
+      this.onDisabled();
     });
     this.formConfirm_password?.valueChanges.subscribe((value) => {
       this.logService.logDebug(`form_confirm_password: ${value}`);
-      this.validateConfirmPasswordError()
-      this.onDisabled()
+      this.validateConfirmPasswordError();
+      this.onDisabled();
     });
     // Restore form data stored in storage, if any.
     // In this way, input values can be restored again when the user returns from a page transition.
@@ -90,24 +90,29 @@ export class SignupComponent {
       this.form.setValue(JSON.parse(formDraft));
     }
     this.form.valueChanges
-      .pipe(
-        filter(() => this.form.valid)
-      )
-    .subscribe(value => this.storageService.set('signup_form' , JSON.stringify(value)));
+      .pipe(filter(() => this.form.valid))
+      .subscribe((value) =>
+        this.storageService.set('signup_form', JSON.stringify(value))
+      );
   }
 
   formOnClickSignupHandler(): void {
-    this.validateMailError()
-    this.validatePasswordError()
-    this.validateConfirmPasswordError()
+    this.validateMailError();
+    this.validatePasswordError();
+    this.validateConfirmPasswordError();
     if (!this.agreementChecked) {
       this.isAgreementError = true;
-      this.agreementErrorMessage = '*Your consent is required. Please check the box';
+      this.agreementErrorMessage =
+        '*Your consent is required. Please check the box';
       return;
     }
     // validation
-    if (this.isMailError || this.isPasswordError ||
-      this.isConfirmPasswordError || this.isAgreementError) {
+    if (
+      this.isMailError ||
+      this.isPasswordError ||
+      this.isConfirmPasswordError ||
+      this.isAgreementError
+    ) {
       alert('Please confirm your input');
       return;
     }
@@ -121,41 +126,51 @@ export class SignupComponent {
     this.logService.logDebug(`trimmedEmail , ${trimmedEmail}`);
 
     // No double submitting
-    if (this.isSubmitted){
+    if (this.isSubmitted) {
       return;
     }
     this.isSubmitted = true;
 
-    this.authService.signUp(trimmedEmail, trimmedPassword)
-      .then((result) => {
+    this.authService
+      .signUp(trimmedEmail, trimmedPassword)
+      .then(() => {
         this.logService.logDebug('Signup succeeded');
         this.locationService.navigateTo1_1();
         // Onboarding display flag after successful registration
-        this.storageService.set(STORAGE_KEY_SHOWN_ONBOARD , 'false');
+        this.storageService.set(STORAGE_KEY_SHOWN_ONBOARD, 'false');
       })
       .catch((error) => {
         this.isError = true;
         this.errorMessage = 'Incorrect Email or Password';
         this.logService.logDebug('Signup failure');
-        // console.log(error)
+        console.log(error)
         this.isSubmitted = false;
-      })
+      });
   }
 
   onDisabled() {
-    this.isDisabled = this.validateMailError() || this.validatePasswordError() || this.validateConfirmPasswordError()
+    this.isDisabled =
+      this.validateMailError() ||
+      this.validatePasswordError() ||
+      this.validateConfirmPasswordError();
   }
 
-  navigateToTermsHandler(): void{
-    if (environment.production){
-      window.open(`https://www.linkedin.com/in/haruno-suematsu-b20a03235/`, '_blank');
+  navigateToTermsHandler(): void {
+    if (environment.production) {
+      window.open(
+        `https://www.linkedin.com/in/haruno-suematsu-b20a03235/`,
+        '_blank'
+      );
     } else {
-      window.open(`https://www.linkedin.com/in/haruno-suematsu-b20a03235/`, '_blank');
+      window.open(
+        `https://www.linkedin.com/in/haruno-suematsu-b20a03235/`,
+        '_blank'
+      );
     }
   }
 
-  navigateToPolicyHandler(): void{
-    if (environment.production){
+  navigateToPolicyHandler(): void {
+    if (environment.production) {
       window.open(`https://haruno-suematsu.netlify.app/`, '_blank');
     } else {
       window.open(`https://haruno-suematsu.netlify.app/`, '_blank');
@@ -164,7 +179,9 @@ export class SignupComponent {
 
   // validation mail
   validateMailError(): boolean {
-    const userAccountValidation = this.validationService.validateMailError(String(this.form_email));
+    const userAccountValidation = this.validationService.validateMailError(
+      String(this.form_email)
+    );
     this.mailErrorMessage = userAccountValidation.message;
     this.isMailError = userAccountValidation.isError;
     return userAccountValidation.isError;
@@ -172,7 +189,10 @@ export class SignupComponent {
 
   // validation password
   validatePasswordError(): boolean {
-    const userAccountValidation = this.validationService.validatePasswordError(String(this.form_password), String(this.form_email));
+    const userAccountValidation = this.validationService.validatePasswordError(
+      String(this.form_password),
+      String(this.form_email)
+    );
     this.passwordEmptyErrorMessage = userAccountValidation.messageEmpty;
     this.passwordValidErrorMessage = userAccountValidation.messageValid;
     this.passwordLengthErrorMessage = userAccountValidation.messageLength;
@@ -184,7 +204,11 @@ export class SignupComponent {
 
   // validation confirm password
   validateConfirmPasswordError(): boolean {
-    const userAccountValidation = this.validationService.validateConfirmPassword(String(this.form_password), String(this.form_confirm_password));
+    const userAccountValidation =
+      this.validationService.validateConfirmPassword(
+        String(this.form_password),
+        String(this.form_confirm_password)
+      );
     this.conformPasswordErrorMessage = userAccountValidation.message;
     this.isConfirmPasswordError = userAccountValidation.isError;
     return userAccountValidation.isError;
@@ -192,7 +216,8 @@ export class SignupComponent {
 
   // validation checkAgreement
   validateAgreementError(event: any): boolean {
-    const checkedValidation = this.validationService.validateAgreementError(event);
+    const checkedValidation =
+      this.validationService.validateAgreementError(event);
     this.agreementErrorMessage = checkedValidation.message;
     this.agreementChecked = checkedValidation.isChecked;
     this.isAgreementError = checkedValidation.isError;
@@ -218,5 +243,4 @@ export class SignupComponent {
   clearSavedDataOfForm(): void {
     this.storageService.remove('login_form_component_form');
   }
-
 }

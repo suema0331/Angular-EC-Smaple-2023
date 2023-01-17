@@ -1,7 +1,6 @@
 import { ProductStatus } from '../../enums/product_status';
 import { ProductImageExt } from './product_image_ext';
-export interface StoreProductExt{
-
+export interface StoreProductExt {
   store_product_id: string;
   product_name: string;
   standard_price: number;

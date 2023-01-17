@@ -1,15 +1,16 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Subscription, map } from 'rxjs';
 import { SystemStatusResponse } from 'src/backend/dto/common/system_status_response';
 import { LogService } from '../../../shared/services/log.service';
-import { HttpParams } from '@angular/common/http';
-
 @Injectable()
-export class LocationService{
-
-  private systemStatusCollection: AngularFirestoreCollection<SystemStatusResponse>
+export class LocationService {
+  private systemStatusCollection: AngularFirestoreCollection<SystemStatusResponse>;
   systemStatusSubscription: Subscription;
 
   constructor(
@@ -17,27 +18,33 @@ export class LocationService{
     private router: Router,
     private afs: AngularFirestore
   ) {
-    this.systemStatusCollection = this.afs.collection<SystemStatusResponse>('system-status', (ref) => ref.limit(1));
-    this.systemStatusSubscription = this.systemStatusCollection.snapshotChanges().pipe(
-      map((actions) =>
-        actions.map((a) => {
-          const data = a.payload.doc.data() as SystemStatusResponse;
-          const id = a.payload.doc.id;
+    this.systemStatusCollection = this.afs.collection<SystemStatusResponse>(
+      'system-status',
+      (ref) => ref.limit(1)
+    );
+    this.systemStatusSubscription = this.systemStatusCollection
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data() as SystemStatusResponse;
+            const id = a.payload.doc.id;
 
-          return { id, ...data };
-        })
+            return { id, ...data };
+          })
+        )
       )
-    ).subscribe(data => {
-      /**
-       *  monitor the state of system maintenance　mode
-       */
-      if (data[0] && data[0].user_app_run_status === 0) {
-        this.logService.logDebug('navigation to the /maintenance !')
-        this.router.navigateByUrl('/maintenance');
-      } else {
-        this.router.navigateByUrl('/');
-      }
-    });
+      .subscribe((data) => {
+        /**
+         *  monitor the state of system maintenance mode
+         */
+        if (data[0] && data[0].user_app_run_status === 0) {
+          this.logService.logDebug('navigation to the /maintenance !');
+          this.router.navigateByUrl('/maintenance');
+        } else {
+          this.router.navigateByUrl('/');
+        }
+      });
   }
 
   ngOnDestroy(): void {
@@ -53,8 +60,8 @@ export class LocationService{
   getQueryParam(name: string): string | null {
     const url = location.href;
     let value = null;
-    if (url.includes('?')){
-      const httpParams = new HttpParams({ fromString: url.split('?')[1]});
+    if (url.includes('?')) {
+      const httpParams = new HttpParams({ fromString: url.split('?')[1] });
       value = httpParams.get(name);
     }
     return value;
@@ -62,7 +69,7 @@ export class LocationService{
 
   /**
    * Assuming screen IDs are managed centrally(in requirement definition documents, etc.),
-   *  Navigations and page paths are also managed in one place based on screen IDs in this LocationService, so that
+   * Navigations and page paths are also managed in one place based on screen IDs in this LocationService, so that
    * to be resistant to page path changes, eliminating the need to re-implement all pages when the path is changed
    */
   // navigate to ShopTopComponent

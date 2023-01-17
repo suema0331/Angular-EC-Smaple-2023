@@ -1,9 +1,8 @@
-@import "variables";
+@import 'variables';
 
-.search{
-  background: #F2F2F2;
+.search {
+  background: #f2f2f2;
   padding: 88px 0;
-
   position: absolute;
   top: 0;
   left: 0;
@@ -11,50 +10,53 @@
   bottom: 0;
   overflow-y: scroll;
 
-  @media screen and (min-width:600px) {
+  @media screen and (min-width: 600px) {
     max-width: 600px;
     margin: 0 auto;
   }
 
-  .search-header{
+  .search-header {
     height: 56px;
     display: flex;
     justify-content: space-between;
     padding: 5px 16px;
     vertical-align: center;
-
     background: $shop_theme_color;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 100;
 
-    @media screen and (min-width:600px) {
+    @media screen and (min-width: 600px) {
       max-width: 600px;
       margin: 0 auto;
     }
-    ._back{
+
+    ._back {
       margin: auto 0;
-      color: #EAEAEA;
+      color: #eaeaea;
       cursor: pointer;
     }
-    .btn-close{
+
+    .btn-close {
       margin: auto 4px auto 18px;
-      color: #2E2621;
+      color: #2e2621;
       cursor: pointer;
     }
   }
 
-  .search-result-area{
-    padding: 0px 0px 24px;
-    .result-area{
+  .search-result-area {
+    padding: 0 0 24px;
+
+    .result-area {
       padding: 12px;
-      background: #FCFCFC;
+      background: #fcfcfc;
       margin-bottom: 24px;
-      ._ttl{
+
+      ._ttl {
         font-size: 16px;
         font-weight: bold;
-        margin: 0px 0 12px;
+        margin: 0 0 12px;
         display: flex;
         justify-content: space-between;
       }
@@ -68,37 +70,43 @@
       width: 100%;
       z-index: 99;
 
-      .btn_group{
+      .btn_group {
         .submit {
-          @media screen and (min-width:600px) {
+          @media screen and (min-width: 600px) {
             max-width: 568px;
             margin: 0 auto 16px;
           }
+
           width: 100%;
           display: flex;
           align-items: flex-end;
           color: #fff;
           background: $shop_theme_color;
-          margin: 0px auto 16px;
-          img{
+          margin: 0 auto 16px;
+
+          img {
             height: 24px;
             margin: auto 8px 8px 0;
           }
-          ._quantity{
+
+          ._quantity {
             font-size: 20px;
             font-weight: bold;
             margin: auto 2px 4px;
           }
-          ._ten{
+
+          ._ten {
             font-size: 12px;
             margin: auto 0 4px;
           }
-          ._price{
+
+          ._price {
             font-size: 26px;
             font-weight: bold;
             margin: auto 2px auto auto;
           }
-          ._tax-in{
+
+          ._tax-in {
             font-size: 12px;
             margin: auto 0 7px;
           }
@@ -107,4 +115,3 @@
     }
   }
 }
-

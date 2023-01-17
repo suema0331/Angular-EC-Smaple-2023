@@ -1,35 +1,42 @@
 import { Injectable, Optional } from '@angular/core';
-import { Auth, User, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, signOut, updateProfile, user } from '@angular/fire/auth';
+import {
+  Auth,
+  User,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+  user,
+} from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { authState } from 'rxfire/auth';
 import { UserCreateRequest } from 'src/backend/dto/common/user_create_request';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   currentUser = {} as User;
 
   constructor(
-     // Tell Angular that dependencies are optional
+    // Tell Angular that dependencies are optional
     @Optional() private auth: Auth,
-    private afs: AngularFirestore,
+    private afs: AngularFirestore
   ) {
-
     // Setting logged in user in localstorage else null
     authState(this.auth).subscribe((user) => {
       // console.log(user)
       if (user) {
-        this.currentUser = user
+        this.currentUser = user;
       }
-        // To store (only some information) in local storage. (Not used at this time.)
-        // localStorage.setItem('user', JSON.stringify(user));
-        // JSON.parse(localStorage.getItem('user')!);
-        // } else {
-        //   localStorage.setItem('user', 'null');
-        //   JSON.parse(localStorage.getItem('user')!);
-        // }
+      // To store (only some information) in local storage. (Not used at this time.)
+      // localStorage.setItem('user', JSON.stringify(user));
+      // JSON.parse(localStorage.getItem('user')!);
+      // } else {
+      //   localStorage.setItem('user', 'null');
+      //   JSON.parse(localStorage.getItem('user')!);
+      // }
     });
   }
 
@@ -37,12 +44,11 @@ export class AuthService {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then((result) => {
         // console.log(result)
-        return result
+        return result;
       })
       .catch((error) => {
-        throw new Error(error)
+        throw new Error(error);
       });
-      ;
   }
 
   logout() {
@@ -51,11 +57,11 @@ export class AuthService {
         this.currentUser = {} as User;
         // localStorage.removeItem('user');
         // console.log(result)
-        return result
+        return result;
       })
       .catch((error) => {
-        throw new Error(error)
-    });
+        throw new Error(error);
+      });
   }
 
   // Sign up with email/password
@@ -63,23 +69,25 @@ export class AuthService {
     return createUserWithEmailAndPassword(this.auth, email, password)
       .then(async (result) => {
         // console.log(result)
-        const newUser = this.auth.currentUser as User
+        const newUser = this.auth.currentUser as User;
 
         await updateProfile(newUser, {
           displayName: newUser.email?.split('@')[0] ?? 'Anonymous',
           /**
            * License: Multiavatar  https://api.multiavatar.com/
            */
-          photoURL: `https://api.multiavatar.com/${Math.floor(Math.random()*1000)}.png`,
-        })
+          photoURL: `https://api.multiavatar.com/${Math.floor(
+            Math.random() * 1000
+          )}.png`,
+        });
 
         /* Call the SendVerificaitonMail() function when new user signup and returns promise */
-        this.sendVerificationMail().catch(error => alert(error.message))
-        this.setUserData(result.user).catch(error => alert(error.message));
-        return result
+        this.sendVerificationMail().catch((error) => alert(error.message));
+        this.setUserData(result.user).catch((error) => alert(error.message));
+        return result;
       })
       .catch((error) => {
-        throw new Error(error)
+        throw new Error(error);
       });
   }
   // Send email verfificaiton when new user sign up

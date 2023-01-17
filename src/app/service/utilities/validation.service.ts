@@ -22,10 +22,9 @@ interface StandardCheckedValidation {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ValidationService {
-
   /**  Rule:
    * E-mail address:
    *  - Include @.
@@ -35,34 +34,35 @@ export class ValidationService {
    *  - Include uppercase and lowercase letters, numbers, and the following allowed symbols.
    *  - No symbols other than the following allowed symbols.
    *  - Not contain the exact same email address or part of an email address
-  */
-// ! @#%^&*/_? $¥-`˜()+=&#123;&#125;[]\|;"'<>,.
+   */
 
   ratz = /[a-z]/;
   rAtZ = /[A-Z]/;
   r0t9 = /[0-9]/;
+  // eslint-disable-next-line no-useless-escape
   rSymbols = /[!@#%^&*/_?$¥`˜()+={}\[\]\\|;"'<>,.-]/;
+  // eslint-disable-next-line no-useless-escape
   rSymbolsExclusion = /[^a-zA-Z0-9!@#%^&*/_?$¥`˜()+={}\[\]\\|;"'<>,.-]/;
-  // rFullWidthKana = /^[ァ-ヶー　]+$/;
+  // rFullWidthKana = /^[ァ-ヶー]+$/;
 
-  constructor(private logService: LogService) { }
+  constructor(private logService: LogService) {}
 
   // validation mail
   validateMailError(email: string): StandardValidation {
     if (!email || email.length === 0) {
       return {
         message: 'Please enter your email address.',
-        isError: true
+        isError: true,
       };
     } else if (email.indexOf('@') < 0) {
       return {
         message: 'Incorrect email address.',
-        isError: true
+        isError: true,
       };
     } else if (email.length > 50) {
       return {
         message: 'Please enter up to 50 characters.',
-        isError: true
+        isError: true,
       };
     } else {
       return {
@@ -74,7 +74,6 @@ export class ValidationService {
 
   // validation password
   validatePasswordError(password: string, mail: string): ValidationForPassword {
-
     const validationForPassword: ValidationForPassword = {
       messageEmpty: '',
       messageValid: '',
@@ -92,7 +91,8 @@ export class ValidationService {
 
     // length check
     if (password.length < 10) {
-      validationForPassword.messageLength = 'Please enter more than 10 characters.';
+      validationForPassword.messageLength =
+        'Please enter more than 10 characters.';
       validationForPassword.isError = true;
     }
     if (password.length > 20) {
@@ -102,18 +102,22 @@ export class ValidationService {
     // password rule check
     const isValidPasswordError = this.isValidPassword(password);
     if (isValidPasswordError.length > 0) {
-      const errorMsg = this.createPasswordValidErrorMessage(isValidPasswordError);
+      const errorMsg =
+        this.createPasswordValidErrorMessage(isValidPasswordError);
       validationForPassword.messageValid = errorMsg;
       validationForPassword.isError = true;
     }
     const isExclusionPasswordError = this.isExclusionPassword(password);
-    if (isExclusionPasswordError){
+    if (isExclusionPasswordError) {
       validationForPassword.messageExclusion = isExclusionPasswordError;
       validationForPassword.isError = true;
     }
     // Check if it contains the same or part of your email address
     if (this.isValidPasswordAndMail(password, mail).isError) {
-      validationForPassword.messageMail = this.isValidPasswordAndMail(password, mail).message;
+      validationForPassword.messageMail = this.isValidPasswordAndMail(
+        password,
+        mail
+      ).message;
       validationForPassword.isError = true;
     }
 
@@ -125,12 +129,12 @@ export class ValidationService {
     if (!email || email.length === 0) {
       return {
         message: 'Please enter a email address.',
-        isError: true
+        isError: true,
       };
     } else if (email.length > 50) {
       return {
         message: 'Please enter up to 50 characters.',
-        isError: true
+        isError: true,
       };
     } else {
       return {
@@ -152,12 +156,12 @@ export class ValidationService {
         isError: true,
       };
     }
-      // length check
+    // length check
     else if (password.length > 20) {
-        return {
-          message: 'Please enter up to 20 characters.',
-          isError: true,
-        };
+      return {
+        message: 'Please enter up to 20 characters.',
+        isError: true,
+      };
     } else {
       return {
         message: '',
@@ -166,16 +170,19 @@ export class ValidationService {
     }
   }
 
-    // validation confirm password
-  validateConfirmPassword(password: string, confirmPassword: string): StandardValidation {
-    if ( !confirmPassword || confirmPassword.length === 0) {
+  // validation confirm password
+  validateConfirmPassword(
+    password: string,
+    confirmPassword: string
+  ): StandardValidation {
+    if (!confirmPassword || confirmPassword.length === 0) {
       return {
         message: 'Please enter a password.',
         isError: true,
       };
     }
     // password match check
-    else if (password !== confirmPassword){
+    else if (password !== confirmPassword) {
       return {
         message: 'Password does not match.',
         isError: true,
@@ -188,7 +195,7 @@ export class ValidationService {
     }
   }
 
-    // password rule
+  // password rule
   isValidPassword(str: string): string[] {
     const errorMsgs = [];
     if (!this.rAtZ.test(str)) {
@@ -197,10 +204,10 @@ export class ValidationService {
     if (!this.ratz.test(str)) {
       errorMsgs.push('Lower case');
     }
-    if (!this.r0t9.test(str)){
+    if (!this.r0t9.test(str)) {
       errorMsgs.push('Number');
     }
-    if (!this.rSymbols.test(str)){
+    if (!this.rSymbols.test(str)) {
       errorMsgs.push('Symbol in the list');
     }
     return errorMsgs;
@@ -208,7 +215,7 @@ export class ValidationService {
 
   // password rule 2
   isExclusionPassword(str: string): string {
-    if (this.rSymbolsExclusion.test(str)){
+    if (this.rSymbolsExclusion.test(str)) {
       return 'Unavailable characters are included, Please delete them.';
     }
     return '';
@@ -217,10 +224,10 @@ export class ValidationService {
   // password Error Message
   createPasswordValidErrorMessage(errorMsgs: string[]): string {
     let tmpMsg = '';
-    errorMsgs.forEach( e => {
+    errorMsgs.forEach((e) => {
       tmpMsg += e + '/';
     });
-    tmpMsg = tmpMsg.slice(0, -1) ;
+    tmpMsg = tmpMsg.slice(0, -1);
     return 'Please include: ' + tmpMsg;
   }
 
@@ -228,15 +235,15 @@ export class ValidationService {
   isValidPasswordAndMail(password: string, mail: string): StandardValidation {
     const mailString = mail.match(/(.+)@(.+)\./);
     this.logService.logDebug(`${mailString}`);
-    if (password === mail){
+    if (password === mail) {
       this.logService.logDebug(`${password} ${mail}`);
       return {
         message: 'Please set a different one than your e-mail address.',
         isError: true,
       };
-    } else if ( mailString && mailString.length >= 3 ) {
+    } else if (mailString && mailString.length >= 3) {
       const matched = mailString.filter((m) => {
-        return (password.indexOf(m) !== -1) ;
+        return password.indexOf(m) !== -1;
       });
       this.logService.logDebug(`matched ${matched}`);
       if (matched && matched.length > 0) {
@@ -268,6 +275,4 @@ export class ValidationService {
       };
     }
   }
-
-
 }

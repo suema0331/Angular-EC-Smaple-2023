@@ -1,4 +1,4 @@
 export enum AvailableFlag {
   unavailable = 0,
-  available = 1
+  available = 1,
 }

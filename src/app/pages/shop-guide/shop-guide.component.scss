@@ -1,10 +1,11 @@
-@import "variables";
+@import 'variables';
 
 .btn-close {
   position: absolute;
   right: 17px;
   top: 15px;
 }
+
 .modal-header {
   padding: 2.5rem 1rem 0;
   border: none;
@@ -12,13 +13,13 @@
   .modal-title {
     font-size: 18px;
     font-weight: bold;
-    color: #2E2621;
+    color: #2e2621;
     margin: 0 auto;
     position: relative;
     display: inline-block;
 
-    &:before {
-      content: "";
+    &::before {
+      content: '';
       position: absolute;
       left: 50%;
       bottom: -5px;
@@ -26,7 +27,13 @@
       width: 140px;
       height: 2px;
       transform: translateX(-50%);
-      background-image: linear-gradient(to right, #D1D1D1, #D1D1D1 2px, transparent 1px, transparent 8px);
+      background-image: linear-gradient(
+        to right,
+        #d1d1d1,
+        #d1d1d1 2px,
+        transparent 1px,
+        transparent 8px
+      );
       background-size: 5px 2px;
       background-position: left bottom;
       background-repeat: repeat-x;
@@ -39,8 +46,9 @@
   font-size: 18px;
   font-weight: bold;
   text-align: center;
-  color: #2E2621;
+  color: #2e2621;
   padding: 28px;
+
   ._message {
     font-size: 16px;
     font-weight: normal;
@@ -57,15 +65,14 @@
 
 .stepper-btn {
   text-align: center;
-  margin: 38px 0px 28px;
+  margin: 38px 0 28px;
+
   button {
     padding: 16px 100px;
     color: #fff;
     font-size: 16px;
     font-weight: bold;
-    background: -moz-linear-gradient(left, $shop_theme_color 50%, #017098);
-    background: -webkit-linear-gradient(left, $shop_theme_color 50%, #017098);
+    background: linear-gradient(to left, $shop_theme_color 50%, #017098);
     background: linear-gradient(to right, $shop_theme_color 50%, #017098);
   }
 }
-

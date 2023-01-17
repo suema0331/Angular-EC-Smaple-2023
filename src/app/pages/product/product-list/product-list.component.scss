@@ -1,7 +1,7 @@
-@import "variables";
+@import 'variables';
 
 .section-header {
-  @media screen and (min-width:600px) {
+  @media screen and (min-width: 600px) {
     max-width: 600px;
     margin: 0 auto;
   }
@@ -15,53 +15,56 @@
   z-index: 100;
   width: 100%;
   background: $shop_theme_color;
-  ._back{
+
+  ._back {
     margin: auto 0;
-    color: #EAEAEA;
+    color: #eaeaea;
     cursor: pointer;
   }
 
-  ._search{
+  ._search {
     position: relative;
     margin: auto;
-    ._button-area{
+
+    ._button-area {
       padding: 8px 80px 8px 12px;
       border-radius: 18px;
-      background: #EAEAEA;
+      background: #eaeaea;
       font-size: 14px;
-      color: #B7B7B7;
+      color: #b7b7b7;
       font-weight: normal;
       cursor: pointer;
+
       i {
         font-size: 15px;
         margin-right: 4px;
-        color: #B7B7B7;
+        color: #b7b7b7;
       }
     }
   }
-  ._menu{
+
+  ._menu {
     width: 28px;
     margin: auto 0 auto 8px;
-    color: #EAEAEA;
+    color: #eaeaea;
     cursor: pointer;
   }
 }
 
 .section {
-  background: #F2F2F2;
+  background: #f2f2f2;
   padding-bottom: 134px;
   margin-top: 57px;
 
-  .products-area{
-    background: #FCFCFC;
+  .products-area {
+    background: #fcfcfc;
     margin-bottom: 12px;
     padding: 16px 10px 12px;
-    ._ttl{
+
+    ._ttl {
       font-size: 16px;
       font-weight: bold;
       margin-bottom: 12px;
     }
   }
 }
-
-

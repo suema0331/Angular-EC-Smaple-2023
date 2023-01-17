@@ -1,9 +1,11 @@
 <div class="header">
-  <div *ngIf="isBack"
-    class="_back"  (click)="handleBack()"
+  <div
+    *ngIf="isBack"
+    class="_back"
+    (click)="handleBack()"
     title="This is a button to back to the previous page."
-    >
+  >
     <i class="fas fa-chevron-left"></i>
   </div>
-  {{headerTitle}}
+  {{ headerTitle }}
 </div>
