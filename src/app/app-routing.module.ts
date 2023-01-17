@@ -20,6 +20,11 @@ const BASE_TITLE = 'Angular EC App';
 const routes: Routes = [
   //  When path matches,create new instance of component
   {
+    path: '',
+    redirectTo: '/shop-top',
+    pathMatch: 'full',
+  },
+  {
     path: 'shop-top',
     component: ShopTopComponent,
     data: {
@@ -27,11 +32,6 @@ const routes: Routes = [
       description: 'This is a shop top page.',
       ogUrl: 'http://localhost:4200/shop-top',
     },
-  },
-  {
-    path: '',
-    redirectTo: '/shop-top',
-    pathMatch: 'full',
   },
   {
     path: 'login',

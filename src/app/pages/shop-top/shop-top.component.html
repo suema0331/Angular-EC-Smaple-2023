@@ -4,20 +4,20 @@
     <span class="_name">Sample EC</span>
   </div>
   <div class="_search">
-    <div
+    <a
       class="_button-area"
       title="This is a button on the header to navigate to the search page."
       (click)="navigateToSearchHandler()"
     >
       <i class="fas fa-search"></i>
       Search
-    </div>
+    </a>
   </div>
-  <div *ngIf="isLoggedIn" class="_logout" (click)="logoutHandler()">
+  <button *ngIf="isLoggedIn" class="_logout" (click)="logoutHandler()">
     <div class="_button-area" title="This is a looput button on the header.">
       logout
     </div>
-  </div>
+  </button>
   <div
     (click)="navigateToMypageHandler()"
     title="This is a munu icon on the header to navigate to the my page."
@@ -61,13 +61,13 @@
             alt="store-top-image-1"
             (click)="navigateToProductList()"
           />
-          <button
+          <a
             class="_search"
             (click)="navigateToProductList()"
             title="This is a munu icon on the header to navigate to the product list page."
           >
             Search from the product list <i class="fas fa-angle-right"></i>
-          </button>
+          </a>
         </mdb-carousel-item>
         <mdb-carousel-item>
           <img
@@ -75,13 +75,13 @@
             alt="store-top-image-2"
             (click)="navigateToProductList()"
           />
-          <button
+          <a
             class="_search"
             (click)="navigateToProductList()"
             title="This is a munu icon on the header to navigate to the product list page."
           >
             Search from the product list <i class="fas fa-angle-right"></i>
-          </button>
+          </a>
         </mdb-carousel-item>
         <mdb-carousel-item>
           <img
@@ -89,13 +89,13 @@
             alt="store-top-image-3"
             (click)="navigateToProductList()"
           />
-          <button
+          <a
             class="_search"
             (click)="navigateToProductList()"
             title="This is a munu icon on the header to navigate to the product list page."
           >
             Search from the product list <i class="fas fa-angle-right"></i>
-          </button>
+          </a>
         </mdb-carousel-item>
       </mdb-carousel>
     </div>
@@ -118,7 +118,7 @@
     </div>
   </div>
   <div class="tab-btn-area">
-    <button
+    <a
       mdbRipple
       rippleColor="dark"
       type="button"
@@ -132,8 +132,8 @@
         alt="favorite-icon"
       />
       Favorites
-    </button>
-    <button
+    </a>
+    <a
       mdbRipple
       rippleColor="dark"
       type="button"
@@ -147,50 +147,50 @@
         alt="purchase-icon"
       />
       Purchased
-    </button>
+    </a>
   </div>
 
   <div class="bottom-menu-area">
     <ul class="list-group">
-      <li
+      <a
         class="list-group-item"
         title="This is a link to navigate to the store information page."
         (click)="navigateToShopHandler()"
       >
         Store Information <i class="fas fa-chevron-right"></i>
-      </li>
-      <li
+      </a>
+      <a
         class="list-group-item"
         title="This is a link to navigate to the compliance page."
         (click)="navigateToComplianceHandler()"
       >
         Compliance <i class="fas fa-chevron-right"></i>
-      </li>
-      <li
+      </a>
+      <a
         class="list-group-item"
         title="This is a link to navigate to the privacy policy page."
         (click)="navigateToPrivacyHandler()"
       >
         Privacy Policy <i class="fas fa-chevron-right"></i>
-      </li>
+      </a>
     </ul>
   </div>
   <div class="signup-area" *ngIf="!isLoggedIn">
     <div class="btn_group">
-      <button
+      <a
         routerLink="/signup"
         class="btn btn-rounded submit"
         title="This is a link to navigate to the signup page."
       >
         Register
-      </button>
+      </a>
       <div class="_login-area">
         Already have an account?
-        <span
+        <a
           class="_login"
           (click)="loginHandler()"
           title="This is a link to navigate to the login page."
-          >Log In</span
+          >Log In</a
         >
       </div>
     </div>
