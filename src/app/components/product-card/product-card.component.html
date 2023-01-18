@@ -6,10 +6,24 @@
   <ng-container>
     <div class="col">
       <div class="card h-100">
-        <div
+        <a
           class="card_img"
+          [ariaLabel]="
+            getProductDisplayLabel(
+              storeProduct.producing_area,
+              storeProduct.product_name,
+              storeProduct.brand
+            )
+          "
+          [title]="
+            getProductDisplayLabel(
+              storeProduct.producing_area,
+              storeProduct.product_name,
+              storeProduct.brand
+            )
+          "
           [class.stockout]="storeProduct.product_status === 2"
-          [routerLink]="['/products', storeProduct.store_product_id]"
+          [routerLink]="[links[2_1], storeProduct.store_product_id]"
         >
           <span *ngIf="storeProduct.tags[0]" class="_tag"
             >{{ storeProduct.tags[0] }}
@@ -82,7 +96,7 @@
               ></i>
             </button>
           </div>
-        </div>
+        </a>
         <div
           [class._small]="storeProduct.store_price > 999"
           [class.discount]="

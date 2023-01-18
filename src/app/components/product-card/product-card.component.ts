@@ -63,6 +63,7 @@ export class ProductCardComponent {
 
   @ViewChild('constraintTooltip') constraintTooltip!: ElementRef | undefined;
   displayConstraintTooltip = false;
+  links = this.locationService.links;
 
   constructor(
     public locationService: LocationService,

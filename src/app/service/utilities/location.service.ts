@@ -14,6 +14,20 @@ export class LocationService {
   systemStatusSubscription: Subscription;
   isMentenance = false;
 
+  links = {
+    1_1: '/shop-top',
+    1_2: '/search',
+    1_3: '/maintenence',
+    1_4: '/login',
+    1_5: '/signup',
+    2_1: '/products',
+    2_2: '/product',
+    3_1: '/mypage',
+    3_2: '/favorite',
+    3_3: '/pastitem',
+    4_1: '/cart',
+  };
+
   constructor(
     private logService: LogService,
     private router: Router,

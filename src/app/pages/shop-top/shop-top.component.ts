@@ -25,6 +25,8 @@ export class ShopTopComponent {
   screenName = 'ShopTopComponent';
   screenId = '1_1';
 
+  links = this.locationService.links;
+
   onboardModalRef: MdbModalRef<ShopGuideComponent> | undefined;
 
   recommendedProductList: Array<StoreProductExt> = [];
@@ -125,31 +127,7 @@ export class ShopTopComponent {
     this.cartService.decrementItem($event.store_product_id);
   }
 
-  navigateToMypageHandler(): void {
-    this.locationService.navigateTo3_1();
-  }
-
-  navigateToProductList(): void {
-    this.locationService.navigateTo2_1();
-  }
-
-  navigateToSearchHandler(): void {
-    this.locationService.navigateTo1_2();
-  }
-
-  navigateToFavoriteHandler(): void {
-    this.locationService.navigateTo3_2();
-  }
-
-  navigateToPastitemHandler(): void {
-    this.locationService.navigateTo3_3();
-  }
-
   cartBtnHandler(): void {
     this.locationService.navigateTo4_1();
-  }
-
-  loginHandler(): void {
-    this.locationService.navigateTo('/login');
   }
 }

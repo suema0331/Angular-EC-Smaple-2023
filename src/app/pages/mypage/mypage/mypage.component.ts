@@ -14,6 +14,8 @@ export class MypageComponent {
   screenId = '3_1';
 
   currentUser = this.authService.currentUser;
+  links = this.locationService.links;
+  envView = environment;
 
   constructor(
     public locationService: LocationService,
@@ -36,23 +38,8 @@ export class MypageComponent {
       });
   }
 
-  handleBack(): void {
-    this.locationService.navigateTo1_1();
-  }
-
-  loginHandler(): void {
-    this.locationService.navigateTo1_4();
-  }
-
-  navigateToFavoriteHandler(): void {
-    this.locationService.navigateTo3_2();
-  }
-
-  navigateToPastitemHandler(): void {
-    this.locationService.navigateTo3_3();
-  }
-
-  navigateToCampaignHandler(): void {
+  navigateToCampaignHandler($event: Event): void {
+    $event.preventDefault();
     if (environment.production) {
       // If we have production server
       // window.open(`${environment.BASE_URL}/campaign.html`, '_blank');
@@ -62,7 +49,8 @@ export class MypageComponent {
     }
   }
 
-  navigateToFaqHandler(): void {
+  navigateToFaqHandler($event: Event): void {
+    $event.preventDefault();
     if (environment.production) {
       window.open(
         `https://github.com/suema0331/My-Typescript-Express-Mocha-with-Swagger`,
@@ -76,7 +64,8 @@ export class MypageComponent {
     }
   }
 
-  navigateToTermsHandler(): void {
+  navigateToTermsHandler($event: Event): void {
+    $event.preventDefault();
     if (environment.production) {
       window.open(
         `https://www.linkedin.com/in/haruno-suematsu-b20a03235/`,
@@ -90,16 +79,12 @@ export class MypageComponent {
     }
   }
 
-  navigateToPolicyHandler(): void {
+  navigateToPolicyHandler($event: Event): void {
+    $event.preventDefault();
     if (environment.production) {
       window.open(`https://haruno-suematsu.netlify.app/`, '_blank');
     } else {
       window.open(`https://haruno-suematsu.netlify.app/`, '_blank');
     }
-  }
-
-  clickUserIconHandler(): void {
-    if (!this.currentUser.photoURL) return;
-    window.open(this.currentUser.photoURL, '_blank');
   }
 }

@@ -1,25 +1,49 @@
 <div class="footer">
   <ul class="list-group">
-    <a
-      class="list-group-item"
-      title="This is a link to navigate to the store information page."
-      (click)="navigateToShopHandler()"
-    >
-      Store Information <i class="fas fa-chevron-right"></i>
-    </a>
-    <a
-      class="list-group-item"
-      title="This is a link to navigate to the compliance page."
-      (click)="navigateToComplianceHandler()"
-    >
-      Compliance <i class="fas fa-chevron-right"></i>
-    </a>
-    <a
-      class="list-group-item"
-      title="This is a link to navigate to the privacy policy page."
-      (click)="navigateToPrivacyHandler()"
-    >
-      Privacy Policy <i class="fas fa-chevron-right"></i>
-    </a>
+    <li>
+      <a
+        class="list-group-item"
+        title="This is a link to navigate to the store information page."
+        (click)="navigateToShopHandler($event)"
+        href="{{
+          envView.production
+            ? 'https://nuxt-web-app-testing.netlify.app/'
+            : 'http://localhost/dev'
+        }}"
+      >
+        Store Information
+        <i class="fas fa-external-link-alt"></i>
+      </a>
+    </li>
+    <li>
+      <a
+        class="list-group-item"
+        title="This is a link to navigate to the compliance page."
+        (click)="navigateToComplianceHandler($event)"
+        href="{{
+          envView.production
+            ? 'https://github.com/suema0331/My-Typescript-Express-Mocha-with-Swagger/'
+            : 'https://www.linkedin.com/in/haruno-suematsu-b20a03235/'
+        }}"
+      >
+        Compliance
+        <i class="fas fa-external-link-alt"></i>
+      </a>
+    </li>
+    <li>
+      <a
+        class="list-group-item"
+        title="This is a link to navigate to the privacy policy page."
+        (click)="navigateToPrivacyHandler($event)"
+        href="{{
+          envView.production
+            ? 'https://haruno-suematsu.netlify.app/'
+            : 'https://haruno-suematsu.netlify.app/'
+        }}"
+      >
+        Privacy Policy
+        <i class="fas fa-external-link-alt"></i>
+      </a>
+    </li>
   </ul>
 </div>

@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
   isPasswordError = false;
 
   returnUrl = 'shop-top';
+  links = this.locationService.links;
 
   constructor(
     private fb: FormBuilder,

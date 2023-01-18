@@ -42,7 +42,7 @@ export class CartComponent {
 
   constructor(
     public locationService: LocationService,
-    private location: Location,
+    public location: Location,
     private cartService: CartService,
     private modalService: MdbModalService,
     private afs: AngularFirestore,
@@ -194,9 +194,5 @@ export class CartComponent {
       return true;
     }
     return false;
-  }
-
-  handleBack(): void {
-    this.location.back();
   }
 }

@@ -57,6 +57,9 @@ export class SignupComponent {
   // The confirm button should not be pressed in succession.
   isSubmitted = false;
 
+  envView = environment;
+  links = this.locationService.links;
+
   constructor(
     private fb: FormBuilder,
     public locationService: LocationService,
@@ -155,7 +158,8 @@ export class SignupComponent {
       this.validateConfirmPasswordError();
   }
 
-  navigateToTermsHandler(): void {
+  navigateToTermsHandler($event: Event): void {
+    $event.preventDefault();
     if (environment.production) {
       window.open(
         `https://www.linkedin.com/in/haruno-suematsu-b20a03235/`,
@@ -169,7 +173,8 @@ export class SignupComponent {
     }
   }
 
-  navigateToPolicyHandler(): void {
+  navigateToPolicyHandler($event: Event): void {
+    $event.preventDefault();
     if (environment.production) {
       window.open(`https://haruno-suematsu.netlify.app/`, '_blank');
     } else {

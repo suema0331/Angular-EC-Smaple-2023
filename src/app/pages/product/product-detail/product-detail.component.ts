@@ -48,17 +48,19 @@ export class ProductDetailComponent {
   topViewImage = '';
   isSelectedImg = 0;
 
+  links = this.locationService.links;
+
   @ViewChild('constraintTooltip') constraintTooltip!: ElementRef | undefined;
 
   constructor(
-    public locationService: LocationService,
+    private locationService: LocationService,
     private priceService: PriceService,
     private seoService: SEOService,
     private activatedRoute: ActivatedRoute,
     private afs: AngularFirestore,
     private cartService: CartService,
     private notificationService: NotificationService,
-    private location: Location
+    public location: Location
   ) {
     // Get ID from the URL path query
     this.activatedRoute.params.subscribe(
@@ -80,8 +82,6 @@ export class ProductDetailComponent {
         )
       )
       .subscribe((data) => {
-        // console.log("🌟subscribed Product data")
-        // console.log(data)
 
         if (!data[0] || !data[0].store_product_id) {
           alert('Product does not exist');
@@ -253,11 +253,6 @@ export class ProductDetailComponent {
     this.topViewImage = img;
   }
 
-  handleBack(): void {
-    this.location.back();
-    // this.locationService.navigateTo2_1();
-  }
-
   getProductDisplayLabel(
     producingArea: string,
     productName: string,
@@ -269,9 +264,5 @@ export class ProductDetailComponent {
       ' ' +
       (brand ? brand : '');
     return displayLabel;
-  }
-
-  navigateToCartHandler(): void {
-    this.locationService.navigateTo4_1();
   }
 }

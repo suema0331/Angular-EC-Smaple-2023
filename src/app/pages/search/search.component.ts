@@ -26,6 +26,8 @@ export class SearchComponent {
   cartPriceInfo: CartPriceInfo = this.cartService.getCartPriceInfo();
   isLoggedIn = this.authService.isLoggedIn;
 
+  links = this.locationService.links;
+
   constructor(
     private locationService: LocationService,
     private cartService: CartService,
@@ -37,10 +39,6 @@ export class SearchComponent {
     indexName: 'angular-ec-2023',
     searchClient,
   };
-
-  backToTopHandler(): void {
-    this.locationService.navigateTo1_1();
-  }
 
   clickPlusHandler($event: StoreProductExt): void {
     if ($event.cart_quantity >= CONSTRAINT_MAX) {
