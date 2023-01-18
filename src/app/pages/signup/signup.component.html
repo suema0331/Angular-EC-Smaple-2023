@@ -161,6 +161,7 @@
           <a
             (click)="navigateToTermsHandler($event)"
             title="This is a link to navigate to the external Terms of Use page."
+            aria-label="This is a link to navigate to the external Terms of Use page."
             class="_tos"
             href="{{
               envView.production
@@ -174,6 +175,7 @@
           <a
             (click)="navigateToPolicyHandler($event)"
             title="This is a link to navigate to the external Privacy Policy page."
+            aria-label="This is a link to navigate to the external Privacy Policy page."
             class="_policy"
             href="{{
               envView.production
@@ -209,6 +211,7 @@
           class="_signup"
           [routerLink]="links[1_4]"
           title="This is a link to navigate to the login page."
+          aria-label="This is a link to navigate to the login page."
           >Log in</a
         >
       </div>

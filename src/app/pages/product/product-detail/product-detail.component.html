@@ -6,6 +6,7 @@
         type="button"
         class="_close"
         title="This is a link to back to the product list page."
+        aria-label="This is a link to back to the product list page."
         (click)="this.location.back()"
       >
         <img src="/assets/product/common_btn_close@2x.png" alt="back-btn" />
@@ -172,6 +173,7 @@
           class="_icon-btn"
           [routerLink]="links[4_1]"
           title="This is a link to navigate to the cart page."
+          aria-label="This is a link to navigate to the cart page."
         >
           <img src="/assets/product/common_icon_cart@2x.png" alt="cart-btn" />
         </a>
