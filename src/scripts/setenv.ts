@@ -1,3 +1,10 @@
+/**
+ * Reads the command line arguments passed in using `yargs`. You can access environment variables in `process.env` with `dotenv`,
+ * and write the contents of the environment variable settings to a file for each environment with `writeFile`.
+  - For development: `ts-node ./src/scripts/setenv.ts --environment=dev`
+  - For qa: `ts-node . /src/scripts/setenv.ts --environment=qa`
+  - For production: `ts-node . /src/scripts/setenv.ts --environment=prod`
+ */
 const { writeFile } = require('fs');
 const { argv } = require('yargs');
 require('dotenv').config();
@@ -102,6 +109,6 @@ writeFile(
       `3: Completed to write variables to ${targetServiceAccountPath}`
     );
 
-    console.log(`set environment configurations were successfully written :)`);
+    console.log(`Environment configurations were successfully written :)`);
   }
 );

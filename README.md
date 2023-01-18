@@ -37,6 +37,16 @@ $ npm run eslint
 git clone git@github.com:suema0331/Angular-EC-Smaple-2023.git && cd Angular-EC-Smaple-2023 && npm install
 ```
 
+## Generate environment configs
+
+The `npm run config` command creates an environment configuration file for each development, qa, and production environment by generating credential information such as Firebase settings from `.env`. (`src/environments/environment.ts`, `src/scripts/config.js`,`src/scripts/serviceAccount.json`)
+Please have the `.env` file shared by the administrator :)
+Note: The following `npm run start` includes this command, so you can skip this command. If you only want to create and check the configuration file, run this command please.
+
+```bash
+npm run config
+```
+
 ## Start the server
 
 Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
@@ -48,7 +58,7 @@ npm run start
 ## Build
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
-Run `npm run build:pro` to specify the build for the production configuration; Angular modules and components are to be compiled and optimized at build time.
+Run `npm run build:pro` to specify the build for the production configuration; Angular modules and components are to be compiled and optimized at build time. In the case of a production build, the configuration file will also be generated for production, so don't worry. :)
 
 ```bash
 npm run build
