@@ -1,12 +1,12 @@
 <div class="header">
-  <a
+  <button
     *ngIf="isBack"
     class="_back"
     (click)="handleBack()"
-    title="This is a link to back to the previous page."
-    aria-label="This is a link to back to the previous page."
+    title="This is a button to back to the previous page."
+    aria-label="This is a button to back to the previous page."
   >
     <i class="fas fa-chevron-left"></i>
-  </a>
+  </button>
   {{ headerTitle }}
 </div>

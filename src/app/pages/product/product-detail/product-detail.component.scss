@@ -67,12 +67,12 @@
       font-size: 16px;
       box-shadow: 0 2px 6px #90867f1f;
 
-      a {
+      button {
         position: absolute;
         right: 16px;
         padding: 0;
         border: none;
-        background: transparent;
+        background: none;
 
         img {
           width: 24px;
@@ -112,14 +112,21 @@
     }
 
     ._close {
-      width: 40px;
+      width: 54px;
       position: absolute;
       top: 12px;
       right: 12px;
       cursor: pointer;
       z-index: 100;
+      border: none;
+      background: none;
+
       @media screen and (min-width: 600px) {
-        width: 52px;
+        width: 62px;
+      }
+
+      ._img {
+        width: 100%;
       }
     }
 
