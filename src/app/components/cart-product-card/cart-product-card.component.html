@@ -4,6 +4,13 @@
       <a
         class="_left"
         [routerLink]="[links[2_1], storeProduct.store_product_id]"
+        [ariaLabel]="
+          getProductDisplayLabel(
+            storeProduct.producing_area,
+            storeProduct.product_name,
+            storeProduct.brand
+          )
+        "
         title="This is a link to navigate to the product detail page."
       >
         <img

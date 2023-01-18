@@ -15,6 +15,7 @@
         class="btn-close"
         type="button"
         title="This is a link to navigate to the top page."
+        aria-label="This is a link to navigate to the top page."
       ></a>
     </div>
   </div>
@@ -23,7 +24,12 @@
     <div *ngIf="currentUser.uid" class="account-area">
       <div class="_left">
         <div class="_icon">
-          <a [href]="this.currentUser.photoURL" target="_blank">
+          <a
+            [href]="this.currentUser.photoURL"
+            target="_blank"
+            title="This is a link to move to the user icon image published by Multiavatar API.."
+            aria-label="This is a link to move to the user icon image published by Multiavatar API."
+          >
             <img alt="user-icon" [src]="currentUser.photoURL" />
           </a>
         </div>
@@ -57,6 +63,7 @@
         <a
           (click)="this.locationService.navigateTo1_5()"
           title="This is a link to navigate to the signup page."
+          aria-label="This is a link to navigate to the signup page."
           class="_signup"
         >
           Register
@@ -64,6 +71,7 @@
         <a
           [routerLink]="links[1_4]"
           title="This is a link to navigate to the login page."
+          aria-label="This is a link to navigate to the login page."
           class="_login"
         >
           Log In
@@ -81,6 +89,7 @@
           [routerLink]="links[3_2]"
           class="list-group-item"
           title="This is a link to navigate to the favorite page."
+          aria-label="This is a link to navigate to the favorite page."
         >
           Favorites <i class="fas fa-chevron-right"></i>
         </a>
@@ -88,6 +97,7 @@
           [routerLink]="links[3_3]"
           class="list-group-item"
           title="This is a link to navigate to the purchased item page."
+          aria-label="This is a link to navigate to the purchased item page."
         >
           Purchase History <i class="fas fa-chevron-right"></i>
         </a>
@@ -100,6 +110,8 @@
         <a
           (click)="navigateToCampaignHandler($event)"
           class="list-group-item"
+          title="This is a link to navigate to the external campaign page."
+          aria-label="This is a link to navigate to the external campaign page."
           href="{{
             envView.production
               ? 'https://nuxt-web-app-testing.netlify.app/'
@@ -112,6 +124,7 @@
           (click)="navigateToFaqHandler($event)"
           class="list-group-item"
           title="This is a link to navigate to the external FAQ page."
+          aria-label="This is a link to navigate to the external FAQ page."
           href="{{
             envView.production
               ? 'https://github.com/suema0331/My-Typescript-Express-Mocha-with-Swagger'
@@ -124,6 +137,7 @@
           (click)="navigateToTermsHandler($event)"
           class="list-group-item"
           title="This is a link to navigate to the external compliance page."
+          aria-label="This is a link to navigate to the external compliance page."
           href="{{
             envView.production
               ? 'https://www.linkedin.com/in/haruno-suematsu-b20a03235/'
@@ -136,6 +150,7 @@
           (click)="navigateToPolicyHandler($event)"
           class="list-group-item"
           title="This is a link to navigate to the external privacy policy page."
+          aria-label="This is a link to navigate to the external privacy policy page."
           href="{{
             envView.production
               ? 'https://haruno-suematsu.netlify.app/'
