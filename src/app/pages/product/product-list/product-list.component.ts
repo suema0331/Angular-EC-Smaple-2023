@@ -26,6 +26,8 @@ export class ProductListComponent {
   productList: Array<StoreProductExt> = [];
   productListSubscription: Subscription;
 
+  links = this.locationService.links;
+
   constructor(
     public locationService: LocationService,
     private cartService: CartService,
@@ -50,18 +52,6 @@ export class ProductListComponent {
 
   ngOnDestroy(): void {
     this.productListSubscription?.unsubscribe();
-  }
-
-  backToTopHandler(): void {
-    this.locationService.navigateTo1_1();
-  }
-
-  navigateToSearchHandler(): void {
-    this.locationService.navigateTo1_2();
-  }
-
-  navigateToMypageHandler(): void {
-    this.locationService.navigateTo3_1();
   }
 
   clickPlusHandler($event: StoreProductExt): void {

@@ -5,9 +5,9 @@
   </div>
   <div class="_search">
     <a
+      [routerLink]="links[1_2]"
       class="_button-area"
       title="This is a button on the header to navigate to the search page."
-      (click)="navigateToSearchHandler()"
     >
       <i class="fas fa-search"></i>
       Search
@@ -18,13 +18,13 @@
       logout
     </div>
   </button>
-  <div
-    (click)="navigateToMypageHandler()"
+  <a
+    [routerLink]="links[3_1]"
     title="This is a munu icon on the header to navigate to the my page."
     class="_menu"
   >
     <i class="fas fa-bars fa-lg"></i>
-  </div>
+  </a>
 </div>
 
 <div *ngIf="storeMessage.notice_available_flag" class="store-message-area">
@@ -56,45 +56,39 @@
         [wrap]="true"
       >
         <mdb-carousel-item>
-          <img
-            src="./assets/store_image@2x.jpeg"
-            alt="store-top-image-1"
-            (click)="navigateToProductList()"
-          />
           <a
-            class="_search"
-            (click)="navigateToProductList()"
-            title="This is a munu icon on the header to navigate to the product list page."
+            [routerLink]="links[2_1]"
+            class="_item"
+            title="This is a link to navigate to the product list page."
           >
-            Search from the product list <i class="fas fa-angle-right"></i>
+            <img src="./assets/store_image@2x.jpeg" alt="store-top-image-2" />
+            <div class="_search">
+              Search from the product list <i class="fas fa-angle-right"></i>
+            </div>
           </a>
         </mdb-carousel-item>
         <mdb-carousel-item>
-          <img
-            src="./assets/store_image_2@2x.jpeg"
-            alt="store-top-image-2"
-            (click)="navigateToProductList()"
-          />
           <a
-            class="_search"
-            (click)="navigateToProductList()"
-            title="This is a munu icon on the header to navigate to the product list page."
+            [routerLink]="links[2_1]"
+            class="_item"
+            title="This is a link to navigate to the product list page."
           >
-            Search from the product list <i class="fas fa-angle-right"></i>
+            <img src="./assets/store_image_2@2x.jpeg" alt="store-top-image-2" />
+            <div class="_search">
+              Search from the product list <i class="fas fa-angle-right"></i>
+            </div>
           </a>
         </mdb-carousel-item>
         <mdb-carousel-item>
-          <img
-            src="./assets/store_image_3@2x.jpeg"
-            alt="store-top-image-3"
-            (click)="navigateToProductList()"
-          />
           <a
-            class="_search"
-            (click)="navigateToProductList()"
-            title="This is a munu icon on the header to navigate to the product list page."
+            [routerLink]="links[2_1]"
+            class="_item"
+            title="This is a link to navigate to the product list page."
           >
-            Search from the product list <i class="fas fa-angle-right"></i>
+            <img src="./assets/store_image_3@2x.jpeg" alt="store-top-image-2" />
+            <div class="_search">
+              Search from the product list <i class="fas fa-angle-right"></i>
+            </div>
           </a>
         </mdb-carousel-item>
       </mdb-carousel>
@@ -123,8 +117,8 @@
       rippleColor="dark"
       type="button"
       class="btn btn-outline"
-      title="This is a button to navigate to the favorit page."
-      (click)="navigateToFavoriteHandler()"
+      title="This is a link to navigate to the favorit page."
+      [routerLink]="links[3_2]"
     >
       <img
         src="assets/common_icon_heart@2x.png"
@@ -138,8 +132,8 @@
       rippleColor="dark"
       type="button"
       class="btn btn-outline"
-      title="This is a button to navigate to the purchased items page."
-      (click)="navigateToPastitemHandler()"
+      [routerLink]="links[3_3]"
+      title="This is a link to navigate to the purchased items page."
     >
       <img
         src="assets/top_icon_history@2x.png"
@@ -155,7 +149,7 @@
   <div class="signup-area" *ngIf="!isLoggedIn">
     <div class="btn_group">
       <a
-        routerLink="/signup"
+        [routerLink]="links[1_5]"
         class="btn btn-rounded submit"
         title="This is a link to navigate to the signup page."
       >
@@ -165,7 +159,7 @@
         Already have an account?
         <a
           class="_login"
-          (click)="loginHandler()"
+          [routerLink]="links[1_4]"
           title="This is a link to navigate to the login page."
           >Log In</a
         >

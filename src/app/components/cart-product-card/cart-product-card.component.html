@@ -3,8 +3,8 @@
     <div class="product">
       <a
         class="_left"
-        (click)="navigateToProduct()"
-        title="This is a button to navigate to the product detail page."
+        [routerLink]="[links[2_1], storeProduct.store_product_id]"
+        title="This is a link to navigate to the product detail page."
       >
         <img
           [src]="

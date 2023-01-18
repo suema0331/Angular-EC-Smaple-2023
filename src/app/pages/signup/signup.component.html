@@ -158,19 +158,29 @@
         />
         <span class="_agreement">
           I agree to the
-          <span
-            (click)="navigateToTermsHandler()"
+          <a
+            (click)="navigateToTermsHandler($event)"
             title="This is a link to navigate to the external Terms of Use page."
             class="_tos"
+            href="{{
+              envView.production
+                ? 'https://www.linkedin.com/in/haruno-suematsu-b20a03235/'
+                : 'https://www.linkedin.com/in/haruno-suematsu-b20a03235/'
+            }}"
           >
-            Terms of Use</span
+            Terms of Use</a
           >
           and
-          <span
-            (click)="navigateToPolicyHandler()"
+          <a
+            (click)="navigateToPolicyHandler($event)"
             title="This is a link to navigate to the external Privacy Policy page."
             class="_policy"
-            >Privacy Policy</span
+            href="{{
+              envView.production
+                ? 'https://haruno-suematsu.netlify.app/'
+                : 'https://haruno-suematsu.netlify.app/'
+            }}"
+            >Privacy Policy</a
           >
         </span>
       </label>
@@ -195,7 +205,12 @@
       </button>
       <div class="_signup-area">
         Already have an account?
-        <a class="_signup" routerLink="/login">Log in</a>
+        <a
+          class="_signup"
+          [routerLink]="links[1_4]"
+          title="This is a link to navigate to the login page."
+          >Log in</a
+        >
       </div>
     </div>
   </form>

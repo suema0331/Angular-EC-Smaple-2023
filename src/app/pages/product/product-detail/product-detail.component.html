@@ -5,8 +5,8 @@
       <a
         type="button"
         class="_close"
-        title="This is a button to back to the product list page."
-        (click)="handleBack()"
+        title="This is a link to back to the product list page."
+        (click)="this.location.back()"
       >
         <img src="/assets/product/common_btn_close@2x.png" alt="back-btn" />
       </a>
@@ -17,8 +17,8 @@
       src="/assets/product/common_ic_close2@2x.png"
       class="_close"
       alt="close-icon"
-      title="This is a button to back to the product list page."
-      (click)="handleBack()"
+      title="This is a link to back to the product list page."
+      (click)="this.location.back()"
     />
     <img
       [src]="getImageUrl(topViewImage)"
@@ -170,8 +170,8 @@
       <div class="_cart">
         <a
           class="_icon-btn"
-          (click)="navigateToCartHandler()"
-          title="This is a button to navigate to the cart page."
+          [routerLink]="links[4_1]"
+          title="This is a link to navigate to the cart page."
         >
           <img src="/assets/product/common_icon_cart@2x.png" alt="cart-btn" />
         </a>

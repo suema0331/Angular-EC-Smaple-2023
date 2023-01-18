@@ -7,7 +7,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./common-footer.component.scss'],
 })
 export class CommonFooterComponent {
-  navigateToShopHandler(): void {
+  envView = environment;
+
+  navigateToShopHandler($event: Event): void {
+    $event.preventDefault();
     if (environment.production) {
       window.open(`https://nuxt-web-app-testing.netlify.app/`, '_blank');
     } else {
@@ -15,7 +18,8 @@ export class CommonFooterComponent {
     }
   }
 
-  navigateToPrivacyHandler(): void {
+  navigateToPrivacyHandler($event: Event): void {
+    $event.preventDefault();
     if (environment.production) {
       window.open(
         `https://github.com/suema0331/My-Typescript-Express-Mocha-with-Swagger`,
@@ -29,7 +33,8 @@ export class CommonFooterComponent {
     }
   }
 
-  navigateToComplianceHandler(): void {
+  navigateToComplianceHandler($event: Event): void {
+    $event.preventDefault();
     if (environment.production) {
       window.open(`https://haruno-suematsu.netlify.app/`, '_blank');
     } else {

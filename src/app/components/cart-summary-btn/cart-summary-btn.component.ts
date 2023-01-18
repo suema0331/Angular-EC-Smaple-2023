@@ -13,10 +13,7 @@ export class CartSummaryBtnComponent {
     totalProductPriceWithoutTax: 0,
     numOfStoreProducts: 0,
   };
+  links = this.locationService.links;
 
-  constructor(public locationService: LocationService) {}
-
-  navigateToCartHandler(): void {
-    this.locationService.navigateTo4_1();
-  }
+  constructor(private locationService: LocationService) {}
 }

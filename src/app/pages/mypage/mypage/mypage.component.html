@@ -11,10 +11,10 @@
         <div class="_button-area">logout</div>
       </button>
       <a
-        (click)="handleBack()"
+        [routerLink]="links[1_1]"
         class="btn-close"
         type="button"
-        title="This is a button to navigate to the top page."
+        title="This is a link to navigate to the top page."
       ></a>
     </div>
   </div>
@@ -23,11 +23,9 @@
     <div *ngIf="currentUser.uid" class="account-area">
       <div class="_left">
         <div class="_icon">
-          <img
-            alt="user-icon"
-            [src]="currentUser.photoURL"
-            (click)="clickUserIconHandler()"
-          />
+          <a [href]="this.currentUser.photoURL" target="_blank">
+            <img alt="user-icon" [src]="currentUser.photoURL" />
+          </a>
         </div>
       </div>
       <div class="_right">
@@ -58,14 +56,14 @@
       <div class="_buttons">
         <a
           (click)="this.locationService.navigateTo1_5()"
-          title="This is a button to navigate to the signup page."
+          title="This is a link to navigate to the signup page."
           class="_signup"
         >
           Register
         </a>
         <a
-          (click)="loginHandler()"
-          title="This is a button to navigate to the login page."
+          [routerLink]="links[1_4]"
+          title="This is a link to navigate to the login page."
           class="_login"
         >
           Log In
@@ -80,14 +78,14 @@
           Categories <i class="fas fa-chevron-right"></i>
         </a>
         <a
-          (click)="navigateToFavoriteHandler()"
+          [routerLink]="links[3_2]"
           class="list-group-item"
           title="This is a link to navigate to the favorite page."
         >
           Favorites <i class="fas fa-chevron-right"></i>
         </a>
         <a
-          (click)="navigateToPastitemHandler()"
+          [routerLink]="links[3_3]"
           class="list-group-item"
           title="This is a link to navigate to the purchased item page."
         >
@@ -99,27 +97,50 @@
     <div class="menu-area">
       <div class="_ttl">Others</div>
       <ul class="list-group">
-        <a (click)="navigateToCampaignHandler()" class="list-group-item">
+        <a
+          (click)="navigateToCampaignHandler($event)"
+          class="list-group-item"
+          href="{{
+            envView.production
+              ? 'https://nuxt-web-app-testing.netlify.app/'
+              : 'https://nuxt-web-app-testing.netlify.app/'
+          }}"
+        >
           Campaigns <i class="fas fa-chevron-right"></i>
         </a>
         <a
-          (click)="navigateToFaqHandler()"
+          (click)="navigateToFaqHandler($event)"
           class="list-group-item"
           title="This is a link to navigate to the external FAQ page."
+          href="{{
+            envView.production
+              ? 'https://github.com/suema0331/My-Typescript-Express-Mocha-with-Swagger'
+              : 'https://github.com/suema0331/My-Typescript-Express-Mocha-with-Swagger'
+          }}"
         >
           FAQ <i class="fas fa-chevron-right"></i>
         </a>
         <a
-          (click)="navigateToTermsHandler()"
+          (click)="navigateToTermsHandler($event)"
           class="list-group-item"
           title="This is a link to navigate to the external compliance page."
+          href="{{
+            envView.production
+              ? 'https://www.linkedin.com/in/haruno-suematsu-b20a03235/'
+              : 'https://www.linkedin.com/in/haruno-suematsu-b20a03235/'
+          }}"
         >
           Compliance <i class="fas fa-chevron-right"></i>
         </a>
         <a
-          (click)="navigateToPolicyHandler()"
+          (click)="navigateToPolicyHandler($event)"
           class="list-group-item"
           title="This is a link to navigate to the external privacy policy page."
+          href="{{
+            envView.production
+              ? 'https://haruno-suematsu.netlify.app/'
+              : 'https://haruno-suematsu.netlify.app/'
+          }}"
         >
           Privacy Policy <i class="fas fa-chevron-right"></i>
         </a>

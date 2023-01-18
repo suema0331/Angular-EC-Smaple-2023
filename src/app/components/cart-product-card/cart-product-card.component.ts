@@ -61,6 +61,7 @@ export class CartProductCardComponent implements OnInit {
 
   @ViewChild('constraintTooltip') constraintTooltip!: ElementRef | undefined;
   displayConstraintTooltip = false;
+  links = this.locationService.links;
 
   constructor(
     private cartService: CartService,
@@ -121,12 +122,6 @@ export class CartProductCardComponent implements OnInit {
 
   removeAllFromCart(): void {
     this.clickRemoveAllHandler.emit(this.storeProduct);
-  }
-
-  navigateToProduct(): void {
-    this.locationService.navigateTo(
-      `/products/${this.storeProduct.store_product_id}`
-    );
   }
 
   getImageUrl(imgUrl: string): string {

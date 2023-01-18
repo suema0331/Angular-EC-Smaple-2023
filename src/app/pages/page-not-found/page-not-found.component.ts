@@ -9,5 +9,6 @@ import { LocationService } from 'src/app/service/utilities/location.service';
 export class PageNotFoundComponent {
   screenName = 'PageNotFoundComponent';
   screenId = '1_6';
-  constructor(public locationService: LocationService) {}
+  links = this.locationService.links;
+  constructor(private locationService: LocationService) {}
 }
