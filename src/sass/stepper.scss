@@ -1,15 +1,34 @@
-// Not complete, but I would like to consolidate and manage color codes.
+/* stepper-modal */
+.stepper-horizontal-content-container {
+  padding: 0;
+}
 
-// base font
-$base_font: 'Noto Sans CJK JP', 'Roboto', 'メイリオ', 'Meiryo', verdana,
-  'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', osaka, 'ＭＳ Ｐゴシック',
-  'MS PGothic', sans-serif;
+.stepper-mobile-head {
+  display: none;
+}
 
-// base text color
-$base_font_color: #2e2621;
+.stepper-mobile-footer {
+  display: none;
+}
 
-// select background color when hovered
-$select_background_color: #e8f2fa;
+.stepper.stepper-mobile {
+  bottom: 104px;
+  justify-content: space-evenly;
+  padding: 0 128px;
+}
 
-// shop theme color
-$shop_theme_color: #3aabd2; // rgb(58, 171, 210)
+.stepper-head-icon {
+  background-color: #d1d1d1;
+}
+
+.stepper-active .stepper-head-icon {
+  background-color: $base_font_color;
+}
+
+.stepper-completed .stepper-head-icon {
+  background-color: #d1d1d1;
+}
+
+.stepper-head:hover {
+  background-color: transparent;
+}

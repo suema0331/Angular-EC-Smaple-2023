@@ -73,7 +73,7 @@ writeFile(targetEnvPath, environmentFileContent, function (err: Error) {
   if (err) {
     console.log(err);
   }
-  console.log(`1: Wrote variables to ${targetEnvPath}`);
+  console.log(`1: Completed towrite variables to ${targetEnvPath}`);
 });
 
 // write the targetFirebaseConfig content to the respective file
@@ -84,7 +84,9 @@ writeFile(
     if (err) {
       console.log(err);
     }
-    console.log(`2: Wrote variables to ${targetFirebaseConfigJsPath}`);
+    console.log(
+      `2: Completed to write variables to ${targetFirebaseConfigJsPath}`
+    );
   }
 );
 
@@ -96,7 +98,9 @@ writeFile(
     if (err) {
       console.log(err);
     }
-    console.log(`3: Wrote variables to ${targetServiceAccountPath}`);
+    console.log(
+      `3: Completed to write variables to ${targetServiceAccountPath}`
+    );
 
     console.log(`set environment configurations were successfully written :)`);
   }
