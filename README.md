@@ -82,6 +82,8 @@ npm run eslint
 ```
 
 ## Overall directory structure
+
+```
 .
 ├── cypress
 ├── dist
@@ -131,6 +133,7 @@ npm run eslint
     ├── [scripts](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/scripts/docs.md)
     └── [shared](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/shared/services/docs.md)
         └── services
+```
 
 - https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/docs.md
 - https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/docs.md
