@@ -47,3 +47,5 @@ Thumbs.db
 .runtimeconfig.json
 
 .env
+/src/scripts/serviceAccount.json
+/src/environments/**.ts
