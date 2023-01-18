@@ -9,6 +9,7 @@
         <a
           class="card_img"
           [ariaLabel]="
+            'This is a link to the product detail page of ' +
             getProductDisplayLabel(
               storeProduct.producing_area,
               storeProduct.product_name,
@@ -16,13 +17,7 @@
             )
           "
           [title]="
-            getProductDisplayLabel(
-              storeProduct.producing_area,
-              storeProduct.product_name,
-              storeProduct.brand
-            )
-          "
-          [ariaLabel]="
+            'This is a link to the product detail page of ' +
             getProductDisplayLabel(
               storeProduct.producing_area,
               storeProduct.product_name,
@@ -59,7 +54,13 @@
             onerror="this.src='/assets/product/no-image-small.jpg'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
             onload="this.removeAttribute('onerror'); this.removeAttribute('onload');"
             class="card-img-top"
-            alt="product-image"
+            [alt]="
+              getProductDisplayLabel(
+                storeProduct.producing_area,
+                storeProduct.product_name,
+                storeProduct.brand
+              )
+            "
           />
           <div class="add_cart_btn" *ngIf="cartItem.quantity === 0">
             <!-- The area above the product image where you can click the Add to Cart button is small on mobile, so it is enlarged. -->

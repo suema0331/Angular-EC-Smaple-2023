@@ -5,13 +5,21 @@
         class="_left"
         [routerLink]="[links[2_1], storeProduct.store_product_id]"
         [ariaLabel]="
+          'This is a link to the product detail page of ' +
           getProductDisplayLabel(
             storeProduct.producing_area,
             storeProduct.product_name,
             storeProduct.brand
           )
         "
-        title="This is a link to navigate to the product detail page."
+        [title]="
+          'This is a link to the product detail page of ' +
+          getProductDisplayLabel(
+            storeProduct.producing_area,
+            storeProduct.product_name,
+            storeProduct.brand
+          )
+        "
       >
         <img
           [src]="
@@ -22,7 +30,13 @@
           onerror="this.src='/assets/product/no-image-small.jpg'; this.removeAttribute('onerror'); this.removeAttribute('onload');"
           onload="this.removeAttribute('onerror'); this.removeAttribute('onload');"
           class="card-img-top"
-          alt="product-image"
+          [alt]="
+            getProductDisplayLabel(
+              storeProduct.producing_area,
+              storeProduct.product_name,
+              storeProduct.brand
+            )
+          "
         />
       </a>
       <div class="_right">
