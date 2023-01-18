@@ -1,0 +1,58 @@
+@import 'variables';
+
+mdb-carousel {
+  .carousel {
+    .carousel-indicators {
+      margin-bottom: 8px;
+
+      button {
+        opacity: 1;
+        height: 0.4rem;
+        width: 0.4rem;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        background-color: #fff;
+        box-shadow: 0 0 3px #3c3a3a;
+        margin: auto 4px;
+      }
+
+      .active {
+        border: 1px solid #fff;
+        background-color: $shop_theme_color;
+      }
+    }
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 18%;
+    opacity: 0.8;
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      text-align: center;
+      background: rgb(242 242 242 / 90%);
+      box-shadow: #00000080 0 0 4px;
+      color: #717171;
+      border-radius: 80%;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 7px 14px;
+      width: 40px;
+      height: 40px;
+
+      &::after {
+        margin: auto 2px auto 0;
+        vertical-align: middle;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+    }
+
+    .carousel-control-next-icon {
+      &::after {
+        margin: auto 0 auto 2px;
+      }
+    }
+  }
+}
