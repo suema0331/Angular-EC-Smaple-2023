@@ -83,7 +83,7 @@ export class CartComponent {
           )
           .subscribe((data) => {
             // console.log("🌟subscribed Product data")
-            console.log(data);
+            // console.log(data);
             if (!this.userCart) return;
             if (data[0]) this.userCart?.push(data[0] as StoreProductExt);
           });

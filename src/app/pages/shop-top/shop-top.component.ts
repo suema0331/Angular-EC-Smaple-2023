@@ -100,7 +100,7 @@ export class ShopTopComponent {
         alert('Successfully logged out!');
         this.cartService.clearCart();
         this.cartService.clearCartCacheFromStorage();
-        this.locationService.navigateTo1_1();
+        this.isLoggedIn = this.authService.isLoggedIn;
       })
       .catch((error) => {
         console.log(error);
@@ -125,9 +125,5 @@ export class ShopTopComponent {
 
   clickMinusHandler($event: StoreProductExt): void {
     this.cartService.decrementItem($event.store_product_id);
-  }
-
-  cartBtnHandler(): void {
-    this.locationService.navigateTo4_1();
   }
 }

@@ -85,7 +85,4 @@ export class FavoriteComponent {
     this.cartService.decrementItem($event.store_product_id);
   }
 
-  cartBtnHandler(): void {
-    this.locationService.navigateTo4_1();
-  }
 }

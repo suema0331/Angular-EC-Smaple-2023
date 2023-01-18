@@ -56,7 +56,8 @@ export class AuthService {
       .then((result) => {
         this.currentUser = {} as User;
         // localStorage.removeItem('user');
-        // console.log(result)
+        console.log('🌟loggeed out');
+        // console.log(result);
         return result;
       })
       .catch((error) => {

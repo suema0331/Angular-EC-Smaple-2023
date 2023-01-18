@@ -96,52 +96,13 @@ export class LocationService {
     this.navigateTo(`/shop-top`);
   }
 
-  // navigate to ShopTopComponent
-  navigateTo1_2(): void {
-    this.navigateTo(`/search`);
-  }
-
-  // navigate to MaintenenceComponent
-  navigateTo1_3(): void {
-    this.navigateTo(`/maintenence`);
-  }
-
   // navigate to MaintenenceComponent
   navigateTo1_4(): void {
     this.navigateTo(`/login`);
   }
 
-  // navigate to MaintenenceComponent
-  navigateTo1_5(): void {
-    this.navigateTo(`/signup`);
-  }
   // navigate to ProductListComponent
   navigateTo2_1(): void {
     this.navigateTo(`/products`);
-  }
-
-  // navigate to ProductDetailComponent
-  navigateTo2_2(): void {
-    this.navigateTo(`/product`);
-  }
-
-  // navigate to MypageComponent
-  navigateTo3_1(): void {
-    this.navigateTo(`/mypage`);
-  }
-
-  // nvigate to FavoriteComponent
-  navigateTo3_2(): void {
-    this.navigateTo(`/favorite`);
-  }
-
-  // nvigate to FavoriteComponent
-  navigateTo3_3(): void {
-    this.navigateTo(`/pastitem`);
-  }
-
-  // nvigate to CartComponent
-  navigateTo4_1(): void {
-    this.navigateTo(`/cart`);
   }
 }
