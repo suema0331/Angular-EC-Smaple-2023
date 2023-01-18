@@ -9,7 +9,7 @@ I didn't have time to build a backend, so this time I used [Firebase](https://fi
 I used [MDB Angular](https://mdbootstrap.com/), an open-source UI library, because I had experience using it in the past.
 I also use [Cypress](https://www.cypress.io/) for testing, and [Prettier](https://prettier.io/), [ESLint](https://eslint.org/) and [Stylelint](https://stylelint.io/) for formatting styles.
 
-## Quick Start
+# Quick Start
 
 ```bash
 # install dependencies
@@ -80,3 +80,67 @@ Lint and format by `ESLint` for `TypeScript` and `StyleLint` for `SCSS`. Their r
 ```bash
 npm run eslint
 ```
+
+## Overall directory structure
+.
+├── cypress
+├── dist
+└── [src](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/docs.md)
+    ├── [app](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/docs.md)
+    │   ├── [components](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/components/doc.md)
+    │   │   ├── cart-product-card
+    │   │   ├── cart-summary-btn
+    │   │   ├── common-footer
+    │   │   ├── common-header
+    │   │   ├── product-card
+    │   │   └── toasts
+    │   │   └── add-cart-toast
+    │   ├── [extra](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/extra/docs.md)
+    │   ├── [pages](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/pages/docs.md)
+    │   │   ├── login
+    │   │   ├── maintenance
+    │   │   ├── mypage
+    │   │   │   ├── favorite
+    │   │   │   ├── mypage
+    │   │   │   └── pastitem
+    │   │   ├── order
+    │   │   │   ├── cart
+    │   │   │   ├── confirm-cart-clear-modal
+    │   │   │   └── confirm-order-modal
+    │   │   ├── page-not-found
+    │   │   ├── product
+    │   │   │   ├── product-detail
+    │   │   │   └── product-list
+    │   │   ├── search
+    │   │   ├── shop-guide
+    │   │   ├── shop-top
+    │   │   └── signup
+    │   └── [service](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/service/docs.md)
+    │       ├── domains
+    │       └── utilities
+    ├── [assets](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/assets/docs.md)
+    │   └── product
+    │       ├── master
+    │       └── small
+    ├── [backend](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/backend/docs.md)
+    │   ├── dto
+    │   ├── enums
+    │   └── services
+    ├── [environments](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/environments/docs.md)
+    ├── [sass](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/sass/docs.md)
+    ├── [scripts](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/scripts/docs.md)
+    └── [shared](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/shared/services/docs.md)
+        └── services
+
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/docs.md
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/docs.md
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/components/doc.md
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/extra/docs.md
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/pages/docs.md
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/service/docs.md
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/assets/docs.md
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/backend/docs.md
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/environments/docs.md
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/sass/docs.md
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/shared/services/docs.md
+- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/scripts/docs.md
