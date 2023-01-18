@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "config": "ts-node ./src/scripts/setenv.ts --environment=dev",
-    "start": "ts-node ./src/scripts/setenv.ts --environment=dev && ng serve",
-    "build": "ts-node ./src/scripts/setenv.ts --environment=prod && ng build",
-    "build:pro": "npm run config --environment=prod && ng build --configuration=production",
-    "watch": "npm run config -- --environment=dev && ng build --watch --configuration development",
+    "start": "npm run config && ng serve",
+    "build": "npm run config && ng build --configuration=dev",
+    "build:pro": "ts-node ./src/scripts/setenv.ts --environment=prod && ng build --configuration=production",
+    "watch": "npm run config && ng build --watch --configuration development",
     "e2e": "npx cypress open",
     "eslint": "eslint . --fix"
   },
