@@ -5,18 +5,18 @@
 // TODO Connect to firebase for QA
 export const environment = {
   firebase: {
-    projectId: 'my-ec-2023',
-    appId: '1:995863562978:web:cae439582538e8787decbb',
-    storageBucket: 'my-ec-2023.appspot.com',
-    apiKey: 'AIzaSyCVmuRmHUGT2j0w6XxtsP5aAyvIi2ilSa0',
-    authDomain: 'my-ec-2023.firebaseapp.com',
-    messagingSenderId: '995863562978',
-    measurementId: 'G-NT4TSNGS8E',
+    projectId: '',
+    appId: '',
+    storageBucket: '',
+    apiKey: '',
+    authDomain: '',
+    messagingSenderId: '',
+    measurementId: '',
   },
   production: false,
   remote: true,
-  API_URL: 'http://localhost:8080',
-  API_AUTH_URL: 'http://localhost:8080',
+  // API_URL: 'http://blue-auth.qa-angular-ec-2023.com',
+  // API_AUTH_URL: 'http://blue-user.qa-angular-ec-2023.com',
   // IMAGE_DL_FROM_S3 : false,
   // S3_URL : 'https://image.qa-angular-ec-2023.com',
 };
