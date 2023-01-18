@@ -87,9 +87,9 @@ npm run eslint
 .
 ├── cypress
 ├── dist
-└── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/docs.md" target="_blank">src</a>
-    ├── [app](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/docs.md)
-    │   ├── [components](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/components/doc.md)
+└── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/docs.md" target="_blank" rel="noopener noreferrer">src</a>
+    ├── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/docs.md" target="_blank" rel="noopener noreferrer">app</a>
+    │   ├── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/components/doc.md" target="_blank" rel="noopener noreferrer">components</a>
     │   │   ├── cart-product-card
     │   │   ├── cart-summary-btn
     │   │   ├── common-footer
@@ -97,8 +97,8 @@ npm run eslint
     │   │   ├── product-card
     │   │   └── toasts
     │   │   └── add-cart-toast
-    │   ├── [extra](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/extra/docs.md)
-    │   ├── [pages](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/pages/docs.md)
+    │   ├── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/extra/docs.md" target="_blank" rel="noopener noreferrer">extra</a>
+    │   ├── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/pages/docs.md" target="_blank" rel="noopener noreferrer">pages</a>
     │   │   ├── login
     │   │   ├── maintenance
     │   │   ├── mypage
@@ -117,33 +117,21 @@ npm run eslint
     │   │   ├── shop-guide
     │   │   ├── shop-top
     │   │   └── signup
-    │   └── [service](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/service/docs.md)
+    │   └── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/service/docs.md" target="_blank" rel="noopener noreferrer">service</a>
     │       ├── domains
     │       └── utilities
-    ├── [assets](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/assets/docs.md)
+    ├── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/assets/docs.md" target="_blank" rel="noopener noreferrer">assets</a>
     │   └── product
     │       ├── master
     │       └── small
-    ├── [backend](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/backend/docs.md)
+    ├── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/backend/docs.md" target="_blank" rel="noopener noreferrer">backend</a>
     │   ├── dto
     │   ├── enums
     │   └── services
-    ├── [environments](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/environments/docs.md)
-    ├── [sass](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/sass/docs.md)
-    ├── [scripts](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/scripts/docs.md)
-    └── [shared](https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/shared/services/docs.md)
+    ├── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/environments/docs.md" target="_blank" rel="noopener noreferrer">environments</a>
+    ├── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/sass/docs.md" target="_blank" rel="noopener noreferrer">sass</a>
+    ├── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/scripts/docs.md" target="_blank" rel="noopener noreferrer">scripts</a>
+    └── <a href="https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/shared/services/docs.md" target="_blank" rel="noopener noreferrer">shared</a>
         └── services
 </pre>
 
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/docs.md
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/docs.md
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/components/doc.md
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/extra/docs.md
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/pages/docs.md
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/app/service/docs.md
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/assets/docs.md
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/backend/docs.md
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/environments/docs.md
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/sass/docs.md
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/shared/services/docs.md
-- https://github.com/suema0331/Angular-EC-Smaple-2023/blob/master/src/scripts/docs.md
