@@ -58,7 +58,7 @@
     },
     {
       "store_product_id": "2",
-      "product_name": "Orange",
+      "product_name": "Osterkuchen",
       "standard_price": 100,
       "store_price": 90,
       "constraint_max": 10,
