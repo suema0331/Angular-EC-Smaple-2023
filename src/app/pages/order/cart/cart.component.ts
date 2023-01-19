@@ -141,6 +141,7 @@ export class CartComponent {
   }
 
   confirmOrderHandler(): void {
+    this.currentUser = this.authService.currentUser;
     if (this.cartPriceInfo.numOfStoreProducts === 0) {
       alert('There are no items in your cart.');
     }

@@ -32,7 +32,7 @@ export class MypageComponent {
         console.log('Successfully logged out!');
         this.cartService.clearCart();
         this.cartService.clearCartCacheFromStorage();
-        this.locationService.navigateTo1_1();
+        this.clickCloseMenu();
       })
       .catch((error) => {
         console.log(error);

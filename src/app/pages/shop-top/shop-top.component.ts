@@ -102,6 +102,7 @@ export class ShopTopComponent {
         this.cartService.clearCart();
         this.cartService.clearCartCacheFromStorage();
         this.isLoggedIn = this.authService.isLoggedIn;
+        this.currentUser = this.authService.currentUser;
       })
       .catch((error) => {
         console.log(error);
@@ -114,6 +115,8 @@ export class ShopTopComponent {
 
   closeMenuHandler($event: boolean) {
     if ($event) this.isMenuOpen = false;
+    this.isLoggedIn = this.authService.isLoggedIn;
+    this.currentUser = this.authService.currentUser;
   }
 
   clickPlusHandler($event: StoreProductExt): void {
