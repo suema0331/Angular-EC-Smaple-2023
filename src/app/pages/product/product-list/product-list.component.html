@@ -1,54 +1,59 @@
-<div class="section-header">
-  <a
-    class="_back"
-    [routerLink]="links[1_1]"
-    title="This is a link on the header to navigate to the top page."
-    aria-label="This is a link on the header to navigate to the top page."
-  >
-    <i class="fas fa-chevron-left fa-lg _back"></i>
-  </a>
-  <div class="_search">
+<ng-template #showMenu>
+  <app-mypage (closeMenuHandler)="closeMenuHandler($event)"></app-mypage>
+</ng-template>
+<ng-container *ngIf="!isMenuOpen; else showMenu">
+  <div class="section-header">
     <a
-      class="_button-area"
-      [routerLink]="links[1_2]"
-      title="This is a link on the header to navigate to the search page."
-      aria-label="This is a link on the header to navigate to the search page."
+      class="_back"
+      [routerLink]="links[1_1]"
+      title="This is a link on the header to navigate to the top page."
+      aria-label="This is a link on the header to navigate to the top page."
     >
-      <i class="fas fa-search"></i>Search
+      <i class="fas fa-chevron-left fa-lg _back"></i>
     </a>
+    <div class="_search">
+      <a
+        class="_button-area"
+        [routerLink]="links[1_2]"
+        title="This is a link on the header to navigate to the search page."
+        aria-label="This is a link on the header to navigate to the search page."
+      >
+        <i class="fas fa-search"></i>Search
+      </a>
+    </div>
+    <button
+      title="This is a button on the header to open the my page."
+      aria-label="This is a button on the header to open the my page."
+      class="_menu"
+      (click)="openMenuHandler()"
+    >
+      <i class="fas fa-bars fa-lg"></i>
+    </button>
   </div>
-  <a
-    [routerLink]="links[3_1]"
-    title="This is a link on the header to navigate to the my page."
-    aria-label="This is a link on the header to navigate to the my page."
-    class="_menu"
-  >
-    <i class="fas fa-bars fa-lg"></i>
-  </a>
-</div>
 
-<div class="section">
-  <div class="products-area">
+  <div class="section">
+    <div class="products-area">
+      <ng-container>
+        <div class="_ttl">All Products</div>
+        <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
+          <ng-container *ngFor="let product of productList; index as i">
+            <app-product-card
+              [storeProduct]="product"
+              [isLoggedIn]="isLoggedIn"
+              (clickPlusHandler)="clickPlusHandler($event)"
+              (clickMinusHandler)="clickMinusHandler($event)"
+            ></app-product-card>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
     <ng-container>
-      <div class="_ttl">All Products</div>
-      <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
-        <ng-container *ngFor="let product of productList; index as i">
-          <app-product-card
-            [storeProduct]="product"
-            [isLoggedIn]="isLoggedIn"
-            (clickPlusHandler)="clickPlusHandler($event)"
-            (clickMinusHandler)="clickMinusHandler($event)"
-          ></app-product-card>
-        </ng-container>
+      <div class="cart-area" *ngIf="cartPriceInfo.numOfStoreProducts">
+        <app-cart-summary-btn
+          [cartPriceInfo]="cartPriceInfo"
+        ></app-cart-summary-btn>
       </div>
     </ng-container>
   </div>
-  <ng-container>
-    <div class="cart-area" *ngIf="cartPriceInfo.numOfStoreProducts">
-      <app-cart-summary-btn
-        [cartPriceInfo]="cartPriceInfo"
-      ></app-cart-summary-btn>
-    </div>
-  </ng-container>
-</div>
-<app-common-footer></app-common-footer>
+  <app-common-footer></app-common-footer>
+</ng-container>

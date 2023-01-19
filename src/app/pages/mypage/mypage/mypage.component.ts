@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { environment } from 'src/environments/environment';
@@ -17,6 +17,7 @@ export class MypageComponent {
   links = this.locationService.links;
   envView = environment;
 
+  @Output() closeMenuHandler: EventEmitter<boolean> = new EventEmitter();
   constructor(
     public locationService: LocationService,
     private authService: AuthService,
@@ -36,6 +37,10 @@ export class MypageComponent {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  clickCloseMenu() {
+    this.closeMenuHandler.emit(true);
   }
 
   navigateToCampaignHandler($event: Event): void {

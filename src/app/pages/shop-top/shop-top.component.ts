@@ -38,6 +38,7 @@ export class ShopTopComponent {
 
   messageSubscription?: Subscription;
   recommendedSubscription?: Subscription;
+  isMenuOpen = false;
 
   @ViewChild('mdbCarousel') mdbCarousel!: MdbCarouselComponent;
   constructor(
@@ -105,6 +106,14 @@ export class ShopTopComponent {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  openMenuHandler(): void {
+    this.isMenuOpen = true;
+  }
+
+  closeMenuHandler($event: boolean) {
+    if ($event) this.isMenuOpen = false;
   }
 
   clickPlusHandler($event: StoreProductExt): void {
