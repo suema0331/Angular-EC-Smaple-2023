@@ -3,6 +3,8 @@
 This is a practical sample of an e-commerce application using `Angular`(version 15.0.5.). I hope you will have fun with this application. I implemented it using my past experience and the requests I received from customers to improve it.
 Also, since I created this application from scratch while working two jobs in a week, there is still a lot of room for improvement, but I implemented it with future scalability in mind. I look forward to brushing it up in the future :)
 
+https://angular-ec-2023.netlify.app/
+
 # Configuration
 
 I didn't have time to build a backend, so this time I used [Firebase](https://firebase.google.com/) and [Algolia](https://www.algolia.com/) for the search function.
