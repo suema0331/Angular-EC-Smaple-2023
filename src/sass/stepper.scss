@@ -12,7 +12,7 @@
 }
 
 .stepper.stepper-mobile {
-  bottom: 104px;
+  bottom: 104px !important;
   justify-content: space-evenly;
   padding: 0 128px;
 }
@@ -21,12 +21,13 @@
   background-color: #d1d1d1;
 }
 
-.stepper-active .stepper-head-icon {
-  background-color: $base_font_color;
+.stepper.stepper-mobile .stepper-completed .stepper-head-icon {
+  background-color: #d1d1d1;
 }
 
-.stepper-completed .stepper-head-icon {
-  background-color: #d1d1d1;
+.stepper.stepper-mobile .stepper-active .stepper-head-icon {
+  // .stepper.stepper-mobile .stepper-active {
+  background-color: $base_font_color;
 }
 
 .stepper-head:hover {

@@ -45,6 +45,7 @@ import { PriceService } from './service/utilities/price.service';
 import { SEOService } from './service/utilities/seo.service';
 import { ValidationService } from './service/utilities/validation.service';
 import { CommonFooterComponent } from './components/common-footer/common-footer.component';
+import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { CommonFooterComponent } from './components/common-footer/common-footer.
     MdbStepperModule,
     MdbNotificationModule,
     MdbCarouselModule,
+    MdbRippleModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
