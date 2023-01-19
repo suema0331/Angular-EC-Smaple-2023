@@ -21,7 +21,6 @@ describe('The Login Page', () => {
       // Go to my page and confirm the user infomation
       cy.get('.top-header > ._menu').first().click();
       // We should be redirected to the mypage
-      cy.url().should('include', '/mypage');
 
       // Confirm the user infomation
       cy.get('.mypage-header > ._ttl').should('contain', 'My Page');

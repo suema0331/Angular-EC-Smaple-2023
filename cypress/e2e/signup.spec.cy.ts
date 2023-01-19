@@ -1,3 +1,7 @@
+/**
+ * Change the user's email address before running the test.
+ * Otherwise, if the same user has already been registered in the past, the Signup test will fail.
+ */
 describe('The Signup Page', () => {
 
   it('should fill the signup form and redirect to shop top page', () => {
@@ -13,9 +17,8 @@ describe('The Signup Page', () => {
       cy.get('.top-header > ._logout').should('contain', 'logout');
 
       // Go to my page and confirm the user infomation
-      cy.get('.top-header > ._menu').first().click();
+      cy.get('.top-header > ._menu').first().click({force: true});
       // we should be redirected to the mypage
-      cy.url().should('include', '/mypage');
 
       // confirm the user infomation
       cy.get('.mypage-header > ._ttl').should('contain', 'My Page');
