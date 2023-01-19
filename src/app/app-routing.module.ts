@@ -5,7 +5,6 @@ import { VIPGuard } from 'src/shared/services/vip.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { FavoriteComponent } from './pages/mypage/favorite/favorite.component';
-import { MypageComponent } from './pages/mypage/mypage/mypage.component';
 import { PastitemComponent } from './pages/mypage/pastitem/pastitem.component';
 import { CartComponent } from './pages/order/cart/cart.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -76,15 +75,6 @@ const routes: Routes = [
       title: BASE_TITLE + ' - Product Detail Page',
       description: 'This is a product Detail page.',
       ogUrl: 'http://localhost:4200/products/:productId',
-    },
-  },
-  {
-    path: 'mypage',
-    component: MypageComponent,
-    data: {
-      title: BASE_TITLE + ' - My Page',
-      description: 'This is a my page.',
-      ogUrl: 'http://localhost:4200/mypage',
     },
   },
   {

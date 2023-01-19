@@ -22,7 +22,6 @@ export class LocationService {
     1_5: '/signup',
     2_1: '/products',
     2_2: '/product',
-    3_1: '/mypage',
     3_2: '/favorite',
     3_3: '/pastitem',
     4_1: '/cart',
