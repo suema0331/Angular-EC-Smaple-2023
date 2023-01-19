@@ -27,6 +27,7 @@ export class ProductListComponent {
   productListSubscription: Subscription;
 
   links = this.locationService.links;
+  isMenuOpen = false;
 
   constructor(
     public locationService: LocationService,
@@ -52,6 +53,14 @@ export class ProductListComponent {
 
   ngOnDestroy(): void {
     this.productListSubscription?.unsubscribe();
+  }
+
+  openMenuHandler(): void {
+    this.isMenuOpen = true;
+  }
+
+  closeMenuHandler($event: boolean): void {
+    if ($event) this.isMenuOpen = false;
   }
 
   clickPlusHandler($event: StoreProductExt): void {

@@ -1,185 +1,198 @@
-<div class="top-header">
-  <div class="_logo-area">
-    <img class="_logo" src="assets/top_img_shoplogo@2x.png" alt="logo" />
-    <span class="_name">Sample EC</span>
-  </div>
-  <div class="_search">
-    <a
-      [routerLink]="links[1_2]"
-      class="_button-area"
-      title="This is a button on the header to navigate to the search page."
-      aria-label="This is a button on the header to navigate to the search page."
-    >
-      <i class="fas fa-search"></i>
-      Search
-    </a>
-  </div>
-  <button *ngIf="isLoggedIn" class="_logout" (click)="logoutHandler()">
-    <div class="_button-area" title="This is a looput button on the header.">
-      logout
+<ng-template #showMenu>
+  <app-mypage (closeMenuHandler)="closeMenuHandler($event)"></app-mypage>
+</ng-template>
+<ng-container *ngIf="!isMenuOpen; else showMenu">
+  <div class="top-header">
+    <div class="_logo-area">
+      <img class="_logo" src="assets/top_img_shoplogo@2x.png" alt="logo" />
+      <span class="_name">Sample EC</span>
     </div>
-  </button>
-  <a
-    [routerLink]="links[3_1]"
-    title="This is a munu icon on the header to navigate to the my page."
-    aria-label="This is a munu icon on the header to navigate to the my page."
-    class="_menu"
-  >
-    <i class="fas fa-bars fa-lg"></i>
-  </a>
-</div>
-
-<div *ngIf="storeMessage.notice_available_flag" class="store-message-area">
-  <div class="_notice1">
-    {{ storeMessage.notice1 }}
-  </div>
-  <div class="_notice2">{{ storeMessage.notice2 }}</div>
-</div>
-
-<div
-  *ngIf="storeMessage.store_available_flag === 0"
-  class="delivery-message-area"
->
-  {{ storeMessage.operation_message }}
-</div>
-
-<div class="shop-top">
-  <div class="_store">
-    <div class="_scroll-area" #swipeContent>
-      <mdb-carousel
-        #mdbCarousel
-        class="top-carousel-area"
-        [controls]="true"
-        [indicators]="true"
-        [interval]="3500"
-        [keyboard]="true"
-        [pause]="true"
-        [ride]="true"
-        [wrap]="true"
-      >
-        <mdb-carousel-item>
-          <a
-            [routerLink]="links[2_1]"
-            class="_item"
-            title="This is a link to navigate to the product list page."
-            aria-label="This is a link to navigate to the product list page."
-          >
-            <img src="./assets/store_image@2x.jpeg" alt="store-top-image-2" />
-            <div class="_search">
-              Search from the product list <i class="fas fa-angle-right"></i>
-            </div>
-          </a>
-        </mdb-carousel-item>
-        <mdb-carousel-item>
-          <a
-            [routerLink]="links[2_1]"
-            class="_item"
-            title="This is a link to navigate to the product list page."
-            aria-label="This is a link to navigate to the product list page."
-          >
-            <img src="./assets/store_image_2@2x.jpeg" alt="store-top-image-2" />
-            <div class="_search">
-              Search from the product list <i class="fas fa-angle-right"></i>
-            </div>
-          </a>
-        </mdb-carousel-item>
-        <mdb-carousel-item>
-          <a
-            [routerLink]="links[2_1]"
-            class="_item"
-            title="This is a link to navigate to the product list page."
-            aria-label="This is a link to navigate to the product list page."
-          >
-            <img src="./assets/store_image_3@2x.jpeg" alt="store-top-image-2" />
-            <div class="_search">
-              Search from the product list <i class="fas fa-angle-right"></i>
-            </div>
-          </a>
-        </mdb-carousel-item>
-      </mdb-carousel>
-    </div>
-  </div>
-
-  <div class="recommend-area">
-    <div class="_ttl">
-      <span *ngIf="isLoggedIn">Recommended products for you</span>
-      <span *ngIf="!isLoggedIn">Recommended products from our staffs</span>
-    </div>
-    <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
-      <ng-container *ngFor="let product of recommendedProductList; index as i">
-        <app-product-card
-          [storeProduct]="product"
-          [productViewImageType]="1"
-          (clickPlusHandler)="clickPlusHandler($event)"
-          (clickMinusHandler)="clickMinusHandler($event)"
-        ></app-product-card>
-      </ng-container>
-    </div>
-  </div>
-  <div class="tab-btn-area">
-    <a
-      mdbRipple
-      rippleColor="dark"
-      type="button"
-      class="btn btn-outline"
-      title="This is a link to navigate to the favorit page."
-      aria-label="This is a link to navigate to the favorit page."
-      [routerLink]="links[3_2]"
-    >
-      <img
-        src="assets/common_icon_heart@2x.png"
-        class="_img"
-        alt="favorite-icon"
-      />
-      Favorites
-    </a>
-    <a
-      mdbRipple
-      rippleColor="dark"
-      type="button"
-      class="btn btn-outline"
-      [routerLink]="links[3_3]"
-      title="This is a link to navigate to the purchased items page."
-      aria-label="This is a link to navigate to the purchased items page."
-    >
-      <img
-        src="assets/top_icon_history@2x.png"
-        class="_img"
-        alt="purchase-icon"
-      />
-      Purchased
-    </a>
-  </div>
-
-  <app-common-footer></app-common-footer>
-
-  <div class="signup-area" *ngIf="!isLoggedIn">
-    <div class="btn_group">
+    <div class="_search">
       <a
-        [routerLink]="links[1_5]"
-        class="btn btn-rounded submit"
-        title="This is a link to navigate to the signup page."
-        aria-label="This is a link to navigate to the signup page."
+        [routerLink]="links[1_2]"
+        class="_button-area"
+        title="This is a button on the header to navigate to the search page."
+        aria-label="This is a button on the header to navigate to the search page."
       >
-        Register
+        <i class="fas fa-search"></i>
+        Search
       </a>
-      <div class="_login-area">
-        Already have an account?
-        <a
-          class="_login"
-          [routerLink]="links[1_4]"
-          title="This is a link to navigate to the login page."
-          aria-label="This is a link to navigate to the login page."
-          >Log In</a
+    </div>
+    <button *ngIf="isLoggedIn" class="_logout" (click)="logoutHandler()">
+      <div class="_button-area" title="This is a looput button on the header.">
+        logout
+      </div>
+    </button>
+    <button
+      title="This is a munu icon on the header to open the my page."
+      aria-label="This is a munu icon on the header to open the my page."
+      class="_menu"
+      (click)="openMenuHandler()"
+    >
+      <i class="fas fa-bars fa-lg"></i>
+    </button>
+  </div>
+
+  <div *ngIf="storeMessage.notice_available_flag" class="store-message-area">
+    <div class="_notice1">
+      {{ storeMessage.notice1 }}
+    </div>
+    <div class="_notice2">{{ storeMessage.notice2 }}</div>
+  </div>
+
+  <div
+    *ngIf="storeMessage.store_available_flag === 0"
+    class="delivery-message-area"
+  >
+    {{ storeMessage.operation_message }}
+  </div>
+
+  <div class="shop-top">
+    <div class="_store">
+      <div class="_scroll-area" #swipeContent>
+        <mdb-carousel
+          #mdbCarousel
+          class="top-carousel-area"
+          [controls]="true"
+          [indicators]="true"
+          [interval]="3500"
+          [keyboard]="true"
+          [pause]="true"
+          [ride]="true"
+          [wrap]="true"
         >
+          <mdb-carousel-item>
+            <a
+              [routerLink]="links[2_1]"
+              class="_item"
+              title="This is a link to navigate to the product list page."
+              aria-label="This is a link to navigate to the product list page."
+            >
+              <img src="./assets/store_image@2x.jpeg" alt="store-top-image-2" />
+              <div class="_search">
+                Search from the product list <i class="fas fa-angle-right"></i>
+              </div>
+            </a>
+          </mdb-carousel-item>
+          <mdb-carousel-item>
+            <a
+              [routerLink]="links[2_1]"
+              class="_item"
+              title="This is a link to navigate to the product list page."
+              aria-label="This is a link to navigate to the product list page."
+            >
+              <img
+                src="./assets/store_image_2@2x.jpeg"
+                alt="store-top-image-2"
+              />
+              <div class="_search">
+                Search from the product list <i class="fas fa-angle-right"></i>
+              </div>
+            </a>
+          </mdb-carousel-item>
+          <mdb-carousel-item>
+            <a
+              [routerLink]="links[2_1]"
+              class="_item"
+              title="This is a link to navigate to the product list page."
+              aria-label="This is a link to navigate to the product list page."
+            >
+              <img
+                src="./assets/store_image_3@2x.jpeg"
+                alt="store-top-image-2"
+              />
+              <div class="_search">
+                Search from the product list <i class="fas fa-angle-right"></i>
+              </div>
+            </a>
+          </mdb-carousel-item>
+        </mdb-carousel>
       </div>
     </div>
-  </div>
-  <ng-container *ngIf="isLoggedIn">
-    <div class="cart-area" *ngIf="cartPriceInfo.numOfStoreProducts">
-      <app-cart-summary-btn
-        [cartPriceInfo]="cartPriceInfo"
-      ></app-cart-summary-btn>
+
+    <div class="recommend-area">
+      <div class="_ttl">
+        <span *ngIf="isLoggedIn">Recommended products for you</span>
+        <span *ngIf="!isLoggedIn">Recommended products from our staffs</span>
+      </div>
+      <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
+        <ng-container
+          *ngFor="let product of recommendedProductList; index as i"
+        >
+          <app-product-card
+            [storeProduct]="product"
+            [productViewImageType]="1"
+            (clickPlusHandler)="clickPlusHandler($event)"
+            (clickMinusHandler)="clickMinusHandler($event)"
+          ></app-product-card>
+        </ng-container>
+      </div>
     </div>
-  </ng-container>
-</div>
+    <div class="tab-btn-area">
+      <a
+        mdbRipple
+        rippleColor="dark"
+        type="button"
+        class="btn btn-outline"
+        title="This is a link to navigate to the favorit page."
+        aria-label="This is a link to navigate to the favorit page."
+        [routerLink]="links[3_2]"
+      >
+        <img
+          src="assets/common_icon_heart@2x.png"
+          class="_img"
+          alt="favorite-icon"
+        />
+        Favorites
+      </a>
+      <a
+        mdbRipple
+        rippleColor="dark"
+        type="button"
+        class="btn btn-outline"
+        [routerLink]="links[3_3]"
+        title="This is a link to navigate to the purchased items page."
+        aria-label="This is a link to navigate to the purchased items page."
+      >
+        <img
+          src="assets/top_icon_history@2x.png"
+          class="_img"
+          alt="purchase-icon"
+        />
+        Purchased
+      </a>
+    </div>
+
+    <app-common-footer></app-common-footer>
+
+    <div class="signup-area" *ngIf="!isLoggedIn">
+      <div class="btn_group">
+        <a
+          [routerLink]="links[1_5]"
+          class="btn btn-rounded submit"
+          title="This is a link to navigate to the signup page."
+          aria-label="This is a link to navigate to the signup page."
+        >
+          Register
+        </a>
+        <div class="_login-area">
+          Already have an account?
+          <a
+            class="_login"
+            [routerLink]="links[1_4]"
+            title="This is a link to navigate to the login page."
+            aria-label="This is a link to navigate to the login page."
+            >Log In</a
+          >
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="isLoggedIn">
+      <div class="cart-area" *ngIf="cartPriceInfo.numOfStoreProducts">
+        <app-cart-summary-btn
+          [cartPriceInfo]="cartPriceInfo"
+        ></app-cart-summary-btn>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
