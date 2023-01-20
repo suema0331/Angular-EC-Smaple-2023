@@ -94,7 +94,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      // To avoid delay in building the initial view of the application, the registration of service workers is delayed by 30 seconds.
+      // Now 5 seconds just for the demo.
+      registrationStrategy: 'registerWhenStable:5000',
     }),
   ],
   providers: [

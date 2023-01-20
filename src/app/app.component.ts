@@ -59,9 +59,11 @@ export class AppComponent {
     const hasShowOnboard = this.storageService.get(
       STORAGE_KEY_CLOSED_PWA_DL_MODAL
     );
-    console.log(hasShowOnboard);
+
     if (!hasShowOnboard || hasShowOnboard === 'false') {
-      this.loadModalPwa();
+      setTimeout(() => {
+        this.loadModalPwa();
+      }, 8000); // wait for the service worker to be registered.
     }
   }
 
@@ -71,7 +73,6 @@ export class AppComponent {
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt($event: any) {
-    console.log($event);
     // Prevent Chrome 67 and earlier from automatically showing the prompt
     $event.preventDefault();
     // Stash the event so it can be triggered later.
@@ -83,7 +84,6 @@ export class AppComponent {
     console.log(this.platform);
     const isInStandaloneMode =
       'standalone' in window.navigator && (<any>window.navigator)['standalone']; // true: working on PWA
-    console.log(isInStandaloneMode);
     if (this.platform.ANDROID) {
       this.modalPwaPlatform = 'ANDROID';
     }
@@ -97,7 +97,6 @@ export class AppComponent {
   }
 
   public addToHomeScreen(): void {
-    console.log(this.modalPwaEvent);
     try {
       this.modalPwaEvent.prompt();
       // Wait for the user to respond to the prompt
@@ -110,7 +109,6 @@ export class AppComponent {
       //   this.modalPwaEvent = null;
       // });
     } catch (error: any) {
-      console.log('error.message');
       console.log(error.message);
       alert(
         `🥲Sorry, something happened. Sorry, something seems to have happened. You may have already added it, or you can manually press the "Add to Home Screen" button in the menu.`
