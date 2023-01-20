@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
@@ -46,6 +46,7 @@ import { SEOService } from './service/utilities/seo.service';
 import { ValidationService } from './service/utilities/validation.service';
 import { CommonFooterComponent } from './components/common-footer/common-footer.component';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,12 @@ import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     ApplicationService,
