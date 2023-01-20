@@ -175,13 +175,22 @@
       border-radius: 8px;
       box-shadow: 0 1px 4px #90867f3d;
       cursor: pointer;
+      text-align: center;
 
       @media screen and (min-width: 540px) {
         padding: 16px 42px;
       }
 
       ._img {
-        width: 20px;
+        // width: 20px;
+        width: 35px;
+        height: 35px;
+        margin: auto 5px auto 0;
+      }
+
+      ._note {
+        font-weight: normal;
+        font-size: 12px;
       }
     }
   }
