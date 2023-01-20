@@ -111,7 +111,7 @@ export class AppComponent {
     } catch (error: any) {
       console.log(error.message);
       alert(
-        `🥲Sorry, something happened. Sorry, something seems to have happened. You may have already added it, or you can manually press the "Add to Home Screen" button in the menu.`
+        `🥲Sorry, something seems to have happened. You may have already added it, or you can manually press the "Add to Home Screen" button in the menu.`
       );
       this.storageService.set(STORAGE_KEY_CLOSED_PWA_DL_MODAL, 'true');
     }
