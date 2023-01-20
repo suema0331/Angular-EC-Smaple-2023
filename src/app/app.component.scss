@@ -1,1 +1,28 @@
-/* stylelint-disable no-empty-source */
+.pwa-notice-area {
+  position: absolute;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 60%;
+  z-index: 1000;
+  cursor: pointer;
+
+  &._isWide {
+    width: 60%;
+  }
+
+  @media screen and (min-width: 600px) {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  ._message {
+    background: #f2fae8;
+    color: #047100;
+    box-shadow: 0 8px 24px #90867f3d;
+  }
+
+  .ios-menu {
+    width: 14px;
+  }
+}
