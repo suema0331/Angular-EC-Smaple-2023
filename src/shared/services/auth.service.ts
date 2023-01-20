@@ -43,7 +43,10 @@ export class AuthService {
   login(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then((result) => {
-        // console.log(result)
+        // console.log(result);
+        if (result.user.displayName?.includes('test')) {
+          alert('💙Thank you for logged in as a VIP user!');
+        }
         return result;
       })
       .catch((error) => {
