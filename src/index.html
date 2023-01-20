@@ -37,6 +37,50 @@
     <meta name="theme-color" content="#1976d2" />
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#1976d2" />
+    <!-- Product (Product, Review, Offer) structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Germany Osterkuchen Great-brand",
+        "image": [
+          "https://angular-ec-2023.netlify.app/assets/product/master/6.jpg",
+          "https://angular-ec-2023.netlify.app/assets/product/small/21.jpg",
+          "https://angular-ec-2023.netlify.app/assets/product/master/35.jpg"
+        ],
+        "description": "New flavors are available only this year! Enjoy Easter with some very tasty Osterkuchen!",
+        "brand": {
+          "@type": "Brand",
+          "name": "Great-brand"
+        },
+        "review": {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "4.8",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Haruno"
+          }
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.4",
+          "reviewCount": "89"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://example.com/anvil",
+          "priceCurrency": "JPY",
+          "price": "90",
+          "priceValidUntil": "2023-01-26",
+          "itemCondition": "https://schema.org/UsedCondition",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    </script>
   </head>
   <body>
     <app-root></app-root>
