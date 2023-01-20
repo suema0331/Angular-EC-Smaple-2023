@@ -16,9 +16,6 @@
     <loc>http://localhost:4200/products</loc>
   </url>
   <url>
-    <loc>http://localhost:4200/mypage</loc>
-  </url>
-  <url>
     <loc>http://localhost:4200/favorite</loc>
   </url>
 </urlset>
