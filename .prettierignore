@@ -8,3 +8,5 @@ assets
 .stylelintrc
 .eslintrc.js
 README.md
+/src/environments/
+/src/scripts/

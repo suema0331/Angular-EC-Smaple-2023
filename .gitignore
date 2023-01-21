@@ -46,6 +46,10 @@ Thumbs.db
 *-debug.log
 .runtimeconfig.json
 
+#cypress
+/cypress/videos
+/cypress/screenshots
+
 .env
 /src/scripts/serviceAccount.json
 /src/environments/**.ts
