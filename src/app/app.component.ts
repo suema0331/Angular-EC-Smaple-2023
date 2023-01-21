@@ -56,6 +56,7 @@ export class AppComponent {
           ? this.seoService.updateOgUrl(String(event.ogUrl))
           : this.seoService.updateOgUrl('');
       });
+
     const hasShowOnboard = this.storageService.get(
       STORAGE_KEY_CLOSED_PWA_DL_MODAL
     );
