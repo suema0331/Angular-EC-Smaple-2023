@@ -86,7 +86,7 @@ npm run e2e
 
 ## Formatting
 
-General style issues are automatically formatted at file save time using `Prettier`, a VSCode extension (`.vscode/settings.json`).
+General style issues are automatically formatted at file save time using `Prettier`, with a VSCode extension (`.vscode/settings.json`).
 Lint and format by `ESLint` for `TypeScript` and `StyleLint` for `SCSS`. Their rules that conflict with `Prettier` is disabled.
 
 ```bash
