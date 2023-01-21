@@ -9,7 +9,10 @@
     "build:pro": "ts-node ./src/scripts/setenv.ts --environment=prod && ng build --configuration=production",
     "watch": "npm run config && ng build --watch --configuration development",
     "e2e": "npx cypress open",
-    "eslint": "eslint . --fix"
+    "e2e:headless": "npx cypress run",
+    "eslint": "eslint . --fix",
+    "prettier": "prettier --check --write .",
+    "stylelint": "stylelint **/*.{css,scss} --fix"
   },
   "private": true,
   "dependencies": {

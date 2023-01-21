@@ -84,5 +84,4 @@ export class FavoriteComponent {
   clickMinusHandler($event: StoreProductExt): void {
     this.cartService.decrementItem($event.store_product_id);
   }
-
 }

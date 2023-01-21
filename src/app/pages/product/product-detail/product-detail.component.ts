@@ -82,7 +82,6 @@ export class ProductDetailComponent {
         )
       )
       .subscribe((data) => {
-
         if (!data[0] || !data[0].store_product_id) {
           alert('Product does not exist');
           this.locationService.navigateTo2_1();

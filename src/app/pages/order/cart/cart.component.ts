@@ -150,6 +150,7 @@ export class CartComponent {
       this.locationService.navigateTo1_4();
       return;
     }
+    //
     this.openConfirmOrderModal().subscribe((selected) => {
       if (selected) {
         // Order confirmed
