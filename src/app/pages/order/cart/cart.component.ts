@@ -141,6 +141,12 @@ export class CartComponent {
   }
 
   confirmOrderHandler(): void {
+    // I will make sure that it will certainly not run during maintenance.
+    if (this.locationService.isMentenance) {
+      alert(
+        '🥲Sorry, The purchase could not be executed because the system is under maintenance mode. Please try again after the maintenance is completed.'
+      );
+    }
     this.currentUser = this.authService.currentUser;
     if (this.cartPriceInfo.numOfStoreProducts === 0) {
       alert('There are no items in your cart.');
@@ -150,7 +156,6 @@ export class CartComponent {
       this.locationService.navigateTo1_4();
       return;
     }
-    //
     this.openConfirmOrderModal().subscribe((selected) => {
       if (selected) {
         // Order confirmed

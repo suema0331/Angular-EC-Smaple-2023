@@ -44,6 +44,7 @@ export class AppComponent {
         }),
         filter((route) => route.outlet === 'primary'), // Unnamed outlets will be named primary
         mergeMap((route) => {
+          // Create an Observable and compose multiple Observables
           return route.data;
         })
       )
