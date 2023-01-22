@@ -46,11 +46,15 @@ Thumbs.db
 *-debug.log
 .runtimeconfig.json
 
-#cypress
+# Cypress
 /cypress/videos
 /cypress/screenshots
 
+# env
 .env
 /src/scripts/serviceAccount.json
 /src/environments/**.ts
 /src/scripts/config.js
+
+# Google Search Console
+googlea023f1fdc9db7724.html
