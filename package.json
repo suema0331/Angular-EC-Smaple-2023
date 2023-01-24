@@ -1,6 +1,12 @@
 {
   "name": "sample-angular-app-2023",
   "version": "0.0.0",
+  "description": "This is a sample e-commerce application using Angular with latest version, Firebase and Algolia.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:suema0331/Angular-EC-Smaple-2023.git"
+  },
+   "author": "Haruno Suematsu (https://github.com/suema0331/)",
   "scripts": {
     "ng": "ng",
     "config": "ts-node ./src/scripts/setenv.ts --environment=dev",

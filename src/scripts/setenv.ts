@@ -19,12 +19,12 @@ console.log(`environment: ${environment}`);
 console.log(`isProduction: ${isProduction}`);
 console.log(`isDev: ${isDev}`);
 
+// Files to be generated
 const targetEnvPath = isProduction
   ? `./src/environments/environment.prod.ts`
   : isDev
   ? `./src/environments/environment.ts`
   : `./src/environments/environment.qa.ts`;
-
 const targetFirebaseConfigJsPath = `./src/scripts/config.js`;
 const targetServiceAccountPath = `./src/scripts/serviceAccount.json`;
 
