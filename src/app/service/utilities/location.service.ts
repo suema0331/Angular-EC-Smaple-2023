@@ -14,6 +14,11 @@ export class LocationService {
   systemStatusSubscription: Subscription;
   isMentenance = false;
 
+  /**
+   * Assuming screen IDs are managed centrally(in requirement definition documents, etc.),
+   * Navigations and page paths are also managed in one place based on screen IDs in this LocationService,
+   * so that to be resistant to page path changes, eliminating the need to re-implement all pages when the path is changed.
+   */
   links = {
     1_1: '/shop-top',
     1_2: '/search',
@@ -85,11 +90,6 @@ export class LocationService {
     return value;
   }
 
-  /**
-   * Assuming screen IDs are managed centrally(in requirement definition documents, etc.),
-   * Navigations and page paths are also managed in one place based on screen IDs in this LocationService, so that
-   * to be resistant to page path changes, eliminating the need to re-implement all pages when the path is changed
-   */
   // navigate to ShopTopComponent
   navigateTo1_1(): void {
     this.navigateTo(`/shop-top`);
