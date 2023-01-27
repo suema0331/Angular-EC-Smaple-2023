@@ -6,7 +6,9 @@ import {
 import { AddCartToastComponent } from 'src/app/components/toasts/add-cart-toast/add.cart.toast.component';
 import { LogService } from '../../../shared/services/log.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class NotificationService {
   cartNotificationRef: MdbNotificationRef<AddCartToastComponent> | null = null;
   cartImageNotificationRef: MdbNotificationRef<AddCartToastComponent> | null =

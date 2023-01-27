@@ -5,7 +5,9 @@ import { LogService } from './log.service';
 /**
  * Service for manipulating local storage
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class StorageService {
   ENC_KEY = 'sample';
 

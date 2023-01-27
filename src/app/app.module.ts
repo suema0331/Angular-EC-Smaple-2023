@@ -36,16 +36,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { ShopGuideComponent } from './pages/shop-guide/shop-guide.component';
 import { ShopTopComponent } from './pages/shop-top/shop-top.component';
 import { SignupComponent } from './pages/signup/signup.component';
-import { ApplicationService } from './service/application.service';
-import { CartService } from './service/domains/cart.service';
-import { ImageUrlService } from './service/utilities/image.url.service';
-import { LocationService } from './service/utilities/location.service';
-import { NotificationService } from './service/utilities/notification.service';
-import { PriceService } from './service/utilities/price.service';
-import { SEOService } from './service/utilities/seo.service';
-import { ValidationService } from './service/utilities/validation.service';
 import { CommonFooterComponent } from './components/common-footer/common-footer.component';
-import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
@@ -82,7 +73,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     MdbStepperModule,
     MdbNotificationModule,
     MdbCarouselModule,
-    MdbRippleModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
@@ -99,17 +89,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       registrationStrategy: 'registerWhenStable:5000',
     }),
   ],
-  providers: [
-    ApplicationService,
-    LocationService,
-    ValidationService,
-    ImageUrlService,
-    PriceService,
-    CartService,
-    NotificationService,
-    SEOService,
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
-  ],
+  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
