@@ -5,7 +5,9 @@ import { environment } from '../../environments/environment';
  * If we want to output logs only in the development and qa environments for debugging, we can use the logService.
  * When we use this, no logs will be output in the production environment.
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class LogService {
   logInfo(msg: string | object): void {
     console.log(`${msg}`);

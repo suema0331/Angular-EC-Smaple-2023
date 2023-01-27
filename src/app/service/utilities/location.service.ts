@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 import { Subscription, map } from 'rxjs';
 import { SystemStatusResponse } from 'src/backend/dto/common/system_status_response';
 import { LogService } from '../../../shared/services/log.service';
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class LocationService {
   private systemStatusCollection: AngularFirestoreCollection<SystemStatusResponse>;
   systemStatusSubscription: Subscription;
