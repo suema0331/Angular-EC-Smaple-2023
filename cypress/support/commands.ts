@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+import "@cypress-audit/lighthouse/commands";
+import "@cypress-audit/pa11y/commands";
 
 Cypress.Commands.add('loginByCsrf', (username, password) => {
   cy.request({
