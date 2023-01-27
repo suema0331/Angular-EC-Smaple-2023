@@ -49,6 +49,7 @@ Thumbs.db
 # Cypress
 /cypress/videos
 /cypress/screenshots
+/cypress/fixtures/user.json
 
 # env
 .env
@@ -58,3 +59,6 @@ Thumbs.db
 
 # Google Search Console
 googlea023f1fdc9db7724.html
+
+# lighthouse
+lighthouse.html
