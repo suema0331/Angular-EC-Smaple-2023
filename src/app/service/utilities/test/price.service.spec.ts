@@ -27,8 +27,12 @@ describe('ApiService', () => {
       MOCK_DATA.products[0].standard_price,
       MOCK_DATA.products[0].store_price
     );
-
+    const value2 = service.calculateDiscountRate(
+      MOCK_DATA.products[1].standard_price,
+      MOCK_DATA.products[1].store_price
+    );
     expect(value).toEqual('90%off');
+    expect(value2).toEqual('10%off');
   });
 
   it('should calculate taxed value', () => {
@@ -37,7 +41,10 @@ describe('ApiService', () => {
     const value = service.calculateTaxedValue(
       MOCK_DATA.products[0].store_price
     );
-
+    const value2 = service.calculateTaxedValue(
+      MOCK_DATA.products[1].store_price
+    );
     expect(value).toEqual(106);
+    expect(value2).toEqual(97);
   });
 });
