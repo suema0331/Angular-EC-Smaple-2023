@@ -205,7 +205,7 @@
       </div>
 
       <button
-        *ngIf="storeProduct.product_status === 1 && cartItem.quantity === 0"
+        *ngIf="storeProduct.product_status === 1 && cartItem?.quantity === 0"
         class="_add-cart"
         (click)="clickCart()"
         title="This is a button to add one new item to your cart."
@@ -217,7 +217,9 @@
       <button
         class="_add-cart isCartClicked"
         [class.overConstraintMax]="isOverConstraintMax"
-        *ngIf="storeProduct.product_status === 1 && cartItem.quantity > 0"
+        *ngIf="
+          storeProduct.product_status === 1 && cartItem && cartItem.quantity > 0
+        "
       >
         <i
           class="fas fa-minus"
