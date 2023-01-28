@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { LocationService2 } from 'src/app/service/utilities/location.service';
-
+sddnnnnnnnnnnnnnnnnnn;
 @Component({
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',
