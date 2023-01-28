@@ -8,8 +8,6 @@ import { FavoriteComponent } from './pages/mypage/favorite/favorite.component';
 import { PastitemComponent } from './pages/mypage/pastitem/pastitem.component';
 import { CartComponent } from './pages/order/cart/cart.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
-import { ProductListComponent } from './pages/product/product-list/product-list.component';
 import { SearchComponent } from './pages/search/search.component';
 import { ShopTopComponent } from './pages/shop-top/shop-top.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -61,21 +59,8 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component: ProductListComponent,
-    data: {
-      title: BASE_TITLE + ' - Product List Page',
-      description: 'This is a product list page.',
-      ogUrl: 'http://localhost:4200/products',
-    },
-  },
-  {
-    path: 'products/:productId',
-    component: ProductDetailComponent,
-    data: {
-      title: BASE_TITLE + ' - Product Detail Page',
-      description: 'This is a product Detail page.',
-      ogUrl: 'http://localhost:4200/products/:productId',
-    },
+    loadChildren: () =>
+      import('./pages/product/product.module').then((m) => m.ProductModule),
   },
   {
     path: 'favorite',
