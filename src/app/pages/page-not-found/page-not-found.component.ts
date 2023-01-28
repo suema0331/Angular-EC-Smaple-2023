@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
 import { LocationService } from 'src/app/service/utilities/location.service';
+import { LocationService3 } from 'src/app/service/utilities/location.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -9,7 +9,7 @@ import { LocationService } from 'src/app/service/utilities/location.service';
 })
 export class PageNotFoundComponent {
   screenName = 'PageNotFoundComponent';
-  screenId = '1_6                    ';
+  screenId = '1_6';
   links = this.locationService.links;
   constructor(private locationService: LocationService) {}
 }
