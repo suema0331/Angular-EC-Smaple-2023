@@ -77,7 +77,7 @@
     "yargs": "^17.6.2"
   },
   "lint-staged": {
-    "*.{ts}": [
+    "*.ts": [
       "prettier --write",
       "eslint --fix"
     ],
