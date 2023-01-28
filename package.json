@@ -78,12 +78,12 @@
   },
   "lint-staged": {
     "*.ts": [
-      "npx prettier --write",
+      "prettier --write",
       "eslint --fix"
     ],
     "*.{css,scss}": [
-      "npx prettier --write",
-      "npx stylelint --fix"
+      "prettier --write",
+      "stylelint --fix"
     ]
   }
 }
