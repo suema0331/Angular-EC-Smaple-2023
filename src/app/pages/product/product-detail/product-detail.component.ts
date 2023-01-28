@@ -26,7 +26,7 @@ export class ProductDetailComponent {
 
   storeProduct = {} as StoreProductExt;
   productDocumentId = '';
-  productSubscription: Subscription;
+  productSubscription: Subscription | undefined;
   productId = '';
 
   isCartClicked = false;
@@ -61,7 +61,9 @@ export class ProductDetailComponent {
     private cartService: CartService,
     private notificationService: NotificationService,
     public location: Location
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     // Get ID from the URL path query
     this.activatedRoute.params.subscribe(
       (params) => (this.productId = params['productId'])
@@ -126,7 +128,7 @@ export class ProductDetailComponent {
   }
 
   ngOnDestroy(): void {
-    this.productSubscription.unsubscribe();
+    this.productSubscription?.unsubscribe();
   }
 
   @HostListener('window:scroll', ['$event'])

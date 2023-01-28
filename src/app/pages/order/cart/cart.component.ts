@@ -47,7 +47,9 @@ export class CartComponent {
     private modalService: MdbModalService,
     private afs: AngularFirestore,
     private authService: AuthService
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     // Get messages from the store that can be written by the store staff.
     const storeMessageCollection = this.afs.collection<StoreTopMessage>(
       'store-messages',
@@ -60,9 +62,6 @@ export class CartComponent {
           this.storeMessage = message[0];
         }
       });
-  }
-
-  ngOnInit(): void {
     // Get Products in the Cart
     const cartCache = this.cartService.getValidCache();
     cartCache.forEach((cart) => {

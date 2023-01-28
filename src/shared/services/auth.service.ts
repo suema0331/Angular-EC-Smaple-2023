@@ -26,7 +26,6 @@ export class AuthService {
   ) {
     // Setting logged in user in localstorage else null
     authState(this.auth).subscribe((user) => {
-      // console.log(user)
       if (user) {
         this.currentUser = user;
       }

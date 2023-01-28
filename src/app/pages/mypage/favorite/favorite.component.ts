@@ -6,7 +6,6 @@ import {
   CartPriceInfo,
   CartService,
 } from 'src/app/service/domains/cart.service';
-import { LocationService } from 'src/app/service/utilities/location.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { AuthService } from 'src/shared/services/auth.service';
@@ -21,7 +20,7 @@ export class FavoriteComponent {
   screenId = '3_2';
 
   productList: Array<StoreProductExt> = [];
-  productListSubscription: Subscription;
+  productListSubscription: Subscription | undefined;
 
   userId: string | undefined = '';
   cartPriceInfo: CartPriceInfo = this.cartService.getCartPriceInfo();
@@ -31,9 +30,10 @@ export class FavoriteComponent {
     private cartService: CartService,
     private afs: AngularFirestore,
     private authService: AuthService,
-    private notificationService: NotificationService,
-    private locationService: LocationService
-  ) {
+    private notificationService: NotificationService
+  ) {}
+
+  ngOnInit(): void {
     const favoriteProductCollection = this.afs.collection<StoreProductExt>(
       'products',
       (ref) =>

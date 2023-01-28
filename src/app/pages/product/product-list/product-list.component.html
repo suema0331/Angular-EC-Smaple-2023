@@ -39,7 +39,6 @@
           <ng-container *ngFor="let product of productList; index as i">
             <app-product-card
               [storeProduct]="product"
-              [isLoggedIn]="isLoggedIn"
               (clickPlusHandler)="clickPlusHandler($event)"
               (clickMinusHandler)="clickMinusHandler($event)"
             ></app-product-card>

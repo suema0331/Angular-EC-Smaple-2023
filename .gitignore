@@ -54,8 +54,7 @@ Thumbs.db
 # env
 .env
 /src/scripts/serviceAccount.json
-/src/environments/environment.prod.**
-/src/environments/environment.qa.**
+/src/environments/**
 /src/scripts/config.js
 
 # Google Search Console

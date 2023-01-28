@@ -24,7 +24,6 @@
       <ng-container *ngFor="let product of productList; index as i">
         <app-product-card
           [storeProduct]="product"
-          [isLoggedIn]="isLoggedIn"
           [isBackgroundTransparent]="true"
           [productViewImageType]="1"
           (clickPlusHandler)="clickPlusHandler($event)"
