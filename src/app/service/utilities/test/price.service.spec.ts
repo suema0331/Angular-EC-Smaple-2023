@@ -30,4 +30,14 @@ describe('ApiService', () => {
 
     expect(value).toEqual('90%off');
   });
+
+  it('should calculate taxed value', () => {
+    service = TestBed.inject(PriceService);
+
+    const value = service.calculateTaxedValue(
+      MOCK_DATA.products[0].store_price
+    );
+
+    expect(value).toEqual(106);
+  });
 });
