@@ -62,7 +62,7 @@
               )
             "
           />
-          <div class="add_cart_btn" *ngIf="cartItem.quantity === 0">
+          <div class="add_cart_btn" *ngIf="cartItem?.quantity === 0">
             <!-- The area above the product image where you can click the Add to Cart button is small on mobile, so it is enlarged. -->
             <button
               class="_expand-cart-add-btn-area"
@@ -75,14 +75,14 @@
           <div
             class="constraint-tooltip"
             *ngIf="displayConstraintTooltip"
-            (click)="hideConstraintTooltip()"
+            (click)="hideConstraintTooltip($event)"
             #constraintTooltip
           >
             You can only purchase up to {{ storeProduct.constraint_max }} items
           </div>
           <div
             class="add_cart_btn isClicked"
-            *ngIf="cartItem.quantity > 0"
+            *ngIf="cartItem && cartItem.quantity > 0"
             [class.overConstraintMax]="isOverConstraintMax"
           >
             <button

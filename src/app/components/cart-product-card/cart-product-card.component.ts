@@ -51,7 +51,7 @@ export class CartProductCardComponent implements OnInit {
   @Output() clickRemoveAllHandler: EventEmitter<StoreProductExt> =
     new EventEmitter();
 
-  cartItem: CartItem = {
+  cartItem: CartItem | undefined = {
     productId: '',
     quantity: 0,
     price: 0,
@@ -77,34 +77,30 @@ export class CartProductCardComponent implements OnInit {
     }
   }
 
-  clickCart($event: MouseEvent): void {
+  stopPropagation($event: MouseEvent): void {
     $event.stopPropagation();
     $event.preventDefault();
-    this.addCart($event);
   }
 
   hideConstraintTooltip(): void {
     if (this.constraintTooltip) {
       this.constraintTooltip.nativeElement.style.display = 'none';
     }
-    this.displayConstraintTooltip = false;
+    this.switchConstraintTooltip(false);
   }
 
   addCart($event: MouseEvent): void {
-    $event.stopPropagation();
-    $event.preventDefault();
-
+    this.stopPropagation($event);
+    if (!this.cartItem) return;
     if (this.cartItem.quantity >= this.storeProduct.constraint_max) {
-      this.isOverConstraintMax = true;
-      this.displayConstraintTooltip = true;
+      this.switchConstraintTooltip(true);
       setTimeout(() => {
         this.hideConstraintTooltip();
       }, 1000);
       return;
-    } else {
-      this.isOverConstraintMax = false;
-      this.displayConstraintTooltip = false;
     }
+
+    this.switchConstraintTooltip(false);
     this.storeProduct.cart_quantity = this.cartItem.quantity;
     this.clickPlusHandler.emit(this.storeProduct);
   }
@@ -112,12 +108,21 @@ export class CartProductCardComponent implements OnInit {
   removeCart($event: MouseEvent): void {
     $event.stopPropagation();
     $event.preventDefault();
+    if (!this.cartItem) return;
+    if (
+      this.cartItem.quantity < 0 ||
+      this.cartItem.quantity > this.storeProduct.constraint_max
+    )
+      return;
 
-    this.isOverConstraintMax = false;
-    this.displayConstraintTooltip = false;
-
+    this.switchConstraintTooltip(false);
     this.storeProduct.cart_quantity = this.cartItem.quantity;
     this.clickMinusHandler.emit(this.storeProduct);
+  }
+
+  switchConstraintTooltip(val: boolean): void {
+    this.isOverConstraintMax = val;
+    this.displayConstraintTooltip = val;
   }
 
   removeAllFromCart(): void {
