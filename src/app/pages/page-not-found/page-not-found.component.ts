@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { LocationService } from 'src/app/service/utilities/location.service';
-import { LocationService2 } from 'src/app/service/utilities/location.service';
+import { LocationServicegk4g } from 'src/app/service/utilities/location.service';
 sddnnnnnnnnnnnnnnnnnn;
 @Component({
   selector: 'app-page-not-found',
