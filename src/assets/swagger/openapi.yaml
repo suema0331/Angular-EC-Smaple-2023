@@ -1,0 +1,43 @@
+openapi: 3.0.3
+info:
+  title: Backend API Sample
+  description: The goal of this exercise is to calculate some statistics from given input data about political speeches.
+  termsOfService: http://swagger.io/terms/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: SystemStatus
+    description: Get system status
+paths:
+  /api/public/system_status:
+    get:
+      tags:
+        - SystemStatus
+      summary: Get system status for user and administrator applications
+      description: '0: System is stopped, 1: System is running'
+      operationId: systemStatus
+      responses:
+        '200':
+          description: Returns answers of the system status
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/SystemStatusResponse'
+
+components:
+  schemas:
+    SystemStatusResponse:
+      type: object
+      properties:
+        user_app_run_status:
+          type: number
+          example: 1
+        admin_app_run_status:
+          type: number
+          example: 0

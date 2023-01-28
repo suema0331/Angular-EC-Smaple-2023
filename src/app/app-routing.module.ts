@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { SearchComponent } from './pages/search/search.component';
 import { ShopTopComponent } from './pages/shop-top/shop-top.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { SwaggerComponent } from './swagger/swagger.component';
 
 const BASE_TITLE = 'Angular EC App';
 
@@ -89,6 +90,10 @@ const routes: Routes = [
   {
     path: 'maintenance',
     component: MaintenanceComponent,
+  },
+  {
+    path: 'swagger',
+    component: SwaggerComponent,
   },
   {
     path: '**',
