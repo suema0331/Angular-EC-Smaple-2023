@@ -67,7 +67,7 @@
               (click)="removeCart($event)"
               title="This is a button to remove one item from your cart."
             ></button>
-            {{ cartItem.quantity }}
+            {{ cartItem?.quantity }}
             <button
               class="fas fa-plus fa-xs"
               (click)="addCart($event)"

@@ -31,7 +31,7 @@ export class ProductDetailComponent {
 
   isCartClicked = false;
   cartPriceInfo: CartPriceInfo = this.cartService.getCartPriceInfo();
-  cartItem: CartItem = {
+  cartItem: CartItem | undefined = {
     productId: '',
     quantity: 0,
     price: 0,
@@ -151,10 +151,17 @@ export class ProductDetailComponent {
     this.addCart();
   }
 
+  hideConstraintTooltip(): void {
+    if (this.constraintTooltip) {
+      this.constraintTooltip.nativeElement.style.display = 'none';
+    }
+    this.switchConstraintTooltip(false);
+  }
+
   addCart(): void {
+    if (!this.cartItem) return;
     if (this.cartItem.quantity >= this.storeProduct.constraint_max) {
-      this.isOverConstraintMax = true;
-      this.displayConstraintTooltip = true;
+      this.switchConstraintTooltip(true);
       setTimeout(() => {
         this.hideConstraintTooltip();
       }, 1000);
@@ -170,8 +177,7 @@ export class ProductDetailComponent {
       this.storeProduct.product_name,
       this.storeProduct.brand ? this.storeProduct.brand : ''
     );
-    this.isOverConstraintMax = false;
-    this.displayConstraintTooltip = false;
+    this.switchConstraintTooltip(false);
     this.cartService.incrementItem(
       this.productId,
       this.storeProduct.store_price
@@ -179,9 +185,19 @@ export class ProductDetailComponent {
   }
 
   removeCart(): void {
-    this.isOverConstraintMax = false;
-    this.displayConstraintTooltip = false;
+    if (!this.cartItem) return;
+    if (
+      this.cartItem.quantity < 0 ||
+      this.cartItem.quantity > this.storeProduct.constraint_max
+    )
+      return;
+    this.switchConstraintTooltip(false);
     this.cartService.decrementItem(this.productId);
+  }
+
+  switchConstraintTooltip(val: boolean): void {
+    this.isOverConstraintMax = val;
+    this.displayConstraintTooltip = val;
   }
 
   getRangeLabel(internalCapacity: string, unitRange: string): string {
@@ -201,13 +217,6 @@ export class ProductDetailComponent {
       return true;
     }
     return false;
-  }
-
-  hideConstraintTooltip(): void {
-    if (this.constraintTooltip) {
-      this.constraintTooltip.nativeElement.style.display = 'none';
-    }
-    this.displayConstraintTooltip = false;
   }
 
   hasCompImages(): boolean {
