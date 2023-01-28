@@ -8,7 +8,7 @@ import { SwaggerUIBundle } from 'swagger-ui-dist';
 })
 export class SwaggerComponent {
   ngOnInit(): void {
-    const ui = SwaggerUIBundle({
+    SwaggerUIBundle({
       dom_id: '#swagger-ui',
       layout: 'BaseLayout',
       presets: [

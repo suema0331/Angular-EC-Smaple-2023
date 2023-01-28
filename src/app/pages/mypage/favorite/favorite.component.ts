@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Subscription, map } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
 import {
   CartPriceInfo,
@@ -8,6 +7,7 @@ import {
 } from 'src/app/service/domains/cart.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
+import { ProductService } from 'src/backend/services/product.service';
 import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
@@ -28,35 +28,14 @@ export class FavoriteComponent {
 
   constructor(
     private cartService: CartService,
-    private afs: AngularFirestore,
     private authService: AuthService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
-    const favoriteProductCollection = this.afs.collection<StoreProductExt>(
-      'products',
-      (ref) =>
-        ref
-          .where('favorite_flag', '==', 1)
-          // Sort sold-out items so that they come last.
-          .orderBy('product_status', 'asc')
-    );
-    // If another field is used in the operation and orderby used in the where condition, a composite index is required.
-    // https://cloud.google.com/firestore/docs/query-data/indexing
-
-    this.productListSubscription = favoriteProductCollection
-      .snapshotChanges()
-      .pipe(
-        map((actions) =>
-          actions.map((a) => {
-            const data = a.payload.doc.data() as StoreProductExt;
-            const id = a.payload.doc.id;
-
-            return { id, ...data };
-          })
-        )
-      )
+    this.productListSubscription = this.productService
+      .getFavoriteProducts()
       .subscribe((data) => (this.productList = data));
   }
 

@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Subscription, map } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
 import {
   CartPriceInfo,
   CartService,
 } from 'src/app/service/domains/cart.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
-import { CartToOrder } from 'src/backend/dto/common/cart_to_order';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
+import { OrderService } from 'src/backend/services/order.service';
 import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
@@ -30,28 +29,14 @@ export class PastitemComponent {
     private cartService: CartService,
     private authService: AuthService,
     private notificationService: NotificationService,
-    private afs: AngularFirestore
+    private orderSrrvice: OrderService
   ) {}
 
   ngOnInit(): void {
     // Get Purchased products
-    this.orderSubscription = this.afs
-      .collection<CartToOrder>('orders', (ref) =>
-        ref.where('user_id', '==', this.currentUser.uid)
-      )
-      .snapshotChanges()
-      .pipe(
-        map((actions) =>
-          actions.map((a) => {
-            const data = a.payload.doc.data() as CartToOrder;
-            const id = a.payload.doc.id;
-            return { docmentId: id, ...data };
-          })
-        )
-      )
+    this.orderSubscription = this.orderSrrvice
+      .getOrderedProducts(this.currentUser.uid)
       .subscribe((data) => {
-        // console.log("🌟subscribed Orders data")
-        // console.log(data)
         const productIds = new Map<string, number>();
 
         data.forEach((order) => {

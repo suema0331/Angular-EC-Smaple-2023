@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MdbCarouselComponent } from 'mdb-angular-ui-kit/carousel';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Subscription } from 'rxjs';
@@ -15,6 +14,8 @@ import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
 import { AuthService } from 'src/shared/services/auth.service';
 import { StorageService } from 'src/shared/services/storage.service';
 import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
+import { ProductService } from 'src/backend/services/product.service';
+import { MessageService } from 'src/backend/services/message.service';
 
 @Component({
   selector: 'app-shop-top',
@@ -44,10 +45,11 @@ export class ShopTopComponent {
     private locationService: LocationService,
     private modalService: MdbModalService,
     private cartService: CartService,
-    private afs: AngularFirestore,
     private authService: AuthService,
     private notificationService: NotificationService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private productService: ProductService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -58,22 +60,14 @@ export class ShopTopComponent {
       this.storageService.set(STORAGE_KEY_SHOWN_ONBOARD, 'true');
     }
     // Get up to 6 products in order of registration
-    const productCollection = this.afs.collection<StoreProductExt>(
-      'products',
-      (ref) => ref.limit(6)
-    );
-    this.recommendedSubscription = productCollection
-      .valueChanges()
+    this.recommendedSubscription = this.productService
+      .getProducts(6)
       .subscribe((data) => {
         this.recommendedProductList = data;
       });
     // Get messages from the store that can be written by the store staff.
-    const storeMessageCollection = this.afs.collection<StoreTopMessage>(
-      'store-messages',
-      (ref) => ref.limit(1)
-    );
-    this.messageSubscription = storeMessageCollection
-      .valueChanges()
+    this.messageSubscription = this.messageService
+      .getMessages()
       .subscribe((message) => {
         if (message[0]) {
           this.storeMessage = message[0];

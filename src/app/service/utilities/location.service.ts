@@ -1,18 +1,13 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { Subscription, map } from 'rxjs';
-import { SystemStatusResponse } from 'src/backend/dto/common/system_status_response';
+import { Subscription } from 'rxjs';
 import { LogService } from '../../../shared/services/log.service';
+import { SystemStatusService } from 'src/backend/services/system.status.service';
 @Injectable({
   providedIn: 'root',
 })
 export class LocationService {
-  private systemStatusCollection: AngularFirestoreCollection<SystemStatusResponse>;
   systemStatusSubscription: Subscription;
   isMentenance = false;
 
@@ -37,24 +32,10 @@ export class LocationService {
   constructor(
     private logService: LogService,
     private router: Router,
-    private afs: AngularFirestore
+    private systemStatusService: SystemStatusService
   ) {
-    this.systemStatusCollection = this.afs.collection<SystemStatusResponse>(
-      'system-status',
-      (ref) => ref.limit(1)
-    );
-    this.systemStatusSubscription = this.systemStatusCollection
-      .snapshotChanges()
-      .pipe(
-        map((actions) =>
-          actions.map((a) => {
-            const data = a.payload.doc.data() as SystemStatusResponse;
-            const id = a.payload.doc.id;
-
-            return { id, ...data };
-          })
-        )
-      )
+    this.systemStatusSubscription = this.systemStatusService
+      .getStatus()
       .subscribe((data) => {
         /**
          *  monitor the state of system maintenance mode

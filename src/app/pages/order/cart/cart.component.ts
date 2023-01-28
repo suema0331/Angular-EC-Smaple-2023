@@ -1,8 +1,7 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
-import { Observable, Subscription, map } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import {
   CartPriceInfo,
   CartService,
@@ -14,6 +13,9 @@ import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
 import { AuthService } from 'src/shared/services/auth.service';
 import { ConfirmCartClearModalComponent } from '../confirm-cart-clear-modal/confirm-cart-clear-modal.component';
 import { ConfirmOrderModalComponent } from '../confirm-order-modal/confirm-order-modal.component';
+import { MessageService } from 'src/backend/services/message.service';
+import { ProductService } from 'src/backend/services/product.service';
+import { OrderService } from 'src/backend/services/order.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -45,18 +47,16 @@ export class CartComponent {
     public location: Location,
     private cartService: CartService,
     private modalService: MdbModalService,
-    private afs: AngularFirestore,
-    private authService: AuthService
+    private authService: AuthService,
+    private messageService: MessageService,
+    private productService: ProductService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
     // Get messages from the store that can be written by the store staff.
-    const storeMessageCollection = this.afs.collection<StoreTopMessage>(
-      'store-messages',
-      (ref) => ref.limit(1)
-    );
-    this.messageSubscription = storeMessageCollection
-      .valueChanges()
+    this.messageSubscription = this.messageService
+      .getMessages()
       .subscribe((message) => {
         if (message[0]) {
           this.storeMessage = message[0];
@@ -66,23 +66,9 @@ export class CartComponent {
     const cartCache = this.cartService.getValidCache();
     cartCache.forEach((cart) => {
       if (cart.productId) {
-        this.productSubscription = this.afs
-          .collection<StoreProductExt>('products', (ref) =>
-            ref.where('store_product_id', '==', cart.productId)
-          )
-          .snapshotChanges()
-          .pipe(
-            map((actions) =>
-              actions.map((a) => {
-                const data = a.payload.doc.data() as StoreProductExt;
-                const id = a.payload.doc.id;
-                return { docmentId: id, ...data };
-              })
-            )
-          )
+        this.productSubscription = this.productService
+          .getProduct(cart.productId)
           .subscribe((data) => {
-            // console.log("🌟subscribed Product data")
-            // console.log(data);
             if (!this.userCart) return;
             if (data[0]) this.userCart?.push(data[0] as StoreProductExt);
           });
@@ -164,9 +150,8 @@ export class CartComponent {
           order_date: new Date(),
           order_products: this.userCart,
         };
-        this.afs
-          .collection<CartToOrder>('orders')
-          .add(orderData)
+        this.orderService
+          .createOrdereFromCart(orderData)
           .then(() => {
             // console.log(doc)
             alert('💙Your item has been successfully purchased!');
