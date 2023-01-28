@@ -11,7 +11,7 @@
     "ng": "ng",
     "config": "ts-node ./src/scripts/setenv.ts --environment=dev",
     "start": "npm run config && ng serve",
-    "build": "npm run config && ng build --configuration=dev",
+    "build": "npm run config && ng build --configuration=development",
     "build:pro": "ts-node ./src/scripts/setenv.ts --environment=prod && ng build --configuration=production",
     "watch": "npm run config && ng build --watch --configuration development",
     "e2e": "npx cypress open",
