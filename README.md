@@ -26,8 +26,11 @@ $ npm run build
 # build the project for production
 $ npm run build:pro
 
-# test the project
+# e2e testing
 $ npm run e2e
+
+# unit testing
+$ npm run test
 
 # formatting the project
 $ npm run eslint
