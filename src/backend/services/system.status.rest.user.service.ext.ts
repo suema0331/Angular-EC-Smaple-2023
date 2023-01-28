@@ -11,7 +11,7 @@
 //    */
 //   // Get the status of the entire system, including multiple applications, such as the user application, admin application.
 //   // getSystemStatus(): Observable<SystemStatusResponse> {
-//   //   const endpoint = `/api/user/system_configurations_ext/system_status_ext`;
+//   //   const endpoint = `/api/public/system_status`;
 //   //   return this.httpClient.get<SystemStatusResponse>(endpoint);
 //   // }
 // }
