@@ -33,7 +33,6 @@ export class ShopTopComponent {
 
   storeMessage = {} as StoreTopMessage;
   cartPriceInfo: CartPriceInfo = this.cartService.getCartPriceInfo();
-  currentUser = this.authService.currentUser;
   isLoggedIn = this.authService.isLoggedIn;
 
   messageSubscription?: Subscription;
@@ -49,7 +48,15 @@ export class ShopTopComponent {
     private authService: AuthService,
     private notificationService: NotificationService,
     private storageService: StorageService
-  ) {
+  ) {}
+
+  ngOnInit(): void {
+    // Modal only when member registration succeeds.
+    const hasShowOnboard = this.storageService.get(STORAGE_KEY_SHOWN_ONBOARD);
+    if (hasShowOnboard === 'false') {
+      this.openModal();
+      this.storageService.set(STORAGE_KEY_SHOWN_ONBOARD, 'true');
+    }
     // Get up to 6 products in order of registration
     const productCollection = this.afs.collection<StoreProductExt>(
       'products',
@@ -72,15 +79,13 @@ export class ShopTopComponent {
           this.storeMessage = message[0];
         }
       });
-  }
-
-  ngOnInit(): void {
-    // Modal only when member registration succeeds.
-    const hasShowOnboard = this.storageService.get(STORAGE_KEY_SHOWN_ONBOARD);
-    if (hasShowOnboard === 'false') {
-      this.openModal();
-      this.storageService.set(STORAGE_KEY_SHOWN_ONBOARD, 'true');
-    }
+    // Possibly store encrypted UserID or token expiration date in local store and load it
+    this.authService.getAuthState().subscribe((user) => {
+      console.log(user);
+      if (user) {
+        this.isLoggedIn = user.uid ? true : false;
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -102,7 +107,6 @@ export class ShopTopComponent {
         this.cartService.clearCart();
         this.cartService.clearCartCacheFromStorage();
         this.isLoggedIn = this.authService.isLoggedIn;
-        this.currentUser = this.authService.currentUser;
       })
       .catch((error) => {
         console.log(error);
@@ -116,7 +120,6 @@ export class ShopTopComponent {
   closeMenuHandler($event: boolean) {
     if ($event) this.isMenuOpen = false;
     this.isLoggedIn = this.authService.isLoggedIn;
-    this.currentUser = this.authService.currentUser;
   }
 
   clickPlusHandler($event: StoreProductExt): void {

@@ -6,7 +6,6 @@ import {
   CartPriceInfo,
   CartService,
 } from 'src/app/service/domains/cart.service';
-import { LocationService } from 'src/app/service/utilities/location.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { CartToOrder } from 'src/backend/dto/common/cart_to_order';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
@@ -21,7 +20,7 @@ export class PastitemComponent {
   screenName = 'PastitemComponent';
   screenId = '3_3';
   productList: Array<StoreProductExt> = [];
-  orderSubscription: Subscription;
+  orderSubscription: Subscription | undefined;
 
   currentUser = this.authService.currentUser;
   cartPriceInfo: CartPriceInfo = this.cartService.getCartPriceInfo();
@@ -31,9 +30,10 @@ export class PastitemComponent {
     private cartService: CartService,
     private authService: AuthService,
     private notificationService: NotificationService,
-    private locationService: LocationService,
     private afs: AngularFirestore
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     // Get Purchased products
     this.orderSubscription = this.afs
       .collection<CartToOrder>('orders', (ref) =>
@@ -68,6 +68,10 @@ export class PastitemComponent {
           });
         });
       });
+  }
+
+  ngOnDestroy(): void {
+    this.orderSubscription?.unsubscribe();
   }
 
   clickPlusHandler($event: StoreProductExt): void {

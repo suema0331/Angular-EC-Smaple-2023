@@ -24,7 +24,7 @@ export class ProductListComponent {
   isLoggedIn = this.authService.isLoggedIn;
 
   productList: Array<StoreProductExt> = [];
-  productListSubscription: Subscription;
+  productListSubscription: Subscription | undefined;
 
   links = this.locationService.links;
   isMenuOpen = false;
@@ -35,7 +35,9 @@ export class ProductListComponent {
     private afs: AngularFirestore,
     private authService: AuthService,
     private notificationService: NotificationService
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     const productCollection = this.afs.collection<StoreProductExt>('products');
     this.productListSubscription = productCollection
       .snapshotChanges()
