@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Subscription, map } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
 import {
   CartPriceInfo,
@@ -9,6 +8,7 @@ import {
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
+import { ProductService } from 'src/backend/services/product.service';
 import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
@@ -32,24 +32,15 @@ export class ProductListComponent {
   constructor(
     public locationService: LocationService,
     private cartService: CartService,
-    private afs: AngularFirestore,
     private authService: AuthService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
-    const productCollection = this.afs.collection<StoreProductExt>('products');
-    this.productListSubscription = productCollection
-      .snapshotChanges()
-      .pipe(
-        map((actions) =>
-          actions.map((a) => {
-            const data = a.payload.doc.data() as StoreProductExt;
-            const id = a.payload.doc.id;
-            return { id, ...data };
-          })
-        )
-      )
+    // Get up to 6 products in order of registration
+    this.productListSubscription = this.productService
+      .getProducts()
       .subscribe((data) => (this.productList = data));
   }
 

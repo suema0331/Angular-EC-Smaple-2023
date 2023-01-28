@@ -1,8 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, map } from 'rxjs';
+import { Subscription } from 'rxjs';
 import {
   CartItem,
   CartPriceInfo,
@@ -14,6 +13,7 @@ import { PriceService } from 'src/app/service/utilities/price.service';
 import { SEOService } from 'src/app/service/utilities/seo.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { ProductStatus } from 'src/backend/enums/product_status';
+import { ProductService } from 'src/backend/services/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -57,10 +57,10 @@ export class ProductDetailComponent {
     private priceService: PriceService,
     private seoService: SEOService,
     private activatedRoute: ActivatedRoute,
-    private afs: AngularFirestore,
     private cartService: CartService,
     private notificationService: NotificationService,
-    public location: Location
+    public location: Location,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
@@ -69,20 +69,8 @@ export class ProductDetailComponent {
       (params) => (this.productId = params['productId'])
     );
     // Get A document from tha productId
-    this.productSubscription = this.afs
-      .collection<StoreProductExt>('products', (ref) =>
-        ref.where('store_product_id', '==', this.productId)
-      )
-      .snapshotChanges()
-      .pipe(
-        map((actions) =>
-          actions.map((a) => {
-            const data = a.payload.doc.data() as StoreProductExt;
-            const id = a.payload.doc.id;
-            return { docmentId: id, ...data };
-          })
-        )
-      )
+    this.productSubscription = this.productService
+      .getProduct(this.productId)
       .subscribe((data) => {
         if (!data[0] || !data[0].store_product_id) {
           alert('Product does not exist');
@@ -246,14 +234,9 @@ export class ProductDetailComponent {
   }
 
   clickFavHandler(): void {
-    const docRef = this.afs.collection<StoreProductExt>('products');
-
-    docRef.doc(this.productDocumentId).set(
-      {
-        ...this.storeProduct,
-        favorite_flag: this.storeProduct.favorite_flag === 1 ? 0 : 1,
-      },
-      { merge: true }
+    this.productService.updateFavorite(
+      this.productDocumentId,
+      this.storeProduct
     );
   }
 
