@@ -22,9 +22,11 @@ module.exports = (config: any) => {
     },
     jasmineHtmlReporter: {
       suppressAll: true, // removes the duplicated traces
+      suppressFailed: true, // Suppress failed messages
     },
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/'),
+      // dir: 'coverage',
       subdir: '.',
       reporters: [{ type: 'html' }, { type: 'text-summary' }],
     },
@@ -44,12 +46,12 @@ module.exports = (config: any) => {
     },
     thresholds: {
       emitWarning: false, // set to `true` to not fail the test command when thresholds are not met
-      // // thresholds for all files
+      // thresholds for all files
       // global: {
-      //   statements: 95,
-      //   lines: 95,
-      //   branches: 95,
-      //   functions: 95,
+      //   statements: 10,
+      //   lines: 10,
+      //   branches: 10,
+      //   functions: 10,
       // },
     },
   });

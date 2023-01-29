@@ -52,11 +52,10 @@ describe('MypageComponent', () => {
     expect(element.textContent).toBe('My Page');
   });
 
-  it('should show as user information', () => {
+  it('should show the user information', () => {
     const logoutEl = fixture.debugElement.query(
       By.css('._button-area')
     ).nativeElement;
-
     expect(logoutEl.textContent).toBe('logout');
     const nameEl = fixture.debugElement.query(
       By.css('.account-area ._right ._name ._value')
