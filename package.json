@@ -20,7 +20,8 @@
     "test-ci": "ng test --watch=false --browsers=ChromeHeadlessCustom",
     "eslint": "eslint . --fix",
     "prettier": "prettier --check --write .",
-    "stylelint": "stylelint **/*.{css,scss} --fix"
+    "stylelint": "stylelint **/*.{css,scss} --fix",
+    "patch": "node src/scripts/patchFirestore.js"
   },
   "private": true,
   "dependencies": {
@@ -68,8 +69,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.0.0",
-    "path-browserify": "^1.0.1",
     "lint-staged": "^13.1.0",
+    "path-browserify": "^1.0.1",
     "prettier": "^2.8.3",
     "stylelint": "^14.16.1",
     "stylelint-config-prettier": "^9.0.4",
