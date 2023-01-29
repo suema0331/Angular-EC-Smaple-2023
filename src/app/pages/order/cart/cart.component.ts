@@ -10,7 +10,7 @@ import { LocationService } from 'src/app/service/utilities/location.service';
 import { CartToOrder } from 'src/backend/dto/common/cart_to_order';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
-import { AuthService } from 'src/shared/services/auth.service';
+import { AuthService } from 'src/app/service/domains/auth.service';
 import { ConfirmCartClearModalComponent } from '../confirm-cart-clear-modal/confirm-cart-clear-modal.component';
 import { ConfirmOrderModalComponent } from '../confirm-order-modal/confirm-order-modal.component';
 import { MessageService } from 'src/backend/services/message.service';
