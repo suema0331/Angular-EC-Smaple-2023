@@ -9,7 +9,7 @@ import { LocationService } from 'src/app/service/utilities/location.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { ProductService } from 'src/backend/services/product.service';
-import { AuthService } from 'src/shared/services/auth.service';
+import { AuthService } from 'src/app/service/domains/auth.service';
 
 @Component({
   selector: 'app-product-list',

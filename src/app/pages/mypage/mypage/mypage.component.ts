@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CartService } from 'src/app/service/domains/cart.service';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { environment } from 'src/environments/environment';
-import { AuthService } from 'src/shared/services/auth.service';
+import { AuthService } from 'src/app/service/domains/auth.service';
 
 @Component({
   selector: 'app-mypage',

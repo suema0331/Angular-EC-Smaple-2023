@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from 'src/shared/services/auth.guard';
-import { VIPGuard } from 'src/shared/services/vip.guard';
+import { AuthGuard } from 'src/app/service/domains/auth.guard';
+import { VIPGuard } from 'src/app/service/domains/vip.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { MaintenanceComponent } from './pages/maintenance/maintenance.component';
 import { FavoriteComponent } from './pages/mypage/favorite/favorite.component';

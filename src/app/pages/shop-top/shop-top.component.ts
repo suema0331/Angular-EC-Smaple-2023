@@ -11,7 +11,7 @@ import { LocationService } from 'src/app/service/utilities/location.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
-import { AuthService } from 'src/shared/services/auth.service';
+import { AuthService } from 'src/app/service/domains/auth.service';
 import { StorageService } from 'src/shared/services/storage.service';
 import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
 import { ProductService } from 'src/backend/services/product.service';

@@ -5,7 +5,7 @@ import { STORAGE_KEY_SHOWN_ONBOARD } from 'src/app/extra/constants';
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { ValidationService } from 'src/app/service/utilities/validation.service';
 import { environment } from 'src/environments/environment';
-import { AuthService } from 'src/shared/services/auth.service';
+import { AuthService } from 'src/app/service/domains/auth.service';
 import { LogService } from 'src/shared/services/log.service';
 import { StorageService } from 'src/shared/services/storage.service';
 
