@@ -160,26 +160,20 @@ export class SignupComponent {
 
   navigateToTermsHandler($event: Event): void {
     $event.preventDefault();
-    if (environment.production) {
-      window.open(
-        `https://www.linkedin.com/in/haruno-suematsu-b20a03235/`,
-        '_blank'
-      );
-    } else {
-      window.open(
-        `https://www.linkedin.com/in/haruno-suematsu-b20a03235/`,
-        '_blank'
-      );
-    }
+    // If we have production server
+    // window.open(`${environment.BASE_URL}/terms.html`, '_blank', 'noreferrer');
+    window.open(
+      `https://www.linkedin.com/in/haruno-suematsu-b20a03235/`,
+      '_blank',
+      'noreferrer'
+    );
   }
 
   navigateToPolicyHandler($event: Event): void {
     $event.preventDefault();
-    if (environment.production) {
-      window.open(`https://haruno-suematsu.netlify.app/`, '_blank');
-    } else {
-      window.open(`https://haruno-suematsu.netlify.app/`, '_blank');
-    }
+    // If we have production server
+    // window.open(`${environment.BASE_URL}/policy.html`, '_blank', 'noreferrer');
+    window.open(`https://haruno-suematsu.netlify.app/`, '_blank', 'noreferrer');
   }
 
   // validation mail
