@@ -1,6 +1,6 @@
 export interface ProductImageExt {
-  sort_order: number;
+  // sort_order: number;
   master: string;
-  medium: string;
+  // medium: string;
   small: string;
 }
