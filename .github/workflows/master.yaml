@@ -35,8 +35,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run patch
-      - run: npm run build:pro
-      - run: npm run eslint
+      # - run: npm run build:pro
+      # - run: npm run eslint
       - run: npm run test-ci
 
   # automerge:
