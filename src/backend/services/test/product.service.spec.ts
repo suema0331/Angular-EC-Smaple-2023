@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { of } from 'rxjs';
-import { OrderService } from '../order.service';
-import { ORDER_MOCK_DATA } from './firebase.service.mock-data';
+import { ProductService } from '../product.service';
+import { PRODUCT_MOCK_DATA } from './firebase.service.mock-data';
 
-describe('FirebaseService', () => {
-  let service: OrderService;
+describe('ProductService', () => {
+  let service: ProductService;
 
   const collectionSpy = jasmine.createSpyObj({
-    valueChanges: of(ORDER_MOCK_DATA),
+    valueChanges: of(PRODUCT_MOCK_DATA),
   });
   const afSpy = jasmine.createSpyObj('AngularFirestore', {
     collection: collectionSpy,
@@ -16,23 +16,37 @@ describe('FirebaseService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [OrderService, { provide: AngularFirestore, useValue: afSpy }],
+      providers: [
+        ProductService,
+        { provide: AngularFirestore, useValue: afSpy },
+      ],
     });
-    service = TestBed.inject(OrderService);
+    service = TestBed.inject(ProductService);
   });
 
-  it('should call getOrderedProducts method and return orders value', async () => {
-    service.getOrderedProducts('MQyclRM9Z7WA7oLsOiIdKz3Fd5w2');
+  it('should call getProducts method and return products value', async () => {
+    service.getProducts();
     // Check to see if the spy function has been executed.
     expect(collectionSpy.valueChanges).toHaveBeenCalled();
 
-    service
-      .getOrderedProducts('MQyclRM9Z7WA7oLsOiIdKz3Fd5w2')
-      .subscribe((actual) => {
-        console.log('actual orders');
-        console.log(actual);
-        if (!actual[0]) return;
-        expect(actual[0]).toEqual(ORDER_MOCK_DATA);
-      });
+    service.getProducts().subscribe((actual) => {
+      console.log('actual products');
+      console.log(actual);
+      if (!actual) return;
+      expect(actual).toEqual(PRODUCT_MOCK_DATA);
+    });
+  });
+
+  it('should call getFavoriteProducts method and return products value', async () => {
+    service.getFavoriteProducts();
+    // Check to see if the spy function has been executed.
+    expect(collectionSpy.valueChanges).toHaveBeenCalled();
+
+    service.getFavoriteProducts().subscribe((actual) => {
+      console.log('actual favorites');
+      console.log(actual);
+      if (!actual) return;
+      expect(actual).toEqual(PRODUCT_MOCK_DATA);
+    });
   });
 });

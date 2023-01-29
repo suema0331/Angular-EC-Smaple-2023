@@ -36,7 +36,9 @@ export class FavoriteComponent {
   ngOnInit(): void {
     this.productListSubscription = this.productService
       .getFavoriteProducts()
-      .subscribe((data) => (this.productList = data));
+      .subscribe(
+        (data) => (this.productList = Array.from(Object.values(data)))
+      );
   }
 
   ngOnDestroy(): void {

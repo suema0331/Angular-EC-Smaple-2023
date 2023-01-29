@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { MESSAGE_MOCK_DATA } from './firebase.service.mock-data';
 import { MessageService } from '../message.service';
 
-describe('FirebaseService', () => {
+describe('MessageService', () => {
   let service: MessageService;
 
   const collectionSpy = jasmine.createSpyObj({

@@ -5,7 +5,7 @@ import { SystemStatusService } from '../system.status.service';
 import { SYSTEM_STATUS_MOCK_DATA } from './firebase.service.mock-data';
 import { SystemStatusResponse } from 'src/backend/dto/common/system_status_response';
 
-describe('FirebaseService', () => {
+describe('SystemStatusService', () => {
   let service: SystemStatusService;
 
   const collectionSpy = jasmine.createSpyObj({
