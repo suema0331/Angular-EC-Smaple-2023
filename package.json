@@ -20,7 +20,8 @@
     "test-ci": "ng test --watch=false --browsers=ChromeHeadlessCustom",
     "eslint": "eslint . --fix",
     "prettier": "prettier --check --write .",
-    "stylelint": "stylelint **/*.{css,scss} --fix"
+    "stylelint": "stylelint **/*.{css,scss} --fix",
+    "patch": "node src/scripts/patchFirestore.js"
   },
   "private": true,
   "dependencies": {
