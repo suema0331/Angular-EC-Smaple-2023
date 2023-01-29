@@ -21,11 +21,9 @@
   </div>
   <ng-template class="sub-category-area" #showFavoriteList>
     <div class="card-products-area row row-cols-3 row-cols-md-3 g-3">
-      <ng-container *ngFor="let product of productList; index as i">
+      <ng-container *ngFor="let product of productList">
         <app-product-card
           [storeProduct]="product"
-          [isMoreClicked]="false"
-          [productViewImageType]="1"
           [isBackgroundTransparent]="true"
           (clickPlusHandler)="clickPlusHandler($event)"
           (clickMinusHandler)="clickMinusHandler($event)"

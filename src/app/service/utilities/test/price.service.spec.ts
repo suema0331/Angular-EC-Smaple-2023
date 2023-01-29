@@ -1,14 +1,14 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+// import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { PriceService } from '../price.service';
 import { MOCK_DATA } from './price.service.mock-data';
 
-describe('ApiService', () => {
+describe('PriceService', () => {
   let service: PriceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      // imports: [HttpClientTestingModule],
       providers: [PriceService],
     });
 
