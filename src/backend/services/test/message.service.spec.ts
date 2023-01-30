@@ -30,8 +30,6 @@ describe('MessageService', () => {
     expect(collectionSpy.valueChanges).toHaveBeenCalled();
 
     service.getMessages().subscribe((actual) => {
-      console.log('actual message');
-      console.log(actual);
       if (!actual[0]) return;
       expect(actual[0]).toEqual(MESSAGE_MOCK_DATA);
     });

@@ -34,8 +34,6 @@ describe('OrderService', () => {
     service
       .getOrderedProducts('MQyclRM9Z7WA7oLsOiIdKz3Fd5w2')
       .subscribe((actual) => {
-        console.log('actual orders');
-        console.log(actual);
         if (!actual[0]) return;
         expect(actual[0]).toEqual(ORDER_MOCK_DATA);
       });
