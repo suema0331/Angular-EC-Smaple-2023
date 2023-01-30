@@ -31,13 +31,10 @@ describe('SystemStatusService', () => {
     expect(collectionSpy.valueChanges).toHaveBeenCalled();
 
     collectionSpy.valueChanges().subscribe((actual: SystemStatusResponse) => {
-      console.log(actual);
       expect(actual).toEqual(SYSTEM_STATUS_MOCK_DATA);
     });
 
     service.getStatus().subscribe((actual) => {
-      console.log('actual status');
-      console.log(actual);
       if (!actual[0]) return;
       expect(actual[0]).toEqual(SYSTEM_STATUS_MOCK_DATA);
     });
