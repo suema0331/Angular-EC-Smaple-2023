@@ -75,7 +75,6 @@ export class ShopTopComponent {
       });
     // Possibly store encrypted UserID or token expiration date in local store and load it
     this.authService.getAuthState().subscribe((user) => {
-      console.log(user);
       if (user) {
         this.isLoggedIn = user.uid ? true : false;
       }
