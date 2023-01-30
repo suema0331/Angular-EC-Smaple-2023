@@ -42,7 +42,6 @@ export class AuthService {
   login(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then((result) => {
-        // console.log(result);
         if (result.user.displayName?.includes('test')) {
           alert('💙Thank you for logged in as a VIP user!');
         }
@@ -59,7 +58,6 @@ export class AuthService {
         this.currentUser = {} as User;
         // localStorage.removeItem('user');
         console.log('🌟loggeed out');
-        // console.log(result);
         return result;
       })
       .catch((error) => {
@@ -71,7 +69,6 @@ export class AuthService {
   async signUp(email: string, password: string) {
     return createUserWithEmailAndPassword(this.auth, email, password)
       .then(async (result) => {
-        // console.log(result)
         const newUser = this.auth.currentUser as User;
 
         await updateProfile(newUser, {

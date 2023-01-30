@@ -153,7 +153,6 @@ export class CartComponent {
         this.orderService
           .createOrdereFromCart(orderData)
           .then(() => {
-            // console.log(doc)
             alert('💙Your item has been successfully purchased!');
             this.cartService.clearCart();
             this.cartService.clearCartCacheFromStorage();
