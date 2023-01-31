@@ -22,7 +22,9 @@
     "eslint": "eslint . --fix",
     "prettier": "prettier --check --write .",
     "stylelint": "stylelint **/*.{css,scss} --fix",
-    "patch": "node src/scripts/patchFirestore.js"
+    "patch": "node src/scripts/patchFirestore.js",
+    "build:stats": "ts-node ./src/scripts/setenv.ts --environment=prod && ng build --stats-json --configuration=production",
+    "analyze": "webpack-bundle-analyzer dist/sample-angular-app-2023/stats.json"
   },
   "private": true,
   "dependencies": {
@@ -62,7 +64,7 @@
     "dotenv": "^16.0.3",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
-    "firestore-export-import": "^1.3.5",
+    "firestore-export-import": "^1.2.0",
     "husky": "^8.0.3",
     "jasmine-core": "^4.5.0",
     "karma": "~6.4.0",
