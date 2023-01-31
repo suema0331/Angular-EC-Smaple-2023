@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { of } from 'rxjs';
 import { ProductService } from '../product.service';
-import { PRODUCT_MOCK_DATA } from './firebase.service.mock-data';
+import { PRODUCT_MOCK_DATA } from 'src/shared/test-assets/firebase.service.mock-data';
 
 describe('ProductService', () => {
   let service: ProductService;

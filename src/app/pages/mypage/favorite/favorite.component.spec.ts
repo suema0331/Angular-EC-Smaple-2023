@@ -2,22 +2,12 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { By } from '@angular/platform-browser';
-import { of } from 'rxjs';
 import { CommonHeaderComponent } from 'src/app/components/common-header/common-header.component';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
-import {
-  PRODUCT_MOCK_DATA,
-  SYSTEM_STATUS_MOCK_DATA,
-} from 'src/backend/services/test/firebase.service.mock-data';
+import { afSpy } from 'src/shared/test-assets/createFireStoreSpy';
+import { PRODUCT_MOCK_DATA } from 'src/shared/test-assets/firebase.service.mock-data';
 import { FavoriteComponent } from './favorite.component';
-
-const collectionSpy = jasmine.createSpyObj({
-  valueChanges: of(SYSTEM_STATUS_MOCK_DATA),
-});
-const afSpy = jasmine.createSpyObj('AngularFirestore', {
-  collection: collectionSpy,
-});
 
 const mockNotificationService = jasmine.createSpyObj<NotificationService>(
   'NotificationService',

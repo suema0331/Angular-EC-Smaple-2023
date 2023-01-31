@@ -48,7 +48,7 @@ git clone git@github.com:suema0331/Angular-EC-Smaple-2023.git && cd Angular-EC-S
 ## Generate environment configs
 
 The `npm run config` command creates an environment configuration file for each development, qa, and production environment by generating credential information such as Firebase settings from `.env`. (`src/environments/environment.ts`, `src/scripts/config.js`,`src/scripts/serviceAccount.json`)
-Please have the `.env` file shared by the administrator :)<br>
+Please have the `.env` file shared by the administrator :)<br><br>
 Note: The following `npm run start` includes this command, so you can skip this command. If you only want to create and check the configuration file, run this command please.
 
 ```bash
@@ -57,8 +57,7 @@ npm run config
 
 ## Start the server
 
-Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-<br>
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.<br><br>
 Note: If you get an error from firestore (`node_modules/@angular/fire/compat/firestore/interfaces.d.ts:29:18`) and cannot start/build/test, please use `npm run patch` to fix this known issue :)
 (https://github.com/angular/angularfire/issues/3255)
 
