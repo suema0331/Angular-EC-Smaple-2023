@@ -5,8 +5,8 @@ describe('Lighthouse Testing', () => {
 
   beforeEach(() => {
     Cypress.config('taskTimeout', 180_00000)
-    // cy.viewport('iphone-8') //ビューポートを375pxx667pxに設定
-    cy.viewport('macbook-13') //ビューポートを1280pxx800pxに設定
+    // cy.viewport('iphone-8') //375px x 667px
+    cy.viewport('macbook-13') // 1280px x 800px
     cy.visit('http://localhost:4200/shop-top')
   });
 
@@ -25,7 +25,7 @@ describe('Lighthouse Testing', () => {
         pwa: 50,
       },
         {
-          formFactor: "desktop", // mobile
+          formFactor: "desktop", // or mobile
           screenEmulation: {
             mobile: false,
             disable: false,
@@ -33,6 +33,9 @@ describe('Lighthouse Testing', () => {
             height: Cypress.config("viewportHeight"),
             deviceScaleRatio: 1,
           },
+          /**
+           * By changing these parameters, performance can be tested under varying loads.
+           */
           // throttling: {
           //   rttMs: 40, // Controls simulated network RTT (TCP layer)
           //   throughputKbps: 11024, // Controls simulated network download throughput
