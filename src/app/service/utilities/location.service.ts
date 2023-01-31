@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LogService } from '../../../shared/services/log.service';
-import { SystemStatusService } from 'src/backend/services/system.status.service';
+import { ApplicationService } from '../application.service';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -32,10 +33,10 @@ export class LocationService {
   constructor(
     private logService: LogService,
     private router: Router,
-    private systemStatusService: SystemStatusService
+    private applicationService: ApplicationService
   ) {
-    this.systemStatusSubscription = this.systemStatusService
-      .getStatus()
+    this.systemStatusSubscription = this.applicationService
+      .getSystemStatus()
       .subscribe((data) => {
         /**
          *  monitor the state of system maintenance mode

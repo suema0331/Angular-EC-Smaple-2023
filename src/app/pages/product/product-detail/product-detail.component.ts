@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ApplicationService } from 'src/app/service/application.service';
 import {
   CartItem,
   CartPriceInfo,
@@ -13,7 +14,6 @@ import { PriceService } from 'src/app/service/utilities/price.service';
 import { SEOService } from 'src/app/service/utilities/seo.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { ProductStatus } from 'src/backend/enums/product_status';
-import { ProductService } from 'src/backend/services/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -60,7 +60,7 @@ export class ProductDetailComponent {
     private cartService: CartService,
     private notificationService: NotificationService,
     public location: Location,
-    private productService: ProductService
+    private applicationService: ApplicationService
   ) {}
 
   ngOnInit(): void {
@@ -69,7 +69,7 @@ export class ProductDetailComponent {
       (params) => (this.productId = params['productId'])
     );
     // Get A document from tha productId
-    this.productSubscription = this.productService
+    this.productSubscription = this.applicationService
       .getProduct(this.productId)
       .subscribe((data) => {
         if (!data[0] || !data[0].store_product_id) {
@@ -234,7 +234,7 @@ export class ProductDetailComponent {
   }
 
   clickFavHandler(): void {
-    this.productService.updateFavorite(
+    this.applicationService.updateFavorite(
       this.productDocumentId,
       this.storeProduct
     );

@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
+import { ApplicationService } from 'src/app/service/application.service';
+import { AuthService } from 'src/app/service/domains/auth.service';
 import {
   CartPriceInfo,
   CartService,
 } from 'src/app/service/domains/cart.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
-import { OrderService } from 'src/backend/services/order.service';
-import { AuthService } from 'src/app/service/domains/auth.service';
 
 @Component({
   selector: 'app-pastitem',
@@ -29,12 +29,12 @@ export class PastitemComponent {
     private cartService: CartService,
     private authService: AuthService,
     private notificationService: NotificationService,
-    private orderSrrvice: OrderService
+    private applicationService: ApplicationService
   ) {}
 
   ngOnInit(): void {
     // Get Purchased products
-    this.orderSubscription = this.orderSrrvice
+    this.orderSubscription = this.applicationService
       .getOrderedProducts(this.currentUser.uid)
       .subscribe((data) => {
         const productIds = new Map<string, number>();

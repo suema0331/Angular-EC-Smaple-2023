@@ -25,8 +25,8 @@ describe('SystemStatusService', () => {
     service = TestBed.inject(SystemStatusService);
   });
 
-  it('should call getStatus method and return system-status value', async () => {
-    service.getStatus();
+  it('should call getSystemStatus method and return system-status value', async () => {
+    service.getSystemStatus();
     // Check to see if the spy function has been executed.
     expect(collectionSpy.valueChanges).toHaveBeenCalled();
 
@@ -34,7 +34,7 @@ describe('SystemStatusService', () => {
       expect(actual).toEqual(SYSTEM_STATUS_MOCK_DATA);
     });
 
-    service.getStatus().subscribe((actual) => {
+    service.getSystemStatus().subscribe((actual) => {
       if (!actual[0]) return;
       expect(actual[0]).toEqual(SYSTEM_STATUS_MOCK_DATA);
     });
