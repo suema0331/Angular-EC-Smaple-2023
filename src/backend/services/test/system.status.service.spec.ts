@@ -1,19 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { of } from 'rxjs';
 import { SystemStatusService } from '../system.status.service';
-import { SYSTEM_STATUS_MOCK_DATA } from './firebase.service.mock-data';
+import { SYSTEM_STATUS_MOCK_DATA } from '../../../shared/test-assets/firebase.service.mock-data';
 import { SystemStatusResponse } from 'src/backend/dto/common/system_status_response';
+import {
+  afSpy,
+  collectionSpy,
+} from 'src/shared/test-assets/createFireStoreSpy';
 
 describe('SystemStatusService', () => {
   let service: SystemStatusService;
-
-  const collectionSpy = jasmine.createSpyObj({
-    valueChanges: of(SYSTEM_STATUS_MOCK_DATA),
-  });
-  const afSpy = jasmine.createSpyObj('AngularFirestore', {
-    collection: collectionSpy,
-  });
 
   beforeEach(() => {
     TestBed.configureTestingModule({

@@ -3,17 +3,9 @@ import { User } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of } from 'rxjs';
 import { LocationService } from 'src/app/service/utilities/location.service';
-import { SYSTEM_STATUS_MOCK_DATA } from 'src/backend/services/test/firebase.service.mock-data';
 import { MypageComponent } from './mypage.component';
-
-const collectionSpy = jasmine.createSpyObj({
-  valueChanges: of(SYSTEM_STATUS_MOCK_DATA),
-});
-const afSpy = jasmine.createSpyObj('AngularFirestore', {
-  collection: collectionSpy,
-});
+import { afSpy } from 'src/shared/test-assets/createFireStoreSpy';
 
 describe('MypageComponent', () => {
   let component: MypageComponent;

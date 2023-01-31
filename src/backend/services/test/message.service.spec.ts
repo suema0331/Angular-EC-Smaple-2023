@@ -1,18 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { of } from 'rxjs';
-import { MESSAGE_MOCK_DATA } from './firebase.service.mock-data';
+import { MESSAGE_MOCK_DATA } from '../../../shared/test-assets/firebase.service.mock-data';
 import { MessageService } from '../message.service';
+import {
+  afSpy,
+  collectionSpy,
+} from 'src/shared/test-assets/createFireStoreSpy';
 
 describe('MessageService', () => {
   let service: MessageService;
-
-  const collectionSpy = jasmine.createSpyObj({
-    valueChanges: of(MESSAGE_MOCK_DATA),
-  });
-  const afSpy = jasmine.createSpyObj('AngularFirestore', {
-    collection: collectionSpy,
-  });
 
   beforeEach(() => {
     TestBed.configureTestingModule({

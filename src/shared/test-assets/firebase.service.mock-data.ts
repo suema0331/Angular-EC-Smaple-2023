@@ -1,3 +1,4 @@
+import { CartPriceInfo } from 'src/app/service/domains/cart.service';
 import { CartToOrder } from 'src/backend/dto/common/cart_to_order';
 import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
 import { SystemStatusResponse } from 'src/backend/dto/common/system_status_response';
@@ -138,4 +139,10 @@ export const ORDER_MOCK_DATA: CartToOrder = {
   user_id: 'MQyclRM9Z7WA7oLsOiIdKz3Fd5w2',
   order_date: new Date(),
   order_products: PRODUCT_MOCK_DATA,
+};
+
+export const CART_PRICE_INFO_MOCK_DATA: CartPriceInfo = {
+  totalProductPriceWithTax: 108,
+  totalProductPriceWithoutTax: 100,
+  numOfStoreProducts: 1,
 };
