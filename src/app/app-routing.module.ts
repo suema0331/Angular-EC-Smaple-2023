@@ -8,7 +8,6 @@ import { FavoriteComponent } from './pages/mypage/favorite/favorite.component';
 import { PastitemComponent } from './pages/mypage/pastitem/pastitem.component';
 import { CartComponent } from './pages/order/cart/cart.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { SearchComponent } from './pages/search/search.component';
 import { ShopTopComponent } from './pages/shop-top/shop-top.component';
 import { SignupComponent } from './pages/signup/signup.component';
 
@@ -50,12 +49,8 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    component: SearchComponent,
-    data: {
-      title: BASE_TITLE + ' - Search Page',
-      description: 'This is a search page.',
-      ogUrl: 'http://localhost:4200/search',
-    },
+    loadChildren: () =>
+      import('./pages/search/search.module').then((m) => m.SearchModule),
   },
   {
     path: 'products',
