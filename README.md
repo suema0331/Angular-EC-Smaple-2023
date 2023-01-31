@@ -4,6 +4,8 @@ This is a practical sample of an e-commerce application using `Angular`(version 
 Also, since I created this application from scratch while working two jobs in a week, there is still a lot of room for improvement, but I implemented it with future scalability in mind. I look forward to brushing it up in the future :)
 
 https://angular-ec-2023.netlify.app/
+<br>
+https://d1p9q3d57rp82y.cloudfront.net/
 
 # Configuration
 
@@ -97,7 +99,7 @@ Lint and format by `ESLint` for `TypeScript` and `StyleLint` for `SCSS`. Their r
 npm run eslint
 ```
 
-## Overall directory structure
+## Overall directory structure and its docs
 
 <pre>
 .

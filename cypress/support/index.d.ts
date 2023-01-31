@@ -2,15 +2,15 @@
 declare namespace Cypress {
   interface Chainable<Subject> {
     /**
-     * UIを通じてログインする
+     * Log in through the UI
      */
     login(email: string, password: string): Chainable<any>;
     /**
-     * 直接APIを叩いてログインする
+     * Log in by calling the API directly
      */
     loginByCsrf(email: string, password: string): Chainable<any>;
     /**
-     * UIを通じてSignupする
+     * Sign up through UI
      */
     signup(email: string, password: string, confirmPassword: string): Chainable<any>;
     validateSignupForm(email: string, password: string, confirmPassword: string): Chainable<any>;

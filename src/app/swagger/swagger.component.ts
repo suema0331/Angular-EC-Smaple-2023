@@ -4,7 +4,7 @@ import { SwaggerUIBundle } from 'swagger-ui-dist';
 @Component({
   selector: 'app-swagger',
   templateUrl: './swagger.component.html',
-  styleUrls: ['./swagger.component.scss'],
+  // styleUrls: ['./swagger.component.scss'],
 })
 export class SwaggerComponent {
   ngOnInit(): void {

@@ -10,6 +10,7 @@ Not used at this time. But in the future, the front-end injects and calls the `A
   - `VIPGuard`: Guard to allow only a limited number of VIP users.
 
 - `/utilities`: Describe methods that are used repeatedly in the application as services.
+
   - `ImageUrlService`: Centralize and change where image files are retrieved from. For example, if customers are added in the future, they will be retrieved from objects stored in S3 using CroudFront rather than backend.
   - `LocationService`: On the premise that screen IDs are centrally managed (e.g., in requirement definition documents), by centrally managing navigation and page paths based on screen IDs in this `LocationService`, even when page path changing happens, the app can be more robust and there is no need to re-implement all pages when the path is changed.
   - `NotificationService`: Service to send notifications using toasts.
