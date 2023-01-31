@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CONSTRAINT_MAX } from 'src/app/extra/constants';
+import { ApplicationService } from 'src/app/service/application.service';
+import { AuthService } from 'src/app/service/domains/auth.service';
 import {
   CartPriceInfo,
   CartService,
@@ -8,8 +10,6 @@ import {
 import { LocationService } from 'src/app/service/utilities/location.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
-import { ProductService } from 'src/backend/services/product.service';
-import { AuthService } from 'src/app/service/domains/auth.service';
 
 @Component({
   selector: 'app-product-list',
@@ -34,12 +34,12 @@ export class ProductListComponent {
     private cartService: CartService,
     private authService: AuthService,
     private notificationService: NotificationService,
-    private productService: ProductService
+    private applicationService: ApplicationService
   ) {}
 
   ngOnInit(): void {
     // Get up to 6 products in order of registration
-    this.productListSubscription = this.productService
+    this.productListSubscription = this.applicationService
       .getProducts()
       .subscribe((data) => (this.productList = data));
   }

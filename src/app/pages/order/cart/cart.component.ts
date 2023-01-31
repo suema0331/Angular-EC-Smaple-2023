@@ -13,9 +13,7 @@ import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
 import { AuthService } from 'src/app/service/domains/auth.service';
 import { ConfirmCartClearModalComponent } from '../confirm-cart-clear-modal/confirm-cart-clear-modal.component';
 import { ConfirmOrderModalComponent } from '../confirm-order-modal/confirm-order-modal.component';
-import { MessageService } from 'src/backend/services/message.service';
-import { ProductService } from 'src/backend/services/product.service';
-import { OrderService } from 'src/backend/services/order.service';
+import { ApplicationService } from 'src/app/service/application.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -48,14 +46,12 @@ export class CartComponent {
     private cartService: CartService,
     private modalService: MdbModalService,
     private authService: AuthService,
-    private messageService: MessageService,
-    private productService: ProductService,
-    private orderService: OrderService
+    private applicationService: ApplicationService
   ) {}
 
   ngOnInit(): void {
     // Get messages from the store that can be written by the store staff.
-    this.messageSubscription = this.messageService
+    this.messageSubscription = this.applicationService
       .getMessages()
       .subscribe((message) => {
         if (message[0]) {
@@ -66,7 +62,7 @@ export class CartComponent {
     const cartCache = this.cartService.getValidCache();
     cartCache.forEach((cart) => {
       if (cart.productId) {
-        this.productSubscription = this.productService
+        this.productSubscription = this.applicationService
           .getProduct(cart.productId)
           .subscribe((data) => {
             if (!this.userCart) return;
@@ -150,7 +146,7 @@ export class CartComponent {
           order_date: new Date(),
           order_products: this.userCart,
         };
-        this.orderService
+        this.applicationService
           .createOrdereFromCart(orderData)
           .then(() => {
             alert('💙Your item has been successfully purchased!');

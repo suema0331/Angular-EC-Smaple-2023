@@ -3,6 +3,8 @@ import { MdbCarouselComponent } from 'mdb-angular-ui-kit/carousel';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Subscription } from 'rxjs';
 import { STORAGE_KEY_SHOWN_ONBOARD } from 'src/app/extra/constants';
+import { ApplicationService } from 'src/app/service/application.service';
+import { AuthService } from 'src/app/service/domains/auth.service';
 import {
   CartPriceInfo,
   CartService,
@@ -11,11 +13,8 @@ import { LocationService } from 'src/app/service/utilities/location.service';
 import { NotificationService } from 'src/app/service/utilities/notification.service';
 import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
 import { StoreTopMessage } from 'src/backend/dto/common/store_top_message';
-import { AuthService } from 'src/app/service/domains/auth.service';
 import { StorageService } from 'src/shared/services/storage.service';
 import { ShopGuideComponent } from '../shop-guide/shop-guide.component';
-import { ProductService } from 'src/backend/services/product.service';
-import { MessageService } from 'src/backend/services/message.service';
 
 @Component({
   selector: 'app-shop-top',
@@ -48,8 +47,7 @@ export class ShopTopComponent {
     private authService: AuthService,
     private notificationService: NotificationService,
     private storageService: StorageService,
-    private productService: ProductService,
-    private messageService: MessageService
+    private applicationService: ApplicationService
   ) {}
 
   ngOnInit(): void {
@@ -60,13 +58,13 @@ export class ShopTopComponent {
       this.storageService.set(STORAGE_KEY_SHOWN_ONBOARD, 'true');
     }
     // Get up to 6 products in order of registration
-    this.recommendedSubscription = this.productService
+    this.recommendedSubscription = this.applicationService
       .getProducts(6)
       .subscribe((data) => {
         this.recommendedProductList = data;
       });
     // Get messages from the store that can be written by the store staff.
-    this.messageSubscription = this.messageService
+    this.messageSubscription = this.applicationService
       .getMessages()
       .subscribe((message) => {
         if (message[0]) {
