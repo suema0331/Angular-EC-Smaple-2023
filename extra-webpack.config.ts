@@ -1,5 +1,4 @@
 import { Configuration } from 'webpack';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 export default {
   resolve: {
@@ -7,5 +6,5 @@ export default {
       path: require.resolve('path-browserify'),
     },
   },
-  plugins: [new BundleAnalyzerPlugin()],
+  // plugins: [new BundleAnalyzerPlugin()],
 } as Configuration;

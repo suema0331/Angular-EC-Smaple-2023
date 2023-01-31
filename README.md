@@ -9,7 +9,8 @@ https://angular-ec-2023.netlify.app/
 
 I didn't have time to build a backend, so this time I used [Firebase](https://firebase.google.com/) and [Algolia](https://www.algolia.com/) for the search function.
 I used [MDB Angular](https://mdbootstrap.com/), an open-source UI library, because I had experience using it in the past.
-I also use [Cypress](https://www.cypress.io/) for testing, and [Prettier](https://prettier.io/), [ESLint](https://eslint.org/) and [Stylelint](https://stylelint.io/) for formatting styles.
+I also use [Cypress](https://www.cypress.io/) for E2E testing, [Jasmine](https://jasmine.github.io/) for Unit and Integration testing, and [Karma](http://karma-runner.github.io/latest/index.html) for test runners.
+For formatting styles, I use [Prettier](https://prettier.io/), [ESLint](https://eslint.org/) and [Stylelint](https://stylelint.io/).
 
 # Quick Start
 
