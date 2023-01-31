@@ -58,6 +58,9 @@ npm run config
 ## Start the server
 
 Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<br>
+Note: If you get an error from firestore (`node_modules/@angular/fire/compat/firestore/interfaces.d.ts:29:18`) and cannot start/build/test, please use `npm run patch` to fix this known issue :)
+(https://github.com/angular/angularfire/issues/3255)
 
 ```bash
 npm run start
