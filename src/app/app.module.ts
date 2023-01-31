@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { NgAisModule } from 'angular-instantsearch';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
@@ -25,7 +24,6 @@ import { CartComponent } from './pages/order/cart/cart.component';
 import { ConfirmCartClearModalComponent } from './pages/order/confirm-cart-clear-modal/confirm-cart-clear-modal.component';
 import { ConfirmOrderModalComponent } from './pages/order/confirm-order-modal/confirm-order-modal.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { SearchComponent } from './pages/search/search.component';
 import { ShopGuideComponent } from './pages/shop-guide/shop-guide.component';
 import { ShopTopComponent } from './pages/shop-top/shop-top.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -33,18 +31,17 @@ import { SignupComponent } from './pages/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ShopTopComponent,
     CartComponent,
-    FavoriteComponent,
-    PastitemComponent,
-    PageNotFoundComponent,
-    SearchComponent,
-    LoginComponent,
-    MaintenanceComponent,
-    ShopGuideComponent,
-    SignupComponent,
     ConfirmCartClearModalComponent,
     ConfirmOrderModalComponent,
+    FavoriteComponent,
+    LoginComponent,
+    MaintenanceComponent,
+    PastitemComponent,
+    PageNotFoundComponent,
+    ShopTopComponent,
+    ShopGuideComponent,
+    SignupComponent,
   ],
   imports: [
     AppSharedModule,
@@ -58,7 +55,6 @@ import { SignupComponent } from './pages/signup/signup.component';
     MdbCarouselModule,
     FormsModule,
     ReactiveFormsModule,
-    NgAisModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
