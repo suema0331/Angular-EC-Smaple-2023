@@ -78,9 +78,6 @@ describe('SignupComponent', () => {
     expect(component.form_password).toEqual(testUser.password);
     expect(component.form_confirm_password).toEqual(testUser.confirmPassword);
 
-    console.log('🌟component.form_password');
-    console.log(component.form_password);
-
     // Confirmation that there are no validation errors.
     expect(component.isMailError).toBeFalse();
     expect(component.isPasswordError).toBeFalse();
