@@ -9,6 +9,7 @@ import { SearchComponent } from './search.component';
 import { afSpy } from 'src/shared/test-assets/createFireStoreSpy';
 import { CommonFooterComponent } from 'src/app/components/common-footer/common-footer.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgAisModule } from 'angular-instantsearch';
 
 const mockNotificationService = jasmine.createSpyObj<NotificationService>(
   'NotificationService',
@@ -35,7 +36,7 @@ describe('SearchComponent', () => {
         { provide: NotificationService, useValue: mockNotificationService },
         { provide: AngularFirestore, useValue: afSpy },
       ],
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, NgAisModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SearchComponent);
