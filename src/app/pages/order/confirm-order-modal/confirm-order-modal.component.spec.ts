@@ -3,8 +3,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { By } from '@angular/platform-browser';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { afSpy } from 'src/shared/test-assets/createFireStoreSpy';
-import { ConfirmOrderModalComponent } from './confirm-order-modal.component';
 import { PRODUCT_MOCK_DATA } from 'src/shared/test-assets/firebase.service.mock-data';
+import { ConfirmOrderModalComponent } from './confirm-order-modal.component';
 
 const mockMdbModalRef = jasmine.createSpyObj<
   MdbModalRef<ConfirmOrderModalComponent>
@@ -46,14 +46,14 @@ describe('ConfirmOrderModalComponent', () => {
     );
   });
 
-  it('should be show the STEP image', () => {
+  it('should show the YES button', () => {
     const element = fixture.debugElement.query(
       By.css('.btn_group .submit')
     ).nativeElement;
     expect(element.textContent).toContain('YES');
   });
 
-  it('should be show the STEP image', () => {
+  it('should show the CANCEL button', () => {
     const element = fixture.debugElement.query(
       By.css('.btn_group .cancel')
     ).nativeElement;
