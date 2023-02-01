@@ -1,4 +1,3 @@
-// import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { PriceService } from '../price.service';
 import { MOCK_DATA } from './price.service.mock-data';
@@ -8,10 +7,8 @@ describe('PriceService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      // imports: [HttpClientTestingModule],
       providers: [PriceService],
     });
-
     service = TestBed.inject(PriceService);
   });
 
@@ -21,8 +18,6 @@ describe('PriceService', () => {
   });
 
   it('should calculate discount rate', () => {
-    service = TestBed.inject(PriceService);
-
     const value = service.calculateDiscountRate(
       MOCK_DATA.products[0].standard_price,
       MOCK_DATA.products[0].store_price
@@ -36,8 +31,6 @@ describe('PriceService', () => {
   });
 
   it('should calculate taxed value', () => {
-    service = TestBed.inject(PriceService);
-
     const value = service.calculateTaxedValue(
       MOCK_DATA.products[0].store_price
     );

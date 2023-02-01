@@ -2,14 +2,14 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { By } from '@angular/platform-browser';
-import { NotificationService } from 'src/app/service/utilities/notification.service';
-import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
-import { PRODUCT_MOCK_DATA } from 'src/shared/test-assets/firebase.service.mock-data';
-import { SearchComponent } from './search.component';
-import { afSpy } from 'src/shared/test-assets/createFireStoreSpy';
-import { CommonFooterComponent } from 'src/app/components/common-footer/common-footer.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgAisModule } from 'angular-instantsearch';
+import { CommonFooterComponent } from 'src/app/components/common-footer/common-footer.component';
+import { NotificationService } from 'src/app/service/utilities/notification.service';
+import { StoreProductExt } from 'src/backend/dto/common/store_product_ext';
+import { afSpy } from 'src/shared/test-assets/createFireStoreSpy';
+import { PRODUCT_MOCK_DATA } from 'src/shared/test-assets/firebase.service.mock-data';
+import { SearchComponent } from './search.component';
 
 const mockNotificationService = jasmine.createSpyObj<NotificationService>(
   'NotificationService',
@@ -56,7 +56,7 @@ describe('SearchComponent', () => {
     expect(element.textContent).toContain('Results');
   });
 
-  it('should be show the common footer', () => {
+  it('should show the common footer', () => {
     const element = fixture.debugElement.query(
       By.css('.footer .list-group-item')
     ).nativeElement;

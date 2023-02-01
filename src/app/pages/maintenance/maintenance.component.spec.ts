@@ -29,7 +29,7 @@ describe('MaintenanceComponent', () => {
     expect(element.textContent).toContain('Angular EC App 2023');
   });
 
-  it('should be show the maintenance message', () => {
+  it('should show the maintenance message', () => {
     const element = fixture.debugElement.query(By.css('._ttl')).nativeElement;
     expect(element.textContent).toContain(
       'This service is currently under maintenance.'

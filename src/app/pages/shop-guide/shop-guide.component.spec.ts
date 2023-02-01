@@ -50,26 +50,26 @@ describe('ShopGuideComponent', () => {
     expect(element.textContent).toBe(testShopGuideStep[0].name);
   });
 
-  it('should be show the STEP title', () => {
+  it('should show the STEP title', () => {
     const element = fixture.debugElement.query(
       By.css('.modal-body ._title')
     ).nativeElement;
     expect(element.textContent).toBe(testShopGuideStep[0].title);
   });
 
-  it('should be show the STEP image', () => {
+  it('should show the STEP image', () => {
     const element = fixture.debugElement.query(By.css('.modal-body ._img img'));
     expect(element.properties['src']).toBe(testShopGuideStep[0].img);
   });
 
-  it('should be show the STEP title', () => {
+  it('should show the STEP title', () => {
     const element = fixture.debugElement.query(
       By.css('.modal-body ._message')
     ).nativeElement;
     expect(element.textContent).toBe(testShopGuideStep[0].message);
   });
 
-  it('should be show the stepper btn', () => {
+  it('should show the stepper btn', () => {
     const element = fixture.debugElement.query(
       By.css('.stepper-btn button')
     ).nativeElement;
