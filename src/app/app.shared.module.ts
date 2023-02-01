@@ -4,7 +4,7 @@ import { CartSummaryBtnComponent } from './components/cart-summary-btn/cart-summ
 import { CommonFooterComponent } from './components/common-footer/common-footer.component';
 import { CommonHeaderComponent } from './components/common-header/common-header.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
-import { AddCartToastComponent } from './components/toasts/add-cart-toast/add.cart.toast.component';
+import { AddCartToastComponent } from './components/toasts/add-cart-toast/add-cart-toast.component';
 import { MypageComponent } from './pages/mypage/mypage/mypage.component';
 import { SharedModule } from 'src/shared/shared.module';
 import { RouterModule } from '@angular/router';

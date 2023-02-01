@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'add-cart-image-toast',
-  templateUrl: './add.cart.toast.component.html',
-  styleUrls: ['./add.cart.toast.component.scss'],
+  templateUrl: './add-cart-toast.component.html',
+  styleUrls: ['./add-cart-toast.component.scss'],
 })
 export class AddCartToastComponent {
   screenName = 'AddCartToast';

@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { By } from '@angular/platform-browser';
 import { afSpy } from 'src/shared/test-assets/createFireStoreSpy';
 import { PRODUCT_MOCK_DATA } from 'src/shared/test-assets/firebase.service.mock-data';
-import { AddCartToastComponent } from './add.cart.toast.component';
+import { AddCartToastComponent } from './add-cart-toast.component';
 
 describe('AddCartToastComponent', () => {
   let component: AddCartToastComponent;
