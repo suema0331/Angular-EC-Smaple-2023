@@ -8,7 +8,7 @@
   font-size: 18px;
   font-weight: bold;
   text-align: center;
-  color: #2e2621;
+  color: $base_font_color;
   padding: 24px 8px 8px;
 
   ._message {
@@ -29,15 +29,15 @@
     }
 
     .submit {
-      background: #e50721;
-      color: #fcfcfc;
+      background: $important_norice_font_color;
+      color: $base_white_color;
       font-weight: bold;
       margin-bottom: 8px;
     }
 
     .cancel {
-      background: #fff;
-      color: #2e2621;
+      background: $white_color;
+      color: $base_font_color;
     }
   }
 }

@@ -1,11 +1,11 @@
 @import 'variables';
 
 .product-detail {
-  background: #f2f2f2;
+  background: $lighter_gray_color;
   padding-bottom: 200px;
 
   .detail-area {
-    background: #fcfcfc;
+    background: $base_white_color;
     padding: 16px 16px 0;
     margin-bottom: 12px;
 
@@ -22,18 +22,18 @@
         justify-content: left;
 
         &:not(:last-of-type) {
-          border-bottom: #d1d1d1 1px dotted;
+          border-bottom: $medium_gray_color 1px dotted;
         }
 
         ._key {
-          color: #717171;
+          color: $dark_gray_color;
           font-size: 14px;
           width: 70px;
           margin: auto 0;
         }
 
         ._value {
-          color: #2e2621;
+          color: $base_font_color;
           font-size: 16px;
           width: 260px;
           margin-left: 12px;
@@ -60,12 +60,12 @@
       }
 
       padding: 16px;
-      background: #fcfcfc;
+      background: $base_white_color;
       position: relative;
       text-align: center;
       font-weight: bold;
       font-size: 16px;
-      box-shadow: 0 2px 6px #90867f1f;
+      box-shadow: 0 2px 6px $header_shadow_color;
 
       button {
         position: absolute;
@@ -149,7 +149,7 @@
       left: 8px;
       bottom: 5px;
       z-index: 100;
-      color: #fff;
+      color: $white_color;
 
       @media screen and (min-width: 600px) {
         font-size: 16px;
@@ -158,7 +158,7 @@
   }
 
   .scroll-img-area {
-    background: #f2f2f2;
+    background: $lighter_gray_color;
 
     @media screen and (min-width: 600px) {
       max-width: 70%;
@@ -193,11 +193,11 @@
 
   .info-area {
     padding: 8px 16px 12px;
-    background: #fcfcfc;
+    background: $base_white_color;
     margin-bottom: 12px;
 
     ._name {
-      color: #2e2621;
+      color: $base_font_color;
       font-size: 18px;
       font-weight: bold;
       word-break: break-word;
@@ -207,8 +207,8 @@
       ._tag {
         font-size: 14px;
         font-weight: bold;
-        color: #fff;
-        background: #dc1125;
+        color: $white_color;
+        background: $discount_tag_color;
         padding: 2px 4px;
         margin-right: 8px;
       }
@@ -216,13 +216,13 @@
 
     ._estimation {
       ._ttl {
-        color: #717171;
+        color: $dark_gray_color;
         font-size: 16px;
       }
 
       ._discount-tag {
         ._tag {
-          color: #dc1125;
+          color: $discount_tag_color;
           font-size: 14px;
           font-weight: bold;
           background: rgb(255 245 0 / 93%);
@@ -231,13 +231,13 @@
       }
 
       ._price {
-        color: #e50721;
+        color: $important_norice_font_color;
         font-size: 26px;
         font-weight: bold;
         margin-right: 4px;
 
         ._tax {
-          color: #717171;
+          color: $dark_gray_color;
           font-size: 16px;
           font-weight: normal;
         }
@@ -250,8 +250,8 @@
     bottom: 0;
     padding: 16px;
     width: 100%;
-    background: #fcfcfc;
-    box-shadow: #90867f1f 0 -2px 6px;
+    background: $base_white_color;
+    box-shadow: $header_shadow_color 0 -2px 6px;
     z-index: 9999;
 
     @media screen and (min-width: 600px) {
@@ -260,8 +260,8 @@
     }
 
     .constraint-tooltip {
-      color: #fff;
-      background: #2e2621;
+      color: $white_color;
+      background: $base_font_color;
       top: -68px;
       position: absolute;
       right: 14px;
@@ -271,7 +271,7 @@
       width: 188px;
       z-index: 99999;
       border-radius: 8px;
-      box-shadow: 0 8px 24px #b5b5b580;
+      box-shadow: 0 8px 24px $tooltip_shadow_color;
 
       &::after {
         z-index: 99999;
@@ -284,7 +284,7 @@
         height: 0;
         margin: auto;
         border-style: solid;
-        border-color: #2e2621 transparent transparent;
+        border-color: $base_font_color transparent transparent;
         border-width: 13px 13px 0;
       }
 
@@ -324,7 +324,7 @@
           margin-left: 2.5rem;
           padding: 6px 9px;
           font-weight: bolder;
-          background: #2e2621;
+          background: $base_font_color;
         }
       }
 
@@ -333,7 +333,7 @@
         border-radius: 47px;
         font-size: 16px;
         font-weight: bold;
-        color: #fcfcfc;
+        color: $base_white_color;
         padding: 16px 42px;
         width: 100%;
 
@@ -355,7 +355,7 @@
         }
 
         &.stockout {
-          background: #d8d8d8;
+          background: $stockout_background_color;
           flex-grow: 1;
         }
 
@@ -371,7 +371,7 @@
           margin-right: 8px;
           width: 26px;
           height: 26px;
-          background: #fcfcfc;
+          background: $base_white_color;
           border-radius: 50%;
           text-align: center;
           line-height: 27px;

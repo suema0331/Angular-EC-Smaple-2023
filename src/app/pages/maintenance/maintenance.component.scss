@@ -1,15 +1,17 @@
+@import 'variables';
+
 .app-top {
   ._name {
     text-align: center;
     font-size: 16px;
-    color: #2e2621;
+    color: $base_font_color;
     font-weight: bold;
     margin-bottom: 32px;
   }
 
   .note-area {
     text-align: center;
-    background: #f4f4f4;
+    background: $lighter_gray_color;
     padding: 16px;
     margin: 16px;
 

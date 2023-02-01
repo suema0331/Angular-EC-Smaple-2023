@@ -1,7 +1,7 @@
 @import 'variables';
 
 .cart-page {
-  background: #f2f2f2;
+  background: $lighter_gray_color;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -20,17 +20,17 @@
     ._inner {
       padding: 16px;
       border-radius: 16px 16px 0 0;
-      background: #fcfcfc;
+      background: $base_white_color;
       position: relative;
       text-align: center;
       font-weight: bold;
       font-size: 16px;
       line-height: 1.9;
-      border-bottom: #eae5e2 1px solid;
+      border-bottom: $light_beige_color 1px solid;
 
       .empty-cart-button {
         cursor: pointer;
-        color: #0080de;
+        color: $blue_link_color;
         position: absolute;
         left: 16px;
         font-size: 14px;
@@ -57,17 +57,17 @@
     position: relative;
     width: 100%;
     padding-top: 10px;
-    background: #f2f2f2;
+    background: $lighter_gray_color;
     padding-bottom: 200px;
 
     .no-cart-area {
       text-align: center;
       font-size: 16px;
-      background: #f2f2f2;
+      background: $lighter_gray_color;
       padding-bottom: 100px;
 
       ._message {
-        color: #717171;
+        color: $dark_gray_color;
         font-weight: bold;
         margin-bottom: 24px;
         padding: 32px 0 0;
@@ -84,7 +84,7 @@
 
     .inner-area {
       padding: 0 16px;
-      background: #fcfcfc;
+      background: $base_white_color;
 
       .message-area {
         padding-top: 24px;
@@ -97,8 +97,8 @@
         font-size: 14px;
 
         ._message {
-          background: #fff4ea;
-          color: #d15f00;
+          background: $white_color;
+          color: $announcement_font_color;
           border-radius: 3px;
           padding: 16px;
         }
@@ -106,13 +106,13 @@
 
       .product-area {
         &:not(:last-of-type) {
-          border-bottom: #d1d1d1 1px dotted;
+          border-bottom: $medium_gray_color 1px dotted;
         }
       }
     }
 
     .order-area {
-      box-shadow: #90867f1f 0 -2px 6px;
+      box-shadow: $header_shadow_color 0 -2px 6px;
       position: fixed;
       bottom: 0;
       padding: 16px 20px;
@@ -127,7 +127,7 @@
       .note-free {
         text-align: right;
         font-size: 12px;
-        color: #717171;
+        color: $dark_gray_color;
       }
 
       .price {
@@ -137,13 +137,13 @@
         line-height: 1.2;
 
         ._red {
-          color: #e50721;
+          color: $important_norice_font_color;
           font-size: 26px;
           margin-right: 2px;
         }
 
         ._tax {
-          color: #717171;
+          color: $dark_gray_color;
           font-size: 12px;
           font-weight: normal;
         }
@@ -157,7 +157,7 @@
         line-height: 1.1;
 
         ._tax {
-          color: #717171;
+          color: $dark_gray_color;
           font-size: 10px;
           font-weight: normal;
           margin-left: 2px;
@@ -174,15 +174,15 @@
 
         .submit {
           font-weight: bold;
-          color: #fcfcfc;
+          color: $base_white_color;
           background: $shop_theme_color;
           margin: 0 auto;
         }
 
         .no-cart {
           font-weight: bold;
-          color: #f2f2f2;
-          background: #d8d8d8;
+          color: $lighter_gray_color;
+          background: $stockout_background_color;
           margin: 0 auto;
         }
       }

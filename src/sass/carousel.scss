@@ -10,14 +10,14 @@ mdb-carousel {
         height: 0.4rem;
         width: 0.4rem;
         border-radius: 50%;
-        border: 1px solid #fff;
-        background-color: #fff;
-        box-shadow: 0 0 3px #3c3a3a;
+        border: 1px solid $white_color;
+        background-color: $white_color;
+        box-shadow: 0 0 3px $carousel_indicator_shadow_color;
         margin: auto 4px;
       }
 
       .active {
-        border: 1px solid #fff;
+        border: 1px solid $white_color;
         background-color: $shop_theme_color;
       }
     }
@@ -32,8 +32,8 @@ mdb-carousel {
     .carousel-control-next-icon {
       text-align: center;
       background: rgb(242 242 242 / 90%);
-      box-shadow: #00000080 0 0 4px;
-      color: #717171;
+      box-shadow: $carousel_control_shadow_color 0 0 4px;
+      color: $dark_gray_color;
       border-radius: 80%;
       font-size: 16px;
       font-weight: bold;

@@ -1,5 +1,7 @@
+@import 'variables';
+
 .product-card {
-  background: #fcfcfc;
+  background: $base_white_color;
 
   &._transparent {
     background: transparent;
@@ -10,7 +12,7 @@
   }
 
   .card {
-    background: #fcfcfc;
+    background: $base_white_color;
 
     .card_img {
       &.stockout::after {
@@ -21,7 +23,7 @@
         content: 'SOLD OUT';
         font-weight: bold;
         font-size: 16px;
-        color: #fff;
+        color: $white_color;
         position: absolute;
         text-align: center;
         line-height: 7;
@@ -43,7 +45,7 @@
         top: 0;
         left: 0;
         font-size: 12px;
-        color: #fcfcfc;
+        color: $base_white_color;
         background: rgb(235 38 38 / 95%);
         padding: 2px;
       }
@@ -54,14 +56,14 @@
         left: 0;
         font-size: 14px;
         font-weight: bold;
-        color: #dc1125;
+        color: $discount_tag_color;
         background: rgb(255 245 0 / 93%);
         padding: 0 4px;
       }
 
       .constraint-tooltip {
-        color: #fff;
-        background: #2e2621;
+        color: $white_color;
+        background: $base_font_color;
         top: -5px;
         position: absolute;
         left: -11px;
@@ -71,7 +73,7 @@
         width: 129px;
         z-index: 9999;
         border-radius: 8px;
-        box-shadow: 0 8px 24px #b5b5b580;
+        box-shadow: 0 8px 24px $tooltip_shadow_color;
 
         &::after {
           z-index: 10000;
@@ -84,7 +86,7 @@
           height: 0;
           margin: auto;
           border-style: solid;
-          border-color: #2e2621 transparent transparent;
+          border-color: $base_font_color transparent transparent;
           border-width: 13px 13px 0;
         }
 
@@ -98,7 +100,7 @@
 
           .fa-plus {
             opacity: 0.35;
-            color: #717171;
+            color: $dark_gray_color;
           }
         }
 
@@ -124,7 +126,7 @@
         position: absolute;
         bottom: 4px;
         right: 4px;
-        color: #fff;
+        color: $white_color;
         width: 27px;
         height: 27px;
         border-radius: 50%;
@@ -142,7 +144,7 @@
           right: -4px;
           z-index: 40;
           border: none;
-          color: #fff;
+          color: $white_color;
           background: none;
 
           i {
@@ -159,7 +161,7 @@
           width: 40px;
           height: 40px;
           border: none;
-          color: #fff;
+          color: $white_color;
           background: none;
         }
 
@@ -215,7 +217,7 @@
 
         ._price {
           &.discount {
-            color: #e50721;
+            color: $important_norice_font_color;
           }
         }
 
@@ -233,7 +235,7 @@
             transform: scale(0.8);
           }
 
-          color: #717171;
+          color: $dark_gray_color;
           font-size: 10px; // chromeはmax10px
           display: inline-block;
         }
@@ -243,7 +245,7 @@
         &._name {
           height: 37px;
           line-height: 1.3;
-          color: #717171;
+          color: $dark_gray_color;
 
           &._expandLabel {
             height: 37px;

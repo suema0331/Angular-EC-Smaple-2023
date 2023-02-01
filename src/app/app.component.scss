@@ -1,3 +1,5 @@
+@import 'variables';
+
 .pwa-notice-area {
   position: absolute;
   position: fixed;
@@ -17,9 +19,9 @@
   }
 
   ._message {
-    background: #f2fae8;
-    color: #047100;
-    box-shadow: 0 8px 24px #90867f3d;
+    background: $normal_notice_color;
+    color: $normal_notice_font_color;
+    box-shadow: 0 8px 24px $toast_shadow_color;
   }
 
   .ios-menu {

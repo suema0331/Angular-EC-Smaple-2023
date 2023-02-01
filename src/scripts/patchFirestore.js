@@ -4,14 +4,16 @@ const fs = require('fs')
 
 const webpackFile = 'node_modules/@angular/fire/compat/firestore/interfaces.d.ts'
 
-fs.readFile(webpackFile, 'utf8', function(err, data) {
+fs.readFile(webpackFile, 'utf8', function (err, data) {
+  console.log("🌟 Start patching ========")
+
   if (err) {
     return console.log(err)
   }
 
   // make sure the file is not already patched
   const alreadyPatched = data.match(/SnapshotOptions\): any/g);
-  console.log("alreadyPatched")
+  console.log("alreadyPatched :)")
   console.log(alreadyPatched)
 
   if (alreadyPatched && alreadyPatched.length > 0) return;
