@@ -1,3 +1,5 @@
+@import 'variables';
+
 .ais-SearchBox {
   .ais-SearchBox-form {
     .ais-SearchBox-input {
@@ -22,7 +24,7 @@
 
       svg {
         width: 100%;
-        color: #fff;
+        color: $white_color;
       }
     }
   }

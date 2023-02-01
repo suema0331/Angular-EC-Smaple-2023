@@ -1,7 +1,9 @@
+@import 'variables';
+
 .toast {
-  background: #f2fae8;
-  color: #047100;
-  box-shadow: 0 8px 24px #90867f3d;
+  background: $normal_notice_color;
+  color: $normal_notice_font_color;
+  box-shadow: 0 8px 24px $toast_shadow_color;
   font-weight: bold;
   font-size: 16px;
   padding: 12px;
@@ -42,7 +44,7 @@
   }
 
   .toast-body {
-    background: #f2fae8;
+    background: $normal_notice_color;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     padding: 0;
@@ -60,10 +62,10 @@
     }
 
     .right-body {
-      color: #2e2621;
+      color: $base_font_color;
 
       .title {
-        color: #047100;
+        color: $normal_notice_font_color;
       }
     }
   }

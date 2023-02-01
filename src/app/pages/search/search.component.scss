@@ -1,7 +1,7 @@
 @import 'variables';
 
 .search {
-  background: #f2f2f2;
+  background: $lighter_gray_color;
   padding: 88px 0;
   position: absolute;
   top: 0;
@@ -34,13 +34,13 @@
 
     ._back {
       margin: auto 0;
-      color: #eaeaea;
+      color: $light_gray_color;
       cursor: pointer;
     }
 
     .btn-close {
       margin: auto 4px auto 18px;
-      color: #2e2621;
+      color: $base_font_color;
       cursor: pointer;
     }
   }
@@ -50,7 +50,7 @@
 
     .result-area {
       padding: 12px;
-      background: #fcfcfc;
+      background: $base_white_color;
       margin-bottom: 24px;
 
       ._ttl {
@@ -80,7 +80,7 @@
           width: 100%;
           display: flex;
           align-items: flex-end;
-          color: #fff;
+          color: $white_color;
           background: $shop_theme_color;
           margin: 0 auto 16px;
 

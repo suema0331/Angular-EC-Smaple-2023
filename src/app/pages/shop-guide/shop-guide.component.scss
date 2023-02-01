@@ -13,7 +13,7 @@
   .modal-title {
     font-size: 18px;
     font-weight: bold;
-    color: #2e2621;
+    color: $base_font_color;
     margin: 0 auto;
     position: relative;
     display: inline-block;
@@ -29,8 +29,8 @@
       transform: translateX(-50%);
       background-image: linear-gradient(
         to right,
-        #d1d1d1,
-        #d1d1d1 2px,
+        $medium_gray_color,
+        $medium_gray_color 2px,
         transparent 1px,
         transparent 8px
       );
@@ -46,7 +46,7 @@
   font-size: 18px;
   font-weight: bold;
   text-align: center;
-  color: #2e2621;
+  color: $base_font_color;
   padding: 28px;
 
   ._message {
@@ -69,10 +69,18 @@
 
   button {
     padding: 16px 100px;
-    color: #fff;
+    color: $white_color;
     font-size: 16px;
     font-weight: bold;
-    background: linear-gradient(to left, $shop_theme_color 50%, #017098);
-    background: linear-gradient(to right, $shop_theme_color 50%, #017098);
+    background: linear-gradient(
+      to left,
+      $shop_theme_color 50%,
+      $bule_submit_button_color
+    );
+    background: linear-gradient(
+      to right,
+      $shop_theme_color 50%,
+      $bule_submit_button_color
+    );
   }
 }

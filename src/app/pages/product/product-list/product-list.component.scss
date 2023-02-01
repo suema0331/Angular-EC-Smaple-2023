@@ -18,7 +18,7 @@
 
   ._back {
     margin: auto 0;
-    color: #eaeaea;
+    color: $light_gray_color;
     cursor: pointer;
   }
 
@@ -30,16 +30,16 @@
       display: block;
       padding: 8px 80px 8px 12px;
       border-radius: 18px;
-      background: #eaeaea;
+      background: $light_gray_color;
       font-size: 14px;
-      color: #b7b7b7;
+      color: $gray_color;
       font-weight: normal;
       cursor: pointer;
 
       i {
         font-size: 15px;
         margin-right: 4px;
-        color: #b7b7b7;
+        color: $gray_color;
       }
     }
   }
@@ -47,7 +47,7 @@
   ._menu {
     width: 28px;
     margin: auto 0 auto 8px;
-    color: #eaeaea;
+    color: $light_gray_color;
     cursor: pointer;
     border: none;
     background: none;
@@ -55,12 +55,12 @@
 }
 
 .section {
-  background: #f2f2f2;
+  background: $lighter_gray_color;
   margin-top: 57px;
   padding-bottom: 50px;
 
   .products-area {
-    background: #fcfcfc;
+    background: $base_white_color;
     margin-bottom: 12px;
     padding: 16px 10px 12px;
 

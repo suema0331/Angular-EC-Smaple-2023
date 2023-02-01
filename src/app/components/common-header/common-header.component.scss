@@ -1,11 +1,13 @@
 /* login & signup header */
+@import 'variables';
+
 .header {
   position: relative;
 
   ._back {
     position: absolute;
     left: 24px;
-    color: #2e2621;
+    color: $base_font_color;
     border: none;
     background: none;
   }
@@ -15,6 +17,6 @@
   font-size: 16px;
   padding: 16px;
   margin-bottom: 32px;
-  border-bottom: #90867f1f 1px solid;
-  box-shadow: 0 2px 6px #90867f1f;
+  border-bottom: $header_shadow_color 1px solid;
+  box-shadow: 0 2px 6px $header_shadow_color;
 }

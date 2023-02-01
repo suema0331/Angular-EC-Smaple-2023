@@ -12,9 +12,17 @@
 
     .submit {
       font-weight: bold;
-      color: #fff;
-      background: linear-gradient(to left, $shop_theme_color 50%, #017098);
-      background: linear-gradient(to right, $shop_theme_color 50%, #017098);
+      color: $white_color;
+      background: linear-gradient(
+        to left,
+        $shop_theme_color 50%,
+        $bule_submit_button_color
+      );
+      background: linear-gradient(
+        to right,
+        $shop_theme_color 50%,
+        $bule_submit_button_color
+      );
       margin: 32px auto;
     }
 
@@ -23,7 +31,7 @@
       font-size: 14px;
 
       ._signup {
-        color: #0080de;
+        color: $blue_link_color;
       }
     }
   }
@@ -35,7 +43,7 @@
   .form-label {
     font-size: 14px;
     font-weight: bold;
-    color: #2e2621;
+    color: $base_font_color;
     margin-bottom: 6px;
   }
 
@@ -43,7 +51,7 @@
     position: relative;
 
     ._display {
-      color: #0080de;
+      color: $blue_link_color;
       font-size: 14px;
       position: absolute;
       right: 16px;

@@ -1,7 +1,7 @@
 @import 'variables';
 
 .pastitem {
-  background: #f2f2f2;
+  background: $lighter_gray_color;
   padding: 16px 12px 550px;
   position: absolute;
   top: 59px;
@@ -17,7 +17,7 @@
     width: 100%;
     text-align: center;
     font-size: 16px;
-    color: #717171;
+    color: $dark_gray_color;
 
     ._ttl {
       margin: 32px 0 24px;

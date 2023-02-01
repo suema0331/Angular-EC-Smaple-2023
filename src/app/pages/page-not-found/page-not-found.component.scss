@@ -33,9 +33,17 @@
 
     .submit {
       font-weight: bold;
-      color: #fff;
-      background: linear-gradient(to left, $shop_theme_color 50%, #017098);
-      background: linear-gradient(to right, $shop_theme_color 50%, #017098);
+      color: $white_color;
+      background: linear-gradient(
+        to left,
+        $shop_theme_color 50%,
+        $bule_submit_button_color
+      );
+      background: linear-gradient(
+        to right,
+        $shop_theme_color 50%,
+        $bule_submit_button_color
+      );
       margin: 56px auto 32px;
     }
   }
