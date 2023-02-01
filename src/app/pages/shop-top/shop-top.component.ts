@@ -61,7 +61,7 @@ export class ShopTopComponent {
     this.recommendedSubscription = this.applicationService
       .getProducts(6)
       .subscribe((data) => {
-        this.recommendedProductList = data;
+        this.recommendedProductList = Array.from(Object.values(data));
       });
     // Get messages from the store that can be written by the store staff.
     this.messageSubscription = this.applicationService
