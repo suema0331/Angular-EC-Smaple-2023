@@ -71,6 +71,7 @@ describe('ProductCardComponent', () => {
     expect(element.textContent).toContain(`¥${taxed}`);
   });
 
+  // @Input
   it('should correctly render the @Input values', () => {
     const element = fixture.debugElement.query(
       By.css('.add_cart_btn.isClicked')
@@ -78,6 +79,7 @@ describe('ProductCardComponent', () => {
     expect(element.textContent).toContain(1);
   });
 
+  // @Output
   it('should emit true on button click', () => {
     spyOn(component.clickPlusHandler, 'emit');
     const buttonElement = fixture.debugElement.nativeElement.querySelector(
