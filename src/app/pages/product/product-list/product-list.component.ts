@@ -41,7 +41,9 @@ export class ProductListComponent {
     // Get up to 6 products in order of registration
     this.productListSubscription = this.applicationService
       .getProducts()
-      .subscribe((data) => (this.productList = data));
+      .subscribe(
+        (data) => (this.productList = Array.from(Object.values(data)))
+      );
   }
 
   ngOnDestroy(): void {
