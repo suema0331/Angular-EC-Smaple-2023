@@ -49,7 +49,6 @@ Thumbs.db
 # Cypress
 /cypress/videos
 /cypress/screenshots
-/cypress/fixtures/user.json
 
 # env
 .env

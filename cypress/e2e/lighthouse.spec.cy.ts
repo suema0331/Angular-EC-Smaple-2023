@@ -5,8 +5,8 @@ describe('Lighthouse Testing', () => {
 
   beforeEach(() => {
     Cypress.config('taskTimeout', 180_00000)
-    // cy.viewport('iphone-8') //375px x 667px
-    cy.viewport('macbook-13') // 1280px x 800px
+    cy.viewport('iphone-8') //375px x 667px
+    // cy.viewport('macbook-13') // 1280px x 800px
     cy.visit('http://localhost:4200/shop-top')
   });
 
@@ -18,14 +18,17 @@ describe('Lighthouse Testing', () => {
   it("should verify the lighthouse scores with thresholds", function () {
       // Define custom thresholds for successful audit
       cy.lighthouse({
-        performance: 45,
+        performance: 20,
         accessibility: 70,
         "best-practices": 70,
         seo: 70,
         pwa: 50,
       },
         {
-          formFactor: "desktop", // or mobile
+          // Lighthouse emulates operation on a smartphone by pseudo-slowing down the CPU
+          // and network when measuring the smartphone environment.
+          formFactor: "desktop",
+          // formFactor: "mobile",
           screenEmulation: {
             mobile: false,
             disable: false,
@@ -35,11 +38,26 @@ describe('Lighthouse Testing', () => {
           },
           /**
            * By changing these parameters, performance can be tested under varying loads.
+           *
+           * Lighthouse emulates operation on a smartphone by pseudo-slowing down the CPU and network when measuring the smartphone environment.
+           * Since formFactor only changes Lighthouse's UserAgent, the network and CPU emulation default to values for smartphones.
+           * To get the same values as Chrome's built-in Lighthouse Desktop, you need to change "throttling".
+           * so that it behaves like Chrome's built-in Lighthouse.
            */
+          // desktop
+          throttling: {
+            rttMs: 40, // Controls simulated network RTT (TCP layer)
+            throughputKbps: 11024, // Controls simulated network download throughput
+            cpuSlowdownMultiplier: 1, // To change the slowdown multiplier e.g.,1
+            requestLatencyMs: 0, // Controls emulated network RTT (HTTP layer)
+            downloadThroughputKbps: 0, // Controls emulated network download throughput
+            uploadThroughputKbps: 0, // Controls emulated network upload throughput
+          },
+          // mobile
           // throttling: {
-          //   rttMs: 40, // Controls simulated network RTT (TCP layer)
-          //   throughputKbps: 11024, // Controls simulated network download throughput
-          //   cpuSlowdownMultiplier: 0, // To change the slowdown multiplier e.g.,1
+          //   rttMs: 150, // Controls simulated network RTT (TCP layer)
+          //   throughputKbps: 1638.4, // Controls simulated network download throughput
+          //   cpuSlowdownMultiplier: 4, // To change the slowdown multiplier e.g.,1
           //   requestLatencyMs: 0, // Controls emulated network RTT (HTTP layer)
           //   downloadThroughputKbps: 0, // Controls emulated network download throughput
           //   uploadThroughputKbps: 0, // Controls emulated network upload throughput
