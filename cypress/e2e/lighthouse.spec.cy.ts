@@ -25,11 +25,13 @@ describe('Lighthouse Testing', () => {
         pwa: 50,
       },
         {
-          // Lighthouse emulates operation on a smartphone by pseudo-slowing down the CPU
-          // and network when measuring the smartphone environment.
+          /**
+           * Screen/Viewport emulation and UserAgent string spoofing
+           * With the default configuration, Lighthouse emulates a mobile device.
+           */
           formFactor: "desktop",
           // formFactor: "mobile",
-          screenEmulation: {
+          screenEmulation: { // https://github.com/GoogleChrome/lighthouse/blob/main/docs/emulation.md
             mobile: false,
             disable: false,
             width: Cypress.config("viewportWidth"),
@@ -37,15 +39,15 @@ describe('Lighthouse Testing', () => {
             deviceScaleRatio: 1,
           },
           /**
+           * Network and CPU throttling/simulation
            * By changing these parameters, performance can be tested under varying loads.
            *
-           * Lighthouse emulates operation on a smartphone by pseudo-slowing down the CPU and network when measuring the smartphone environment.
+           * With the default configuration, Lighthouse emulates operation on a smartphone by pseudo-slowing down the CPU and network when measuring the smartphone environment.
            * Since formFactor only changes Lighthouse's UserAgent, the network and CPU emulation default to values for smartphones.
            * To get the same values as Chrome's built-in Lighthouse Desktop, you need to change "throttling".
-           * so that it behaves like Chrome's built-in Lighthouse.
            */
           // desktop
-          throttling: {
+          throttling: { // https://github.com/GoogleChrome/lighthouse/blob/main/docs/throttling.md
             rttMs: 40, // Controls simulated network RTT (TCP layer)
             throughputKbps: 11024, // Controls simulated network download throughput
             cpuSlowdownMultiplier: 1, // To change the slowdown multiplier e.g.,1
